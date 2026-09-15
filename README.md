@@ -92,6 +92,30 @@ in a row, because a second action while one is pending is rejected.
 
 `cloudconsole --help` lists everything; `cloudconsole <command> --help` goes deeper.
 
+## Linux startup configuration
+
+Pass a complete first-boot document with `--user-data-file` and
+`--user-data-format`. For Fedora CoreOS, use Ignition JSON (convert Butane YAML
+first):
+
+```bash
+cloudconsole instance create \
+  --name coreos-01 --region ALP2 --platform linux \
+  --image coreos --cpu 2 --memory 4 --disk 40 \
+  --admin-username core \
+  --user-data-file ./config.ign --user-data-format ignition --wait
+```
+
+Choose an image and sizing available in your region. For cloud-init images, use
+`--user-data-file ./cloud-config.yaml --user-data-format cloud-init`; the YAML
+must start with `#cloud-config`. Use `--user-data-file -` to read stdin.
+
+The document replaces automatic setup. Define users and SSH keys inside it and
+omit `--ssh-key`. `--admin-username` records the user for connection information;
+it does not create a user when you provide custom data. Documents are limited to
+64 KiB of UTF-8, encrypted by the API, and never returned by instance reads. They
+run only on first boot; changing a local file does not reconfigure an existing VM.
+
 ## Scripting
 
 `--output json` emits the API's response body **unchanged**, with only the

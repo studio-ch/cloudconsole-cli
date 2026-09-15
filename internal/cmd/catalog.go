@@ -138,10 +138,15 @@ func newFlavorCommand(s *State) *cobra.Command {
 		RunE: simpleGet(s, "/v1/xcloud/flavors", nil, func(time.Time) []output.Column {
 			return []output.Column{
 				{Header: "slug", Value: func(r map[string]any) string { return output.Field(r, "slug") }},
-				{Header: "name", Value: func(r map[string]any) string { return output.Field(r, "name") }},
+				// The API field is `label`; reading "name" left this column
+				// blank on every row.
+				{Header: "name", Value: func(r map[string]any) string { return output.Field(r, "label") }},
 				{Header: "cpu", Value: func(r map[string]any) string { return output.Field(r, "cpuCores") }},
 				{Header: "memory", Value: func(r map[string]any) string { return gib(r, "memoryGib") }},
 				{Header: "disk", Value: func(r map[string]any) string { return gib(r, "diskGib") }},
+				// Scripted creates should not discover the billing terms from
+				// the invoice.
+				{Header: "billing", Value: func(r map[string]any) string { return billingMode(r) }},
 			}
 		}),
 	})
@@ -323,5 +328,18 @@ func newSSHKeyDeleteCommand(s *State) *cobra.Command {
 			}
 			return nil
 		},
+	}
+}
+
+// billingMode renders how a flavor is charged: per started hour, or as a
+// month of reserved capacity that is billed whether or not a VM occupies it.
+func billingMode(r map[string]any) string {
+	switch output.Field(r, "billingMode") {
+	case "slot":
+		return "slot/month"
+	case "on_demand":
+		return "hourly"
+	default:
+		return output.Field(r, "billingMode")
 	}
 }

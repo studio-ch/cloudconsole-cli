@@ -3,9 +3,14 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"net/url"
+	"os"
+	"regexp"
+	"strings"
 	"time"
+	"unicode/utf8"
 
 	"github.com/spf13/cobra"
 
@@ -141,20 +146,22 @@ func newInstanceGetCommand(s *State) *cobra.Command {
 
 func newInstanceCreateCommand(s *State) *cobra.Command {
 	var (
-		name       string
-		region     string
-		image      string
-		platform   string
-		flavor     string
-		cpu        int
-		memory     int
-		disk       int
-		network    string
-		adminUser  string
-		sshKeyIDs  []string
-		allocateIP bool
-		idemKey    string
-		wf         waitFlags
+		name           string
+		region         string
+		image          string
+		platform       string
+		flavor         string
+		cpu            int
+		memory         int
+		disk           int
+		network        string
+		userDataFile   string
+		userDataFormat string
+		adminUser      string
+		sshKeyIDs      []string
+		allocateIP     bool
+		idemKey        string
+		wf             waitFlags
 	)
 
 	c := &cobra.Command{
@@ -171,6 +178,47 @@ func newInstanceCreateCommand(s *State) *cobra.Command {
 			"      --cpu 10 --memory 28 --disk 480 --wait",
 		Args: cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, _ []string) error {
+			var startup map[string]any
+			if userDataFile != "" {
+				if platform != "linux" || len(sshKeyIDs) > 0 {
+					return &usageError{fmt.Errorf("--user-data-file requires --platform linux and replaces --ssh-key; define users and keys in the document")}
+				}
+				reader := cmd.InOrStdin()
+				if userDataFile != "-" {
+					file, err := os.Open(userDataFile)
+					if err != nil {
+						return &usageError{fmt.Errorf("read user-data file: %w", err)}
+					}
+					defer file.Close()
+					reader = file
+				}
+				data, err := io.ReadAll(io.LimitReader(reader, 65537))
+				if err != nil {
+					return &usageError{fmt.Errorf("read user-data: %w", err)}
+				}
+				if len(data) > 65536 || len(strings.TrimSpace(string(data))) == 0 || !utf8.Valid(data) {
+					return &usageError{fmt.Errorf("user-data must be non-empty UTF-8, maximum 64 KiB")}
+				}
+				switch userDataFormat {
+				case "cloud-init":
+					text := strings.TrimLeft(string(data), " \t\r\n")
+					if !strings.HasPrefix(text, "#cloud-config\n") && !strings.HasPrefix(text, "#cloud-config\r\n") {
+						return &usageError{fmt.Errorf("cloud-init user-data must start with #cloud-config")}
+					}
+				case "ignition":
+					var envelope struct {
+						Ignition struct {
+							Version string `json:"version"`
+						} `json:"ignition"`
+					}
+					if json.Unmarshal(data, &envelope) != nil || !regexp.MustCompile(`^3\.\d+\.\d+$`).MatchString(envelope.Ignition.Version) {
+						return &usageError{fmt.Errorf("Ignition requires JSON with ignition.version 3.x; convert Butane YAML first")}
+					}
+				default:
+					return &usageError{fmt.Errorf("--user-data-format must be cloud-init or ignition")}
+				}
+				startup = map[string]any{"format": userDataFormat, "userData": string(data)}
+			}
 			client, err := s.Client()
 			if err != nil {
 				return err
@@ -192,6 +240,9 @@ func newInstanceCreateCommand(s *State) *cobra.Command {
 				"memoryGib": memory,
 				"diskGib":   disk,
 				"imageRef":  image,
+			}
+			if startup != nil {
+				body["startupConfig"] = startup
 			}
 			if platform != "" {
 				body["platform"] = platform
@@ -267,10 +318,13 @@ func newInstanceCreateCommand(s *State) *cobra.Command {
 	f.StringVar(&platform, "platform", "", "macos or linux (default macos)")
 	f.StringVar(&flavor, "flavor", "", "flavor slug, instead of explicit cpu/memory/disk")
 	f.StringVar(&network, "network", "", "network reference (default 'default')")
-	f.StringVar(&adminUser, "admin-username", "", "admin user to provision in the guest")
+	f.StringVar(&adminUser, "admin-username", "", "admin user (with custom user-data: user already defined in the configuration)")
 	f.StringSliceVar(&sshKeyIDs, "ssh-key", nil, "SSH key id to provision (repeatable)")
 	f.BoolVar(&allocateIP, "allocate-elastic-ip", false, "allocate and attach a new elastic IP")
 	f.StringVar(&idemKey, "idempotency-key", "", "reuse this key to safely retry an interrupted create (generated if unset)")
+	f.StringVar(&userDataFile, "user-data-file", "", "complete first-boot configuration file, or - for stdin (Linux only; replaces automatic SSH setup)")
+	f.StringVar(&userDataFormat, "user-data-format", "", "cloud-init or ignition; use Ignition JSON for CoreOS")
+	c.MarkFlagsRequiredTogether("user-data-file", "user-data-format")
 	wf.register(c)
 
 	for _, required := range []string{"name", "region", "image"} {
