@@ -244,6 +244,7 @@ func newRootCommand(s *State) *cobra.Command {
 		// the classic Incus stack is deliberately out of scope.
 		newInstanceCommand(s),
 		newVolumeCommand(s),
+		newSnapshotCommand(s),
 		newImageCommand(s),
 		newNetworkCommand(s),
 		newSecurityGroupCommand(s),

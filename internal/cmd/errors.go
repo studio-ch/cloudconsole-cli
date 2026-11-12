@@ -33,6 +33,9 @@ func (e *usageError) Unwrap() error { return e.err }
 type waitTimeoutError struct {
 	Resource string
 	Elapsed  string
+	// Check is the command that shows the resource's current state, for
+	// the hint. Empty falls back to the generic instance wording.
+	Check string
 }
 
 func (e *waitTimeoutError) Error() string {
@@ -92,7 +95,11 @@ func report(w io.Writer, err error, s *State) exitcode.Code {
 	var waitErr *waitTimeoutError
 	if errors.As(err, &waitErr) {
 		fmt.Fprintf(w, "Error: %s\n", waitErr.Error())
-		fmt.Fprintln(w, "Hint: the operation was accepted and may still be running. Check with 'cloudconsole instance get', or raise --wait-timeout.")
+		check := waitErr.Check
+		if check == "" {
+			check = "cloudconsole instance get"
+		}
+		fmt.Fprintf(w, "Hint: the operation was accepted and may still be running. Check with '%s', or raise --wait-timeout.\n", check)
 		return exitcode.WaitTimeout
 	}
 
@@ -112,6 +119,9 @@ func isUsageError(err error) bool {
 		"unknown command", "unknown flag", "unknown shorthand",
 		"accepts ", "invalid argument", "required flag",
 		"flag needs an argument",
+		// Flag-group constraints (MarkFlagsOneRequired,
+		// MarkFlagsMutuallyExclusive, MarkFlagsRequiredTogether).
+		"flags in the group",
 	} {
 		if strings.Contains(msg, marker) {
 			return true

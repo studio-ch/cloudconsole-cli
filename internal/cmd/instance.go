@@ -36,6 +36,7 @@ func instanceColumns(now time.Time) []output.Column {
 
 		{Header: "platform", Wide: true, Value: func(r map[string]any) string { return output.Field(r, "platform") }},
 		{Header: "image", Wide: true, Value: func(r map[string]any) string { return output.Field(r, "imageRef") }},
+		{Header: "snapshot", Wide: true, Value: func(r map[string]any) string { return output.Field(r, "sourceSnapshotId") }},
 		{Header: "flavor", Wide: true, Value: func(r map[string]any) string { return output.Field(r, "flavorSlug") }},
 		{Header: "node", Wide: true, Value: func(r map[string]any) string { return output.Field(r, "node") }},
 		{Header: "network", Wide: true, Value: func(r map[string]any) string { return output.Field(r, "networkRef") }},
@@ -81,6 +82,7 @@ func newInstanceCommand(s *State) *cobra.Command {
 		newInstanceDeleteCommand(s),
 	)
 	c.AddCommand(newInstanceLifecycleCommands(s)...)
+	c.AddCommand(newInstanceDisplayCommand(s))
 	return c
 }
 
@@ -161,6 +163,7 @@ func newInstanceCreateCommand(s *State) *cobra.Command {
 		sshKeyIDs      []string
 		allocateIP     bool
 		idemKey        string
+		fromSnapshot   string
 		wf             waitFlags
 	)
 
@@ -170,14 +173,25 @@ func newInstanceCreateCommand(s *State) *cobra.Command {
 		Long: "Create an Xcloud instance.\n\n" +
 			"--region accepts a slug ('cloudconsole region list' shows the ones available to\n" +
 			"you) and is resolved to an id for you.\n\n" +
+			"Pass --from-snapshot instead of --image to boot a copy of a ready snapshot's\n" +
+			"disk, with a machine identity of its own. --region, --platform, --disk, --cpu\n" +
+			"and --memory then default to the snapshot's region, platform, disk size and\n" +
+			"minimums; first-boot provisioning (--user-data-file) does not apply.\n\n" +
 			"Creates are deduplicated: the CLI sends an idempotency key, so repeating\n" +
 			"an interrupted create with the same --idempotency-key replays the original\n" +
 			"result instead of provisioning a second instance. Keys expire after 24h.",
 		Example: "  cloudconsole instance create --name build-01 --region ZRH1 \\\n" +
 			"      --image ghcr.io/example/macos-sequoia:latest \\\n" +
-			"      --cpu 10 --memory 28 --disk 480 --wait",
+			"      --cpu 10 --memory 28 --disk 480 --wait\n" +
+			"  cloudconsole instance create --name build-02 --from-snapshot macos-baseline --wait",
 		Args: cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, _ []string) error {
+			if fromSnapshot == "" && region == "" {
+				return &usageError{fmt.Errorf("--region is required unless --from-snapshot is given")}
+			}
+			if fromSnapshot != "" && (userDataFile != "" || adminUser != "") {
+				return &usageError{fmt.Errorf("--user-data-file and --admin-username do not apply to --from-snapshot: the instance boots the snapshot's disk with its users as they were")}
+			}
 			var startup map[string]any
 			if userDataFile != "" {
 				if platform != "linux" || len(sshKeyIDs) > 0 {
@@ -228,9 +242,24 @@ func newInstanceCreateCommand(s *State) *cobra.Command {
 				return err
 			}
 
-			regionID, err := resolveRegion(cmd.Context(), client, region)
-			if err != nil {
-				return err
+			var snap *snapshotRecord
+			if fromSnapshot != "" {
+				rec, err := lookupSnapshot(cmd.Context(), client, fromSnapshot)
+				if err != nil {
+					return err
+				}
+				snap = &rec
+				applySnapshotDefaults(rec, &platform, &cpu, &memory, &disk, flavor != "")
+			}
+
+			var regionID string
+			if region != "" {
+				regionID, err = resolveRegion(cmd.Context(), client, region)
+				if err != nil {
+					return err
+				}
+			} else {
+				regionID = snap.RegionID
 			}
 
 			body := map[string]any{
@@ -239,7 +268,11 @@ func newInstanceCreateCommand(s *State) *cobra.Command {
 				"cpuCores":  cpu,
 				"memoryGib": memory,
 				"diskGib":   disk,
-				"imageRef":  image,
+			}
+			if snap != nil {
+				body["sourceSnapshotId"] = snap.ID
+			} else {
+				body["imageRef"] = image
 			}
 			if startup != nil {
 				body["startupConfig"] = startup
@@ -310,12 +343,13 @@ func newInstanceCreateCommand(s *State) *cobra.Command {
 
 	f := c.Flags()
 	f.StringVar(&name, "name", "", "instance name (required)")
-	f.StringVar(&region, "region", "", "region slug or id (required)")
-	f.StringVar(&image, "image", "", "OCI image reference to boot (required)")
-	f.IntVar(&cpu, "cpu", 0, "CPU cores (required)")
-	f.IntVar(&memory, "memory", 0, "memory in GiB (required)")
-	f.IntVar(&disk, "disk", 0, "disk in GiB (required)")
-	f.StringVar(&platform, "platform", "", "macos or linux (default macos)")
+	f.StringVar(&region, "region", "", "region slug or id (required; default with --from-snapshot: the snapshot's)")
+	f.StringVar(&image, "image", "", "OCI image reference to boot (this or --from-snapshot is required)")
+	f.StringVar(&fromSnapshot, "from-snapshot", "", "ready snapshot id or name to boot instead of an image")
+	f.IntVar(&cpu, "cpu", 0, "CPU cores (required; default with --from-snapshot: the snapshot's minimum)")
+	f.IntVar(&memory, "memory", 0, "memory in GiB (required; default with --from-snapshot: the snapshot's minimum)")
+	f.IntVar(&disk, "disk", 0, "disk in GiB (required; default with --from-snapshot: the snapshot's disk)")
+	f.StringVar(&platform, "platform", "", "macos or linux (default macos; with --from-snapshot: the snapshot's)")
 	f.StringVar(&flavor, "flavor", "", "flavor slug, instead of explicit cpu/memory/disk")
 	f.StringVar(&network, "network", "", "network reference (default 'default')")
 	f.StringVar(&adminUser, "admin-username", "", "admin user (with custom user-data: user already defined in the configuration)")
@@ -325,19 +359,44 @@ func newInstanceCreateCommand(s *State) *cobra.Command {
 	f.StringVar(&userDataFile, "user-data-file", "", "complete first-boot configuration file, or - for stdin (Linux only; replaces automatic SSH setup)")
 	f.StringVar(&userDataFormat, "user-data-format", "", "cloud-init or ignition; use Ignition JSON for CoreOS")
 	c.MarkFlagsRequiredTogether("user-data-file", "user-data-format")
+	c.MarkFlagsOneRequired("image", "from-snapshot")
+	c.MarkFlagsMutuallyExclusive("image", "from-snapshot")
 	wf.register(c)
 
-	for _, required := range []string{"name", "region", "image"} {
-		_ = c.MarkFlagRequired(required)
-	}
+	_ = c.MarkFlagRequired("name")
 	return c
+}
+
+// applySnapshotDefaults fills what the caller left unset from the
+// snapshot the instance is created from. The API requires a matching
+// platform, a disk at least the snapshot's and CPU and memory at least its
+// minimums, so these defaults are the smallest instance that is accepted.
+// With a flavor the sizing comes from the flavor, so only the platform is
+// filled in.
+func applySnapshotDefaults(snap snapshotRecord, platform *string, cpu, memory, disk *int, hasFlavor bool) {
+	if *platform == "" {
+		*platform = snap.Platform
+	}
+	if hasFlavor {
+		return
+	}
+	if *disk == 0 {
+		*disk = snap.DiskGib
+	}
+	if *cpu == 0 && snap.MinCPUCores != nil {
+		*cpu = *snap.MinCPUCores
+	}
+	if *memory == 0 && snap.MinMemoryGib != nil {
+		*memory = *snap.MinMemoryGib
+	}
 }
 
 func newInstanceDeleteCommand(s *State) *cobra.Command {
 	var (
-		wf          waitFlags
-		releaseEIPs bool
-		yes         bool
+		wf              waitFlags
+		releaseEIPs     bool
+		deleteSnapshots bool
+		yes             bool
 	)
 
 	c := &cobra.Command{
@@ -359,8 +418,12 @@ func newInstanceDeleteCommand(s *State) *cobra.Command {
 			// opted out — a CI job passes --yes, a human gets one chance
 			// to notice the wrong id.
 			if !yes {
+				what := "its disk"
+				if deleteSnapshots {
+					what = "its disk and snapshots"
+				}
 				ok, err := s.Confirm(fmt.Sprintf(
-					"Delete instance %s and its disk? This cannot be undone. [y/N]: ", args[0]))
+					"Delete instance %s and %s? This cannot be undone. [y/N]: ", args[0], what))
 				if err != nil {
 					return err
 				}
@@ -373,6 +436,9 @@ func newInstanceDeleteCommand(s *State) *cobra.Command {
 			query := url.Values{}
 			if releaseEIPs {
 				query.Set("releaseElasticIps", "true")
+			}
+			if deleteSnapshots {
+				query.Set("deleteSnapshots", "true")
 			}
 			if _, err := client.Do(cmd.Context(), api.RequestOptions{
 				Method: http.MethodDelete,
@@ -392,6 +458,7 @@ func newInstanceDeleteCommand(s *State) *cobra.Command {
 		},
 	}
 	c.Flags().BoolVar(&releaseEIPs, "release-elastic-ips", false, "also release elastic IPs attached to the instance")
+	c.Flags().BoolVar(&deleteSnapshots, "delete-snapshots", false, "also delete the instance's snapshots (by default they outlive it)")
 	c.Flags().BoolVar(&yes, "yes", false, "skip the confirmation prompt")
 	wf.register(c)
 	return c
@@ -454,7 +521,7 @@ func newInstanceLifecycleCommands(s *State) []*cobra.Command {
 		cmds = append(cmds, c)
 	}
 
-	return append(cmds, newInstanceResizeCommand(s), newInstanceBootModeCommand(s))
+	return append(cmds, newInstanceResizeCommand(s), newInstanceBootModeCommand(s), newInstanceRestoreCommand(s))
 }
 
 func newInstanceResizeCommand(s *State) *cobra.Command {
@@ -569,6 +636,91 @@ func newInstanceBootModeCommand(s *State) *cobra.Command {
 	}
 	c.Flags().BoolVar(&recovery, "recovery", false, "boot into recovery (macOS only)")
 	c.Flags().BoolVar(&normal, "normal", false, "boot normally")
+	wf.register(c)
+	return c
+}
+
+func newInstanceRestoreCommand(s *State) *cobra.Command {
+	var (
+		snapshot     string
+		startAfter   bool
+		noStartAfter bool
+		yes          bool
+		wf           waitFlags
+	)
+
+	c := &cobra.Command{
+		Use:   "restore <id>",
+		Short: "Restore an instance to one of its snapshots",
+		Long: "Revert an instance's boot disk and firmware settings to a ready snapshot\n" +
+			"taken of this very instance. Everything written to the disk since the\n" +
+			"snapshot is lost; attached volumes, network address and identity are kept.\n\n" +
+			"A running instance is stopped first, without a clean shutdown. It is started\n" +
+			"again afterwards if it was running, unless --no-start-after is given;\n" +
+			"--start-after starts a stopped instance once restored.\n\n" +
+			"To boot a snapshot of another instance, use 'instance create --from-snapshot'.",
+		Example: "  cloudconsole instance restore <id> --snapshot before-upgrade --yes --wait",
+		Args:    cobra.ExactArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			client, err := s.Client()
+			if err != nil {
+				return err
+			}
+			w, err := s.Writer()
+			if err != nil {
+				return err
+			}
+			snapshotID, err := resolveSnapshotID(cmd.Context(), client, snapshot, args[0])
+			if err != nil {
+				return err
+			}
+			if !yes {
+				ok, err := s.Confirm(fmt.Sprintf(
+					"Restore instance %s to snapshot %s? A running instance is stopped, and everything "+
+						"written since the snapshot is lost. [y/N]: ", args[0], snapshot))
+				if err != nil {
+					return err
+				}
+				if !ok {
+					fmt.Fprintln(w.Err, "Aborted.")
+					return nil
+				}
+			}
+
+			body := map[string]any{"snapshotId": snapshotID}
+			switch {
+			case startAfter:
+				body["startAfter"] = true
+			case noStartAfter:
+				body["startAfter"] = false
+			}
+			payload, err := json.Marshal(body)
+			if err != nil {
+				return err
+			}
+			if _, err := client.Do(cmd.Context(), api.RequestOptions{
+				Method: http.MethodPost,
+				Path:   "/v1/xcloud/instances/" + args[0] + "/restore",
+				Body:   payload,
+			}); err != nil {
+				return err
+			}
+
+			if !wf.enabled {
+				if !w.Quiet {
+					fmt.Fprintf(w.Err, "Restore queued for instance %s. Add --wait to block until it finishes.\n", args[0])
+				}
+				return nil
+			}
+			return awaitInstance(cmd, s, args[0], wait.InstanceSettled(), wf, "restoring")
+		},
+	}
+	c.Flags().StringVar(&snapshot, "snapshot", "", "snapshot id or name to restore (required)")
+	c.Flags().BoolVar(&startAfter, "start-after", false, "start the instance once restored (default: if it was running)")
+	c.Flags().BoolVar(&noStartAfter, "no-start-after", false, "leave the instance stopped once restored")
+	c.Flags().BoolVar(&yes, "yes", false, "skip the confirmation prompt")
+	c.MarkFlagsMutuallyExclusive("start-after", "no-start-after")
+	_ = c.MarkFlagRequired("snapshot")
 	wf.register(c)
 	return c
 }

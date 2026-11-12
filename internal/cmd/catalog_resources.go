@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"net/url"
 	"time"
 
 	"github.com/spf13/cobra"
@@ -189,14 +190,20 @@ func newNetworkCommand(s *State) *cobra.Command {
 				return []output.Column{
 					{Header: "name", Value: func(r map[string]any) string { return output.Field(r, "name") }},
 					{Header: "region", Value: func(r map[string]any) string { return output.Field(r, "regionSlug") }},
-					{Header: "mode", Value: func(r map[string]any) string { return output.Field(r, "mode") }},
 					{Header: "cidr", Value: func(r map[string]any) string { return output.Field(r, "cidr") }},
 					{Header: "gateway", Value: func(r map[string]any) string { return output.Field(r, "gateway") }},
-					{Header: "dhcp", Value: func(r map[string]any) string { return output.Field(r, "dhcp") }},
+					{Header: "dhcp", Value: func(r map[string]any) string {
+						rangeValue, ok := r["dhcpRange"].(map[string]any)
+						if !ok {
+							return "disabled"
+						}
+						return output.Field(rangeValue, "rangeStart") + " – " + output.Field(rangeValue, "rangeEnd")
+					}},
 				}
 			}),
 		},
 		newNetworkCreateCommand(s),
+		newNetworkUpdateCommand(s),
 		newNetworkDeleteCommand(s),
 	)
 	return c
@@ -204,15 +211,17 @@ func newNetworkCommand(s *State) *cobra.Command {
 
 func newNetworkCreateCommand(s *State) *cobra.Command {
 	var (
-		name, region, mode, cidr, gateway string
-		dhcp                              bool
-		idemKey                           string
+		name, region, cidr, gateway, dhcpStart, dhcpEnd string
+		idemKey                                         string
 	)
 	c := &cobra.Command{
 		Use:   "create",
-		Short: "Create a network",
+		Short: "Create a private network",
 		Args:  cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, _ []string) error {
+			if (dhcpStart == "") != (dhcpEnd == "") {
+				return fmt.Errorf("--dhcp-range-start and --dhcp-range-end must be supplied together")
+			}
 			client, err := s.Client()
 			if err != nil {
 				return err
@@ -226,17 +235,14 @@ func newNetworkCreateCommand(s *State) *cobra.Command {
 				return err
 			}
 			body := map[string]any{"regionId": regionID, "name": name}
-			if mode != "" {
-				body["mode"] = mode
-			}
 			if cidr != "" {
 				body["cidr"] = cidr
 			}
 			if gateway != "" {
 				body["gateway"] = gateway
 			}
-			if cmd.Flags().Changed("dhcp") {
-				body["dhcp"] = dhcp
+			if dhcpStart != "" {
+				body["dhcp"] = map[string]string{"rangeStart": dhcpStart, "rangeEnd": dhcpEnd}
 			}
 			payload, err := json.Marshal(body)
 			if err != nil {
@@ -254,21 +260,80 @@ func newNetworkCreateCommand(s *State) *cobra.Command {
 			}
 			return w.Render(resp.Body, []output.Column{
 				{Header: "name", Value: func(r map[string]any) string { return output.Field(r, "name") }},
-				{Header: "mode", Value: func(r map[string]any) string { return output.Field(r, "mode") }},
 				{Header: "cidr", Value: func(r map[string]any) string { return output.Field(r, "cidr") }},
 			})
 		},
 	}
 	c.Flags().StringVar(&name, "name", "", "network name (required)")
 	c.Flags().StringVar(&region, "region", "", "region slug or id (required)")
-	c.Flags().StringVar(&mode, "mode", "", "network mode")
 	c.Flags().StringVar(&cidr, "cidr", "", "CIDR, e.g. 10.0.0.0/24")
 	c.Flags().StringVar(&gateway, "gateway", "", "gateway address")
-	c.Flags().BoolVar(&dhcp, "dhcp", false, "enable DHCP")
+	c.Flags().StringVar(&dhcpStart, "dhcp-range-start", "", "first DHCP address (requires --dhcp-range-end)")
+	c.Flags().StringVar(&dhcpEnd, "dhcp-range-end", "", "last DHCP address (requires --dhcp-range-start)")
 	c.Flags().StringVar(&idemKey, "idempotency-key", "", "reuse this key to safely retry (generated if unset)")
-	for _, r := range []string{"name", "region"} {
+	for _, r := range []string{"name", "region", "cidr", "gateway"} {
 		_ = c.MarkFlagRequired(r)
 	}
+	return c
+}
+
+func newNetworkUpdateCommand(s *State) *cobra.Command {
+	var region, cidr, gateway, dhcpStart, dhcpEnd string
+	var disableDHCP bool
+	c := &cobra.Command{Use: "update <name>", Short: "Update a tenant-owned private network", Args: cobra.ExactArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			if (dhcpStart == "") != (dhcpEnd == "") {
+				return fmt.Errorf("--dhcp-range-start and --dhcp-range-end must be supplied together")
+			}
+			if disableDHCP && dhcpStart != "" {
+				return fmt.Errorf("--disable-dhcp cannot be combined with a DHCP range")
+			}
+			body := map[string]any{}
+			if cmd.Flags().Changed("cidr") {
+				body["subnet"] = cidr
+			}
+			if cmd.Flags().Changed("gateway") {
+				body["gateway"] = gateway
+			}
+			if dhcpStart != "" {
+				body["dhcp"] = map[string]string{"rangeStart": dhcpStart, "rangeEnd": dhcpEnd}
+			}
+			if disableDHCP {
+				body["dhcp"] = nil
+			}
+			if len(body) == 0 {
+				return fmt.Errorf("supply a subnet, gateway or DHCP change")
+			}
+			client, err := s.Client()
+			if err != nil {
+				return err
+			}
+			w, err := s.Writer()
+			if err != nil {
+				return err
+			}
+			regionID, err := resolveRegion(cmd.Context(), client, region)
+			if err != nil {
+				return err
+			}
+			payload, err := json.Marshal(body)
+			if err != nil {
+				return err
+			}
+			resp, err := client.Do(cmd.Context(), api.RequestOptions{Method: http.MethodPatch, Path: "/v1/xcloud/networks/" + url.PathEscape(args[0]), Query: url.Values{"regionId": {regionID}}, Body: payload})
+			if err != nil {
+				return err
+			}
+			return w.Render(resp.Body, []output.Column{{Header: "name", Value: func(r map[string]any) string { return output.Field(r, "name") }}, {Header: "cidr", Value: func(r map[string]any) string { return output.Field(r, "cidr") }}, {Header: "gateway", Value: func(r map[string]any) string { return output.Field(r, "gateway") }}})
+		},
+	}
+	c.Flags().StringVar(&region, "region", "", "region slug or id (required)")
+	c.Flags().StringVar(&cidr, "cidr", "", "new private subnet CIDR")
+	c.Flags().StringVar(&gateway, "gateway", "", "new gateway address")
+	c.Flags().StringVar(&dhcpStart, "dhcp-range-start", "", "first DHCP address")
+	c.Flags().StringVar(&dhcpEnd, "dhcp-range-end", "", "last DHCP address")
+	c.Flags().BoolVar(&disableDHCP, "disable-dhcp", false, "disable DHCP address assignment")
+	_ = c.MarkFlagRequired("region")
 	return c
 }
 

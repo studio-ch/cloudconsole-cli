@@ -130,27 +130,57 @@ func newFlavorCommand(s *State) *cobra.Command {
 		Aliases: []string{"flavors"},
 		Short:   "List Xcloud instance flavors",
 	}
-	c.AddCommand(&cobra.Command{
+	var regionID, platform string
+	list := &cobra.Command{
 		Use:     "list",
 		Aliases: []string{"ls"},
 		Short:   "List flavors",
 		Args:    cobra.NoArgs,
-		RunE: simpleGet(s, "/v1/xcloud/flavors", nil, func(time.Time) []output.Column {
-			return []output.Column{
-				{Header: "slug", Value: func(r map[string]any) string { return output.Field(r, "slug") }},
-				// The API field is `label`; reading "name" left this column
-				// blank on every row.
-				{Header: "name", Value: func(r map[string]any) string { return output.Field(r, "label") }},
-				{Header: "cpu", Value: func(r map[string]any) string { return output.Field(r, "cpuCores") }},
-				{Header: "memory", Value: func(r map[string]any) string { return gib(r, "memoryGib") }},
-				{Header: "disk", Value: func(r map[string]any) string { return gib(r, "diskGib") }},
-				// Scripted creates should not discover the billing terms from
-				// the invoice.
-				{Header: "billing", Value: func(r map[string]any) string { return billingMode(r) }},
+		RunE: func(cmd *cobra.Command, args []string) error {
+			if platform != "" && platform != "macos" && platform != "linux" {
+				return fmt.Errorf("--platform must be macos or linux")
 			}
-		}),
-	})
+			query := url.Values{}
+			if regionID != "" {
+				query.Set("regionId", regionID)
+			}
+			if platform != "" {
+				query.Set("platform", platform)
+			}
+			return simpleGet(s, "/v1/xcloud/flavors", query, func(time.Time) []output.Column {
+				return []output.Column{
+					{Header: "slug", Value: func(r map[string]any) string { return output.Field(r, "slug") }},
+					// The API field is `label`; reading "name" left this column
+					// blank on every row.
+					{Header: "name", Value: func(r map[string]any) string { return output.Field(r, "label") }},
+					{Header: "cpu", Value: func(r map[string]any) string { return output.Field(r, "cpuCores") }},
+					{Header: "memory", Value: func(r map[string]any) string { return gib(r, "memoryGib") }},
+					{Header: "disk", Value: func(r map[string]any) string { return gib(r, "diskGib") }},
+					// Scripted creates should not discover the billing terms from
+					// the invoice.
+					{Header: "platforms", Value: flavorPlatformsCell},
+					{Header: "billing", Value: func(r map[string]any) string { return billingMode(r) }},
+				}
+			})(cmd, args)
+		},
+	}
+	list.Flags().StringVar(&regionID, "region-id", "", "Region UUID for availability and prices")
+	list.Flags().StringVar(&platform, "platform", "", "Guest system: macos or linux")
+	c.AddCommand(list)
 	return c
+}
+
+func flavorPlatformsCell(r map[string]any) string {
+	if values, ok := r["supportedPlatforms"].([]any); ok && len(values) > 0 {
+		names := make([]string, 0, len(values))
+		for _, v := range values {
+			if name, ok := v.(string); ok {
+				names = append(names, name)
+			}
+		}
+		return strings.Join(names, ", ")
+	}
+	return output.Field(r, "platform")
 }
 
 // newAPIKeyCommand is list-only by necessity: every mutating handler in

@@ -414,16 +414,37 @@ func (e GetV1BillingInvoices200JSONResponseBodyDataType) Valid() bool {
 
 // Defines values for GetV1BillingLedger200JSONResponseBodyDataComponent.
 const (
-	Granted   GetV1BillingLedger200JSONResponseBodyDataComponent = "granted"
-	Purchased GetV1BillingLedger200JSONResponseBodyDataComponent = "purchased"
+	GetV1BillingLedger200JSONResponseBodyDataComponentGranted   GetV1BillingLedger200JSONResponseBodyDataComponent = "granted"
+	GetV1BillingLedger200JSONResponseBodyDataComponentPurchased GetV1BillingLedger200JSONResponseBodyDataComponent = "purchased"
 )
 
 // Valid indicates whether the value is a known member of the GetV1BillingLedger200JSONResponseBodyDataComponent enum.
 func (e GetV1BillingLedger200JSONResponseBodyDataComponent) Valid() bool {
 	switch e {
-	case Granted:
+	case GetV1BillingLedger200JSONResponseBodyDataComponentGranted:
 		return true
-	case Purchased:
+	case GetV1BillingLedger200JSONResponseBodyDataComponentPurchased:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1BillingStatement200JSONResponseBodyDataComponent.
+const (
+	GetV1BillingStatement200JSONResponseBodyDataComponentGranted   GetV1BillingStatement200JSONResponseBodyDataComponent = "granted"
+	GetV1BillingStatement200JSONResponseBodyDataComponentMixed     GetV1BillingStatement200JSONResponseBodyDataComponent = "mixed"
+	GetV1BillingStatement200JSONResponseBodyDataComponentPurchased GetV1BillingStatement200JSONResponseBodyDataComponent = "purchased"
+)
+
+// Valid indicates whether the value is a known member of the GetV1BillingStatement200JSONResponseBodyDataComponent enum.
+func (e GetV1BillingStatement200JSONResponseBodyDataComponent) Valid() bool {
+	switch e {
+	case GetV1BillingStatement200JSONResponseBodyDataComponentGranted:
+		return true
+	case GetV1BillingStatement200JSONResponseBodyDataComponentMixed:
+		return true
+	case GetV1BillingStatement200JSONResponseBodyDataComponentPurchased:
 		return true
 	default:
 		return false
@@ -4123,6 +4144,48 @@ func (e GetV1Me200JSONResponseBodyTenantRole) Valid() bool {
 	}
 }
 
+// Defines values for GetV1MeIdentity200JSONResponseBodyApprovalStatus.
+const (
+	GetV1MeIdentity200JSONResponseBodyApprovalStatusApproved GetV1MeIdentity200JSONResponseBodyApprovalStatus = "approved"
+	GetV1MeIdentity200JSONResponseBodyApprovalStatusPending  GetV1MeIdentity200JSONResponseBodyApprovalStatus = "pending"
+	GetV1MeIdentity200JSONResponseBodyApprovalStatusRejected GetV1MeIdentity200JSONResponseBodyApprovalStatus = "rejected"
+)
+
+// Valid indicates whether the value is a known member of the GetV1MeIdentity200JSONResponseBodyApprovalStatus enum.
+func (e GetV1MeIdentity200JSONResponseBodyApprovalStatus) Valid() bool {
+	switch e {
+	case GetV1MeIdentity200JSONResponseBodyApprovalStatusApproved:
+		return true
+	case GetV1MeIdentity200JSONResponseBodyApprovalStatusPending:
+		return true
+	case GetV1MeIdentity200JSONResponseBodyApprovalStatusRejected:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1MeIdentity200JSONResponseBodyExemptionSource.
+const (
+	GetV1MeIdentity200JSONResponseBodyExemptionSourceDomain      GetV1MeIdentity200JSONResponseBodyExemptionSource = "domain"
+	GetV1MeIdentity200JSONResponseBodyExemptionSourceLessThannil GetV1MeIdentity200JSONResponseBodyExemptionSource = "<nil>"
+	GetV1MeIdentity200JSONResponseBodyExemptionSourceManual      GetV1MeIdentity200JSONResponseBodyExemptionSource = "manual"
+)
+
+// Valid indicates whether the value is a known member of the GetV1MeIdentity200JSONResponseBodyExemptionSource enum.
+func (e GetV1MeIdentity200JSONResponseBodyExemptionSource) Valid() bool {
+	switch e {
+	case GetV1MeIdentity200JSONResponseBodyExemptionSourceDomain:
+		return true
+	case GetV1MeIdentity200JSONResponseBodyExemptionSourceLessThannil:
+		return true
+	case GetV1MeIdentity200JSONResponseBodyExemptionSourceManual:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for GetV1MePreferences200JSONResponseBodyDefaultRegion.
 const (
 	GetV1MePreferences200JSONResponseBodyDefaultRegionALP1 GetV1MePreferences200JSONResponseBodyDefaultRegion = "ALP1"
@@ -4318,6 +4381,7 @@ const (
 	XcloudDiskGibTotal        GetV1MeQuotas200JSONResponseBodyDataKey = "xcloud_disk_gib_total"
 	XcloudInstancesTotal      GetV1MeQuotas200JSONResponseBodyDataKey = "xcloud_instances_total"
 	XcloudMemoryGibTotal      GetV1MeQuotas200JSONResponseBodyDataKey = "xcloud_memory_gib_total"
+	XcloudSnapshotsTotal      GetV1MeQuotas200JSONResponseBodyDataKey = "xcloud_snapshots_total"
 	XcloudVcpusTotal          GetV1MeQuotas200JSONResponseBodyDataKey = "xcloud_vcpus_total"
 	XcloudVolumesTotal        GetV1MeQuotas200JSONResponseBodyDataKey = "xcloud_volumes_total"
 )
@@ -4362,6 +4426,8 @@ func (e GetV1MeQuotas200JSONResponseBodyDataKey) Valid() bool {
 	case XcloudInstancesTotal:
 		return true
 	case XcloudMemoryGibTotal:
+		return true
+	case XcloudSnapshotsTotal:
 		return true
 	case XcloudVcpusTotal:
 		return true
@@ -4420,6 +4486,48 @@ func (e GetV1MeSignupStatus200JSONResponseBodyApprovalStatus) Valid() bool {
 	case GetV1MeSignupStatus200JSONResponseBodyApprovalStatusPending:
 		return true
 	case GetV1MeSignupStatus200JSONResponseBodyApprovalStatusRejected:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatus.
+const (
+	GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatusApproved GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatus = "approved"
+	GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatusPending  GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatus = "pending"
+	GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatusRejected GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatus = "rejected"
+)
+
+// Valid indicates whether the value is a known member of the GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatus enum.
+func (e GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatus) Valid() bool {
+	switch e {
+	case GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatusApproved:
+		return true
+	case GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatusPending:
+		return true
+	case GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatusRejected:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSource.
+const (
+	GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSourceDomain      GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSource = "domain"
+	GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSourceLessThannil GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSource = "<nil>"
+	GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSourceManual      GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSource = "manual"
+)
+
+// Valid indicates whether the value is a known member of the GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSource enum.
+func (e GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSource) Valid() bool {
+	switch e {
+	case GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSourceDomain:
+		return true
+	case GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSourceLessThannil:
+		return true
+	case GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSourceManual:
 		return true
 	default:
 		return false
@@ -4891,6 +4999,24 @@ func (e GetV1RegistryLibrary200JSONResponseBodyRepositoriesStatus) Valid() bool 
 	}
 }
 
+// Defines values for GetV1RegistryLibrary200JSONResponseBodyRepositoriesVisibility.
+const (
+	GetV1RegistryLibrary200JSONResponseBodyRepositoriesVisibilityPrivate GetV1RegistryLibrary200JSONResponseBodyRepositoriesVisibility = "private"
+	GetV1RegistryLibrary200JSONResponseBodyRepositoriesVisibilityPublic  GetV1RegistryLibrary200JSONResponseBodyRepositoriesVisibility = "public"
+)
+
+// Valid indicates whether the value is a known member of the GetV1RegistryLibrary200JSONResponseBodyRepositoriesVisibility enum.
+func (e GetV1RegistryLibrary200JSONResponseBodyRepositoriesVisibility) Valid() bool {
+	switch e {
+	case GetV1RegistryLibrary200JSONResponseBodyRepositoriesVisibilityPrivate:
+		return true
+	case GetV1RegistryLibrary200JSONResponseBodyRepositoriesVisibilityPublic:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for GetV1RegistryRepositories200JSONResponseBodyRepositoriesStatus.
 const (
 	GetV1RegistryRepositories200JSONResponseBodyRepositoriesStatusDegraded GetV1RegistryRepositories200JSONResponseBodyRepositoriesStatus = "degraded"
@@ -4903,6 +5029,60 @@ func (e GetV1RegistryRepositories200JSONResponseBodyRepositoriesStatus) Valid() 
 	case GetV1RegistryRepositories200JSONResponseBodyRepositoriesStatusDegraded:
 		return true
 	case GetV1RegistryRepositories200JSONResponseBodyRepositoriesStatusReady:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1RegistryRepositories200JSONResponseBodyRepositoriesVisibility.
+const (
+	GetV1RegistryRepositories200JSONResponseBodyRepositoriesVisibilityPrivate GetV1RegistryRepositories200JSONResponseBodyRepositoriesVisibility = "private"
+	GetV1RegistryRepositories200JSONResponseBodyRepositoriesVisibilityPublic  GetV1RegistryRepositories200JSONResponseBodyRepositoriesVisibility = "public"
+)
+
+// Valid indicates whether the value is a known member of the GetV1RegistryRepositories200JSONResponseBodyRepositoriesVisibility enum.
+func (e GetV1RegistryRepositories200JSONResponseBodyRepositoriesVisibility) Valid() bool {
+	switch e {
+	case GetV1RegistryRepositories200JSONResponseBodyRepositoriesVisibilityPrivate:
+		return true
+	case GetV1RegistryRepositories200JSONResponseBodyRepositoriesVisibilityPublic:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PatchV1RegistryRepositoriesVisibilityJSONBodyVisibility.
+const (
+	PatchV1RegistryRepositoriesVisibilityJSONBodyVisibilityPrivate PatchV1RegistryRepositoriesVisibilityJSONBodyVisibility = "private"
+	PatchV1RegistryRepositoriesVisibilityJSONBodyVisibilityPublic  PatchV1RegistryRepositoriesVisibilityJSONBodyVisibility = "public"
+)
+
+// Valid indicates whether the value is a known member of the PatchV1RegistryRepositoriesVisibilityJSONBodyVisibility enum.
+func (e PatchV1RegistryRepositoriesVisibilityJSONBodyVisibility) Valid() bool {
+	switch e {
+	case PatchV1RegistryRepositoriesVisibilityJSONBodyVisibilityPrivate:
+		return true
+	case PatchV1RegistryRepositoriesVisibilityJSONBodyVisibilityPublic:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PatchV1RegistryRepositoriesVisibility200JSONResponseBodyVisibility.
+const (
+	PatchV1RegistryRepositoriesVisibility200JSONResponseBodyVisibilityPrivate PatchV1RegistryRepositoriesVisibility200JSONResponseBodyVisibility = "private"
+	PatchV1RegistryRepositoriesVisibility200JSONResponseBodyVisibilityPublic  PatchV1RegistryRepositoriesVisibility200JSONResponseBodyVisibility = "public"
+)
+
+// Valid indicates whether the value is a known member of the PatchV1RegistryRepositoriesVisibility200JSONResponseBodyVisibility enum.
+func (e PatchV1RegistryRepositoriesVisibility200JSONResponseBodyVisibility) Valid() bool {
+	switch e {
+	case PatchV1RegistryRepositoriesVisibility200JSONResponseBodyVisibilityPrivate:
+		return true
+	case PatchV1RegistryRepositoriesVisibility200JSONResponseBodyVisibilityPublic:
 		return true
 	default:
 		return false
@@ -5041,6 +5221,66 @@ func (e DeleteV1RegistryTokensId200JSONResponseBodyKind) Valid() bool {
 	case DeleteV1RegistryTokensId200JSONResponseBodyKindManaged:
 		return true
 	case DeleteV1RegistryTokensId200JSONResponseBodyKindUser:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PatchV1RegistryTokensIdJSONBodyActions.
+const (
+	PatchV1RegistryTokensIdJSONBodyActionsDelete PatchV1RegistryTokensIdJSONBodyActions = "delete"
+	PatchV1RegistryTokensIdJSONBodyActionsPull   PatchV1RegistryTokensIdJSONBodyActions = "pull"
+	PatchV1RegistryTokensIdJSONBodyActionsPush   PatchV1RegistryTokensIdJSONBodyActions = "push"
+)
+
+// Valid indicates whether the value is a known member of the PatchV1RegistryTokensIdJSONBodyActions enum.
+func (e PatchV1RegistryTokensIdJSONBodyActions) Valid() bool {
+	switch e {
+	case PatchV1RegistryTokensIdJSONBodyActionsDelete:
+		return true
+	case PatchV1RegistryTokensIdJSONBodyActionsPull:
+		return true
+	case PatchV1RegistryTokensIdJSONBodyActionsPush:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PatchV1RegistryTokensId200JSONResponseBodyActions.
+const (
+	PatchV1RegistryTokensId200JSONResponseBodyActionsDelete PatchV1RegistryTokensId200JSONResponseBodyActions = "delete"
+	PatchV1RegistryTokensId200JSONResponseBodyActionsPull   PatchV1RegistryTokensId200JSONResponseBodyActions = "pull"
+	PatchV1RegistryTokensId200JSONResponseBodyActionsPush   PatchV1RegistryTokensId200JSONResponseBodyActions = "push"
+)
+
+// Valid indicates whether the value is a known member of the PatchV1RegistryTokensId200JSONResponseBodyActions enum.
+func (e PatchV1RegistryTokensId200JSONResponseBodyActions) Valid() bool {
+	switch e {
+	case PatchV1RegistryTokensId200JSONResponseBodyActionsDelete:
+		return true
+	case PatchV1RegistryTokensId200JSONResponseBodyActionsPull:
+		return true
+	case PatchV1RegistryTokensId200JSONResponseBodyActionsPush:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PatchV1RegistryTokensId200JSONResponseBodyKind.
+const (
+	PatchV1RegistryTokensId200JSONResponseBodyKindManaged PatchV1RegistryTokensId200JSONResponseBodyKind = "managed"
+	PatchV1RegistryTokensId200JSONResponseBodyKindUser    PatchV1RegistryTokensId200JSONResponseBodyKind = "user"
+)
+
+// Valid indicates whether the value is a known member of the PatchV1RegistryTokensId200JSONResponseBodyKind enum.
+func (e PatchV1RegistryTokensId200JSONResponseBodyKind) Valid() bool {
+	switch e {
+	case PatchV1RegistryTokensId200JSONResponseBodyKindManaged:
+		return true
+	case PatchV1RegistryTokensId200JSONResponseBodyKindUser:
 		return true
 	default:
 		return false
@@ -9352,6 +9592,24 @@ func (e PatchV1XcloudElasticIpsIdTarget200JSONResponseBodyStatus) Valid() bool {
 	}
 }
 
+// Defines values for GetV1XcloudFlavorsParamsPlatform.
+const (
+	GetV1XcloudFlavorsParamsPlatformLinux GetV1XcloudFlavorsParamsPlatform = "linux"
+	GetV1XcloudFlavorsParamsPlatformMacos GetV1XcloudFlavorsParamsPlatform = "macos"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudFlavorsParamsPlatform enum.
+func (e GetV1XcloudFlavorsParamsPlatform) Valid() bool {
+	switch e {
+	case GetV1XcloudFlavorsParamsPlatformLinux:
+		return true
+	case GetV1XcloudFlavorsParamsPlatformMacos:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for GetV1XcloudFlavors200JSONResponseBodyCustomSizingSource.
 const (
 	GetV1XcloudFlavors200JSONResponseBodyCustomSizingSourceRegion GetV1XcloudFlavors200JSONResponseBodyCustomSizingSource = "region"
@@ -9451,6 +9709,24 @@ func (e GetV1XcloudFlavors200JSONResponseBodyDataPlatform) Valid() bool {
 	case GetV1XcloudFlavors200JSONResponseBodyDataPlatformLinux:
 		return true
 	case GetV1XcloudFlavors200JSONResponseBodyDataPlatformMacos:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudFlavors200JSONResponseBodyDataSupportedPlatforms.
+const (
+	GetV1XcloudFlavors200JSONResponseBodyDataSupportedPlatformsLinux GetV1XcloudFlavors200JSONResponseBodyDataSupportedPlatforms = "linux"
+	GetV1XcloudFlavors200JSONResponseBodyDataSupportedPlatformsMacos GetV1XcloudFlavors200JSONResponseBodyDataSupportedPlatforms = "macos"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudFlavors200JSONResponseBodyDataSupportedPlatforms enum.
+func (e GetV1XcloudFlavors200JSONResponseBodyDataSupportedPlatforms) Valid() bool {
+	switch e {
+	case GetV1XcloudFlavors200JSONResponseBodyDataSupportedPlatformsLinux:
+		return true
+	case GetV1XcloudFlavors200JSONResponseBodyDataSupportedPlatformsMacos:
 		return true
 	default:
 		return false
@@ -9655,6 +9931,24 @@ func (e GetV1XcloudInstances200JSONResponseBodyDataAgentStatus) Valid() bool {
 	}
 }
 
+// Defines values for GetV1XcloudInstances200JSONResponseBodyDataCostMode.
+const (
+	GetV1XcloudInstances200JSONResponseBodyDataCostModeHourly GetV1XcloudInstances200JSONResponseBodyDataCostMode = "hourly"
+	GetV1XcloudInstances200JSONResponseBodyDataCostModeSlot   GetV1XcloudInstances200JSONResponseBodyDataCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudInstances200JSONResponseBodyDataCostMode enum.
+func (e GetV1XcloudInstances200JSONResponseBodyDataCostMode) Valid() bool {
+	switch e {
+	case GetV1XcloudInstances200JSONResponseBodyDataCostModeHourly:
+		return true
+	case GetV1XcloudInstances200JSONResponseBodyDataCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for GetV1XcloudInstances200JSONResponseBodyDataPendingAction.
 const (
 	GetV1XcloudInstances200JSONResponseBodyDataPendingActionBootMode    GetV1XcloudInstances200JSONResponseBodyDataPendingAction = "boot_mode"
@@ -9662,6 +9956,7 @@ const (
 	GetV1XcloudInstances200JSONResponseBodyDataPendingActionDelete      GetV1XcloudInstances200JSONResponseBodyDataPendingAction = "delete"
 	GetV1XcloudInstances200JSONResponseBodyDataPendingActionLessThannil GetV1XcloudInstances200JSONResponseBodyDataPendingAction = "<nil>"
 	GetV1XcloudInstances200JSONResponseBodyDataPendingActionResize      GetV1XcloudInstances200JSONResponseBodyDataPendingAction = "resize"
+	GetV1XcloudInstances200JSONResponseBodyDataPendingActionRestore     GetV1XcloudInstances200JSONResponseBodyDataPendingAction = "restore"
 	GetV1XcloudInstances200JSONResponseBodyDataPendingActionShutdown    GetV1XcloudInstances200JSONResponseBodyDataPendingAction = "shutdown"
 	GetV1XcloudInstances200JSONResponseBodyDataPendingActionStart       GetV1XcloudInstances200JSONResponseBodyDataPendingAction = "start"
 	GetV1XcloudInstances200JSONResponseBodyDataPendingActionStop        GetV1XcloudInstances200JSONResponseBodyDataPendingAction = "stop"
@@ -9680,6 +9975,8 @@ func (e GetV1XcloudInstances200JSONResponseBodyDataPendingAction) Valid() bool {
 	case GetV1XcloudInstances200JSONResponseBodyDataPendingActionLessThannil:
 		return true
 	case GetV1XcloudInstances200JSONResponseBodyDataPendingActionResize:
+		return true
+	case GetV1XcloudInstances200JSONResponseBodyDataPendingActionRestore:
 		return true
 	case GetV1XcloudInstances200JSONResponseBodyDataPendingActionShutdown:
 		return true
@@ -9721,6 +10018,7 @@ const (
 	GetV1XcloudInstances200JSONResponseBodyDataStatusPending      GetV1XcloudInstances200JSONResponseBodyDataStatus = "pending"
 	GetV1XcloudInstances200JSONResponseBodyDataStatusProvisioning GetV1XcloudInstances200JSONResponseBodyDataStatus = "provisioning"
 	GetV1XcloudInstances200JSONResponseBodyDataStatusResizing     GetV1XcloudInstances200JSONResponseBodyDataStatus = "resizing"
+	GetV1XcloudInstances200JSONResponseBodyDataStatusRestoring    GetV1XcloudInstances200JSONResponseBodyDataStatus = "restoring"
 	GetV1XcloudInstances200JSONResponseBodyDataStatusRunning      GetV1XcloudInstances200JSONResponseBodyDataStatus = "running"
 	GetV1XcloudInstances200JSONResponseBodyDataStatusStarting     GetV1XcloudInstances200JSONResponseBodyDataStatus = "starting"
 	GetV1XcloudInstances200JSONResponseBodyDataStatusStopped      GetV1XcloudInstances200JSONResponseBodyDataStatus = "stopped"
@@ -9745,6 +10043,8 @@ func (e GetV1XcloudInstances200JSONResponseBodyDataStatus) Valid() bool {
 	case GetV1XcloudInstances200JSONResponseBodyDataStatusProvisioning:
 		return true
 	case GetV1XcloudInstances200JSONResponseBodyDataStatusResizing:
+		return true
+	case GetV1XcloudInstances200JSONResponseBodyDataStatusRestoring:
 		return true
 	case GetV1XcloudInstances200JSONResponseBodyDataStatusRunning:
 		return true
@@ -9850,6 +10150,24 @@ func (e PostV1XcloudInstances201JSONResponseBodyAgentStatus) Valid() bool {
 	}
 }
 
+// Defines values for PostV1XcloudInstances201JSONResponseBodyCostMode.
+const (
+	PostV1XcloudInstances201JSONResponseBodyCostModeHourly PostV1XcloudInstances201JSONResponseBodyCostMode = "hourly"
+	PostV1XcloudInstances201JSONResponseBodyCostModeSlot   PostV1XcloudInstances201JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstances201JSONResponseBodyCostMode enum.
+func (e PostV1XcloudInstances201JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case PostV1XcloudInstances201JSONResponseBodyCostModeHourly:
+		return true
+	case PostV1XcloudInstances201JSONResponseBodyCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for PostV1XcloudInstances201JSONResponseBodyPendingAction.
 const (
 	PostV1XcloudInstances201JSONResponseBodyPendingActionBootMode    PostV1XcloudInstances201JSONResponseBodyPendingAction = "boot_mode"
@@ -9857,6 +10175,7 @@ const (
 	PostV1XcloudInstances201JSONResponseBodyPendingActionDelete      PostV1XcloudInstances201JSONResponseBodyPendingAction = "delete"
 	PostV1XcloudInstances201JSONResponseBodyPendingActionLessThannil PostV1XcloudInstances201JSONResponseBodyPendingAction = "<nil>"
 	PostV1XcloudInstances201JSONResponseBodyPendingActionResize      PostV1XcloudInstances201JSONResponseBodyPendingAction = "resize"
+	PostV1XcloudInstances201JSONResponseBodyPendingActionRestore     PostV1XcloudInstances201JSONResponseBodyPendingAction = "restore"
 	PostV1XcloudInstances201JSONResponseBodyPendingActionShutdown    PostV1XcloudInstances201JSONResponseBodyPendingAction = "shutdown"
 	PostV1XcloudInstances201JSONResponseBodyPendingActionStart       PostV1XcloudInstances201JSONResponseBodyPendingAction = "start"
 	PostV1XcloudInstances201JSONResponseBodyPendingActionStop        PostV1XcloudInstances201JSONResponseBodyPendingAction = "stop"
@@ -9875,6 +10194,8 @@ func (e PostV1XcloudInstances201JSONResponseBodyPendingAction) Valid() bool {
 	case PostV1XcloudInstances201JSONResponseBodyPendingActionLessThannil:
 		return true
 	case PostV1XcloudInstances201JSONResponseBodyPendingActionResize:
+		return true
+	case PostV1XcloudInstances201JSONResponseBodyPendingActionRestore:
 		return true
 	case PostV1XcloudInstances201JSONResponseBodyPendingActionShutdown:
 		return true
@@ -9916,6 +10237,7 @@ const (
 	PostV1XcloudInstances201JSONResponseBodyStatusPending      PostV1XcloudInstances201JSONResponseBodyStatus = "pending"
 	PostV1XcloudInstances201JSONResponseBodyStatusProvisioning PostV1XcloudInstances201JSONResponseBodyStatus = "provisioning"
 	PostV1XcloudInstances201JSONResponseBodyStatusResizing     PostV1XcloudInstances201JSONResponseBodyStatus = "resizing"
+	PostV1XcloudInstances201JSONResponseBodyStatusRestoring    PostV1XcloudInstances201JSONResponseBodyStatus = "restoring"
 	PostV1XcloudInstances201JSONResponseBodyStatusRunning      PostV1XcloudInstances201JSONResponseBodyStatus = "running"
 	PostV1XcloudInstances201JSONResponseBodyStatusStarting     PostV1XcloudInstances201JSONResponseBodyStatus = "starting"
 	PostV1XcloudInstances201JSONResponseBodyStatusStopped      PostV1XcloudInstances201JSONResponseBodyStatus = "stopped"
@@ -9941,6 +10263,8 @@ func (e PostV1XcloudInstances201JSONResponseBodyStatus) Valid() bool {
 		return true
 	case PostV1XcloudInstances201JSONResponseBodyStatusResizing:
 		return true
+	case PostV1XcloudInstances201JSONResponseBodyStatusRestoring:
+		return true
 	case PostV1XcloudInstances201JSONResponseBodyStatusRunning:
 		return true
 	case PostV1XcloudInstances201JSONResponseBodyStatusStarting:
@@ -9960,16 +10284,34 @@ func (e PostV1XcloudInstances201JSONResponseBodyStatus) Valid() bool {
 
 // Defines values for DeleteV1XcloudInstancesIdParamsReleaseElasticIps.
 const (
-	False DeleteV1XcloudInstancesIdParamsReleaseElasticIps = "false"
-	True  DeleteV1XcloudInstancesIdParamsReleaseElasticIps = "true"
+	DeleteV1XcloudInstancesIdParamsReleaseElasticIpsFalse DeleteV1XcloudInstancesIdParamsReleaseElasticIps = "false"
+	DeleteV1XcloudInstancesIdParamsReleaseElasticIpsTrue  DeleteV1XcloudInstancesIdParamsReleaseElasticIps = "true"
 )
 
 // Valid indicates whether the value is a known member of the DeleteV1XcloudInstancesIdParamsReleaseElasticIps enum.
 func (e DeleteV1XcloudInstancesIdParamsReleaseElasticIps) Valid() bool {
 	switch e {
-	case False:
+	case DeleteV1XcloudInstancesIdParamsReleaseElasticIpsFalse:
 		return true
-	case True:
+	case DeleteV1XcloudInstancesIdParamsReleaseElasticIpsTrue:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for DeleteV1XcloudInstancesIdParamsDeleteSnapshots.
+const (
+	DeleteV1XcloudInstancesIdParamsDeleteSnapshotsFalse DeleteV1XcloudInstancesIdParamsDeleteSnapshots = "false"
+	DeleteV1XcloudInstancesIdParamsDeleteSnapshotsTrue  DeleteV1XcloudInstancesIdParamsDeleteSnapshots = "true"
+)
+
+// Valid indicates whether the value is a known member of the DeleteV1XcloudInstancesIdParamsDeleteSnapshots enum.
+func (e DeleteV1XcloudInstancesIdParamsDeleteSnapshots) Valid() bool {
+	switch e {
+	case DeleteV1XcloudInstancesIdParamsDeleteSnapshotsFalse:
+		return true
+	case DeleteV1XcloudInstancesIdParamsDeleteSnapshotsTrue:
 		return true
 	default:
 		return false
@@ -9997,6 +10339,24 @@ func (e GetV1XcloudInstancesId200JSONResponseBodyAgentStatus) Valid() bool {
 	}
 }
 
+// Defines values for GetV1XcloudInstancesId200JSONResponseBodyCostMode.
+const (
+	GetV1XcloudInstancesId200JSONResponseBodyCostModeHourly GetV1XcloudInstancesId200JSONResponseBodyCostMode = "hourly"
+	GetV1XcloudInstancesId200JSONResponseBodyCostModeSlot   GetV1XcloudInstancesId200JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudInstancesId200JSONResponseBodyCostMode enum.
+func (e GetV1XcloudInstancesId200JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case GetV1XcloudInstancesId200JSONResponseBodyCostModeHourly:
+		return true
+	case GetV1XcloudInstancesId200JSONResponseBodyCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for GetV1XcloudInstancesId200JSONResponseBodyPendingAction.
 const (
 	GetV1XcloudInstancesId200JSONResponseBodyPendingActionBootMode    GetV1XcloudInstancesId200JSONResponseBodyPendingAction = "boot_mode"
@@ -10004,6 +10364,7 @@ const (
 	GetV1XcloudInstancesId200JSONResponseBodyPendingActionDelete      GetV1XcloudInstancesId200JSONResponseBodyPendingAction = "delete"
 	GetV1XcloudInstancesId200JSONResponseBodyPendingActionLessThannil GetV1XcloudInstancesId200JSONResponseBodyPendingAction = "<nil>"
 	GetV1XcloudInstancesId200JSONResponseBodyPendingActionResize      GetV1XcloudInstancesId200JSONResponseBodyPendingAction = "resize"
+	GetV1XcloudInstancesId200JSONResponseBodyPendingActionRestore     GetV1XcloudInstancesId200JSONResponseBodyPendingAction = "restore"
 	GetV1XcloudInstancesId200JSONResponseBodyPendingActionShutdown    GetV1XcloudInstancesId200JSONResponseBodyPendingAction = "shutdown"
 	GetV1XcloudInstancesId200JSONResponseBodyPendingActionStart       GetV1XcloudInstancesId200JSONResponseBodyPendingAction = "start"
 	GetV1XcloudInstancesId200JSONResponseBodyPendingActionStop        GetV1XcloudInstancesId200JSONResponseBodyPendingAction = "stop"
@@ -10022,6 +10383,8 @@ func (e GetV1XcloudInstancesId200JSONResponseBodyPendingAction) Valid() bool {
 	case GetV1XcloudInstancesId200JSONResponseBodyPendingActionLessThannil:
 		return true
 	case GetV1XcloudInstancesId200JSONResponseBodyPendingActionResize:
+		return true
+	case GetV1XcloudInstancesId200JSONResponseBodyPendingActionRestore:
 		return true
 	case GetV1XcloudInstancesId200JSONResponseBodyPendingActionShutdown:
 		return true
@@ -10063,6 +10426,7 @@ const (
 	GetV1XcloudInstancesId200JSONResponseBodyStatusPending      GetV1XcloudInstancesId200JSONResponseBodyStatus = "pending"
 	GetV1XcloudInstancesId200JSONResponseBodyStatusProvisioning GetV1XcloudInstancesId200JSONResponseBodyStatus = "provisioning"
 	GetV1XcloudInstancesId200JSONResponseBodyStatusResizing     GetV1XcloudInstancesId200JSONResponseBodyStatus = "resizing"
+	GetV1XcloudInstancesId200JSONResponseBodyStatusRestoring    GetV1XcloudInstancesId200JSONResponseBodyStatus = "restoring"
 	GetV1XcloudInstancesId200JSONResponseBodyStatusRunning      GetV1XcloudInstancesId200JSONResponseBodyStatus = "running"
 	GetV1XcloudInstancesId200JSONResponseBodyStatusStarting     GetV1XcloudInstancesId200JSONResponseBodyStatus = "starting"
 	GetV1XcloudInstancesId200JSONResponseBodyStatusStopped      GetV1XcloudInstancesId200JSONResponseBodyStatus = "stopped"
@@ -10087,6 +10451,8 @@ func (e GetV1XcloudInstancesId200JSONResponseBodyStatus) Valid() bool {
 	case GetV1XcloudInstancesId200JSONResponseBodyStatusProvisioning:
 		return true
 	case GetV1XcloudInstancesId200JSONResponseBodyStatusResizing:
+		return true
+	case GetV1XcloudInstancesId200JSONResponseBodyStatusRestoring:
 		return true
 	case GetV1XcloudInstancesId200JSONResponseBodyStatusRunning:
 		return true
@@ -10126,6 +10492,24 @@ func (e PatchV1XcloudInstancesId200JSONResponseBodyAgentStatus) Valid() bool {
 	}
 }
 
+// Defines values for PatchV1XcloudInstancesId200JSONResponseBodyCostMode.
+const (
+	PatchV1XcloudInstancesId200JSONResponseBodyCostModeHourly PatchV1XcloudInstancesId200JSONResponseBodyCostMode = "hourly"
+	PatchV1XcloudInstancesId200JSONResponseBodyCostModeSlot   PatchV1XcloudInstancesId200JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the PatchV1XcloudInstancesId200JSONResponseBodyCostMode enum.
+func (e PatchV1XcloudInstancesId200JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case PatchV1XcloudInstancesId200JSONResponseBodyCostModeHourly:
+		return true
+	case PatchV1XcloudInstancesId200JSONResponseBodyCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for PatchV1XcloudInstancesId200JSONResponseBodyPendingAction.
 const (
 	PatchV1XcloudInstancesId200JSONResponseBodyPendingActionBootMode    PatchV1XcloudInstancesId200JSONResponseBodyPendingAction = "boot_mode"
@@ -10133,6 +10517,7 @@ const (
 	PatchV1XcloudInstancesId200JSONResponseBodyPendingActionDelete      PatchV1XcloudInstancesId200JSONResponseBodyPendingAction = "delete"
 	PatchV1XcloudInstancesId200JSONResponseBodyPendingActionLessThannil PatchV1XcloudInstancesId200JSONResponseBodyPendingAction = "<nil>"
 	PatchV1XcloudInstancesId200JSONResponseBodyPendingActionResize      PatchV1XcloudInstancesId200JSONResponseBodyPendingAction = "resize"
+	PatchV1XcloudInstancesId200JSONResponseBodyPendingActionRestore     PatchV1XcloudInstancesId200JSONResponseBodyPendingAction = "restore"
 	PatchV1XcloudInstancesId200JSONResponseBodyPendingActionShutdown    PatchV1XcloudInstancesId200JSONResponseBodyPendingAction = "shutdown"
 	PatchV1XcloudInstancesId200JSONResponseBodyPendingActionStart       PatchV1XcloudInstancesId200JSONResponseBodyPendingAction = "start"
 	PatchV1XcloudInstancesId200JSONResponseBodyPendingActionStop        PatchV1XcloudInstancesId200JSONResponseBodyPendingAction = "stop"
@@ -10151,6 +10536,8 @@ func (e PatchV1XcloudInstancesId200JSONResponseBodyPendingAction) Valid() bool {
 	case PatchV1XcloudInstancesId200JSONResponseBodyPendingActionLessThannil:
 		return true
 	case PatchV1XcloudInstancesId200JSONResponseBodyPendingActionResize:
+		return true
+	case PatchV1XcloudInstancesId200JSONResponseBodyPendingActionRestore:
 		return true
 	case PatchV1XcloudInstancesId200JSONResponseBodyPendingActionShutdown:
 		return true
@@ -10192,6 +10579,7 @@ const (
 	PatchV1XcloudInstancesId200JSONResponseBodyStatusPending      PatchV1XcloudInstancesId200JSONResponseBodyStatus = "pending"
 	PatchV1XcloudInstancesId200JSONResponseBodyStatusProvisioning PatchV1XcloudInstancesId200JSONResponseBodyStatus = "provisioning"
 	PatchV1XcloudInstancesId200JSONResponseBodyStatusResizing     PatchV1XcloudInstancesId200JSONResponseBodyStatus = "resizing"
+	PatchV1XcloudInstancesId200JSONResponseBodyStatusRestoring    PatchV1XcloudInstancesId200JSONResponseBodyStatus = "restoring"
 	PatchV1XcloudInstancesId200JSONResponseBodyStatusRunning      PatchV1XcloudInstancesId200JSONResponseBodyStatus = "running"
 	PatchV1XcloudInstancesId200JSONResponseBodyStatusStarting     PatchV1XcloudInstancesId200JSONResponseBodyStatus = "starting"
 	PatchV1XcloudInstancesId200JSONResponseBodyStatusStopped      PatchV1XcloudInstancesId200JSONResponseBodyStatus = "stopped"
@@ -10216,6 +10604,8 @@ func (e PatchV1XcloudInstancesId200JSONResponseBodyStatus) Valid() bool {
 	case PatchV1XcloudInstancesId200JSONResponseBodyStatusProvisioning:
 		return true
 	case PatchV1XcloudInstancesId200JSONResponseBodyStatusResizing:
+		return true
+	case PatchV1XcloudInstancesId200JSONResponseBodyStatusRestoring:
 		return true
 	case PatchV1XcloudInstancesId200JSONResponseBodyStatusRunning:
 		return true
@@ -10414,6 +10804,114 @@ func (e GetV1XcloudInstancesIdAgentActionsActionId200JSONResponseBodyStatus) Val
 	}
 }
 
+// Defines values for PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Button.
+const (
+	Left  PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Button = "left"
+	Right PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Button = "right"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Button enum.
+func (e PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Button) Valid() bool {
+	switch e {
+	case Left:
+		return true
+	case Right:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Type.
+const (
+	Click PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Type = "click"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Type enum.
+func (e PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Type) Valid() bool {
+	switch e {
+	case Click:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdDisplayInputJSONBodyActions1Type.
+const (
+	Move PostV1XcloudInstancesIdDisplayInputJSONBodyActions1Type = "move"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdDisplayInputJSONBodyActions1Type enum.
+func (e PostV1XcloudInstancesIdDisplayInputJSONBodyActions1Type) Valid() bool {
+	switch e {
+	case Move:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdDisplayInputJSONBodyActions2Type.
+const (
+	Drag PostV1XcloudInstancesIdDisplayInputJSONBodyActions2Type = "drag"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdDisplayInputJSONBodyActions2Type enum.
+func (e PostV1XcloudInstancesIdDisplayInputJSONBodyActions2Type) Valid() bool {
+	switch e {
+	case Drag:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdDisplayInputJSONBodyActions3Type.
+const (
+	Type PostV1XcloudInstancesIdDisplayInputJSONBodyActions3Type = "type"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdDisplayInputJSONBodyActions3Type enum.
+func (e PostV1XcloudInstancesIdDisplayInputJSONBodyActions3Type) Valid() bool {
+	switch e {
+	case Type:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdDisplayInputJSONBodyActions4Type.
+const (
+	Press PostV1XcloudInstancesIdDisplayInputJSONBodyActions4Type = "press"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdDisplayInputJSONBodyActions4Type enum.
+func (e PostV1XcloudInstancesIdDisplayInputJSONBodyActions4Type) Valid() bool {
+	switch e {
+	case Press:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdDisplayInputJSONBodyActions5Type.
+const (
+	Wait PostV1XcloudInstancesIdDisplayInputJSONBodyActions5Type = "wait"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdDisplayInputJSONBodyActions5Type enum.
+func (e PostV1XcloudInstancesIdDisplayInputJSONBodyActions5Type) Valid() bool {
+	switch e {
+	case Wait:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for GetV1XcloudInstancesIdMetricsParamsRange.
 const (
 	GetV1XcloudInstancesIdMetricsParamsRangeN1h  GetV1XcloudInstancesIdMetricsParamsRange = "1h"
@@ -10483,6 +10981,24 @@ func (e PutV1XcloudInstancesIdPassword200JSONResponseBodyAgentStatus) Valid() bo
 	}
 }
 
+// Defines values for PutV1XcloudInstancesIdPassword200JSONResponseBodyCostMode.
+const (
+	PutV1XcloudInstancesIdPassword200JSONResponseBodyCostModeHourly PutV1XcloudInstancesIdPassword200JSONResponseBodyCostMode = "hourly"
+	PutV1XcloudInstancesIdPassword200JSONResponseBodyCostModeSlot   PutV1XcloudInstancesIdPassword200JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the PutV1XcloudInstancesIdPassword200JSONResponseBodyCostMode enum.
+func (e PutV1XcloudInstancesIdPassword200JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case PutV1XcloudInstancesIdPassword200JSONResponseBodyCostModeHourly:
+		return true
+	case PutV1XcloudInstancesIdPassword200JSONResponseBodyCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingAction.
 const (
 	PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingActionBootMode    PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingAction = "boot_mode"
@@ -10490,6 +11006,7 @@ const (
 	PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingActionDelete      PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingAction = "delete"
 	PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingActionLessThannil PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingAction = "<nil>"
 	PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingActionResize      PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingAction = "resize"
+	PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingActionRestore     PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingAction = "restore"
 	PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingActionShutdown    PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingAction = "shutdown"
 	PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingActionStart       PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingAction = "start"
 	PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingActionStop        PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingAction = "stop"
@@ -10508,6 +11025,8 @@ func (e PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingAction) Valid() 
 	case PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingActionLessThannil:
 		return true
 	case PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingActionResize:
+		return true
+	case PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingActionRestore:
 		return true
 	case PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingActionShutdown:
 		return true
@@ -10549,6 +11068,7 @@ const (
 	PutV1XcloudInstancesIdPassword200JSONResponseBodyStatusPending      PutV1XcloudInstancesIdPassword200JSONResponseBodyStatus = "pending"
 	PutV1XcloudInstancesIdPassword200JSONResponseBodyStatusProvisioning PutV1XcloudInstancesIdPassword200JSONResponseBodyStatus = "provisioning"
 	PutV1XcloudInstancesIdPassword200JSONResponseBodyStatusResizing     PutV1XcloudInstancesIdPassword200JSONResponseBodyStatus = "resizing"
+	PutV1XcloudInstancesIdPassword200JSONResponseBodyStatusRestoring    PutV1XcloudInstancesIdPassword200JSONResponseBodyStatus = "restoring"
 	PutV1XcloudInstancesIdPassword200JSONResponseBodyStatusRunning      PutV1XcloudInstancesIdPassword200JSONResponseBodyStatus = "running"
 	PutV1XcloudInstancesIdPassword200JSONResponseBodyStatusStarting     PutV1XcloudInstancesIdPassword200JSONResponseBodyStatus = "starting"
 	PutV1XcloudInstancesIdPassword200JSONResponseBodyStatusStopped      PutV1XcloudInstancesIdPassword200JSONResponseBodyStatus = "stopped"
@@ -10573,6 +11093,8 @@ func (e PutV1XcloudInstancesIdPassword200JSONResponseBodyStatus) Valid() bool {
 	case PutV1XcloudInstancesIdPassword200JSONResponseBodyStatusProvisioning:
 		return true
 	case PutV1XcloudInstancesIdPassword200JSONResponseBodyStatusResizing:
+		return true
+	case PutV1XcloudInstancesIdPassword200JSONResponseBodyStatusRestoring:
 		return true
 	case PutV1XcloudInstancesIdPassword200JSONResponseBodyStatusRunning:
 		return true
@@ -10638,13 +11160,13 @@ func (e PostV1XcloudInstancesIdPushImageJSONBodyAuth2Kind) Valid() bool {
 
 // Defines values for PostV1XcloudInstancesIdPushImageJSONBodyAuth3Kind.
 const (
-	Managed PostV1XcloudInstancesIdPushImageJSONBodyAuth3Kind = "managed"
+	PostV1XcloudInstancesIdPushImageJSONBodyAuth3KindManaged PostV1XcloudInstancesIdPushImageJSONBodyAuth3Kind = "managed"
 )
 
 // Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdPushImageJSONBodyAuth3Kind enum.
 func (e PostV1XcloudInstancesIdPushImageJSONBodyAuth3Kind) Valid() bool {
 	switch e {
-	case Managed:
+	case PostV1XcloudInstancesIdPushImageJSONBodyAuth3KindManaged:
 		return true
 	default:
 		return false
@@ -10732,6 +11254,24 @@ func (e PostV1XcloudInstancesIdResize202JSONResponseBodyAgentStatus) Valid() boo
 	}
 }
 
+// Defines values for PostV1XcloudInstancesIdResize202JSONResponseBodyCostMode.
+const (
+	PostV1XcloudInstancesIdResize202JSONResponseBodyCostModeHourly PostV1XcloudInstancesIdResize202JSONResponseBodyCostMode = "hourly"
+	PostV1XcloudInstancesIdResize202JSONResponseBodyCostModeSlot   PostV1XcloudInstancesIdResize202JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdResize202JSONResponseBodyCostMode enum.
+func (e PostV1XcloudInstancesIdResize202JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case PostV1XcloudInstancesIdResize202JSONResponseBodyCostModeHourly:
+		return true
+	case PostV1XcloudInstancesIdResize202JSONResponseBodyCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for PostV1XcloudInstancesIdResize202JSONResponseBodyPendingAction.
 const (
 	PostV1XcloudInstancesIdResize202JSONResponseBodyPendingActionBootMode    PostV1XcloudInstancesIdResize202JSONResponseBodyPendingAction = "boot_mode"
@@ -10739,6 +11279,7 @@ const (
 	PostV1XcloudInstancesIdResize202JSONResponseBodyPendingActionDelete      PostV1XcloudInstancesIdResize202JSONResponseBodyPendingAction = "delete"
 	PostV1XcloudInstancesIdResize202JSONResponseBodyPendingActionLessThannil PostV1XcloudInstancesIdResize202JSONResponseBodyPendingAction = "<nil>"
 	PostV1XcloudInstancesIdResize202JSONResponseBodyPendingActionResize      PostV1XcloudInstancesIdResize202JSONResponseBodyPendingAction = "resize"
+	PostV1XcloudInstancesIdResize202JSONResponseBodyPendingActionRestore     PostV1XcloudInstancesIdResize202JSONResponseBodyPendingAction = "restore"
 	PostV1XcloudInstancesIdResize202JSONResponseBodyPendingActionShutdown    PostV1XcloudInstancesIdResize202JSONResponseBodyPendingAction = "shutdown"
 	PostV1XcloudInstancesIdResize202JSONResponseBodyPendingActionStart       PostV1XcloudInstancesIdResize202JSONResponseBodyPendingAction = "start"
 	PostV1XcloudInstancesIdResize202JSONResponseBodyPendingActionStop        PostV1XcloudInstancesIdResize202JSONResponseBodyPendingAction = "stop"
@@ -10757,6 +11298,8 @@ func (e PostV1XcloudInstancesIdResize202JSONResponseBodyPendingAction) Valid() b
 	case PostV1XcloudInstancesIdResize202JSONResponseBodyPendingActionLessThannil:
 		return true
 	case PostV1XcloudInstancesIdResize202JSONResponseBodyPendingActionResize:
+		return true
+	case PostV1XcloudInstancesIdResize202JSONResponseBodyPendingActionRestore:
 		return true
 	case PostV1XcloudInstancesIdResize202JSONResponseBodyPendingActionShutdown:
 		return true
@@ -10798,6 +11341,7 @@ const (
 	PostV1XcloudInstancesIdResize202JSONResponseBodyStatusPending      PostV1XcloudInstancesIdResize202JSONResponseBodyStatus = "pending"
 	PostV1XcloudInstancesIdResize202JSONResponseBodyStatusProvisioning PostV1XcloudInstancesIdResize202JSONResponseBodyStatus = "provisioning"
 	PostV1XcloudInstancesIdResize202JSONResponseBodyStatusResizing     PostV1XcloudInstancesIdResize202JSONResponseBodyStatus = "resizing"
+	PostV1XcloudInstancesIdResize202JSONResponseBodyStatusRestoring    PostV1XcloudInstancesIdResize202JSONResponseBodyStatus = "restoring"
 	PostV1XcloudInstancesIdResize202JSONResponseBodyStatusRunning      PostV1XcloudInstancesIdResize202JSONResponseBodyStatus = "running"
 	PostV1XcloudInstancesIdResize202JSONResponseBodyStatusStarting     PostV1XcloudInstancesIdResize202JSONResponseBodyStatus = "starting"
 	PostV1XcloudInstancesIdResize202JSONResponseBodyStatusStopped      PostV1XcloudInstancesIdResize202JSONResponseBodyStatus = "stopped"
@@ -10823,6 +11367,8 @@ func (e PostV1XcloudInstancesIdResize202JSONResponseBodyStatus) Valid() bool {
 		return true
 	case PostV1XcloudInstancesIdResize202JSONResponseBodyStatusResizing:
 		return true
+	case PostV1XcloudInstancesIdResize202JSONResponseBodyStatusRestoring:
+		return true
 	case PostV1XcloudInstancesIdResize202JSONResponseBodyStatusRunning:
 		return true
 	case PostV1XcloudInstancesIdResize202JSONResponseBodyStatusStarting:
@@ -10834,6 +11380,159 @@ func (e PostV1XcloudInstancesIdResize202JSONResponseBodyStatus) Valid() bool {
 	case PostV1XcloudInstancesIdResize202JSONResponseBodyStatusSuspended:
 		return true
 	case PostV1XcloudInstancesIdResize202JSONResponseBodyStatusSuspending:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatus.
+const (
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatusHealthy   PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatus = "healthy"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatusUnhealthy PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatus = "unhealthy"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatusUnknown   PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatus = "unknown"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatus enum.
+func (e PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatus) Valid() bool {
+	switch e {
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatusHealthy:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatusUnhealthy:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatusUnknown:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdRestore202JSONResponseBodyCostMode.
+const (
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyCostModeHourly PostV1XcloudInstancesIdRestore202JSONResponseBodyCostMode = "hourly"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyCostModeSlot   PostV1XcloudInstancesIdRestore202JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdRestore202JSONResponseBodyCostMode enum.
+func (e PostV1XcloudInstancesIdRestore202JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyCostModeHourly:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction.
+const (
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionBootMode    PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction = "boot_mode"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionCreate      PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction = "create"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionDelete      PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction = "delete"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionLessThannil PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction = "<nil>"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionResize      PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction = "resize"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionRestore     PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction = "restore"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionShutdown    PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction = "shutdown"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionStart       PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction = "start"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionStop        PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction = "stop"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionSuspend     PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction = "suspend"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction enum.
+func (e PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction) Valid() bool {
+	switch e {
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionBootMode:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionCreate:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionDelete:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionLessThannil:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionResize:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionRestore:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionShutdown:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionStart:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionStop:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingActionSuspend:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdRestore202JSONResponseBodyPlatform.
+const (
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyPlatformLinux PostV1XcloudInstancesIdRestore202JSONResponseBodyPlatform = "linux"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyPlatformMacos PostV1XcloudInstancesIdRestore202JSONResponseBodyPlatform = "macos"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdRestore202JSONResponseBodyPlatform enum.
+func (e PostV1XcloudInstancesIdRestore202JSONResponseBodyPlatform) Valid() bool {
+	switch e {
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyPlatformLinux:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyPlatformMacos:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus.
+const (
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusDeleting     PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "deleting"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusError        PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "error"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusOffloaded    PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "offloaded"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusOffloading   PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "offloading"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusPending      PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "pending"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusProvisioning PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "provisioning"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusResizing     PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "resizing"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusRestoring    PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "restoring"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusRunning      PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "running"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusStarting     PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "starting"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusStopped      PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "stopped"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusStopping     PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "stopping"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusSuspended    PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "suspended"
+	PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusSuspending   PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus = "suspending"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus enum.
+func (e PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus) Valid() bool {
+	switch e {
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusDeleting:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusError:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusOffloaded:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusOffloading:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusPending:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusProvisioning:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusResizing:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusRestoring:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusRunning:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusStarting:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusStopped:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusStopping:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusSuspended:
+		return true
+	case PostV1XcloudInstancesIdRestore202JSONResponseBodyStatusSuspending:
 		return true
 	default:
 		return false
@@ -10861,6 +11560,24 @@ func (e PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyAgentStatus) Vali
 	}
 }
 
+// Defines values for PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyCostMode.
+const (
+	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyCostModeHourly PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyCostMode = "hourly"
+	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyCostModeSlot   PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyCostMode enum.
+func (e PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyCostModeHourly:
+		return true
+	case PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingAction.
 const (
 	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingActionBootMode    PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingAction = "boot_mode"
@@ -10868,6 +11585,7 @@ const (
 	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingActionDelete      PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingAction = "delete"
 	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingActionLessThannil PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingAction = "<nil>"
 	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingActionResize      PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingAction = "resize"
+	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingActionRestore     PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingAction = "restore"
 	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingActionShutdown    PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingAction = "shutdown"
 	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingActionStart       PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingAction = "start"
 	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingActionStop        PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingAction = "stop"
@@ -10886,6 +11604,8 @@ func (e PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingAction) Va
 	case PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingActionLessThannil:
 		return true
 	case PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingActionResize:
+		return true
+	case PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingActionRestore:
 		return true
 	case PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingActionShutdown:
 		return true
@@ -10927,6 +11647,7 @@ const (
 	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatusPending      PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatus = "pending"
 	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatusProvisioning PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatus = "provisioning"
 	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatusResizing     PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatus = "resizing"
+	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatusRestoring    PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatus = "restoring"
 	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatusRunning      PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatus = "running"
 	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatusStarting     PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatus = "starting"
 	PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatusStopped      PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatus = "stopped"
@@ -10952,6 +11673,8 @@ func (e PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatus) Valid() b
 		return true
 	case PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatusResizing:
 		return true
+	case PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatusRestoring:
+		return true
 	case PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatusRunning:
 		return true
 	case PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatusStarting:
@@ -10963,6 +11686,168 @@ func (e PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatus) Valid() b
 	case PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatusSuspended:
 		return true
 	case PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatusSuspending:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataCostMode.
+const (
+	GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataCostModeHourly GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataCostMode = "hourly"
+	GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataCostModeSlot   GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataCostMode enum.
+func (e GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataCostMode) Valid() bool {
+	switch e {
+	case GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataCostModeHourly:
+		return true
+	case GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatform.
+const (
+	GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatformLessThannil GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatform = "<nil>"
+	GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatformLinux       GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatform = "linux"
+	GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatformMacos       GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatform = "macos"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatform enum.
+func (e GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatform) Valid() bool {
+	switch e {
+	case GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatformLessThannil:
+		return true
+	case GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatformLinux:
+		return true
+	case GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatformMacos:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataSourceKind.
+const (
+	GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataSourceKindInstance GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataSourceKind = "instance"
+	GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataSourceKindVolume   GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataSourceKind = "volume"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataSourceKind enum.
+func (e GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataSourceKind) Valid() bool {
+	switch e {
+	case GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataSourceKindInstance:
+		return true
+	case GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataSourceKindVolume:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatus.
+const (
+	GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatusCreating GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatus = "creating"
+	GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatusDeleting GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatus = "deleting"
+	GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatusFailed   GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatus = "failed"
+	GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatusReady    GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatus = "ready"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatus enum.
+func (e GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatus) Valid() bool {
+	switch e {
+	case GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatusCreating:
+		return true
+	case GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatusDeleting:
+		return true
+	case GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatusFailed:
+		return true
+	case GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatusReady:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdSnapshots201JSONResponseBodyCostMode.
+const (
+	PostV1XcloudInstancesIdSnapshots201JSONResponseBodyCostModeHourly PostV1XcloudInstancesIdSnapshots201JSONResponseBodyCostMode = "hourly"
+	PostV1XcloudInstancesIdSnapshots201JSONResponseBodyCostModeSlot   PostV1XcloudInstancesIdSnapshots201JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdSnapshots201JSONResponseBodyCostMode enum.
+func (e PostV1XcloudInstancesIdSnapshots201JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case PostV1XcloudInstancesIdSnapshots201JSONResponseBodyCostModeHourly:
+		return true
+	case PostV1XcloudInstancesIdSnapshots201JSONResponseBodyCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatform.
+const (
+	PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatformLessThannil PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatform = "<nil>"
+	PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatformLinux       PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatform = "linux"
+	PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatformMacos       PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatform = "macos"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatform enum.
+func (e PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatform) Valid() bool {
+	switch e {
+	case PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatformLessThannil:
+		return true
+	case PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatformLinux:
+		return true
+	case PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatformMacos:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdSnapshots201JSONResponseBodySourceKind.
+const (
+	PostV1XcloudInstancesIdSnapshots201JSONResponseBodySourceKindInstance PostV1XcloudInstancesIdSnapshots201JSONResponseBodySourceKind = "instance"
+	PostV1XcloudInstancesIdSnapshots201JSONResponseBodySourceKindVolume   PostV1XcloudInstancesIdSnapshots201JSONResponseBodySourceKind = "volume"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdSnapshots201JSONResponseBodySourceKind enum.
+func (e PostV1XcloudInstancesIdSnapshots201JSONResponseBodySourceKind) Valid() bool {
+	switch e {
+	case PostV1XcloudInstancesIdSnapshots201JSONResponseBodySourceKindInstance:
+		return true
+	case PostV1XcloudInstancesIdSnapshots201JSONResponseBodySourceKindVolume:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatus.
+const (
+	PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatusCreating PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatus = "creating"
+	PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatusDeleting PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatus = "deleting"
+	PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatusFailed   PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatus = "failed"
+	PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatusReady    PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatus = "ready"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatus enum.
+func (e PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatus) Valid() bool {
+	switch e {
+	case PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatusCreating:
+		return true
+	case PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatusDeleting:
+		return true
+	case PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatusFailed:
+		return true
+	case PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatusReady:
 		return true
 	default:
 		return false
@@ -10990,39 +11875,60 @@ func (e PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyAgentStatus) Valid() b
 	}
 }
 
+// Defines values for PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyCostMode.
+const (
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyCostModeHourly PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyCostMode = "hourly"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyCostModeSlot   PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyCostMode enum.
+func (e PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyCostModeHourly:
+		return true
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction.
 const (
-	BootMode    PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "boot_mode"
-	Create      PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "create"
-	Delete      PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "delete"
-	LessThannil PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "<nil>"
-	Resize      PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "resize"
-	Shutdown    PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "shutdown"
-	Start       PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "start"
-	Stop        PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "stop"
-	Suspend     PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "suspend"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionBootMode    PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "boot_mode"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionCreate      PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "create"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionDelete      PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "delete"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionLessThannil PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "<nil>"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionResize      PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "resize"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionRestore     PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "restore"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionShutdown    PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "shutdown"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionStart       PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "start"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionStop        PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "stop"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionSuspend     PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction = "suspend"
 )
 
 // Valid indicates whether the value is a known member of the PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction enum.
 func (e PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction) Valid() bool {
 	switch e {
-	case BootMode:
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionBootMode:
 		return true
-	case Create:
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionCreate:
 		return true
-	case Delete:
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionDelete:
 		return true
-	case LessThannil:
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionLessThannil:
 		return true
-	case Resize:
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionResize:
 		return true
-	case Shutdown:
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionRestore:
 		return true
-	case Start:
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionShutdown:
 		return true
-	case Stop:
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionStart:
 		return true
-	case Suspend:
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionStop:
+		return true
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingActionSuspend:
 		return true
 	default:
 		return false
@@ -11031,16 +11937,16 @@ func (e PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction) Valid()
 
 // Defines values for PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPlatform.
 const (
-	Linux PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPlatform = "linux"
-	Macos PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPlatform = "macos"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPlatformLinux PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPlatform = "linux"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPlatformMacos PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPlatform = "macos"
 )
 
 // Valid indicates whether the value is a known member of the PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPlatform enum.
 func (e PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPlatform) Valid() bool {
 	switch e {
-	case Linux:
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPlatformLinux:
 		return true
-	case Macos:
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPlatformMacos:
 		return true
 	default:
 		return false
@@ -11056,6 +11962,7 @@ const (
 	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatusPending      PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatus = "pending"
 	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatusProvisioning PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatus = "provisioning"
 	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatusResizing     PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatus = "resizing"
+	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatusRestoring    PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatus = "restoring"
 	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatusRunning      PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatus = "running"
 	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatusStarting     PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatus = "starting"
 	PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatusStopped      PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatus = "stopped"
@@ -11081,6 +11988,8 @@ func (e PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatus) Valid() bool {
 		return true
 	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatusResizing:
 		return true
+	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatusRestoring:
+		return true
 	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatusRunning:
 		return true
 	case PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatusStarting:
@@ -11098,6 +12007,24 @@ func (e PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatus) Valid() bool {
 	}
 }
 
+// Defines values for GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataCostMode.
+const (
+	GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataCostModeHourly GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataCostMode = "hourly"
+	GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataCostModeSlot   GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataCostMode enum.
+func (e GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataCostMode) Valid() bool {
+	switch e {
+	case GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataCostModeHourly:
+		return true
+	case GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState.
 const (
 	GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataStateAttached  GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState = "attached"
@@ -11105,6 +12032,7 @@ const (
 	GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataStateDetached  GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState = "detached"
 	GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataStateDetaching GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState = "detaching"
 	GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataStateError     GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState = "error"
+	GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataStateRestoring GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState = "restoring"
 	GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataStateUnknown   GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState = "unknown"
 )
 
@@ -11121,7 +12049,27 @@ func (e GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState) Valid() bool 
 		return true
 	case GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataStateError:
 		return true
+	case GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataStateRestoring:
+		return true
 	case GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataStateUnknown:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudInstancesIdVolumes201JSONResponseBodyCostMode.
+const (
+	PostV1XcloudInstancesIdVolumes201JSONResponseBodyCostModeHourly PostV1XcloudInstancesIdVolumes201JSONResponseBodyCostMode = "hourly"
+	PostV1XcloudInstancesIdVolumes201JSONResponseBodyCostModeSlot   PostV1XcloudInstancesIdVolumes201JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudInstancesIdVolumes201JSONResponseBodyCostMode enum.
+func (e PostV1XcloudInstancesIdVolumes201JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case PostV1XcloudInstancesIdVolumes201JSONResponseBodyCostModeHourly:
+		return true
+	case PostV1XcloudInstancesIdVolumes201JSONResponseBodyCostModeSlot:
 		return true
 	default:
 		return false
@@ -11135,6 +12083,7 @@ const (
 	PostV1XcloudInstancesIdVolumes201JSONResponseBodyStateDetached  PostV1XcloudInstancesIdVolumes201JSONResponseBodyState = "detached"
 	PostV1XcloudInstancesIdVolumes201JSONResponseBodyStateDetaching PostV1XcloudInstancesIdVolumes201JSONResponseBodyState = "detaching"
 	PostV1XcloudInstancesIdVolumes201JSONResponseBodyStateError     PostV1XcloudInstancesIdVolumes201JSONResponseBodyState = "error"
+	PostV1XcloudInstancesIdVolumes201JSONResponseBodyStateRestoring PostV1XcloudInstancesIdVolumes201JSONResponseBodyState = "restoring"
 	PostV1XcloudInstancesIdVolumes201JSONResponseBodyStateUnknown   PostV1XcloudInstancesIdVolumes201JSONResponseBodyState = "unknown"
 )
 
@@ -11150,6 +12099,8 @@ func (e PostV1XcloudInstancesIdVolumes201JSONResponseBodyState) Valid() bool {
 	case PostV1XcloudInstancesIdVolumes201JSONResponseBodyStateDetaching:
 		return true
 	case PostV1XcloudInstancesIdVolumes201JSONResponseBodyStateError:
+		return true
+	case PostV1XcloudInstancesIdVolumes201JSONResponseBodyStateRestoring:
 		return true
 	case PostV1XcloudInstancesIdVolumes201JSONResponseBodyStateUnknown:
 		return true
@@ -11178,16 +12129,394 @@ func (e GetV1XcloudNetworks200JSONResponseBodyDataSource) Valid() bool {
 
 // Defines values for PostV1XcloudNetworks201JSONResponseBodySource.
 const (
-	Default PostV1XcloudNetworks201JSONResponseBodySource = "default"
-	Tenant  PostV1XcloudNetworks201JSONResponseBodySource = "tenant"
+	PostV1XcloudNetworks201JSONResponseBodySourceDefault PostV1XcloudNetworks201JSONResponseBodySource = "default"
+	PostV1XcloudNetworks201JSONResponseBodySourceTenant  PostV1XcloudNetworks201JSONResponseBodySource = "tenant"
 )
 
 // Valid indicates whether the value is a known member of the PostV1XcloudNetworks201JSONResponseBodySource enum.
 func (e PostV1XcloudNetworks201JSONResponseBodySource) Valid() bool {
 	switch e {
-	case Default:
+	case PostV1XcloudNetworks201JSONResponseBodySourceDefault:
 		return true
-	case Tenant:
+	case PostV1XcloudNetworks201JSONResponseBodySourceTenant:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PatchV1XcloudNetworksName200JSONResponseBodySource.
+const (
+	PatchV1XcloudNetworksName200JSONResponseBodySourceDefault PatchV1XcloudNetworksName200JSONResponseBodySource = "default"
+	PatchV1XcloudNetworksName200JSONResponseBodySourceTenant  PatchV1XcloudNetworksName200JSONResponseBodySource = "tenant"
+)
+
+// Valid indicates whether the value is a known member of the PatchV1XcloudNetworksName200JSONResponseBodySource enum.
+func (e PatchV1XcloudNetworksName200JSONResponseBodySource) Valid() bool {
+	switch e {
+	case PatchV1XcloudNetworksName200JSONResponseBodySourceDefault:
+		return true
+	case PatchV1XcloudNetworksName200JSONResponseBodySourceTenant:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudSnapshotsParamsSourceKind.
+const (
+	GetV1XcloudSnapshotsParamsSourceKindInstance GetV1XcloudSnapshotsParamsSourceKind = "instance"
+	GetV1XcloudSnapshotsParamsSourceKindVolume   GetV1XcloudSnapshotsParamsSourceKind = "volume"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudSnapshotsParamsSourceKind enum.
+func (e GetV1XcloudSnapshotsParamsSourceKind) Valid() bool {
+	switch e {
+	case GetV1XcloudSnapshotsParamsSourceKindInstance:
+		return true
+	case GetV1XcloudSnapshotsParamsSourceKindVolume:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudSnapshots200JSONResponseBodyDataCostMode.
+const (
+	GetV1XcloudSnapshots200JSONResponseBodyDataCostModeHourly GetV1XcloudSnapshots200JSONResponseBodyDataCostMode = "hourly"
+	GetV1XcloudSnapshots200JSONResponseBodyDataCostModeSlot   GetV1XcloudSnapshots200JSONResponseBodyDataCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudSnapshots200JSONResponseBodyDataCostMode enum.
+func (e GetV1XcloudSnapshots200JSONResponseBodyDataCostMode) Valid() bool {
+	switch e {
+	case GetV1XcloudSnapshots200JSONResponseBodyDataCostModeHourly:
+		return true
+	case GetV1XcloudSnapshots200JSONResponseBodyDataCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudSnapshots200JSONResponseBodyDataPlatform.
+const (
+	GetV1XcloudSnapshots200JSONResponseBodyDataPlatformLessThannil GetV1XcloudSnapshots200JSONResponseBodyDataPlatform = "<nil>"
+	GetV1XcloudSnapshots200JSONResponseBodyDataPlatformLinux       GetV1XcloudSnapshots200JSONResponseBodyDataPlatform = "linux"
+	GetV1XcloudSnapshots200JSONResponseBodyDataPlatformMacos       GetV1XcloudSnapshots200JSONResponseBodyDataPlatform = "macos"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudSnapshots200JSONResponseBodyDataPlatform enum.
+func (e GetV1XcloudSnapshots200JSONResponseBodyDataPlatform) Valid() bool {
+	switch e {
+	case GetV1XcloudSnapshots200JSONResponseBodyDataPlatformLessThannil:
+		return true
+	case GetV1XcloudSnapshots200JSONResponseBodyDataPlatformLinux:
+		return true
+	case GetV1XcloudSnapshots200JSONResponseBodyDataPlatformMacos:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudSnapshots200JSONResponseBodyDataSourceKind.
+const (
+	GetV1XcloudSnapshots200JSONResponseBodyDataSourceKindInstance GetV1XcloudSnapshots200JSONResponseBodyDataSourceKind = "instance"
+	GetV1XcloudSnapshots200JSONResponseBodyDataSourceKindVolume   GetV1XcloudSnapshots200JSONResponseBodyDataSourceKind = "volume"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudSnapshots200JSONResponseBodyDataSourceKind enum.
+func (e GetV1XcloudSnapshots200JSONResponseBodyDataSourceKind) Valid() bool {
+	switch e {
+	case GetV1XcloudSnapshots200JSONResponseBodyDataSourceKindInstance:
+		return true
+	case GetV1XcloudSnapshots200JSONResponseBodyDataSourceKindVolume:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudSnapshots200JSONResponseBodyDataStatus.
+const (
+	GetV1XcloudSnapshots200JSONResponseBodyDataStatusCreating GetV1XcloudSnapshots200JSONResponseBodyDataStatus = "creating"
+	GetV1XcloudSnapshots200JSONResponseBodyDataStatusDeleting GetV1XcloudSnapshots200JSONResponseBodyDataStatus = "deleting"
+	GetV1XcloudSnapshots200JSONResponseBodyDataStatusFailed   GetV1XcloudSnapshots200JSONResponseBodyDataStatus = "failed"
+	GetV1XcloudSnapshots200JSONResponseBodyDataStatusReady    GetV1XcloudSnapshots200JSONResponseBodyDataStatus = "ready"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudSnapshots200JSONResponseBodyDataStatus enum.
+func (e GetV1XcloudSnapshots200JSONResponseBodyDataStatus) Valid() bool {
+	switch e {
+	case GetV1XcloudSnapshots200JSONResponseBodyDataStatusCreating:
+		return true
+	case GetV1XcloudSnapshots200JSONResponseBodyDataStatusDeleting:
+		return true
+	case GetV1XcloudSnapshots200JSONResponseBodyDataStatusFailed:
+		return true
+	case GetV1XcloudSnapshots200JSONResponseBodyDataStatusReady:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for DeleteV1XcloudSnapshotsId202JSONResponseBodyCostMode.
+const (
+	DeleteV1XcloudSnapshotsId202JSONResponseBodyCostModeHourly DeleteV1XcloudSnapshotsId202JSONResponseBodyCostMode = "hourly"
+	DeleteV1XcloudSnapshotsId202JSONResponseBodyCostModeSlot   DeleteV1XcloudSnapshotsId202JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the DeleteV1XcloudSnapshotsId202JSONResponseBodyCostMode enum.
+func (e DeleteV1XcloudSnapshotsId202JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case DeleteV1XcloudSnapshotsId202JSONResponseBodyCostModeHourly:
+		return true
+	case DeleteV1XcloudSnapshotsId202JSONResponseBodyCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatform.
+const (
+	DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatformLessThannil DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatform = "<nil>"
+	DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatformLinux       DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatform = "linux"
+	DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatformMacos       DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatform = "macos"
+)
+
+// Valid indicates whether the value is a known member of the DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatform enum.
+func (e DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatform) Valid() bool {
+	switch e {
+	case DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatformLessThannil:
+		return true
+	case DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatformLinux:
+		return true
+	case DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatformMacos:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for DeleteV1XcloudSnapshotsId202JSONResponseBodySourceKind.
+const (
+	DeleteV1XcloudSnapshotsId202JSONResponseBodySourceKindInstance DeleteV1XcloudSnapshotsId202JSONResponseBodySourceKind = "instance"
+	DeleteV1XcloudSnapshotsId202JSONResponseBodySourceKindVolume   DeleteV1XcloudSnapshotsId202JSONResponseBodySourceKind = "volume"
+)
+
+// Valid indicates whether the value is a known member of the DeleteV1XcloudSnapshotsId202JSONResponseBodySourceKind enum.
+func (e DeleteV1XcloudSnapshotsId202JSONResponseBodySourceKind) Valid() bool {
+	switch e {
+	case DeleteV1XcloudSnapshotsId202JSONResponseBodySourceKindInstance:
+		return true
+	case DeleteV1XcloudSnapshotsId202JSONResponseBodySourceKindVolume:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for DeleteV1XcloudSnapshotsId202JSONResponseBodyStatus.
+const (
+	DeleteV1XcloudSnapshotsId202JSONResponseBodyStatusCreating DeleteV1XcloudSnapshotsId202JSONResponseBodyStatus = "creating"
+	DeleteV1XcloudSnapshotsId202JSONResponseBodyStatusDeleting DeleteV1XcloudSnapshotsId202JSONResponseBodyStatus = "deleting"
+	DeleteV1XcloudSnapshotsId202JSONResponseBodyStatusFailed   DeleteV1XcloudSnapshotsId202JSONResponseBodyStatus = "failed"
+	DeleteV1XcloudSnapshotsId202JSONResponseBodyStatusReady    DeleteV1XcloudSnapshotsId202JSONResponseBodyStatus = "ready"
+)
+
+// Valid indicates whether the value is a known member of the DeleteV1XcloudSnapshotsId202JSONResponseBodyStatus enum.
+func (e DeleteV1XcloudSnapshotsId202JSONResponseBodyStatus) Valid() bool {
+	switch e {
+	case DeleteV1XcloudSnapshotsId202JSONResponseBodyStatusCreating:
+		return true
+	case DeleteV1XcloudSnapshotsId202JSONResponseBodyStatusDeleting:
+		return true
+	case DeleteV1XcloudSnapshotsId202JSONResponseBodyStatusFailed:
+		return true
+	case DeleteV1XcloudSnapshotsId202JSONResponseBodyStatusReady:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudSnapshotsId200JSONResponseBodyCostMode.
+const (
+	GetV1XcloudSnapshotsId200JSONResponseBodyCostModeHourly GetV1XcloudSnapshotsId200JSONResponseBodyCostMode = "hourly"
+	GetV1XcloudSnapshotsId200JSONResponseBodyCostModeSlot   GetV1XcloudSnapshotsId200JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudSnapshotsId200JSONResponseBodyCostMode enum.
+func (e GetV1XcloudSnapshotsId200JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case GetV1XcloudSnapshotsId200JSONResponseBodyCostModeHourly:
+		return true
+	case GetV1XcloudSnapshotsId200JSONResponseBodyCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudSnapshotsId200JSONResponseBodyPlatform.
+const (
+	GetV1XcloudSnapshotsId200JSONResponseBodyPlatformLessThannil GetV1XcloudSnapshotsId200JSONResponseBodyPlatform = "<nil>"
+	GetV1XcloudSnapshotsId200JSONResponseBodyPlatformLinux       GetV1XcloudSnapshotsId200JSONResponseBodyPlatform = "linux"
+	GetV1XcloudSnapshotsId200JSONResponseBodyPlatformMacos       GetV1XcloudSnapshotsId200JSONResponseBodyPlatform = "macos"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudSnapshotsId200JSONResponseBodyPlatform enum.
+func (e GetV1XcloudSnapshotsId200JSONResponseBodyPlatform) Valid() bool {
+	switch e {
+	case GetV1XcloudSnapshotsId200JSONResponseBodyPlatformLessThannil:
+		return true
+	case GetV1XcloudSnapshotsId200JSONResponseBodyPlatformLinux:
+		return true
+	case GetV1XcloudSnapshotsId200JSONResponseBodyPlatformMacos:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudSnapshotsId200JSONResponseBodySourceKind.
+const (
+	GetV1XcloudSnapshotsId200JSONResponseBodySourceKindInstance GetV1XcloudSnapshotsId200JSONResponseBodySourceKind = "instance"
+	GetV1XcloudSnapshotsId200JSONResponseBodySourceKindVolume   GetV1XcloudSnapshotsId200JSONResponseBodySourceKind = "volume"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudSnapshotsId200JSONResponseBodySourceKind enum.
+func (e GetV1XcloudSnapshotsId200JSONResponseBodySourceKind) Valid() bool {
+	switch e {
+	case GetV1XcloudSnapshotsId200JSONResponseBodySourceKindInstance:
+		return true
+	case GetV1XcloudSnapshotsId200JSONResponseBodySourceKindVolume:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudSnapshotsId200JSONResponseBodyStatus.
+const (
+	GetV1XcloudSnapshotsId200JSONResponseBodyStatusCreating GetV1XcloudSnapshotsId200JSONResponseBodyStatus = "creating"
+	GetV1XcloudSnapshotsId200JSONResponseBodyStatusDeleting GetV1XcloudSnapshotsId200JSONResponseBodyStatus = "deleting"
+	GetV1XcloudSnapshotsId200JSONResponseBodyStatusFailed   GetV1XcloudSnapshotsId200JSONResponseBodyStatus = "failed"
+	GetV1XcloudSnapshotsId200JSONResponseBodyStatusReady    GetV1XcloudSnapshotsId200JSONResponseBodyStatus = "ready"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudSnapshotsId200JSONResponseBodyStatus enum.
+func (e GetV1XcloudSnapshotsId200JSONResponseBodyStatus) Valid() bool {
+	switch e {
+	case GetV1XcloudSnapshotsId200JSONResponseBodyStatusCreating:
+		return true
+	case GetV1XcloudSnapshotsId200JSONResponseBodyStatusDeleting:
+		return true
+	case GetV1XcloudSnapshotsId200JSONResponseBodyStatusFailed:
+		return true
+	case GetV1XcloudSnapshotsId200JSONResponseBodyStatusReady:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PatchV1XcloudSnapshotsId200JSONResponseBodyCostMode.
+const (
+	PatchV1XcloudSnapshotsId200JSONResponseBodyCostModeHourly PatchV1XcloudSnapshotsId200JSONResponseBodyCostMode = "hourly"
+	PatchV1XcloudSnapshotsId200JSONResponseBodyCostModeSlot   PatchV1XcloudSnapshotsId200JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the PatchV1XcloudSnapshotsId200JSONResponseBodyCostMode enum.
+func (e PatchV1XcloudSnapshotsId200JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case PatchV1XcloudSnapshotsId200JSONResponseBodyCostModeHourly:
+		return true
+	case PatchV1XcloudSnapshotsId200JSONResponseBodyCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PatchV1XcloudSnapshotsId200JSONResponseBodyPlatform.
+const (
+	PatchV1XcloudSnapshotsId200JSONResponseBodyPlatformLessThannil PatchV1XcloudSnapshotsId200JSONResponseBodyPlatform = "<nil>"
+	PatchV1XcloudSnapshotsId200JSONResponseBodyPlatformLinux       PatchV1XcloudSnapshotsId200JSONResponseBodyPlatform = "linux"
+	PatchV1XcloudSnapshotsId200JSONResponseBodyPlatformMacos       PatchV1XcloudSnapshotsId200JSONResponseBodyPlatform = "macos"
+)
+
+// Valid indicates whether the value is a known member of the PatchV1XcloudSnapshotsId200JSONResponseBodyPlatform enum.
+func (e PatchV1XcloudSnapshotsId200JSONResponseBodyPlatform) Valid() bool {
+	switch e {
+	case PatchV1XcloudSnapshotsId200JSONResponseBodyPlatformLessThannil:
+		return true
+	case PatchV1XcloudSnapshotsId200JSONResponseBodyPlatformLinux:
+		return true
+	case PatchV1XcloudSnapshotsId200JSONResponseBodyPlatformMacos:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PatchV1XcloudSnapshotsId200JSONResponseBodySourceKind.
+const (
+	PatchV1XcloudSnapshotsId200JSONResponseBodySourceKindInstance PatchV1XcloudSnapshotsId200JSONResponseBodySourceKind = "instance"
+	PatchV1XcloudSnapshotsId200JSONResponseBodySourceKindVolume   PatchV1XcloudSnapshotsId200JSONResponseBodySourceKind = "volume"
+)
+
+// Valid indicates whether the value is a known member of the PatchV1XcloudSnapshotsId200JSONResponseBodySourceKind enum.
+func (e PatchV1XcloudSnapshotsId200JSONResponseBodySourceKind) Valid() bool {
+	switch e {
+	case PatchV1XcloudSnapshotsId200JSONResponseBodySourceKindInstance:
+		return true
+	case PatchV1XcloudSnapshotsId200JSONResponseBodySourceKindVolume:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PatchV1XcloudSnapshotsId200JSONResponseBodyStatus.
+const (
+	PatchV1XcloudSnapshotsId200JSONResponseBodyStatusCreating PatchV1XcloudSnapshotsId200JSONResponseBodyStatus = "creating"
+	PatchV1XcloudSnapshotsId200JSONResponseBodyStatusDeleting PatchV1XcloudSnapshotsId200JSONResponseBodyStatus = "deleting"
+	PatchV1XcloudSnapshotsId200JSONResponseBodyStatusFailed   PatchV1XcloudSnapshotsId200JSONResponseBodyStatus = "failed"
+	PatchV1XcloudSnapshotsId200JSONResponseBodyStatusReady    PatchV1XcloudSnapshotsId200JSONResponseBodyStatus = "ready"
+)
+
+// Valid indicates whether the value is a known member of the PatchV1XcloudSnapshotsId200JSONResponseBodyStatus enum.
+func (e PatchV1XcloudSnapshotsId200JSONResponseBodyStatus) Valid() bool {
+	switch e {
+	case PatchV1XcloudSnapshotsId200JSONResponseBodyStatusCreating:
+		return true
+	case PatchV1XcloudSnapshotsId200JSONResponseBodyStatusDeleting:
+		return true
+	case PatchV1XcloudSnapshotsId200JSONResponseBodyStatusFailed:
+		return true
+	case PatchV1XcloudSnapshotsId200JSONResponseBodyStatusReady:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudVolumes200JSONResponseBodyDataCostMode.
+const (
+	GetV1XcloudVolumes200JSONResponseBodyDataCostModeHourly GetV1XcloudVolumes200JSONResponseBodyDataCostMode = "hourly"
+	GetV1XcloudVolumes200JSONResponseBodyDataCostModeSlot   GetV1XcloudVolumes200JSONResponseBodyDataCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudVolumes200JSONResponseBodyDataCostMode enum.
+func (e GetV1XcloudVolumes200JSONResponseBodyDataCostMode) Valid() bool {
+	switch e {
+	case GetV1XcloudVolumes200JSONResponseBodyDataCostModeHourly:
+		return true
+	case GetV1XcloudVolumes200JSONResponseBodyDataCostModeSlot:
 		return true
 	default:
 		return false
@@ -11201,6 +12530,7 @@ const (
 	GetV1XcloudVolumes200JSONResponseBodyDataStateDetached  GetV1XcloudVolumes200JSONResponseBodyDataState = "detached"
 	GetV1XcloudVolumes200JSONResponseBodyDataStateDetaching GetV1XcloudVolumes200JSONResponseBodyDataState = "detaching"
 	GetV1XcloudVolumes200JSONResponseBodyDataStateError     GetV1XcloudVolumes200JSONResponseBodyDataState = "error"
+	GetV1XcloudVolumes200JSONResponseBodyDataStateRestoring GetV1XcloudVolumes200JSONResponseBodyDataState = "restoring"
 	GetV1XcloudVolumes200JSONResponseBodyDataStateUnknown   GetV1XcloudVolumes200JSONResponseBodyDataState = "unknown"
 )
 
@@ -11217,7 +12547,27 @@ func (e GetV1XcloudVolumes200JSONResponseBodyDataState) Valid() bool {
 		return true
 	case GetV1XcloudVolumes200JSONResponseBodyDataStateError:
 		return true
+	case GetV1XcloudVolumes200JSONResponseBodyDataStateRestoring:
+		return true
 	case GetV1XcloudVolumes200JSONResponseBodyDataStateUnknown:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudVolumes201JSONResponseBodyCostMode.
+const (
+	PostV1XcloudVolumes201JSONResponseBodyCostModeHourly PostV1XcloudVolumes201JSONResponseBodyCostMode = "hourly"
+	PostV1XcloudVolumes201JSONResponseBodyCostModeSlot   PostV1XcloudVolumes201JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudVolumes201JSONResponseBodyCostMode enum.
+func (e PostV1XcloudVolumes201JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case PostV1XcloudVolumes201JSONResponseBodyCostModeHourly:
+		return true
+	case PostV1XcloudVolumes201JSONResponseBodyCostModeSlot:
 		return true
 	default:
 		return false
@@ -11231,6 +12581,7 @@ const (
 	PostV1XcloudVolumes201JSONResponseBodyStateDetached  PostV1XcloudVolumes201JSONResponseBodyState = "detached"
 	PostV1XcloudVolumes201JSONResponseBodyStateDetaching PostV1XcloudVolumes201JSONResponseBodyState = "detaching"
 	PostV1XcloudVolumes201JSONResponseBodyStateError     PostV1XcloudVolumes201JSONResponseBodyState = "error"
+	PostV1XcloudVolumes201JSONResponseBodyStateRestoring PostV1XcloudVolumes201JSONResponseBodyState = "restoring"
 	PostV1XcloudVolumes201JSONResponseBodyStateUnknown   PostV1XcloudVolumes201JSONResponseBodyState = "unknown"
 )
 
@@ -11247,7 +12598,27 @@ func (e PostV1XcloudVolumes201JSONResponseBodyState) Valid() bool {
 		return true
 	case PostV1XcloudVolumes201JSONResponseBodyStateError:
 		return true
+	case PostV1XcloudVolumes201JSONResponseBodyStateRestoring:
+		return true
 	case PostV1XcloudVolumes201JSONResponseBodyStateUnknown:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudVolumesId200JSONResponseBodyCostMode.
+const (
+	GetV1XcloudVolumesId200JSONResponseBodyCostModeHourly GetV1XcloudVolumesId200JSONResponseBodyCostMode = "hourly"
+	GetV1XcloudVolumesId200JSONResponseBodyCostModeSlot   GetV1XcloudVolumesId200JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudVolumesId200JSONResponseBodyCostMode enum.
+func (e GetV1XcloudVolumesId200JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case GetV1XcloudVolumesId200JSONResponseBodyCostModeHourly:
+		return true
+	case GetV1XcloudVolumesId200JSONResponseBodyCostModeSlot:
 		return true
 	default:
 		return false
@@ -11261,6 +12632,7 @@ const (
 	GetV1XcloudVolumesId200JSONResponseBodyStateDetached  GetV1XcloudVolumesId200JSONResponseBodyState = "detached"
 	GetV1XcloudVolumesId200JSONResponseBodyStateDetaching GetV1XcloudVolumesId200JSONResponseBodyState = "detaching"
 	GetV1XcloudVolumesId200JSONResponseBodyStateError     GetV1XcloudVolumesId200JSONResponseBodyState = "error"
+	GetV1XcloudVolumesId200JSONResponseBodyStateRestoring GetV1XcloudVolumesId200JSONResponseBodyState = "restoring"
 	GetV1XcloudVolumesId200JSONResponseBodyStateUnknown   GetV1XcloudVolumesId200JSONResponseBodyState = "unknown"
 )
 
@@ -11277,7 +12649,27 @@ func (e GetV1XcloudVolumesId200JSONResponseBodyState) Valid() bool {
 		return true
 	case GetV1XcloudVolumesId200JSONResponseBodyStateError:
 		return true
+	case GetV1XcloudVolumesId200JSONResponseBodyStateRestoring:
+		return true
 	case GetV1XcloudVolumesId200JSONResponseBodyStateUnknown:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudVolumesIdResize200JSONResponseBodyCostMode.
+const (
+	PostV1XcloudVolumesIdResize200JSONResponseBodyCostModeHourly PostV1XcloudVolumesIdResize200JSONResponseBodyCostMode = "hourly"
+	PostV1XcloudVolumesIdResize200JSONResponseBodyCostModeSlot   PostV1XcloudVolumesIdResize200JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudVolumesIdResize200JSONResponseBodyCostMode enum.
+func (e PostV1XcloudVolumesIdResize200JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case PostV1XcloudVolumesIdResize200JSONResponseBodyCostModeHourly:
+		return true
+	case PostV1XcloudVolumesIdResize200JSONResponseBodyCostModeSlot:
 		return true
 	default:
 		return false
@@ -11291,6 +12683,7 @@ const (
 	PostV1XcloudVolumesIdResize200JSONResponseBodyStateDetached  PostV1XcloudVolumesIdResize200JSONResponseBodyState = "detached"
 	PostV1XcloudVolumesIdResize200JSONResponseBodyStateDetaching PostV1XcloudVolumesIdResize200JSONResponseBodyState = "detaching"
 	PostV1XcloudVolumesIdResize200JSONResponseBodyStateError     PostV1XcloudVolumesIdResize200JSONResponseBodyState = "error"
+	PostV1XcloudVolumesIdResize200JSONResponseBodyStateRestoring PostV1XcloudVolumesIdResize200JSONResponseBodyState = "restoring"
 	PostV1XcloudVolumesIdResize200JSONResponseBodyStateUnknown   PostV1XcloudVolumesIdResize200JSONResponseBodyState = "unknown"
 )
 
@@ -11307,7 +12700,186 @@ func (e PostV1XcloudVolumesIdResize200JSONResponseBodyState) Valid() bool {
 		return true
 	case PostV1XcloudVolumesIdResize200JSONResponseBodyStateError:
 		return true
+	case PostV1XcloudVolumesIdResize200JSONResponseBodyStateRestoring:
+		return true
 	case PostV1XcloudVolumesIdResize200JSONResponseBodyStateUnknown:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudVolumesIdRestore202JSONResponseBodyRestoring.
+const (
+	True PostV1XcloudVolumesIdRestore202JSONResponseBodyRestoring = true
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudVolumesIdRestore202JSONResponseBodyRestoring enum.
+func (e PostV1XcloudVolumesIdRestore202JSONResponseBodyRestoring) Valid() bool {
+	switch e {
+	case True:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataCostMode.
+const (
+	GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataCostModeHourly GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataCostMode = "hourly"
+	GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataCostModeSlot   GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataCostMode enum.
+func (e GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataCostMode) Valid() bool {
+	switch e {
+	case GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataCostModeHourly:
+		return true
+	case GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataCostModeSlot:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatform.
+const (
+	GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatformLessThannil GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatform = "<nil>"
+	GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatformLinux       GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatform = "linux"
+	GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatformMacos       GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatform = "macos"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatform enum.
+func (e GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatform) Valid() bool {
+	switch e {
+	case GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatformLessThannil:
+		return true
+	case GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatformLinux:
+		return true
+	case GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatformMacos:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataSourceKind.
+const (
+	GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataSourceKindInstance GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataSourceKind = "instance"
+	GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataSourceKindVolume   GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataSourceKind = "volume"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataSourceKind enum.
+func (e GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataSourceKind) Valid() bool {
+	switch e {
+	case GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataSourceKindInstance:
+		return true
+	case GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataSourceKindVolume:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatus.
+const (
+	GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatusCreating GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatus = "creating"
+	GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatusDeleting GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatus = "deleting"
+	GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatusFailed   GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatus = "failed"
+	GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatusReady    GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatus = "ready"
+)
+
+// Valid indicates whether the value is a known member of the GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatus enum.
+func (e GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatus) Valid() bool {
+	switch e {
+	case GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatusCreating:
+		return true
+	case GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatusDeleting:
+		return true
+	case GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatusFailed:
+		return true
+	case GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatusReady:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudVolumesIdSnapshots201JSONResponseBodyCostMode.
+const (
+	Hourly PostV1XcloudVolumesIdSnapshots201JSONResponseBodyCostMode = "hourly"
+	Slot   PostV1XcloudVolumesIdSnapshots201JSONResponseBodyCostMode = "slot"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudVolumesIdSnapshots201JSONResponseBodyCostMode enum.
+func (e PostV1XcloudVolumesIdSnapshots201JSONResponseBodyCostMode) Valid() bool {
+	switch e {
+	case Hourly:
+		return true
+	case Slot:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatform.
+const (
+	PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatformLessThannil PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatform = "<nil>"
+	PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatformLinux       PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatform = "linux"
+	PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatformMacos       PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatform = "macos"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatform enum.
+func (e PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatform) Valid() bool {
+	switch e {
+	case PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatformLessThannil:
+		return true
+	case PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatformLinux:
+		return true
+	case PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatformMacos:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudVolumesIdSnapshots201JSONResponseBodySourceKind.
+const (
+	Instance PostV1XcloudVolumesIdSnapshots201JSONResponseBodySourceKind = "instance"
+	Volume   PostV1XcloudVolumesIdSnapshots201JSONResponseBodySourceKind = "volume"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudVolumesIdSnapshots201JSONResponseBodySourceKind enum.
+func (e PostV1XcloudVolumesIdSnapshots201JSONResponseBodySourceKind) Valid() bool {
+	switch e {
+	case Instance:
+		return true
+	case Volume:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatus.
+const (
+	PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatusCreating PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatus = "creating"
+	PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatusDeleting PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatus = "deleting"
+	PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatusFailed   PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatus = "failed"
+	PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatusReady    PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatus = "ready"
+)
+
+// Valid indicates whether the value is a known member of the PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatus enum.
+func (e PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatus) Valid() bool {
+	switch e {
+	case PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatusCreating:
+		return true
+	case PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatusDeleting:
+		return true
+	case PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatusFailed:
+		return true
+	case PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatusReady:
 		return true
 	default:
 		return false
@@ -11432,6 +13004,15 @@ type GetV1BillingLedgerParams struct {
 // GetV1BillingLedger200JSONResponseBodyDataComponent defines parameters for GetV1BillingLedger.
 type GetV1BillingLedger200JSONResponseBodyDataComponent string
 
+// GetV1BillingStatementParams defines parameters for GetV1BillingStatement.
+type GetV1BillingStatementParams struct {
+	Limit  *int `form:"limit,omitempty" json:"limit,omitempty"`
+	Offset *int `form:"offset,omitempty" json:"offset,omitempty"`
+}
+
+// GetV1BillingStatement200JSONResponseBodyDataComponent defines parameters for GetV1BillingStatement.
+type GetV1BillingStatement200JSONResponseBodyDataComponent string
+
 // GetV1BillingStripe200JSONResponseBodyStatus defines parameters for GetV1BillingStripe.
 type GetV1BillingStripe200JSONResponseBodyStatus string
 
@@ -11452,6 +13033,11 @@ type PostV1BillingStripePaymentMethodsSyncJSONBody struct {
 // PostV1BillingStripeTopupJSONBody defines parameters for PostV1BillingStripeTopup.
 type PostV1BillingStripeTopupJSONBody struct {
 	Credits string `json:"credits"`
+}
+
+// PostV1BillingStripeTopupParams defines parameters for PostV1BillingStripeTopup.
+type PostV1BillingStripeTopupParams struct {
+	IdempotencyKey *string `json:"idempotency-key,omitempty"`
 }
 
 // GetV1BillingSummary200JSONResponseBodyBlocked defines parameters for GetV1BillingSummary.
@@ -12933,6 +14519,11 @@ type GetV1GithubActionsUsageParams struct {
 // GetV1Healthz200JSONResponseBodyStatus defines parameters for GetV1Healthz.
 type GetV1Healthz200JSONResponseBodyStatus string
 
+// PostV1IdentityVerifyEmailJSONBody defines parameters for PostV1IdentityVerifyEmail.
+type PostV1IdentityVerifyEmailJSONBody struct {
+	Token string `json:"token"`
+}
+
 // GetV1Invitations200JSONResponseBodyDataRole defines parameters for GetV1Invitations.
 type GetV1Invitations200JSONResponseBodyDataRole string
 
@@ -13126,6 +14717,12 @@ type PatchV1MeJSONBody struct {
 	PhoneNumber *string `json:"phoneNumber,omitempty"`
 }
 
+// GetV1MeIdentity200JSONResponseBodyApprovalStatus defines parameters for GetV1MeIdentity.
+type GetV1MeIdentity200JSONResponseBodyApprovalStatus string
+
+// GetV1MeIdentity200JSONResponseBodyExemptionSource defines parameters for GetV1MeIdentity.
+type GetV1MeIdentity200JSONResponseBodyExemptionSource string
+
 // GetV1MePreferences200JSONResponseBodyDefaultRegion defines parameters for GetV1MePreferences.
 type GetV1MePreferences200JSONResponseBodyDefaultRegion string
 
@@ -13215,6 +14812,12 @@ type GetV1MeQuotas200JSONResponseBodyDataSeverity string
 
 // GetV1MeSignupStatus200JSONResponseBodyApprovalStatus defines parameters for GetV1MeSignupStatus.
 type GetV1MeSignupStatus200JSONResponseBodyApprovalStatus string
+
+// GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatus defines parameters for GetV1MeSignupStatus.
+type GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatus string
+
+// GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSource defines parameters for GetV1MeSignupStatus.
+type GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSource string
 
 // GetV1Members200JSONResponseBodyDataRole defines parameters for GetV1Members.
 type GetV1Members200JSONResponseBodyDataRole string
@@ -13354,6 +14957,9 @@ type GetV1RegistryLibraryParams struct {
 // GetV1RegistryLibrary200JSONResponseBodyRepositoriesStatus defines parameters for GetV1RegistryLibrary.
 type GetV1RegistryLibrary200JSONResponseBodyRepositoriesStatus string
 
+// GetV1RegistryLibrary200JSONResponseBodyRepositoriesVisibility defines parameters for GetV1RegistryLibrary.
+type GetV1RegistryLibrary200JSONResponseBodyRepositoriesVisibility string
+
 // PostV1RegistryNamespaceJSONBody defines parameters for PostV1RegistryNamespace.
 type PostV1RegistryNamespaceJSONBody struct {
 	Slug string `json:"slug"`
@@ -13372,6 +14978,22 @@ type GetV1RegistryRepositoriesParams struct {
 
 // GetV1RegistryRepositories200JSONResponseBodyRepositoriesStatus defines parameters for GetV1RegistryRepositories.
 type GetV1RegistryRepositories200JSONResponseBodyRepositoriesStatus string
+
+// GetV1RegistryRepositories200JSONResponseBodyRepositoriesVisibility defines parameters for GetV1RegistryRepositories.
+type GetV1RegistryRepositories200JSONResponseBodyRepositoriesVisibility string
+
+// PatchV1RegistryRepositoriesVisibilityJSONBody defines parameters for PatchV1RegistryRepositoriesVisibility.
+type PatchV1RegistryRepositoriesVisibilityJSONBody struct {
+	Name       string                                                  `json:"name"`
+	RegionId   openapi_types.UUID                                      `json:"regionId"`
+	Visibility PatchV1RegistryRepositoriesVisibilityJSONBodyVisibility `json:"visibility"`
+}
+
+// PatchV1RegistryRepositoriesVisibilityJSONBodyVisibility defines parameters for PatchV1RegistryRepositoriesVisibility.
+type PatchV1RegistryRepositoriesVisibilityJSONBodyVisibility string
+
+// PatchV1RegistryRepositoriesVisibility200JSONResponseBodyVisibility defines parameters for PatchV1RegistryRepositoriesVisibility.
+type PatchV1RegistryRepositoriesVisibility200JSONResponseBodyVisibility string
 
 // DeleteV1RegistryRepositoryTagsParams defines parameters for DeleteV1RegistryRepositoryTags.
 type DeleteV1RegistryRepositoryTagsParams struct {
@@ -13415,6 +15037,21 @@ type DeleteV1RegistryTokensId200JSONResponseBodyActions string
 
 // DeleteV1RegistryTokensId200JSONResponseBodyKind defines parameters for DeleteV1RegistryTokensId.
 type DeleteV1RegistryTokensId200JSONResponseBodyKind string
+
+// PatchV1RegistryTokensIdJSONBody defines parameters for PatchV1RegistryTokensId.
+type PatchV1RegistryTokensIdJSONBody struct {
+	Actions *[]PatchV1RegistryTokensIdJSONBodyActions `json:"actions,omitempty"`
+	Name    *string                                   `json:"name,omitempty"`
+}
+
+// PatchV1RegistryTokensIdJSONBodyActions defines parameters for PatchV1RegistryTokensId.
+type PatchV1RegistryTokensIdJSONBodyActions string
+
+// PatchV1RegistryTokensId200JSONResponseBodyActions defines parameters for PatchV1RegistryTokensId.
+type PatchV1RegistryTokensId200JSONResponseBodyActions string
+
+// PatchV1RegistryTokensId200JSONResponseBodyKind defines parameters for PatchV1RegistryTokensId.
+type PatchV1RegistryTokensId200JSONResponseBodyKind string
 
 // GetV1RegistryUsage200JSONResponseBodyStorageLimitGib0 defines parameters for GetV1RegistryUsage.
 type GetV1RegistryUsage200JSONResponseBodyStorageLimitGib0 = float32
@@ -14271,8 +15908,12 @@ type PatchV1XcloudElasticIpsIdTarget200JSONResponseBodyStatus string
 
 // GetV1XcloudFlavorsParams defines parameters for GetV1XcloudFlavors.
 type GetV1XcloudFlavorsParams struct {
-	RegionId *openapi_types.UUID `form:"regionId,omitempty" json:"regionId,omitempty"`
+	RegionId *openapi_types.UUID               `form:"regionId,omitempty" json:"regionId,omitempty"`
+	Platform *GetV1XcloudFlavorsParamsPlatform `form:"platform,omitempty" json:"platform,omitempty"`
 }
+
+// GetV1XcloudFlavorsParamsPlatform defines parameters for GetV1XcloudFlavors.
+type GetV1XcloudFlavorsParamsPlatform string
 
 // GetV1XcloudFlavors200JSONResponseBodyCustomSizingSource defines parameters for GetV1XcloudFlavors.
 type GetV1XcloudFlavors200JSONResponseBodyCustomSizingSource string
@@ -14288,6 +15929,9 @@ type GetV1XcloudFlavors200JSONResponseBodyDataBillingMode string
 
 // GetV1XcloudFlavors200JSONResponseBodyDataPlatform defines parameters for GetV1XcloudFlavors.
 type GetV1XcloudFlavors200JSONResponseBodyDataPlatform string
+
+// GetV1XcloudFlavors200JSONResponseBodyDataSupportedPlatforms defines parameters for GetV1XcloudFlavors.
+type GetV1XcloudFlavors200JSONResponseBodyDataSupportedPlatforms string
 
 // GetV1XcloudImagePushesId200JSONResponseBodyStatus defines parameters for GetV1XcloudImagePushesId.
 type GetV1XcloudImagePushesId200JSONResponseBodyStatus string
@@ -14375,6 +16019,9 @@ type GetV1XcloudInstancesParams struct {
 // GetV1XcloudInstances200JSONResponseBodyDataAgentStatus defines parameters for GetV1XcloudInstances.
 type GetV1XcloudInstances200JSONResponseBodyDataAgentStatus string
 
+// GetV1XcloudInstances200JSONResponseBodyDataCostMode defines parameters for GetV1XcloudInstances.
+type GetV1XcloudInstances200JSONResponseBodyDataCostMode string
+
 // GetV1XcloudInstances200JSONResponseBodyDataPendingAction defines parameters for GetV1XcloudInstances.
 type GetV1XcloudInstances200JSONResponseBodyDataPendingAction string
 
@@ -14391,10 +16038,11 @@ type PostV1XcloudInstancesJSONBody struct {
 	CpuCores           int                                             `json:"cpuCores"`
 	DiskGib            int                                             `json:"diskGib"`
 	DisplayHeight      *int                                            `json:"displayHeight,omitempty"`
+	DisplayScale       *int                                            `json:"displayScale,omitempty"`
 	DisplayWidth       *int                                            `json:"displayWidth,omitempty"`
 	FlavorSlug         *string                                         `json:"flavorSlug,omitempty"`
 	HardwareGeneration *string                                         `json:"hardwareGeneration,omitempty"`
-	ImageRef           string                                          `json:"imageRef"`
+	ImageRef           *string                                         `json:"imageRef,omitempty"`
 	LifetimeSeconds    *int                                            `json:"lifetimeSeconds,omitempty"`
 	MemoryGib          int                                             `json:"memoryGib"`
 	Name               string                                          `json:"name"`
@@ -14403,6 +16051,7 @@ type PostV1XcloudInstancesJSONBody struct {
 	Platform           *PostV1XcloudInstancesJSONBodyPlatform          `json:"platform,omitempty"`
 	RegionId           openapi_types.UUID                              `json:"regionId"`
 	SecurityGroups     *[]string                                       `json:"securityGroups,omitempty"`
+	SourceSnapshotId   *openapi_types.UUID                             `json:"sourceSnapshotId,omitempty"`
 	SshKeyIds          *[]openapi_types.UUID                           `json:"sshKeyIds,omitempty"`
 	StartupConfig      *struct {
 		Format PostV1XcloudInstancesJSONBodyStartupConfigFormat `json:"format"`
@@ -14443,6 +16092,9 @@ type PostV1XcloudInstancesJSONBodyStartupConfigFormat string
 // PostV1XcloudInstances201JSONResponseBodyAgentStatus defines parameters for PostV1XcloudInstances.
 type PostV1XcloudInstances201JSONResponseBodyAgentStatus string
 
+// PostV1XcloudInstances201JSONResponseBodyCostMode defines parameters for PostV1XcloudInstances.
+type PostV1XcloudInstances201JSONResponseBodyCostMode string
+
 // PostV1XcloudInstances201JSONResponseBodyPendingAction defines parameters for PostV1XcloudInstances.
 type PostV1XcloudInstances201JSONResponseBodyPendingAction string
 
@@ -14456,13 +16108,22 @@ type PostV1XcloudInstances201JSONResponseBodyStatus string
 type DeleteV1XcloudInstancesIdParams struct {
 	// ReleaseElasticIps Release the instance's attached Elastic IP(s) on delete. Defaults to `true` when omitted; pass `false` to keep them (the kept IPs become unassigned and continue to be billed).
 	ReleaseElasticIps *DeleteV1XcloudInstancesIdParamsReleaseElasticIps `form:"releaseElasticIps,omitempty" json:"releaseElasticIps,omitempty"`
+
+	// DeleteSnapshots Also delete the instance's snapshots. Defaults to `false`: snapshots outlive their instance, stay billed, and can still seed new instances.
+	DeleteSnapshots *DeleteV1XcloudInstancesIdParamsDeleteSnapshots `form:"deleteSnapshots,omitempty" json:"deleteSnapshots,omitempty"`
 }
 
 // DeleteV1XcloudInstancesIdParamsReleaseElasticIps defines parameters for DeleteV1XcloudInstancesId.
 type DeleteV1XcloudInstancesIdParamsReleaseElasticIps string
 
+// DeleteV1XcloudInstancesIdParamsDeleteSnapshots defines parameters for DeleteV1XcloudInstancesId.
+type DeleteV1XcloudInstancesIdParamsDeleteSnapshots string
+
 // GetV1XcloudInstancesId200JSONResponseBodyAgentStatus defines parameters for GetV1XcloudInstancesId.
 type GetV1XcloudInstancesId200JSONResponseBodyAgentStatus string
+
+// GetV1XcloudInstancesId200JSONResponseBodyCostMode defines parameters for GetV1XcloudInstancesId.
+type GetV1XcloudInstancesId200JSONResponseBodyCostMode string
 
 // GetV1XcloudInstancesId200JSONResponseBodyPendingAction defines parameters for GetV1XcloudInstancesId.
 type GetV1XcloudInstancesId200JSONResponseBodyPendingAction string
@@ -14481,6 +16142,9 @@ type PatchV1XcloudInstancesIdJSONBody struct {
 
 // PatchV1XcloudInstancesId200JSONResponseBodyAgentStatus defines parameters for PatchV1XcloudInstancesId.
 type PatchV1XcloudInstancesId200JSONResponseBodyAgentStatus string
+
+// PatchV1XcloudInstancesId200JSONResponseBodyCostMode defines parameters for PatchV1XcloudInstancesId.
+type PatchV1XcloudInstancesId200JSONResponseBodyCostMode string
 
 // PatchV1XcloudInstancesId200JSONResponseBodyPendingAction defines parameters for PatchV1XcloudInstancesId.
 type PatchV1XcloudInstancesId200JSONResponseBodyPendingAction string
@@ -14558,6 +16222,89 @@ type PostV1XcloudInstancesIdBootModeJSONBody struct {
 	Recovery bool `json:"recovery"`
 }
 
+// PostV1XcloudInstancesIdDisplayInputJSONBody defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBody struct {
+	Actions []PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item `json:"actions"`
+
+	// Scale Factor between 0 (exclusive) and 1 for the coordinate space. A screenshot taken with a scale of 0.5 is half as wide and high, and input sent with the same value takes its coordinates in that smaller image. Default 1.
+	Scale *float32 `json:"scale,omitempty"`
+}
+
+// PostV1XcloudInstancesIdDisplayInputJSONBodyActions0 defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBodyActions0 struct {
+	Button *PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Button `json:"button,omitempty"`
+	Count  *int                                                       `json:"count,omitempty"`
+	Type   PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Type    `json:"type"`
+	X      float32                                                    `json:"x"`
+	Y      float32                                                    `json:"y"`
+}
+
+// PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Button defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Button string
+
+// PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Type defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBodyActions0Type string
+
+// PostV1XcloudInstancesIdDisplayInputJSONBodyActions1 defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBodyActions1 struct {
+	Type PostV1XcloudInstancesIdDisplayInputJSONBodyActions1Type `json:"type"`
+	X    float32                                                 `json:"x"`
+	Y    float32                                                 `json:"y"`
+}
+
+// PostV1XcloudInstancesIdDisplayInputJSONBodyActions1Type defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBodyActions1Type string
+
+// PostV1XcloudInstancesIdDisplayInputJSONBodyActions2 defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBodyActions2 struct {
+	ToX  float32                                                 `json:"toX"`
+	ToY  float32                                                 `json:"toY"`
+	Type PostV1XcloudInstancesIdDisplayInputJSONBodyActions2Type `json:"type"`
+	X    float32                                                 `json:"x"`
+	Y    float32                                                 `json:"y"`
+}
+
+// PostV1XcloudInstancesIdDisplayInputJSONBodyActions2Type defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBodyActions2Type string
+
+// PostV1XcloudInstancesIdDisplayInputJSONBodyActions3 defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBodyActions3 struct {
+	Text string                                                  `json:"text"`
+	Type PostV1XcloudInstancesIdDisplayInputJSONBodyActions3Type `json:"type"`
+}
+
+// PostV1XcloudInstancesIdDisplayInputJSONBodyActions3Type defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBodyActions3Type string
+
+// PostV1XcloudInstancesIdDisplayInputJSONBodyActions4 defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBodyActions4 struct {
+	Keys []string                                                `json:"keys"`
+	Type PostV1XcloudInstancesIdDisplayInputJSONBodyActions4Type `json:"type"`
+}
+
+// PostV1XcloudInstancesIdDisplayInputJSONBodyActions4Type defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBodyActions4Type string
+
+// PostV1XcloudInstancesIdDisplayInputJSONBodyActions5 defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBodyActions5 struct {
+	Ms   int                                                     `json:"ms"`
+	Type PostV1XcloudInstancesIdDisplayInputJSONBodyActions5Type `json:"type"`
+}
+
+// PostV1XcloudInstancesIdDisplayInputJSONBodyActions5Type defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBodyActions5Type string
+
+// PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item defines parameters for PostV1XcloudInstancesIdDisplayInput.
+type PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item struct {
+	union json.RawMessage
+}
+
+// GetV1XcloudInstancesIdDisplayScreenshotParams defines parameters for GetV1XcloudInstancesIdDisplayScreenshot.
+type GetV1XcloudInstancesIdDisplayScreenshotParams struct {
+	// Scale Factor between 0 (exclusive) and 1 for the coordinate space. A screenshot taken with a scale of 0.5 is half as wide and high, and input sent with the same value takes its coordinates in that smaller image. Default 1.
+	Scale *string `form:"scale,omitempty" json:"scale,omitempty"`
+}
+
 // GetV1XcloudInstancesIdMetricsParams defines parameters for GetV1XcloudInstancesIdMetrics.
 type GetV1XcloudInstancesIdMetricsParams struct {
 	Range *GetV1XcloudInstancesIdMetricsParamsRange `form:"range,omitempty" json:"range,omitempty"`
@@ -14576,6 +16323,9 @@ type PutV1XcloudInstancesIdPasswordJSONBody struct {
 
 // PutV1XcloudInstancesIdPassword200JSONResponseBodyAgentStatus defines parameters for PutV1XcloudInstancesIdPassword.
 type PutV1XcloudInstancesIdPassword200JSONResponseBodyAgentStatus string
+
+// PutV1XcloudInstancesIdPassword200JSONResponseBodyCostMode defines parameters for PutV1XcloudInstancesIdPassword.
+type PutV1XcloudInstancesIdPassword200JSONResponseBodyCostMode string
 
 // PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingAction defines parameters for PutV1XcloudInstancesIdPassword.
 type PutV1XcloudInstancesIdPassword200JSONResponseBodyPendingAction string
@@ -14650,6 +16400,9 @@ type PostV1XcloudInstancesIdResizeJSONBody struct {
 // PostV1XcloudInstancesIdResize202JSONResponseBodyAgentStatus defines parameters for PostV1XcloudInstancesIdResize.
 type PostV1XcloudInstancesIdResize202JSONResponseBodyAgentStatus string
 
+// PostV1XcloudInstancesIdResize202JSONResponseBodyCostMode defines parameters for PostV1XcloudInstancesIdResize.
+type PostV1XcloudInstancesIdResize202JSONResponseBodyCostMode string
+
 // PostV1XcloudInstancesIdResize202JSONResponseBodyPendingAction defines parameters for PostV1XcloudInstancesIdResize.
 type PostV1XcloudInstancesIdResize202JSONResponseBodyPendingAction string
 
@@ -14659,6 +16412,27 @@ type PostV1XcloudInstancesIdResize202JSONResponseBodyPlatform string
 // PostV1XcloudInstancesIdResize202JSONResponseBodyStatus defines parameters for PostV1XcloudInstancesIdResize.
 type PostV1XcloudInstancesIdResize202JSONResponseBodyStatus string
 
+// PostV1XcloudInstancesIdRestoreJSONBody defines parameters for PostV1XcloudInstancesIdRestore.
+type PostV1XcloudInstancesIdRestoreJSONBody struct {
+	SnapshotId openapi_types.UUID `json:"snapshotId"`
+	StartAfter *bool              `json:"startAfter,omitempty"`
+}
+
+// PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatus defines parameters for PostV1XcloudInstancesIdRestore.
+type PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatus string
+
+// PostV1XcloudInstancesIdRestore202JSONResponseBodyCostMode defines parameters for PostV1XcloudInstancesIdRestore.
+type PostV1XcloudInstancesIdRestore202JSONResponseBodyCostMode string
+
+// PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction defines parameters for PostV1XcloudInstancesIdRestore.
+type PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction string
+
+// PostV1XcloudInstancesIdRestore202JSONResponseBodyPlatform defines parameters for PostV1XcloudInstancesIdRestore.
+type PostV1XcloudInstancesIdRestore202JSONResponseBodyPlatform string
+
+// PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus defines parameters for PostV1XcloudInstancesIdRestore.
+type PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus string
+
 // PutV1XcloudInstancesIdSecurityGroupsJSONBody defines parameters for PutV1XcloudInstancesIdSecurityGroups.
 type PutV1XcloudInstancesIdSecurityGroupsJSONBody struct {
 	SecurityGroups []string `json:"securityGroups"`
@@ -14666,6 +16440,9 @@ type PutV1XcloudInstancesIdSecurityGroupsJSONBody struct {
 
 // PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyAgentStatus defines parameters for PutV1XcloudInstancesIdSecurityGroups.
 type PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyAgentStatus string
+
+// PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyCostMode defines parameters for PutV1XcloudInstancesIdSecurityGroups.
+type PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyCostMode string
 
 // PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingAction defines parameters for PutV1XcloudInstancesIdSecurityGroups.
 type PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPendingAction string
@@ -14676,6 +16453,36 @@ type PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyPlatform string
 // PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatus defines parameters for PutV1XcloudInstancesIdSecurityGroups.
 type PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatus string
 
+// GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataCostMode defines parameters for GetV1XcloudInstancesIdSnapshots.
+type GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataCostMode string
+
+// GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatform defines parameters for GetV1XcloudInstancesIdSnapshots.
+type GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatform string
+
+// GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataSourceKind defines parameters for GetV1XcloudInstancesIdSnapshots.
+type GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataSourceKind string
+
+// GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatus defines parameters for GetV1XcloudInstancesIdSnapshots.
+type GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatus string
+
+// PostV1XcloudInstancesIdSnapshotsJSONBody defines parameters for PostV1XcloudInstancesIdSnapshots.
+type PostV1XcloudInstancesIdSnapshotsJSONBody struct {
+	Description *string `json:"description,omitempty"`
+	Name        *string `json:"name,omitempty"`
+}
+
+// PostV1XcloudInstancesIdSnapshots201JSONResponseBodyCostMode defines parameters for PostV1XcloudInstancesIdSnapshots.
+type PostV1XcloudInstancesIdSnapshots201JSONResponseBodyCostMode string
+
+// PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatform defines parameters for PostV1XcloudInstancesIdSnapshots.
+type PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatform string
+
+// PostV1XcloudInstancesIdSnapshots201JSONResponseBodySourceKind defines parameters for PostV1XcloudInstancesIdSnapshots.
+type PostV1XcloudInstancesIdSnapshots201JSONResponseBodySourceKind string
+
+// PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatus defines parameters for PostV1XcloudInstancesIdSnapshots.
+type PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatus string
+
 // PatchV1XcloudInstancesIdSshKeysJSONBody defines parameters for PatchV1XcloudInstancesIdSshKeys.
 type PatchV1XcloudInstancesIdSshKeysJSONBody struct {
 	SshKeyIds []openapi_types.UUID `json:"sshKeyIds"`
@@ -14683,6 +16490,9 @@ type PatchV1XcloudInstancesIdSshKeysJSONBody struct {
 
 // PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyAgentStatus defines parameters for PatchV1XcloudInstancesIdSshKeys.
 type PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyAgentStatus string
+
+// PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyCostMode defines parameters for PatchV1XcloudInstancesIdSshKeys.
+type PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyCostMode string
 
 // PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction defines parameters for PatchV1XcloudInstancesIdSshKeys.
 type PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyPendingAction string
@@ -14701,6 +16511,9 @@ type PutV1XcloudInstancesIdTagsJSONBody struct {
 	} `json:"tags"`
 }
 
+// GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataCostMode defines parameters for GetV1XcloudInstancesIdVolumes.
+type GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataCostMode string
+
 // GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState defines parameters for GetV1XcloudInstancesIdVolumes.
 type GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState string
 
@@ -14708,6 +16521,9 @@ type GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState string
 type PostV1XcloudInstancesIdVolumesJSONBody struct {
 	VolumeId openapi_types.UUID `json:"volumeId"`
 }
+
+// PostV1XcloudInstancesIdVolumes201JSONResponseBodyCostMode defines parameters for PostV1XcloudInstancesIdVolumes.
+type PostV1XcloudInstancesIdVolumes201JSONResponseBodyCostMode string
 
 // PostV1XcloudInstancesIdVolumes201JSONResponseBodyState defines parameters for PostV1XcloudInstancesIdVolumes.
 type PostV1XcloudInstancesIdVolumes201JSONResponseBodyState string
@@ -14722,14 +16538,23 @@ type GetV1XcloudNetworks200JSONResponseBodyDataSource string
 
 // PostV1XcloudNetworksJSONBody defines parameters for PostV1XcloudNetworks.
 type PostV1XcloudNetworksJSONBody struct {
-	Cidr     *string                  `json:"cidr,omitempty"`
-	Dhcp     *bool                    `json:"dhcp,omitempty"`
-	Gateway  *string                  `json:"gateway,omitempty"`
-	Labels   *map[string]string       `json:"labels,omitempty"`
-	Mode     *string                  `json:"mode,omitempty"`
-	Name     string                   `json:"name"`
-	RegionId openapi_types.UUID       `json:"regionId"`
-	Spec     *map[string]*interface{} `json:"spec,omitempty"`
+	Cidr *string `json:"cidr,omitempty"`
+	Dhcp *struct {
+		RangeEnd   string `json:"rangeEnd"`
+		RangeStart string `json:"rangeStart"`
+	} `json:"dhcp,omitempty"`
+	Gateway  *string            `json:"gateway,omitempty"`
+	Labels   *map[string]string `json:"labels,omitempty"`
+	Name     string             `json:"name"`
+	RegionId openapi_types.UUID `json:"regionId"`
+	Spec     *struct {
+		Dhcp *struct {
+			RangeEnd   string `json:"rangeEnd"`
+			RangeStart string `json:"rangeStart"`
+		} `json:"dhcp,omitempty"`
+		Gateway *string `json:"gateway,omitempty"`
+		Subnet  *string `json:"subnet,omitempty"`
+	} `json:"spec,omitempty"`
 }
 
 // PostV1XcloudNetworks201JSONResponseBodySource defines parameters for PostV1XcloudNetworks.
@@ -14740,10 +16565,97 @@ type DeleteV1XcloudNetworksNameParams struct {
 	RegionId openapi_types.UUID `form:"regionId" json:"regionId"`
 }
 
+// PatchV1XcloudNetworksNameJSONBody defines parameters for PatchV1XcloudNetworksName.
+type PatchV1XcloudNetworksNameJSONBody struct {
+	Dhcp *struct {
+		RangeEnd   string `json:"rangeEnd"`
+		RangeStart string `json:"rangeStart"`
+	} `json:"dhcp,omitempty"`
+	Gateway *string            `json:"gateway,omitempty"`
+	Labels  *map[string]string `json:"labels,omitempty"`
+	Subnet  *string            `json:"subnet,omitempty"`
+}
+
+// PatchV1XcloudNetworksNameParams defines parameters for PatchV1XcloudNetworksName.
+type PatchV1XcloudNetworksNameParams struct {
+	RegionId openapi_types.UUID `form:"regionId" json:"regionId"`
+}
+
+// PatchV1XcloudNetworksName200JSONResponseBodySource defines parameters for PatchV1XcloudNetworksName.
+type PatchV1XcloudNetworksName200JSONResponseBodySource string
+
+// GetV1XcloudSnapshotsParams defines parameters for GetV1XcloudSnapshots.
+type GetV1XcloudSnapshotsParams struct {
+	RegionId   *openapi_types.UUID                   `form:"regionId,omitempty" json:"regionId,omitempty"`
+	InstanceId *openapi_types.UUID                   `form:"instanceId,omitempty" json:"instanceId,omitempty"`
+	VolumeId   *openapi_types.UUID                   `form:"volumeId,omitempty" json:"volumeId,omitempty"`
+	SourceKind *GetV1XcloudSnapshotsParamsSourceKind `form:"sourceKind,omitempty" json:"sourceKind,omitempty"`
+}
+
+// GetV1XcloudSnapshotsParamsSourceKind defines parameters for GetV1XcloudSnapshots.
+type GetV1XcloudSnapshotsParamsSourceKind string
+
+// GetV1XcloudSnapshots200JSONResponseBodyDataCostMode defines parameters for GetV1XcloudSnapshots.
+type GetV1XcloudSnapshots200JSONResponseBodyDataCostMode string
+
+// GetV1XcloudSnapshots200JSONResponseBodyDataPlatform defines parameters for GetV1XcloudSnapshots.
+type GetV1XcloudSnapshots200JSONResponseBodyDataPlatform string
+
+// GetV1XcloudSnapshots200JSONResponseBodyDataSourceKind defines parameters for GetV1XcloudSnapshots.
+type GetV1XcloudSnapshots200JSONResponseBodyDataSourceKind string
+
+// GetV1XcloudSnapshots200JSONResponseBodyDataStatus defines parameters for GetV1XcloudSnapshots.
+type GetV1XcloudSnapshots200JSONResponseBodyDataStatus string
+
+// DeleteV1XcloudSnapshotsId202JSONResponseBodyCostMode defines parameters for DeleteV1XcloudSnapshotsId.
+type DeleteV1XcloudSnapshotsId202JSONResponseBodyCostMode string
+
+// DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatform defines parameters for DeleteV1XcloudSnapshotsId.
+type DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatform string
+
+// DeleteV1XcloudSnapshotsId202JSONResponseBodySourceKind defines parameters for DeleteV1XcloudSnapshotsId.
+type DeleteV1XcloudSnapshotsId202JSONResponseBodySourceKind string
+
+// DeleteV1XcloudSnapshotsId202JSONResponseBodyStatus defines parameters for DeleteV1XcloudSnapshotsId.
+type DeleteV1XcloudSnapshotsId202JSONResponseBodyStatus string
+
+// GetV1XcloudSnapshotsId200JSONResponseBodyCostMode defines parameters for GetV1XcloudSnapshotsId.
+type GetV1XcloudSnapshotsId200JSONResponseBodyCostMode string
+
+// GetV1XcloudSnapshotsId200JSONResponseBodyPlatform defines parameters for GetV1XcloudSnapshotsId.
+type GetV1XcloudSnapshotsId200JSONResponseBodyPlatform string
+
+// GetV1XcloudSnapshotsId200JSONResponseBodySourceKind defines parameters for GetV1XcloudSnapshotsId.
+type GetV1XcloudSnapshotsId200JSONResponseBodySourceKind string
+
+// GetV1XcloudSnapshotsId200JSONResponseBodyStatus defines parameters for GetV1XcloudSnapshotsId.
+type GetV1XcloudSnapshotsId200JSONResponseBodyStatus string
+
+// PatchV1XcloudSnapshotsIdJSONBody defines parameters for PatchV1XcloudSnapshotsId.
+type PatchV1XcloudSnapshotsIdJSONBody struct {
+	Description *string `json:"description,omitempty"`
+	Name        *string `json:"name,omitempty"`
+}
+
+// PatchV1XcloudSnapshotsId200JSONResponseBodyCostMode defines parameters for PatchV1XcloudSnapshotsId.
+type PatchV1XcloudSnapshotsId200JSONResponseBodyCostMode string
+
+// PatchV1XcloudSnapshotsId200JSONResponseBodyPlatform defines parameters for PatchV1XcloudSnapshotsId.
+type PatchV1XcloudSnapshotsId200JSONResponseBodyPlatform string
+
+// PatchV1XcloudSnapshotsId200JSONResponseBodySourceKind defines parameters for PatchV1XcloudSnapshotsId.
+type PatchV1XcloudSnapshotsId200JSONResponseBodySourceKind string
+
+// PatchV1XcloudSnapshotsId200JSONResponseBodyStatus defines parameters for PatchV1XcloudSnapshotsId.
+type PatchV1XcloudSnapshotsId200JSONResponseBodyStatus string
+
 // GetV1XcloudVolumesParams defines parameters for GetV1XcloudVolumes.
 type GetV1XcloudVolumesParams struct {
 	RegionId *openapi_types.UUID `form:"regionId,omitempty" json:"regionId,omitempty"`
 }
+
+// GetV1XcloudVolumes200JSONResponseBodyDataCostMode defines parameters for GetV1XcloudVolumes.
+type GetV1XcloudVolumes200JSONResponseBodyDataCostMode string
 
 // GetV1XcloudVolumes200JSONResponseBodyDataState defines parameters for GetV1XcloudVolumes.
 type GetV1XcloudVolumes200JSONResponseBodyDataState string
@@ -14754,10 +16666,17 @@ type PostV1XcloudVolumesJSONBody struct {
 	Name               string              `json:"name"`
 	RegionId           openapi_types.UUID  `json:"regionId"`
 	SizeGib            int                 `json:"sizeGib"`
+	SourceSnapshotId   *openapi_types.UUID `json:"sourceSnapshotId,omitempty"`
 }
+
+// PostV1XcloudVolumes201JSONResponseBodyCostMode defines parameters for PostV1XcloudVolumes.
+type PostV1XcloudVolumes201JSONResponseBodyCostMode string
 
 // PostV1XcloudVolumes201JSONResponseBodyState defines parameters for PostV1XcloudVolumes.
 type PostV1XcloudVolumes201JSONResponseBodyState string
+
+// GetV1XcloudVolumesId200JSONResponseBodyCostMode defines parameters for GetV1XcloudVolumesId.
+type GetV1XcloudVolumesId200JSONResponseBodyCostMode string
 
 // GetV1XcloudVolumesId200JSONResponseBodyState defines parameters for GetV1XcloudVolumesId.
 type GetV1XcloudVolumesId200JSONResponseBodyState string
@@ -14767,8 +16686,49 @@ type PostV1XcloudVolumesIdResizeJSONBody struct {
 	SizeGib int `json:"sizeGib"`
 }
 
+// PostV1XcloudVolumesIdResize200JSONResponseBodyCostMode defines parameters for PostV1XcloudVolumesIdResize.
+type PostV1XcloudVolumesIdResize200JSONResponseBodyCostMode string
+
 // PostV1XcloudVolumesIdResize200JSONResponseBodyState defines parameters for PostV1XcloudVolumesIdResize.
 type PostV1XcloudVolumesIdResize200JSONResponseBodyState string
+
+// PostV1XcloudVolumesIdRestoreJSONBody defines parameters for PostV1XcloudVolumesIdRestore.
+type PostV1XcloudVolumesIdRestoreJSONBody struct {
+	SnapshotId openapi_types.UUID `json:"snapshotId"`
+}
+
+// PostV1XcloudVolumesIdRestore202JSONResponseBodyRestoring defines parameters for PostV1XcloudVolumesIdRestore.
+type PostV1XcloudVolumesIdRestore202JSONResponseBodyRestoring bool
+
+// GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataCostMode defines parameters for GetV1XcloudVolumesIdSnapshots.
+type GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataCostMode string
+
+// GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatform defines parameters for GetV1XcloudVolumesIdSnapshots.
+type GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatform string
+
+// GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataSourceKind defines parameters for GetV1XcloudVolumesIdSnapshots.
+type GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataSourceKind string
+
+// GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatus defines parameters for GetV1XcloudVolumesIdSnapshots.
+type GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatus string
+
+// PostV1XcloudVolumesIdSnapshotsJSONBody defines parameters for PostV1XcloudVolumesIdSnapshots.
+type PostV1XcloudVolumesIdSnapshotsJSONBody struct {
+	Description *string `json:"description,omitempty"`
+	Name        *string `json:"name,omitempty"`
+}
+
+// PostV1XcloudVolumesIdSnapshots201JSONResponseBodyCostMode defines parameters for PostV1XcloudVolumesIdSnapshots.
+type PostV1XcloudVolumesIdSnapshots201JSONResponseBodyCostMode string
+
+// PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatform defines parameters for PostV1XcloudVolumesIdSnapshots.
+type PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatform string
+
+// PostV1XcloudVolumesIdSnapshots201JSONResponseBodySourceKind defines parameters for PostV1XcloudVolumesIdSnapshots.
+type PostV1XcloudVolumesIdSnapshots201JSONResponseBodySourceKind string
+
+// PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatus defines parameters for PostV1XcloudVolumesIdSnapshots.
+type PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatus string
 
 // PostV1ApiKeysJSONRequestBody defines body for PostV1ApiKeys for application/json ContentType.
 type PostV1ApiKeysJSONRequestBody PostV1ApiKeysJSONBody
@@ -14839,6 +16799,9 @@ type PostV1GithubActionsStacksVerifyInstallationJSONRequestBody PostV1GithubActi
 // PatchV1GithubActionsStacksIdJSONRequestBody defines body for PatchV1GithubActionsStacksId for application/json ContentType.
 type PatchV1GithubActionsStacksIdJSONRequestBody PatchV1GithubActionsStacksIdJSONBody
 
+// PostV1IdentityVerifyEmailJSONRequestBody defines body for PostV1IdentityVerifyEmail for application/json ContentType.
+type PostV1IdentityVerifyEmailJSONRequestBody PostV1IdentityVerifyEmailJSONBody
+
 // PostV1InvitationsJSONRequestBody defines body for PostV1Invitations for application/json ContentType.
 type PostV1InvitationsJSONRequestBody PostV1InvitationsJSONBody
 
@@ -14890,8 +16853,14 @@ type PostV1RegistryBootImageJSONRequestBody PostV1RegistryBootImageJSONBody
 // PostV1RegistryNamespaceJSONRequestBody defines body for PostV1RegistryNamespace for application/json ContentType.
 type PostV1RegistryNamespaceJSONRequestBody PostV1RegistryNamespaceJSONBody
 
+// PatchV1RegistryRepositoriesVisibilityJSONRequestBody defines body for PatchV1RegistryRepositoriesVisibility for application/json ContentType.
+type PatchV1RegistryRepositoriesVisibilityJSONRequestBody PatchV1RegistryRepositoriesVisibilityJSONBody
+
 // PostV1RegistryTokensJSONRequestBody defines body for PostV1RegistryTokens for application/json ContentType.
 type PostV1RegistryTokensJSONRequestBody PostV1RegistryTokensJSONBody
+
+// PatchV1RegistryTokensIdJSONRequestBody defines body for PatchV1RegistryTokensId for application/json ContentType.
+type PatchV1RegistryTokensIdJSONRequestBody PatchV1RegistryTokensIdJSONBody
 
 // PostV1ResourcesJSONRequestBody defines body for PostV1Resources for application/json ContentType.
 type PostV1ResourcesJSONRequestBody PostV1ResourcesJSONBody
@@ -15010,6 +16979,9 @@ type PostV1XcloudInstancesIdAgentExecJSONRequestBody PostV1XcloudInstancesIdAgen
 // PostV1XcloudInstancesIdBootModeJSONRequestBody defines body for PostV1XcloudInstancesIdBootMode for application/json ContentType.
 type PostV1XcloudInstancesIdBootModeJSONRequestBody PostV1XcloudInstancesIdBootModeJSONBody
 
+// PostV1XcloudInstancesIdDisplayInputJSONRequestBody defines body for PostV1XcloudInstancesIdDisplayInput for application/json ContentType.
+type PostV1XcloudInstancesIdDisplayInputJSONRequestBody PostV1XcloudInstancesIdDisplayInputJSONBody
+
 // PutV1XcloudInstancesIdPasswordJSONRequestBody defines body for PutV1XcloudInstancesIdPassword for application/json ContentType.
 type PutV1XcloudInstancesIdPasswordJSONRequestBody PutV1XcloudInstancesIdPasswordJSONBody
 
@@ -15019,8 +16991,14 @@ type PostV1XcloudInstancesIdPushImageJSONRequestBody PostV1XcloudInstancesIdPush
 // PostV1XcloudInstancesIdResizeJSONRequestBody defines body for PostV1XcloudInstancesIdResize for application/json ContentType.
 type PostV1XcloudInstancesIdResizeJSONRequestBody PostV1XcloudInstancesIdResizeJSONBody
 
+// PostV1XcloudInstancesIdRestoreJSONRequestBody defines body for PostV1XcloudInstancesIdRestore for application/json ContentType.
+type PostV1XcloudInstancesIdRestoreJSONRequestBody PostV1XcloudInstancesIdRestoreJSONBody
+
 // PutV1XcloudInstancesIdSecurityGroupsJSONRequestBody defines body for PutV1XcloudInstancesIdSecurityGroups for application/json ContentType.
 type PutV1XcloudInstancesIdSecurityGroupsJSONRequestBody PutV1XcloudInstancesIdSecurityGroupsJSONBody
+
+// PostV1XcloudInstancesIdSnapshotsJSONRequestBody defines body for PostV1XcloudInstancesIdSnapshots for application/json ContentType.
+type PostV1XcloudInstancesIdSnapshotsJSONRequestBody PostV1XcloudInstancesIdSnapshotsJSONBody
 
 // PatchV1XcloudInstancesIdSshKeysJSONRequestBody defines body for PatchV1XcloudInstancesIdSshKeys for application/json ContentType.
 type PatchV1XcloudInstancesIdSshKeysJSONRequestBody PatchV1XcloudInstancesIdSshKeysJSONBody
@@ -15034,11 +17012,23 @@ type PostV1XcloudInstancesIdVolumesJSONRequestBody PostV1XcloudInstancesIdVolume
 // PostV1XcloudNetworksJSONRequestBody defines body for PostV1XcloudNetworks for application/json ContentType.
 type PostV1XcloudNetworksJSONRequestBody PostV1XcloudNetworksJSONBody
 
+// PatchV1XcloudNetworksNameJSONRequestBody defines body for PatchV1XcloudNetworksName for application/json ContentType.
+type PatchV1XcloudNetworksNameJSONRequestBody PatchV1XcloudNetworksNameJSONBody
+
+// PatchV1XcloudSnapshotsIdJSONRequestBody defines body for PatchV1XcloudSnapshotsId for application/json ContentType.
+type PatchV1XcloudSnapshotsIdJSONRequestBody PatchV1XcloudSnapshotsIdJSONBody
+
 // PostV1XcloudVolumesJSONRequestBody defines body for PostV1XcloudVolumes for application/json ContentType.
 type PostV1XcloudVolumesJSONRequestBody PostV1XcloudVolumesJSONBody
 
 // PostV1XcloudVolumesIdResizeJSONRequestBody defines body for PostV1XcloudVolumesIdResize for application/json ContentType.
 type PostV1XcloudVolumesIdResizeJSONRequestBody PostV1XcloudVolumesIdResizeJSONBody
+
+// PostV1XcloudVolumesIdRestoreJSONRequestBody defines body for PostV1XcloudVolumesIdRestore for application/json ContentType.
+type PostV1XcloudVolumesIdRestoreJSONRequestBody PostV1XcloudVolumesIdRestoreJSONBody
+
+// PostV1XcloudVolumesIdSnapshotsJSONRequestBody defines body for PostV1XcloudVolumesIdSnapshots for application/json ContentType.
+type PostV1XcloudVolumesIdSnapshotsJSONRequestBody PostV1XcloudVolumesIdSnapshotsJSONBody
 
 // AsGetV1BuildkiteStacks200JSONResponseBodyDataDefaultImage0 returns the union data inside the GetV1BuildkiteStacks200JSONResponseBody_Data_DefaultImage as a GetV1BuildkiteStacks200JSONResponseBodyDataDefaultImage0
 func (t GetV1BuildkiteStacks200JSONResponseBody_Data_DefaultImage) AsGetV1BuildkiteStacks200JSONResponseBodyDataDefaultImage0() (GetV1BuildkiteStacks200JSONResponseBodyDataDefaultImage0, error) {
@@ -18334,6 +20324,172 @@ func (t *PostV1XcloudInstancesJSONBody_PendingElasticIp) UnmarshalJSON(b []byte)
 	return err
 }
 
+// AsPostV1XcloudInstancesIdDisplayInputJSONBodyActions0 returns the union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item as a PostV1XcloudInstancesIdDisplayInputJSONBodyActions0
+func (t PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) AsPostV1XcloudInstancesIdDisplayInputJSONBodyActions0() (PostV1XcloudInstancesIdDisplayInputJSONBodyActions0, error) {
+	var body PostV1XcloudInstancesIdDisplayInputJSONBodyActions0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromPostV1XcloudInstancesIdDisplayInputJSONBodyActions0 overwrites any union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item as the provided PostV1XcloudInstancesIdDisplayInputJSONBodyActions0
+func (t *PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) FromPostV1XcloudInstancesIdDisplayInputJSONBodyActions0(v PostV1XcloudInstancesIdDisplayInputJSONBodyActions0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergePostV1XcloudInstancesIdDisplayInputJSONBodyActions0 performs a merge with any union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item, using the provided PostV1XcloudInstancesIdDisplayInputJSONBodyActions0
+func (t *PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) MergePostV1XcloudInstancesIdDisplayInputJSONBodyActions0(v PostV1XcloudInstancesIdDisplayInputJSONBodyActions0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsPostV1XcloudInstancesIdDisplayInputJSONBodyActions1 returns the union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item as a PostV1XcloudInstancesIdDisplayInputJSONBodyActions1
+func (t PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) AsPostV1XcloudInstancesIdDisplayInputJSONBodyActions1() (PostV1XcloudInstancesIdDisplayInputJSONBodyActions1, error) {
+	var body PostV1XcloudInstancesIdDisplayInputJSONBodyActions1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromPostV1XcloudInstancesIdDisplayInputJSONBodyActions1 overwrites any union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item as the provided PostV1XcloudInstancesIdDisplayInputJSONBodyActions1
+func (t *PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) FromPostV1XcloudInstancesIdDisplayInputJSONBodyActions1(v PostV1XcloudInstancesIdDisplayInputJSONBodyActions1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergePostV1XcloudInstancesIdDisplayInputJSONBodyActions1 performs a merge with any union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item, using the provided PostV1XcloudInstancesIdDisplayInputJSONBodyActions1
+func (t *PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) MergePostV1XcloudInstancesIdDisplayInputJSONBodyActions1(v PostV1XcloudInstancesIdDisplayInputJSONBodyActions1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsPostV1XcloudInstancesIdDisplayInputJSONBodyActions2 returns the union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item as a PostV1XcloudInstancesIdDisplayInputJSONBodyActions2
+func (t PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) AsPostV1XcloudInstancesIdDisplayInputJSONBodyActions2() (PostV1XcloudInstancesIdDisplayInputJSONBodyActions2, error) {
+	var body PostV1XcloudInstancesIdDisplayInputJSONBodyActions2
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromPostV1XcloudInstancesIdDisplayInputJSONBodyActions2 overwrites any union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item as the provided PostV1XcloudInstancesIdDisplayInputJSONBodyActions2
+func (t *PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) FromPostV1XcloudInstancesIdDisplayInputJSONBodyActions2(v PostV1XcloudInstancesIdDisplayInputJSONBodyActions2) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergePostV1XcloudInstancesIdDisplayInputJSONBodyActions2 performs a merge with any union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item, using the provided PostV1XcloudInstancesIdDisplayInputJSONBodyActions2
+func (t *PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) MergePostV1XcloudInstancesIdDisplayInputJSONBodyActions2(v PostV1XcloudInstancesIdDisplayInputJSONBodyActions2) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsPostV1XcloudInstancesIdDisplayInputJSONBodyActions3 returns the union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item as a PostV1XcloudInstancesIdDisplayInputJSONBodyActions3
+func (t PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) AsPostV1XcloudInstancesIdDisplayInputJSONBodyActions3() (PostV1XcloudInstancesIdDisplayInputJSONBodyActions3, error) {
+	var body PostV1XcloudInstancesIdDisplayInputJSONBodyActions3
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromPostV1XcloudInstancesIdDisplayInputJSONBodyActions3 overwrites any union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item as the provided PostV1XcloudInstancesIdDisplayInputJSONBodyActions3
+func (t *PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) FromPostV1XcloudInstancesIdDisplayInputJSONBodyActions3(v PostV1XcloudInstancesIdDisplayInputJSONBodyActions3) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergePostV1XcloudInstancesIdDisplayInputJSONBodyActions3 performs a merge with any union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item, using the provided PostV1XcloudInstancesIdDisplayInputJSONBodyActions3
+func (t *PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) MergePostV1XcloudInstancesIdDisplayInputJSONBodyActions3(v PostV1XcloudInstancesIdDisplayInputJSONBodyActions3) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsPostV1XcloudInstancesIdDisplayInputJSONBodyActions4 returns the union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item as a PostV1XcloudInstancesIdDisplayInputJSONBodyActions4
+func (t PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) AsPostV1XcloudInstancesIdDisplayInputJSONBodyActions4() (PostV1XcloudInstancesIdDisplayInputJSONBodyActions4, error) {
+	var body PostV1XcloudInstancesIdDisplayInputJSONBodyActions4
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromPostV1XcloudInstancesIdDisplayInputJSONBodyActions4 overwrites any union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item as the provided PostV1XcloudInstancesIdDisplayInputJSONBodyActions4
+func (t *PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) FromPostV1XcloudInstancesIdDisplayInputJSONBodyActions4(v PostV1XcloudInstancesIdDisplayInputJSONBodyActions4) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergePostV1XcloudInstancesIdDisplayInputJSONBodyActions4 performs a merge with any union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item, using the provided PostV1XcloudInstancesIdDisplayInputJSONBodyActions4
+func (t *PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) MergePostV1XcloudInstancesIdDisplayInputJSONBodyActions4(v PostV1XcloudInstancesIdDisplayInputJSONBodyActions4) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsPostV1XcloudInstancesIdDisplayInputJSONBodyActions5 returns the union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item as a PostV1XcloudInstancesIdDisplayInputJSONBodyActions5
+func (t PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) AsPostV1XcloudInstancesIdDisplayInputJSONBodyActions5() (PostV1XcloudInstancesIdDisplayInputJSONBodyActions5, error) {
+	var body PostV1XcloudInstancesIdDisplayInputJSONBodyActions5
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromPostV1XcloudInstancesIdDisplayInputJSONBodyActions5 overwrites any union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item as the provided PostV1XcloudInstancesIdDisplayInputJSONBodyActions5
+func (t *PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) FromPostV1XcloudInstancesIdDisplayInputJSONBodyActions5(v PostV1XcloudInstancesIdDisplayInputJSONBodyActions5) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergePostV1XcloudInstancesIdDisplayInputJSONBodyActions5 performs a merge with any union data inside the PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item, using the provided PostV1XcloudInstancesIdDisplayInputJSONBodyActions5
+func (t *PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) MergePostV1XcloudInstancesIdDisplayInputJSONBodyActions5(v PostV1XcloudInstancesIdDisplayInputJSONBodyActions5) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *PostV1XcloudInstancesIdDisplayInputJSONBody_Actions_Item) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
 // AsPostV1XcloudInstancesIdPushImageJSONBodyAuth0 returns the union data inside the PostV1XcloudInstancesIdPushImageJSONBody_Auth as a PostV1XcloudInstancesIdPushImageJSONBodyAuth0
 func (t PostV1XcloudInstancesIdPushImageJSONBody_Auth) AsPostV1XcloudInstancesIdPushImageJSONBodyAuth0() (PostV1XcloudInstancesIdPushImageJSONBodyAuth0, error) {
 	var body PostV1XcloudInstancesIdPushImageJSONBodyAuth0
@@ -18576,8 +20732,14 @@ type ClientInterface interface {
 	// GetV1BillingLedger request
 	GetV1BillingLedger(ctx context.Context, params *GetV1BillingLedgerParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetV1BillingStatement request
+	GetV1BillingStatement(ctx context.Context, params *GetV1BillingStatementParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetV1BillingStripe request
 	GetV1BillingStripe(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetV1BillingStripeAddressSuggestion request
+	GetV1BillingStripeAddressSuggestion(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1BillingStripeAutoRecharge request
 	GetV1BillingStripeAutoRecharge(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -18605,9 +20767,9 @@ type ClientInterface interface {
 	PostV1BillingStripeSetup(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostV1BillingStripeTopupWithBody request with any body
-	PostV1BillingStripeTopupWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1BillingStripeTopupWithBody(ctx context.Context, params *PostV1BillingStripeTopupParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	PostV1BillingStripeTopup(ctx context.Context, body PostV1BillingStripeTopupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostV1BillingStripeTopup(ctx context.Context, params *PostV1BillingStripeTopupParams, body PostV1BillingStripeTopupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1BillingSummary request
 	GetV1BillingSummary(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -18792,6 +20954,11 @@ type ClientInterface interface {
 	// GetV1Healthz request
 	GetV1Healthz(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// PostV1IdentityVerifyEmailWithBody request with any body
+	PostV1IdentityVerifyEmailWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PostV1IdentityVerifyEmail(ctx context.Context, body PostV1IdentityVerifyEmailJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetV1Invitations request
 	GetV1Invitations(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -18860,6 +21027,18 @@ type ClientInterface interface {
 	PatchV1MeWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	PatchV1Me(ctx context.Context, body PatchV1MeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetV1MeIdentity request
+	GetV1MeIdentity(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PostV1MeIdentityEmail request
+	PostV1MeIdentityEmail(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PostV1MeIdentityManualReview request
+	PostV1MeIdentityManualReview(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PostV1MeIdentitySession request
+	PostV1MeIdentitySession(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1MePreferences request
 	GetV1MePreferences(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -18979,6 +21158,11 @@ type ClientInterface interface {
 	// GetV1RegistryRepositories request
 	GetV1RegistryRepositories(ctx context.Context, params *GetV1RegistryRepositoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// PatchV1RegistryRepositoriesVisibilityWithBody request with any body
+	PatchV1RegistryRepositoriesVisibilityWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PatchV1RegistryRepositoriesVisibility(ctx context.Context, body PatchV1RegistryRepositoriesVisibilityJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// DeleteV1RegistryRepositoryTags request
 	DeleteV1RegistryRepositoryTags(ctx context.Context, params *DeleteV1RegistryRepositoryTagsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -18995,6 +21179,11 @@ type ClientInterface interface {
 
 	// DeleteV1RegistryTokensId request
 	DeleteV1RegistryTokensId(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PatchV1RegistryTokensIdWithBody request with any body
+	PatchV1RegistryTokensIdWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PatchV1RegistryTokensId(ctx context.Context, id openapi_types.UUID, body PatchV1RegistryTokensIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetV1RegistryUsage request
 	GetV1RegistryUsage(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -19344,6 +21533,14 @@ type ClientInterface interface {
 
 	PostV1XcloudInstancesIdBootMode(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdBootModeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// PostV1XcloudInstancesIdDisplayInputWithBody request with any body
+	PostV1XcloudInstancesIdDisplayInputWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PostV1XcloudInstancesIdDisplayInput(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdDisplayInputJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetV1XcloudInstancesIdDisplayScreenshot request
+	GetV1XcloudInstancesIdDisplayScreenshot(ctx context.Context, id openapi_types.UUID, params *GetV1XcloudInstancesIdDisplayScreenshotParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetV1XcloudInstancesIdMetrics request
 	GetV1XcloudInstancesIdMetrics(ctx context.Context, id openapi_types.UUID, params *GetV1XcloudInstancesIdMetricsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -19365,6 +21562,11 @@ type ClientInterface interface {
 
 	PostV1XcloudInstancesIdResize(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdResizeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// PostV1XcloudInstancesIdRestoreWithBody request with any body
+	PostV1XcloudInstancesIdRestoreWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PostV1XcloudInstancesIdRestore(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdRestoreJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// PutV1XcloudInstancesIdSecurityGroupsWithBody request with any body
 	PutV1XcloudInstancesIdSecurityGroupsWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -19372,6 +21574,14 @@ type ClientInterface interface {
 
 	// PostV1XcloudInstancesIdShutdown request
 	PostV1XcloudInstancesIdShutdown(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetV1XcloudInstancesIdSnapshots request
+	GetV1XcloudInstancesIdSnapshots(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PostV1XcloudInstancesIdSnapshotsWithBody request with any body
+	PostV1XcloudInstancesIdSnapshotsWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PostV1XcloudInstancesIdSnapshots(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdSnapshotsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PatchV1XcloudInstancesIdSshKeysWithBody request with any body
 	PatchV1XcloudInstancesIdSshKeysWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -19417,6 +21627,25 @@ type ClientInterface interface {
 	// DeleteV1XcloudNetworksName request
 	DeleteV1XcloudNetworksName(ctx context.Context, name string, params *DeleteV1XcloudNetworksNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// PatchV1XcloudNetworksNameWithBody request with any body
+	PatchV1XcloudNetworksNameWithBody(ctx context.Context, name string, params *PatchV1XcloudNetworksNameParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PatchV1XcloudNetworksName(ctx context.Context, name string, params *PatchV1XcloudNetworksNameParams, body PatchV1XcloudNetworksNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetV1XcloudSnapshots request
+	GetV1XcloudSnapshots(ctx context.Context, params *GetV1XcloudSnapshotsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// DeleteV1XcloudSnapshotsId request
+	DeleteV1XcloudSnapshotsId(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetV1XcloudSnapshotsId request
+	GetV1XcloudSnapshotsId(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PatchV1XcloudSnapshotsIdWithBody request with any body
+	PatchV1XcloudSnapshotsIdWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PatchV1XcloudSnapshotsId(ctx context.Context, id openapi_types.UUID, body PatchV1XcloudSnapshotsIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetV1XcloudVolumes request
 	GetV1XcloudVolumes(ctx context.Context, params *GetV1XcloudVolumesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -19435,6 +21664,19 @@ type ClientInterface interface {
 	PostV1XcloudVolumesIdResizeWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	PostV1XcloudVolumesIdResize(ctx context.Context, id openapi_types.UUID, body PostV1XcloudVolumesIdResizeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PostV1XcloudVolumesIdRestoreWithBody request with any body
+	PostV1XcloudVolumesIdRestoreWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PostV1XcloudVolumesIdRestore(ctx context.Context, id openapi_types.UUID, body PostV1XcloudVolumesIdRestoreJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetV1XcloudVolumesIdSnapshots request
+	GetV1XcloudVolumesIdSnapshots(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PostV1XcloudVolumesIdSnapshotsWithBody request with any body
+	PostV1XcloudVolumesIdSnapshotsWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PostV1XcloudVolumesIdSnapshots(ctx context.Context, id openapi_types.UUID, body PostV1XcloudVolumesIdSnapshotsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
 
 func (c *Client) GetV1ApiKeys(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -19677,8 +21919,32 @@ func (c *Client) GetV1BillingLedger(ctx context.Context, params *GetV1BillingLed
 	return c.Client.Do(req)
 }
 
+func (c *Client) GetV1BillingStatement(ctx context.Context, params *GetV1BillingStatementParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1BillingStatementRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 func (c *Client) GetV1BillingStripe(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1BillingStripeRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetV1BillingStripeAddressSuggestion(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1BillingStripeAddressSuggestionRequest(c.Server)
 	if err != nil {
 		return nil, err
 	}
@@ -19797,8 +22063,8 @@ func (c *Client) PostV1BillingStripeSetup(ctx context.Context, reqEditors ...Req
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1BillingStripeTopupWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewPostV1BillingStripeTopupRequestWithBody(c.Server, contentType, body)
+func (c *Client) PostV1BillingStripeTopupWithBody(ctx context.Context, params *PostV1BillingStripeTopupParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1BillingStripeTopupRequestWithBody(c.Server, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -19809,8 +22075,8 @@ func (c *Client) PostV1BillingStripeTopupWithBody(ctx context.Context, contentTy
 	return c.Client.Do(req)
 }
 
-func (c *Client) PostV1BillingStripeTopup(ctx context.Context, body PostV1BillingStripeTopupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewPostV1BillingStripeTopupRequest(c.Server, body)
+func (c *Client) PostV1BillingStripeTopup(ctx context.Context, params *PostV1BillingStripeTopupParams, body PostV1BillingStripeTopupJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1BillingStripeTopupRequest(c.Server, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -20613,6 +22879,30 @@ func (c *Client) GetV1Healthz(ctx context.Context, reqEditors ...RequestEditorFn
 	return c.Client.Do(req)
 }
 
+func (c *Client) PostV1IdentityVerifyEmailWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1IdentityVerifyEmailRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1IdentityVerifyEmail(ctx context.Context, body PostV1IdentityVerifyEmailJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1IdentityVerifyEmailRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 func (c *Client) GetV1Invitations(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1InvitationsRequest(c.Server)
 	if err != nil {
@@ -20903,6 +23193,54 @@ func (c *Client) PatchV1MeWithBody(ctx context.Context, contentType string, body
 
 func (c *Client) PatchV1Me(ctx context.Context, body PatchV1MeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchV1MeRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetV1MeIdentity(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1MeIdentityRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1MeIdentityEmail(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1MeIdentityEmailRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1MeIdentityManualReview(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1MeIdentityManualReviewRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1MeIdentitySession(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1MeIdentitySessionRequest(c.Server)
 	if err != nil {
 		return nil, err
 	}
@@ -21429,6 +23767,30 @@ func (c *Client) GetV1RegistryRepositories(ctx context.Context, params *GetV1Reg
 	return c.Client.Do(req)
 }
 
+func (c *Client) PatchV1RegistryRepositoriesVisibilityWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPatchV1RegistryRepositoriesVisibilityRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PatchV1RegistryRepositoriesVisibility(ctx context.Context, body PatchV1RegistryRepositoriesVisibilityJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPatchV1RegistryRepositoriesVisibilityRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 func (c *Client) DeleteV1RegistryRepositoryTags(ctx context.Context, params *DeleteV1RegistryRepositoryTagsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1RegistryRepositoryTagsRequest(c.Server, params)
 	if err != nil {
@@ -21491,6 +23853,30 @@ func (c *Client) PostV1RegistryTokens(ctx context.Context, body PostV1RegistryTo
 
 func (c *Client) DeleteV1RegistryTokensId(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteV1RegistryTokensIdRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PatchV1RegistryTokensIdWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPatchV1RegistryTokensIdRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PatchV1RegistryTokensId(ctx context.Context, id openapi_types.UUID, body PatchV1RegistryTokensIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPatchV1RegistryTokensIdRequest(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -23049,6 +25435,42 @@ func (c *Client) PostV1XcloudInstancesIdBootMode(ctx context.Context, id openapi
 	return c.Client.Do(req)
 }
 
+func (c *Client) PostV1XcloudInstancesIdDisplayInputWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1XcloudInstancesIdDisplayInputRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1XcloudInstancesIdDisplayInput(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdDisplayInputJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1XcloudInstancesIdDisplayInputRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetV1XcloudInstancesIdDisplayScreenshot(ctx context.Context, id openapi_types.UUID, params *GetV1XcloudInstancesIdDisplayScreenshotParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1XcloudInstancesIdDisplayScreenshotRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 func (c *Client) GetV1XcloudInstancesIdMetrics(ctx context.Context, id openapi_types.UUID, params *GetV1XcloudInstancesIdMetricsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1XcloudInstancesIdMetricsRequest(c.Server, id, params)
 	if err != nil {
@@ -23145,6 +25567,30 @@ func (c *Client) PostV1XcloudInstancesIdResize(ctx context.Context, id openapi_t
 	return c.Client.Do(req)
 }
 
+func (c *Client) PostV1XcloudInstancesIdRestoreWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1XcloudInstancesIdRestoreRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1XcloudInstancesIdRestore(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdRestoreJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1XcloudInstancesIdRestoreRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 func (c *Client) PutV1XcloudInstancesIdSecurityGroupsWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPutV1XcloudInstancesIdSecurityGroupsRequestWithBody(c.Server, id, contentType, body)
 	if err != nil {
@@ -23171,6 +25617,42 @@ func (c *Client) PutV1XcloudInstancesIdSecurityGroups(ctx context.Context, id op
 
 func (c *Client) PostV1XcloudInstancesIdShutdown(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1XcloudInstancesIdShutdownRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetV1XcloudInstancesIdSnapshots(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1XcloudInstancesIdSnapshotsRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1XcloudInstancesIdSnapshotsWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1XcloudInstancesIdSnapshotsRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1XcloudInstancesIdSnapshots(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdSnapshotsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1XcloudInstancesIdSnapshotsRequest(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -23373,6 +25855,90 @@ func (c *Client) DeleteV1XcloudNetworksName(ctx context.Context, name string, pa
 	return c.Client.Do(req)
 }
 
+func (c *Client) PatchV1XcloudNetworksNameWithBody(ctx context.Context, name string, params *PatchV1XcloudNetworksNameParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPatchV1XcloudNetworksNameRequestWithBody(c.Server, name, params, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PatchV1XcloudNetworksName(ctx context.Context, name string, params *PatchV1XcloudNetworksNameParams, body PatchV1XcloudNetworksNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPatchV1XcloudNetworksNameRequest(c.Server, name, params, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetV1XcloudSnapshots(ctx context.Context, params *GetV1XcloudSnapshotsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1XcloudSnapshotsRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) DeleteV1XcloudSnapshotsId(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteV1XcloudSnapshotsIdRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetV1XcloudSnapshotsId(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1XcloudSnapshotsIdRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PatchV1XcloudSnapshotsIdWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPatchV1XcloudSnapshotsIdRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PatchV1XcloudSnapshotsId(ctx context.Context, id openapi_types.UUID, body PatchV1XcloudSnapshotsIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPatchV1XcloudSnapshotsIdRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
 func (c *Client) GetV1XcloudVolumes(ctx context.Context, params *GetV1XcloudVolumesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetV1XcloudVolumesRequest(c.Server, params)
 	if err != nil {
@@ -23447,6 +26013,66 @@ func (c *Client) PostV1XcloudVolumesIdResizeWithBody(ctx context.Context, id ope
 
 func (c *Client) PostV1XcloudVolumesIdResize(ctx context.Context, id openapi_types.UUID, body PostV1XcloudVolumesIdResizeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPostV1XcloudVolumesIdResizeRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1XcloudVolumesIdRestoreWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1XcloudVolumesIdRestoreRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1XcloudVolumesIdRestore(ctx context.Context, id openapi_types.UUID, body PostV1XcloudVolumesIdRestoreJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1XcloudVolumesIdRestoreRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetV1XcloudVolumesIdSnapshots(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetV1XcloudVolumesIdSnapshotsRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1XcloudVolumesIdSnapshotsWithBody(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1XcloudVolumesIdSnapshotsRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PostV1XcloudVolumesIdSnapshots(ctx context.Context, id openapi_types.UUID, body PostV1XcloudVolumesIdSnapshotsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostV1XcloudVolumesIdSnapshotsRequest(c.Server, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -24059,6 +26685,72 @@ func NewGetV1BillingLedgerRequest(server string, params *GetV1BillingLedgerParam
 	return req, nil
 }
 
+// NewGetV1BillingStatementRequest generates requests for GetV1BillingStatement
+func NewGetV1BillingStatementRequest(server string, params *GetV1BillingStatementParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/billing/statement")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Limit != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "limit", *params.Limit, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.Offset != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "offset", *params.Offset, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetV1BillingStripeRequest generates requests for GetV1BillingStripe
 func NewGetV1BillingStripeRequest(server string) (*http.Request, error) {
 	var err error
@@ -24069,6 +26761,33 @@ func NewGetV1BillingStripeRequest(server string) (*http.Request, error) {
 	}
 
 	operationPath := fmt.Sprintf("/v1/billing/stripe")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetV1BillingStripeAddressSuggestionRequest generates requests for GetV1BillingStripeAddressSuggestion
+func NewGetV1BillingStripeAddressSuggestionRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/billing/stripe/address-suggestion")
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -24316,18 +27035,18 @@ func NewPostV1BillingStripeSetupRequest(server string) (*http.Request, error) {
 }
 
 // NewPostV1BillingStripeTopupRequest calls the generic PostV1BillingStripeTopup builder with application/json body
-func NewPostV1BillingStripeTopupRequest(server string, body PostV1BillingStripeTopupJSONRequestBody) (*http.Request, error) {
+func NewPostV1BillingStripeTopupRequest(server string, params *PostV1BillingStripeTopupParams, body PostV1BillingStripeTopupJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewPostV1BillingStripeTopupRequestWithBody(server, "application/json", bodyReader)
+	return NewPostV1BillingStripeTopupRequestWithBody(server, params, "application/json", bodyReader)
 }
 
 // NewPostV1BillingStripeTopupRequestWithBody generates requests for PostV1BillingStripeTopup with any type of body
-func NewPostV1BillingStripeTopupRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+func NewPostV1BillingStripeTopupRequestWithBody(server string, params *PostV1BillingStripeTopupParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -24351,6 +27070,21 @@ func NewPostV1BillingStripeTopupRequestWithBody(server string, contentType strin
 	}
 
 	req.Header.Add("Content-Type", contentType)
+
+	if params != nil {
+
+		if params.IdempotencyKey != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "idempotency-key", *params.IdempotencyKey, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("idempotency-key", headerParam0)
+		}
+
+	}
 
 	return req, nil
 }
@@ -26652,6 +29386,46 @@ func NewGetV1HealthzRequest(server string) (*http.Request, error) {
 	return req, nil
 }
 
+// NewPostV1IdentityVerifyEmailRequest calls the generic PostV1IdentityVerifyEmail builder with application/json body
+func NewPostV1IdentityVerifyEmailRequest(server string, body PostV1IdentityVerifyEmailJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPostV1IdentityVerifyEmailRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewPostV1IdentityVerifyEmailRequestWithBody generates requests for PostV1IdentityVerifyEmail with any type of body
+func NewPostV1IdentityVerifyEmailRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/identity/verify-email")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewGetV1InvitationsRequest generates requests for GetV1Invitations
 func NewGetV1InvitationsRequest(server string) (*http.Request, error) {
 	var err error
@@ -27404,6 +30178,114 @@ func NewPatchV1MeRequestWithBody(server string, contentType string, body io.Read
 	}
 
 	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewGetV1MeIdentityRequest generates requests for GetV1MeIdentity
+func NewGetV1MeIdentityRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/me/identity")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewPostV1MeIdentityEmailRequest generates requests for PostV1MeIdentityEmail
+func NewPostV1MeIdentityEmailRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/me/identity/email")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewPostV1MeIdentityManualReviewRequest generates requests for PostV1MeIdentityManualReview
+func NewPostV1MeIdentityManualReviewRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/me/identity/manual-review")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewPostV1MeIdentitySessionRequest generates requests for PostV1MeIdentitySession
+func NewPostV1MeIdentitySessionRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/me/identity/session")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
 
 	return req, nil
 }
@@ -28652,6 +31534,46 @@ func NewGetV1RegistryRepositoriesRequest(server string, params *GetV1RegistryRep
 	return req, nil
 }
 
+// NewPatchV1RegistryRepositoriesVisibilityRequest calls the generic PatchV1RegistryRepositoriesVisibility builder with application/json body
+func NewPatchV1RegistryRepositoriesVisibilityRequest(server string, body PatchV1RegistryRepositoriesVisibilityJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPatchV1RegistryRepositoriesVisibilityRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewPatchV1RegistryRepositoriesVisibilityRequestWithBody generates requests for PatchV1RegistryRepositoriesVisibility with any type of body
+func NewPatchV1RegistryRepositoriesVisibilityRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/registry/repositories/visibility")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewDeleteV1RegistryRepositoryTagsRequest generates requests for DeleteV1RegistryRepositoryTags
 func NewDeleteV1RegistryRepositoryTagsRequest(server string, params *DeleteV1RegistryRepositoryTagsParams) (*http.Request, error) {
 	var err error
@@ -28873,6 +31795,53 @@ func NewDeleteV1RegistryTokensIdRequest(server string, id openapi_types.UUID) (*
 	if err != nil {
 		return nil, err
 	}
+
+	return req, nil
+}
+
+// NewPatchV1RegistryTokensIdRequest calls the generic PatchV1RegistryTokensId builder with application/json body
+func NewPatchV1RegistryTokensIdRequest(server string, id openapi_types.UUID, body PatchV1RegistryTokensIdJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPatchV1RegistryTokensIdRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewPatchV1RegistryTokensIdRequestWithBody generates requests for PatchV1RegistryTokensId with any type of body
+func NewPatchV1RegistryTokensIdRequestWithBody(server string, id openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/registry/tokens/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
@@ -32031,6 +35000,18 @@ func NewGetV1XcloudFlavorsRequest(server string, params *GetV1XcloudFlavorsParam
 
 		}
 
+		if params.Platform != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "platform", *params.Platform, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
 		if encoded := queryValues.Encode(); encoded != "" {
 			rawQueryFragments = append(rawQueryFragments, encoded)
 		}
@@ -32473,6 +35454,18 @@ func NewDeleteV1XcloudInstancesIdRequest(server string, id openapi_types.UUID, p
 		if params.ReleaseElasticIps != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "releaseElasticIps", *params.ReleaseElasticIps, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.DeleteSnapshots != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "deleteSnapshots", *params.DeleteSnapshots, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
 				return nil, err
 			} else {
 				for _, qp := range strings.Split(queryFrag, "&") {
@@ -32948,6 +35941,114 @@ func NewPostV1XcloudInstancesIdBootModeRequestWithBody(server string, id openapi
 	return req, nil
 }
 
+// NewPostV1XcloudInstancesIdDisplayInputRequest calls the generic PostV1XcloudInstancesIdDisplayInput builder with application/json body
+func NewPostV1XcloudInstancesIdDisplayInputRequest(server string, id openapi_types.UUID, body PostV1XcloudInstancesIdDisplayInputJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPostV1XcloudInstancesIdDisplayInputRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewPostV1XcloudInstancesIdDisplayInputRequestWithBody generates requests for PostV1XcloudInstancesIdDisplayInput with any type of body
+func NewPostV1XcloudInstancesIdDisplayInputRequestWithBody(server string, id openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/xcloud/instances/%s/display/input", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewGetV1XcloudInstancesIdDisplayScreenshotRequest generates requests for GetV1XcloudInstancesIdDisplayScreenshot
+func NewGetV1XcloudInstancesIdDisplayScreenshotRequest(server string, id openapi_types.UUID, params *GetV1XcloudInstancesIdDisplayScreenshotParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/xcloud/instances/%s/display/screenshot", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Scale != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scale", *params.Scale, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 // NewGetV1XcloudInstancesIdMetricsRequest generates requests for GetV1XcloudInstancesIdMetrics
 func NewGetV1XcloudInstancesIdMetricsRequest(server string, id openapi_types.UUID, params *GetV1XcloudInstancesIdMetricsParams) (*http.Request, error) {
 	var err error
@@ -33184,6 +36285,53 @@ func NewPostV1XcloudInstancesIdResizeRequestWithBody(server string, id openapi_t
 	return req, nil
 }
 
+// NewPostV1XcloudInstancesIdRestoreRequest calls the generic PostV1XcloudInstancesIdRestore builder with application/json body
+func NewPostV1XcloudInstancesIdRestoreRequest(server string, id openapi_types.UUID, body PostV1XcloudInstancesIdRestoreJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPostV1XcloudInstancesIdRestoreRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewPostV1XcloudInstancesIdRestoreRequestWithBody generates requests for PostV1XcloudInstancesIdRestore with any type of body
+func NewPostV1XcloudInstancesIdRestoreRequestWithBody(server string, id openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/xcloud/instances/%s/restore", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewPutV1XcloudInstancesIdSecurityGroupsRequest calls the generic PutV1XcloudInstancesIdSecurityGroups builder with application/json body
 func NewPutV1XcloudInstancesIdSecurityGroupsRequest(server string, id openapi_types.UUID, body PutV1XcloudInstancesIdSecurityGroupsJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
@@ -33261,6 +36409,87 @@ func NewPostV1XcloudInstancesIdShutdownRequest(server string, id openapi_types.U
 	if err != nil {
 		return nil, err
 	}
+
+	return req, nil
+}
+
+// NewGetV1XcloudInstancesIdSnapshotsRequest generates requests for GetV1XcloudInstancesIdSnapshots
+func NewGetV1XcloudInstancesIdSnapshotsRequest(server string, id openapi_types.UUID) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/xcloud/instances/%s/snapshots", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewPostV1XcloudInstancesIdSnapshotsRequest calls the generic PostV1XcloudInstancesIdSnapshots builder with application/json body
+func NewPostV1XcloudInstancesIdSnapshotsRequest(server string, id openapi_types.UUID, body PostV1XcloudInstancesIdSnapshotsJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPostV1XcloudInstancesIdSnapshotsRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewPostV1XcloudInstancesIdSnapshotsRequestWithBody generates requests for PostV1XcloudInstancesIdSnapshots with any type of body
+func NewPostV1XcloudInstancesIdSnapshotsRequestWithBody(server string, id openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/xcloud/instances/%s/snapshots", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
@@ -33768,6 +36997,281 @@ func NewDeleteV1XcloudNetworksNameRequest(server string, name string, params *De
 	return req, nil
 }
 
+// NewPatchV1XcloudNetworksNameRequest calls the generic PatchV1XcloudNetworksName builder with application/json body
+func NewPatchV1XcloudNetworksNameRequest(server string, name string, params *PatchV1XcloudNetworksNameParams, body PatchV1XcloudNetworksNameJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPatchV1XcloudNetworksNameRequestWithBody(server, name, params, "application/json", bodyReader)
+}
+
+// NewPatchV1XcloudNetworksNameRequestWithBody generates requests for PatchV1XcloudNetworksName with any type of body
+func NewPatchV1XcloudNetworksNameRequestWithBody(server string, name string, params *PatchV1XcloudNetworksNameParams, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "name", name, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/xcloud/networks/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if queryFrag, err := runtime.StyleParamWithOptions("form", true, "regionId", params.RegionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: "uuid"}); err != nil {
+			return nil, err
+		} else {
+			for _, qp := range strings.Split(queryFrag, "&") {
+				rawQueryFragments = append(rawQueryFragments, qp)
+			}
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewGetV1XcloudSnapshotsRequest generates requests for GetV1XcloudSnapshots
+func NewGetV1XcloudSnapshotsRequest(server string, params *GetV1XcloudSnapshotsParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/xcloud/snapshots")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.RegionId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "regionId", *params.RegionId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: "uuid"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.InstanceId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "instanceId", *params.InstanceId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: "uuid"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.VolumeId != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "volumeId", *params.VolumeId, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: "uuid"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if params.SourceKind != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "sourceKind", *params.SourceKind, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewDeleteV1XcloudSnapshotsIdRequest generates requests for DeleteV1XcloudSnapshotsId
+func NewDeleteV1XcloudSnapshotsIdRequest(server string, id openapi_types.UUID) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/xcloud/snapshots/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodDelete, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetV1XcloudSnapshotsIdRequest generates requests for GetV1XcloudSnapshotsId
+func NewGetV1XcloudSnapshotsIdRequest(server string, id openapi_types.UUID) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/xcloud/snapshots/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewPatchV1XcloudSnapshotsIdRequest calls the generic PatchV1XcloudSnapshotsId builder with application/json body
+func NewPatchV1XcloudSnapshotsIdRequest(server string, id openapi_types.UUID, body PatchV1XcloudSnapshotsIdJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPatchV1XcloudSnapshotsIdRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewPatchV1XcloudSnapshotsIdRequestWithBody generates requests for PatchV1XcloudSnapshotsId with any type of body
+func NewPatchV1XcloudSnapshotsIdRequestWithBody(server string, id openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/xcloud/snapshots/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPatch, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewGetV1XcloudVolumesRequest generates requests for GetV1XcloudVolumes
 func NewGetV1XcloudVolumesRequest(server string, params *GetV1XcloudVolumesParams) (*http.Request, error) {
 	var err error
@@ -33977,6 +37481,134 @@ func NewPostV1XcloudVolumesIdResizeRequestWithBody(server string, id openapi_typ
 	return req, nil
 }
 
+// NewPostV1XcloudVolumesIdRestoreRequest calls the generic PostV1XcloudVolumesIdRestore builder with application/json body
+func NewPostV1XcloudVolumesIdRestoreRequest(server string, id openapi_types.UUID, body PostV1XcloudVolumesIdRestoreJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPostV1XcloudVolumesIdRestoreRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewPostV1XcloudVolumesIdRestoreRequestWithBody generates requests for PostV1XcloudVolumesIdRestore with any type of body
+func NewPostV1XcloudVolumesIdRestoreRequestWithBody(server string, id openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/xcloud/volumes/%s/restore", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewGetV1XcloudVolumesIdSnapshotsRequest generates requests for GetV1XcloudVolumesIdSnapshots
+func NewGetV1XcloudVolumesIdSnapshotsRequest(server string, id openapi_types.UUID) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/xcloud/volumes/%s/snapshots", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewPostV1XcloudVolumesIdSnapshotsRequest calls the generic PostV1XcloudVolumesIdSnapshots builder with application/json body
+func NewPostV1XcloudVolumesIdSnapshotsRequest(server string, id openapi_types.UUID, body PostV1XcloudVolumesIdSnapshotsJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPostV1XcloudVolumesIdSnapshotsRequestWithBody(server, id, "application/json", bodyReader)
+}
+
+// NewPostV1XcloudVolumesIdSnapshotsRequestWithBody generates requests for PostV1XcloudVolumesIdSnapshots with any type of body
+func NewPostV1XcloudVolumesIdSnapshotsRequestWithBody(server string, id openapi_types.UUID, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: "uuid"})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/xcloud/volumes/%s/snapshots", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 func (c *Client) applyEditors(ctx context.Context, req *http.Request, additionalEditors []RequestEditorFn) error {
 	for _, r := range c.RequestEditors {
 		if err := r(ctx, req); err != nil {
@@ -34075,8 +37707,14 @@ type ClientWithResponsesInterface interface {
 	// GetV1BillingLedgerWithResponse request
 	GetV1BillingLedgerWithResponse(ctx context.Context, params *GetV1BillingLedgerParams, reqEditors ...RequestEditorFn) (*GetV1BillingLedgerResponse, error)
 
+	// GetV1BillingStatementWithResponse request
+	GetV1BillingStatementWithResponse(ctx context.Context, params *GetV1BillingStatementParams, reqEditors ...RequestEditorFn) (*GetV1BillingStatementResponse, error)
+
 	// GetV1BillingStripeWithResponse request
 	GetV1BillingStripeWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetV1BillingStripeResponse, error)
+
+	// GetV1BillingStripeAddressSuggestionWithResponse request
+	GetV1BillingStripeAddressSuggestionWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetV1BillingStripeAddressSuggestionResponse, error)
 
 	// GetV1BillingStripeAutoRechargeWithResponse request
 	GetV1BillingStripeAutoRechargeWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetV1BillingStripeAutoRechargeResponse, error)
@@ -34104,9 +37742,9 @@ type ClientWithResponsesInterface interface {
 	PostV1BillingStripeSetupWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*PostV1BillingStripeSetupResponse, error)
 
 	// PostV1BillingStripeTopupWithBodyWithResponse request with any body
-	PostV1BillingStripeTopupWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1BillingStripeTopupResponse, error)
+	PostV1BillingStripeTopupWithBodyWithResponse(ctx context.Context, params *PostV1BillingStripeTopupParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1BillingStripeTopupResponse, error)
 
-	PostV1BillingStripeTopupWithResponse(ctx context.Context, body PostV1BillingStripeTopupJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1BillingStripeTopupResponse, error)
+	PostV1BillingStripeTopupWithResponse(ctx context.Context, params *PostV1BillingStripeTopupParams, body PostV1BillingStripeTopupJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1BillingStripeTopupResponse, error)
 
 	// GetV1BillingSummaryWithResponse request
 	GetV1BillingSummaryWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetV1BillingSummaryResponse, error)
@@ -34291,6 +37929,11 @@ type ClientWithResponsesInterface interface {
 	// GetV1HealthzWithResponse request
 	GetV1HealthzWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetV1HealthzResponse, error)
 
+	// PostV1IdentityVerifyEmailWithBodyWithResponse request with any body
+	PostV1IdentityVerifyEmailWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1IdentityVerifyEmailResponse, error)
+
+	PostV1IdentityVerifyEmailWithResponse(ctx context.Context, body PostV1IdentityVerifyEmailJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1IdentityVerifyEmailResponse, error)
+
 	// GetV1InvitationsWithResponse request
 	GetV1InvitationsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetV1InvitationsResponse, error)
 
@@ -34359,6 +38002,18 @@ type ClientWithResponsesInterface interface {
 	PatchV1MeWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1MeResponse, error)
 
 	PatchV1MeWithResponse(ctx context.Context, body PatchV1MeJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1MeResponse, error)
+
+	// GetV1MeIdentityWithResponse request
+	GetV1MeIdentityWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetV1MeIdentityResponse, error)
+
+	// PostV1MeIdentityEmailWithResponse request
+	PostV1MeIdentityEmailWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*PostV1MeIdentityEmailResponse, error)
+
+	// PostV1MeIdentityManualReviewWithResponse request
+	PostV1MeIdentityManualReviewWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*PostV1MeIdentityManualReviewResponse, error)
+
+	// PostV1MeIdentitySessionWithResponse request
+	PostV1MeIdentitySessionWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*PostV1MeIdentitySessionResponse, error)
 
 	// GetV1MePreferencesWithResponse request
 	GetV1MePreferencesWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetV1MePreferencesResponse, error)
@@ -34478,6 +38133,11 @@ type ClientWithResponsesInterface interface {
 	// GetV1RegistryRepositoriesWithResponse request
 	GetV1RegistryRepositoriesWithResponse(ctx context.Context, params *GetV1RegistryRepositoriesParams, reqEditors ...RequestEditorFn) (*GetV1RegistryRepositoriesResponse, error)
 
+	// PatchV1RegistryRepositoriesVisibilityWithBodyWithResponse request with any body
+	PatchV1RegistryRepositoriesVisibilityWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1RegistryRepositoriesVisibilityResponse, error)
+
+	PatchV1RegistryRepositoriesVisibilityWithResponse(ctx context.Context, body PatchV1RegistryRepositoriesVisibilityJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1RegistryRepositoriesVisibilityResponse, error)
+
 	// DeleteV1RegistryRepositoryTagsWithResponse request
 	DeleteV1RegistryRepositoryTagsWithResponse(ctx context.Context, params *DeleteV1RegistryRepositoryTagsParams, reqEditors ...RequestEditorFn) (*DeleteV1RegistryRepositoryTagsResponse, error)
 
@@ -34494,6 +38154,11 @@ type ClientWithResponsesInterface interface {
 
 	// DeleteV1RegistryTokensIdWithResponse request
 	DeleteV1RegistryTokensIdWithResponse(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*DeleteV1RegistryTokensIdResponse, error)
+
+	// PatchV1RegistryTokensIdWithBodyWithResponse request with any body
+	PatchV1RegistryTokensIdWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1RegistryTokensIdResponse, error)
+
+	PatchV1RegistryTokensIdWithResponse(ctx context.Context, id openapi_types.UUID, body PatchV1RegistryTokensIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1RegistryTokensIdResponse, error)
 
 	// GetV1RegistryUsageWithResponse request
 	GetV1RegistryUsageWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetV1RegistryUsageResponse, error)
@@ -34843,6 +38508,14 @@ type ClientWithResponsesInterface interface {
 
 	PostV1XcloudInstancesIdBootModeWithResponse(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdBootModeJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdBootModeResponse, error)
 
+	// PostV1XcloudInstancesIdDisplayInputWithBodyWithResponse request with any body
+	PostV1XcloudInstancesIdDisplayInputWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdDisplayInputResponse, error)
+
+	PostV1XcloudInstancesIdDisplayInputWithResponse(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdDisplayInputJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdDisplayInputResponse, error)
+
+	// GetV1XcloudInstancesIdDisplayScreenshotWithResponse request
+	GetV1XcloudInstancesIdDisplayScreenshotWithResponse(ctx context.Context, id openapi_types.UUID, params *GetV1XcloudInstancesIdDisplayScreenshotParams, reqEditors ...RequestEditorFn) (*GetV1XcloudInstancesIdDisplayScreenshotResponse, error)
+
 	// GetV1XcloudInstancesIdMetricsWithResponse request
 	GetV1XcloudInstancesIdMetricsWithResponse(ctx context.Context, id openapi_types.UUID, params *GetV1XcloudInstancesIdMetricsParams, reqEditors ...RequestEditorFn) (*GetV1XcloudInstancesIdMetricsResponse, error)
 
@@ -34864,6 +38537,11 @@ type ClientWithResponsesInterface interface {
 
 	PostV1XcloudInstancesIdResizeWithResponse(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdResizeJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdResizeResponse, error)
 
+	// PostV1XcloudInstancesIdRestoreWithBodyWithResponse request with any body
+	PostV1XcloudInstancesIdRestoreWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdRestoreResponse, error)
+
+	PostV1XcloudInstancesIdRestoreWithResponse(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdRestoreJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdRestoreResponse, error)
+
 	// PutV1XcloudInstancesIdSecurityGroupsWithBodyWithResponse request with any body
 	PutV1XcloudInstancesIdSecurityGroupsWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1XcloudInstancesIdSecurityGroupsResponse, error)
 
@@ -34871,6 +38549,14 @@ type ClientWithResponsesInterface interface {
 
 	// PostV1XcloudInstancesIdShutdownWithResponse request
 	PostV1XcloudInstancesIdShutdownWithResponse(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdShutdownResponse, error)
+
+	// GetV1XcloudInstancesIdSnapshotsWithResponse request
+	GetV1XcloudInstancesIdSnapshotsWithResponse(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetV1XcloudInstancesIdSnapshotsResponse, error)
+
+	// PostV1XcloudInstancesIdSnapshotsWithBodyWithResponse request with any body
+	PostV1XcloudInstancesIdSnapshotsWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdSnapshotsResponse, error)
+
+	PostV1XcloudInstancesIdSnapshotsWithResponse(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdSnapshotsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdSnapshotsResponse, error)
 
 	// PatchV1XcloudInstancesIdSshKeysWithBodyWithResponse request with any body
 	PatchV1XcloudInstancesIdSshKeysWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1XcloudInstancesIdSshKeysResponse, error)
@@ -34916,6 +38602,25 @@ type ClientWithResponsesInterface interface {
 	// DeleteV1XcloudNetworksNameWithResponse request
 	DeleteV1XcloudNetworksNameWithResponse(ctx context.Context, name string, params *DeleteV1XcloudNetworksNameParams, reqEditors ...RequestEditorFn) (*DeleteV1XcloudNetworksNameResponse, error)
 
+	// PatchV1XcloudNetworksNameWithBodyWithResponse request with any body
+	PatchV1XcloudNetworksNameWithBodyWithResponse(ctx context.Context, name string, params *PatchV1XcloudNetworksNameParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1XcloudNetworksNameResponse, error)
+
+	PatchV1XcloudNetworksNameWithResponse(ctx context.Context, name string, params *PatchV1XcloudNetworksNameParams, body PatchV1XcloudNetworksNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1XcloudNetworksNameResponse, error)
+
+	// GetV1XcloudSnapshotsWithResponse request
+	GetV1XcloudSnapshotsWithResponse(ctx context.Context, params *GetV1XcloudSnapshotsParams, reqEditors ...RequestEditorFn) (*GetV1XcloudSnapshotsResponse, error)
+
+	// DeleteV1XcloudSnapshotsIdWithResponse request
+	DeleteV1XcloudSnapshotsIdWithResponse(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*DeleteV1XcloudSnapshotsIdResponse, error)
+
+	// GetV1XcloudSnapshotsIdWithResponse request
+	GetV1XcloudSnapshotsIdWithResponse(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetV1XcloudSnapshotsIdResponse, error)
+
+	// PatchV1XcloudSnapshotsIdWithBodyWithResponse request with any body
+	PatchV1XcloudSnapshotsIdWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1XcloudSnapshotsIdResponse, error)
+
+	PatchV1XcloudSnapshotsIdWithResponse(ctx context.Context, id openapi_types.UUID, body PatchV1XcloudSnapshotsIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1XcloudSnapshotsIdResponse, error)
+
 	// GetV1XcloudVolumesWithResponse request
 	GetV1XcloudVolumesWithResponse(ctx context.Context, params *GetV1XcloudVolumesParams, reqEditors ...RequestEditorFn) (*GetV1XcloudVolumesResponse, error)
 
@@ -34934,6 +38639,19 @@ type ClientWithResponsesInterface interface {
 	PostV1XcloudVolumesIdResizeWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1XcloudVolumesIdResizeResponse, error)
 
 	PostV1XcloudVolumesIdResizeWithResponse(ctx context.Context, id openapi_types.UUID, body PostV1XcloudVolumesIdResizeJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1XcloudVolumesIdResizeResponse, error)
+
+	// PostV1XcloudVolumesIdRestoreWithBodyWithResponse request with any body
+	PostV1XcloudVolumesIdRestoreWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1XcloudVolumesIdRestoreResponse, error)
+
+	PostV1XcloudVolumesIdRestoreWithResponse(ctx context.Context, id openapi_types.UUID, body PostV1XcloudVolumesIdRestoreJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1XcloudVolumesIdRestoreResponse, error)
+
+	// GetV1XcloudVolumesIdSnapshotsWithResponse request
+	GetV1XcloudVolumesIdSnapshotsWithResponse(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetV1XcloudVolumesIdSnapshotsResponse, error)
+
+	// PostV1XcloudVolumesIdSnapshotsWithBodyWithResponse request with any body
+	PostV1XcloudVolumesIdSnapshotsWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1XcloudVolumesIdSnapshotsResponse, error)
+
+	PostV1XcloudVolumesIdSnapshotsWithResponse(ctx context.Context, id openapi_types.UUID, body PostV1XcloudVolumesIdSnapshotsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1XcloudVolumesIdSnapshotsResponse, error)
 }
 
 type GetV1ApiKeysResponse struct {
@@ -35738,6 +39456,56 @@ func (r GetV1BillingLedgerResponse) ContentType() string {
 	return ""
 }
 
+type GetV1BillingStatementResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Data []struct {
+			Amount    string                                                `json:"amount"`
+			Component GetV1BillingStatement200JSONResponseBodyDataComponent `json:"component"`
+			CreatedAt string                                                `json:"createdAt"`
+			EntryType string                                                `json:"entryType"`
+			ExpiresAt *string                                               `json:"expiresAt"`
+			Id        string                                                `json:"id"`
+			Reason    *string                                               `json:"reason"`
+			UsageDate *string                                               `json:"usageDate"`
+		} `json:"data"`
+		Total float32 `json:"total"`
+	}
+	JSON401 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r GetV1BillingStatementResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetV1BillingStatementResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetV1BillingStatementResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetV1BillingStripeResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -35765,6 +39533,38 @@ func (r GetV1BillingStripeResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetV1BillingStripeResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetV1BillingStripeAddressSuggestionResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Country *string `json:"country"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r GetV1BillingStripeAddressSuggestionResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetV1BillingStripeAddressSuggestionResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetV1BillingStripeAddressSuggestionResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -35824,6 +39624,14 @@ type PutV1BillingStripeAutoRechargeResponse struct {
 		Topup                 string              `json:"topup"`
 	}
 	JSON400 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
 		Code     *string `json:"code,omitempty"`
 		Detail   *string `json:"detail,omitempty"`
 		Instance *string `json:"instance,omitempty"`
@@ -36075,6 +39883,14 @@ type PostV1BillingStripeTopupResponse struct {
 		PaymentIntentId string `json:"paymentIntentId"`
 	}
 	JSON400 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
 		Code     *string `json:"code,omitempty"`
 		Detail   *string `json:"detail,omitempty"`
 		Instance *string `json:"instance,omitempty"`
@@ -39434,6 +43250,62 @@ func (r GetV1HealthzResponse) ContentType() string {
 	return ""
 }
 
+type PostV1IdentityVerifyEmailResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Ok bool `json:"ok"`
+	}
+	JSON400 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON401 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON403 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON409 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON429 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON503 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r PostV1IdentityVerifyEmailResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostV1IdentityVerifyEmailResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PostV1IdentityVerifyEmailResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetV1InvitationsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40621,6 +44493,246 @@ func (r PatchV1MeResponse) ContentType() string {
 	return ""
 }
 
+type GetV1MeIdentityResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		ApprovalStatus        GetV1MeIdentity200JSONResponseBodyApprovalStatus   `json:"approvalStatus"`
+		Available             bool                                               `json:"available"`
+		CanStart              bool                                               `json:"canStart"`
+		EmailVerified         bool                                               `json:"emailVerified"`
+		Enrolled              bool                                               `json:"enrolled"`
+		ErrorCode             *string                                            `json:"errorCode"`
+		ExemptionDomain       *string                                            `json:"exemptionDomain"`
+		ExemptionReason       *string                                            `json:"exemptionReason"`
+		ExemptionSource       *GetV1MeIdentity200JSONResponseBodyExemptionSource `json:"exemptionSource"`
+		Livemode              *bool                                              `json:"livemode"`
+		ManualReviewRequested bool                                               `json:"manualReviewRequested"`
+		NextStep              string                                             `json:"nextStep"`
+		Required              bool                                               `json:"required"`
+		SessionId             *string                                            `json:"sessionId"`
+		Status                string                                             `json:"status"`
+		UpdatedAt             *string                                            `json:"updatedAt"`
+	}
+	JSON400 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON401 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON403 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON409 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON429 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON503 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r GetV1MeIdentityResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetV1MeIdentityResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetV1MeIdentityResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type PostV1MeIdentityEmailResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Ok bool `json:"ok"`
+	}
+	JSON400 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON401 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON403 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON409 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON429 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON503 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r PostV1MeIdentityEmailResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostV1MeIdentityEmailResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PostV1MeIdentityEmailResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type PostV1MeIdentityManualReviewResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Ok bool `json:"ok"`
+	}
+	JSON400 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON401 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON403 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON409 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON429 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON503 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r PostV1MeIdentityManualReviewResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostV1MeIdentityManualReviewResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PostV1MeIdentityManualReviewResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type PostV1MeIdentitySessionResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		ClientSecret   *string `json:"clientSecret"`
+		PublishableKey string  `json:"publishableKey"`
+	}
+	JSON400 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON401 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON403 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON409 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON429 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+	JSON503 *struct {
+		Code   string `json:"code"`
+		Detail string `json:"detail"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r PostV1MeIdentitySessionResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostV1MeIdentitySessionResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PostV1MeIdentitySessionResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetV1MePreferencesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -40856,6 +44968,24 @@ type GetV1MeSignupStatusResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		ApprovalStatus GetV1MeSignupStatus200JSONResponseBodyApprovalStatus `json:"approvalStatus"`
+		Identity       *struct {
+			ApprovalStatus        GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatus   `json:"approvalStatus"`
+			Available             bool                                                           `json:"available"`
+			CanStart              bool                                                           `json:"canStart"`
+			EmailVerified         bool                                                           `json:"emailVerified"`
+			Enrolled              bool                                                           `json:"enrolled"`
+			ErrorCode             *string                                                        `json:"errorCode"`
+			ExemptionDomain       *string                                                        `json:"exemptionDomain"`
+			ExemptionReason       *string                                                        `json:"exemptionReason"`
+			ExemptionSource       *GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSource `json:"exemptionSource"`
+			Livemode              *bool                                                          `json:"livemode"`
+			ManualReviewRequested bool                                                           `json:"manualReviewRequested"`
+			NextStep              string                                                         `json:"nextStep"`
+			Required              bool                                                           `json:"required"`
+			SessionId             *string                                                        `json:"sessionId"`
+			Status                string                                                         `json:"status"`
+			UpdatedAt             *string                                                        `json:"updatedAt"`
+		} `json:"identity,omitempty"`
 	}
 	JSON401 *struct {
 		Code     *string `json:"code,omitempty"`
@@ -42068,10 +46198,11 @@ type GetV1RegistryLibraryResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Repositories []struct {
-			LastPushAt *time.Time                                                `json:"lastPushAt"`
-			Name       string                                                    `json:"name"`
-			Status     GetV1RegistryLibrary200JSONResponseBodyRepositoriesStatus `json:"status"`
-			TagCount   float32                                                   `json:"tagCount"`
+			LastPushAt *time.Time                                                    `json:"lastPushAt"`
+			Name       string                                                        `json:"name"`
+			Status     GetV1RegistryLibrary200JSONResponseBodyRepositoriesStatus     `json:"status"`
+			TagCount   float32                                                       `json:"tagCount"`
+			Visibility GetV1RegistryLibrary200JSONResponseBodyRepositoriesVisibility `json:"visibility"`
 		} `json:"repositories"`
 	}
 	JSON412 *struct {
@@ -42242,10 +46373,11 @@ type GetV1RegistryRepositoriesResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Repositories []struct {
-			LastPushAt *time.Time                                                     `json:"lastPushAt"`
-			Name       string                                                         `json:"name"`
-			Status     GetV1RegistryRepositories200JSONResponseBodyRepositoriesStatus `json:"status"`
-			TagCount   float32                                                        `json:"tagCount"`
+			LastPushAt *time.Time                                                         `json:"lastPushAt"`
+			Name       string                                                             `json:"name"`
+			Status     GetV1RegistryRepositories200JSONResponseBodyRepositoriesStatus     `json:"status"`
+			TagCount   float32                                                            `json:"tagCount"`
+			Visibility GetV1RegistryRepositories200JSONResponseBodyRepositoriesVisibility `json:"visibility"`
 		} `json:"repositories"`
 	}
 	JSON412 *struct {
@@ -42276,6 +46408,63 @@ func (r GetV1RegistryRepositoriesResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetV1RegistryRepositoriesResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type PatchV1RegistryRepositoriesVisibilityResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Name       string                                                             `json:"name"`
+		Visibility PatchV1RegistryRepositoriesVisibility200JSONResponseBodyVisibility `json:"visibility"`
+	}
+	JSON400 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON412 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r PatchV1RegistryRepositoriesVisibilityResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PatchV1RegistryRepositoriesVisibilityResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PatchV1RegistryRepositoriesVisibilityResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -42569,6 +46758,63 @@ func (r DeleteV1RegistryTokensIdResponse) ContentType() string {
 	return ""
 }
 
+type PatchV1RegistryTokensIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Actions            []PatchV1RegistryTokensId200JSONResponseBodyActions `json:"actions"`
+		CreatedAt          time.Time                                           `json:"createdAt"`
+		ExpiresAt          *time.Time                                          `json:"expiresAt"`
+		Id                 openapi_types.UUID                                  `json:"id"`
+		Kind               PatchV1RegistryTokensId200JSONResponseBodyKind      `json:"kind"`
+		LastUsedAt         *time.Time                                          `json:"lastUsedAt"`
+		Name               string                                              `json:"name"`
+		RegionIds          *[]openapi_types.UUID                               `json:"regionIds"`
+		RepositoryPatterns []string                                            `json:"repositoryPatterns"`
+		TokenPrefix        string                                              `json:"tokenPrefix"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r PatchV1RegistryTokensIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PatchV1RegistryTokensIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PatchV1RegistryTokensIdResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetV1RegistryUsageResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -42614,12 +46860,28 @@ type GetV1ReleaseNotesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
-		CreatedAt time.Time          `json:"createdAt"`
-		Date      string             `json:"date"`
-		Id        openapi_types.UUID `json:"id"`
-		Items     []struct {
+		CreatedAt time.Time `json:"createdAt"`
+		Date      string    `json:"date"`
+		Feature   *struct {
+			Hero *struct {
+				Alt string `json:"alt"`
+				Src string `json:"src"`
+			} `json:"hero,omitempty"`
+			Links *[]struct {
+				Href  string `json:"href"`
+				Label string `json:"label"`
+			} `json:"links,omitempty"`
+			Summary string `json:"summary"`
+		} `json:"feature,omitempty"`
+		Id    openapi_types.UUID `json:"id"`
+		Items []struct {
 			Body     *string `json:"body,omitempty"`
+			Code     *string `json:"code,omitempty"`
 			Headline string  `json:"headline"`
+			Image    *struct {
+				Alt string `json:"alt"`
+				Src string `json:"src"`
+			} `json:"image,omitempty"`
 		} `json:"items"`
 		Tags      []string  `json:"tags"`
 		Title     string    `json:"title"`
@@ -47500,24 +51762,25 @@ type GetV1XcloudFlavorsResponse struct {
 				ReservedForTenant    bool                                                             `json:"reservedForTenant"`
 				Status               GetV1XcloudFlavors200JSONResponseBodyDataAvailabilityStatus      `json:"status"`
 			} `json:"availability"`
-			BillingMode              GetV1XcloudFlavors200JSONResponseBodyDataBillingMode `json:"billingMode"`
-			CpuCores                 int                                                  `json:"cpuCores"`
-			CreatedAt                time.Time                                            `json:"createdAt"`
-			Description              *string                                              `json:"description"`
-			DiskGib                  int                                                  `json:"diskGib"`
-			Enabled                  bool                                                 `json:"enabled"`
-			HardwareGeneration       *string                                              `json:"hardwareGeneration"`
-			HourlyPrice              string                                               `json:"hourlyPrice"`
-			Id                       openapi_types.UUID                                   `json:"id"`
-			Label                    string                                               `json:"label"`
-			LimitedAvailabilityAtPct int                                                  `json:"limitedAvailabilityAtPct"`
-			MemoryGib                int                                                  `json:"memoryGib"`
-			MonthlyPrice             string                                               `json:"monthlyPrice"`
-			OutOfStockAtPct          int                                                  `json:"outOfStockAtPct"`
-			Platform                 GetV1XcloudFlavors200JSONResponseBodyDataPlatform    `json:"platform"`
-			Slug                     string                                               `json:"slug"`
-			SortOrder                int                                                  `json:"sortOrder"`
-			UpdatedAt                time.Time                                            `json:"updatedAt"`
+			BillingMode              GetV1XcloudFlavors200JSONResponseBodyDataBillingMode           `json:"billingMode"`
+			CpuCores                 int                                                            `json:"cpuCores"`
+			CreatedAt                time.Time                                                      `json:"createdAt"`
+			Description              *string                                                        `json:"description"`
+			DiskGib                  int                                                            `json:"diskGib"`
+			Enabled                  bool                                                           `json:"enabled"`
+			HardwareGeneration       *string                                                        `json:"hardwareGeneration"`
+			HourlyPrice              string                                                         `json:"hourlyPrice"`
+			Id                       openapi_types.UUID                                             `json:"id"`
+			Label                    string                                                         `json:"label"`
+			LimitedAvailabilityAtPct int                                                            `json:"limitedAvailabilityAtPct"`
+			MemoryGib                int                                                            `json:"memoryGib"`
+			MonthlyPrice             string                                                         `json:"monthlyPrice"`
+			OutOfStockAtPct          int                                                            `json:"outOfStockAtPct"`
+			Platform                 GetV1XcloudFlavors200JSONResponseBodyDataPlatform              `json:"platform"`
+			Slug                     string                                                         `json:"slug"`
+			SortOrder                int                                                            `json:"sortOrder"`
+			SupportedPlatforms       *[]GetV1XcloudFlavors200JSONResponseBodyDataSupportedPlatforms `json:"supportedPlatforms,omitempty"`
+			UpdatedAt                time.Time                                                      `json:"updatedAt"`
 		} `json:"data"`
 	}
 	JSON404 *struct {
@@ -47676,12 +51939,17 @@ type GetV1XcloudImagesResponse struct {
 	JSON200      *struct {
 		Data []struct {
 			CreatedAt    *string                                        `json:"createdAt"`
+			DiskGib      *int                                           `json:"diskGib,omitempty"`
+			DisplayName  *string                                        `json:"displayName,omitempty"`
 			Labels       map[string]string                              `json:"labels"`
+			MinCpuCores  *int                                           `json:"minCpuCores,omitempty"`
+			MinMemoryGib *int                                           `json:"minMemoryGib,omitempty"`
 			Name         string                                         `json:"name"`
 			OciReference *string                                        `json:"ociReference"`
 			RegionId     openapi_types.UUID                             `json:"regionId"`
 			RegionSlug   string                                         `json:"regionSlug"`
 			Source       GetV1XcloudImages200JSONResponseBodyDataSource `json:"source"`
+			StoredBytes  *int                                           `json:"storedBytes,omitempty"`
 		} `json:"data"`
 	}
 	JSON404 *struct {
@@ -47731,12 +51999,17 @@ type PostV1XcloudImagesResponse struct {
 	HTTPResponse *http.Response
 	JSON201      *struct {
 		CreatedAt    *string                                     `json:"createdAt"`
+		DiskGib      *int                                        `json:"diskGib,omitempty"`
+		DisplayName  *string                                     `json:"displayName,omitempty"`
 		Labels       map[string]string                           `json:"labels"`
+		MinCpuCores  *int                                        `json:"minCpuCores,omitempty"`
+		MinMemoryGib *int                                        `json:"minMemoryGib,omitempty"`
 		Name         string                                      `json:"name"`
 		OciReference *string                                     `json:"ociReference"`
 		RegionId     openapi_types.UUID                          `json:"regionId"`
 		RegionSlug   string                                      `json:"regionSlug"`
 		Source       PostV1XcloudImages201JSONResponseBodySource `json:"source"`
+		StoredBytes  *int                                        `json:"storedBytes,omitempty"`
 	}
 	JSON400 *struct {
 		Code     *string `json:"code,omitempty"`
@@ -47870,12 +52143,17 @@ type PatchV1XcloudImagesRegionIdNameResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		CreatedAt    *string                                                  `json:"createdAt"`
+		DiskGib      *int                                                     `json:"diskGib,omitempty"`
+		DisplayName  *string                                                  `json:"displayName,omitempty"`
 		Labels       map[string]string                                        `json:"labels"`
+		MinCpuCores  *int                                                     `json:"minCpuCores,omitempty"`
+		MinMemoryGib *int                                                     `json:"minMemoryGib,omitempty"`
 		Name         string                                                   `json:"name"`
 		OciReference *string                                                  `json:"ociReference"`
 		RegionId     openapi_types.UUID                                       `json:"regionId"`
 		RegionSlug   string                                                   `json:"regionSlug"`
 		Source       PatchV1XcloudImagesRegionIdName200JSONResponseBodySource `json:"source"`
+		StoredBytes  *int                                                     `json:"storedBytes,omitempty"`
 	}
 	JSON403 *struct {
 		Code     *string `json:"code,omitempty"`
@@ -47948,15 +52226,21 @@ type GetV1XcloudInstancesResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Data []struct {
-			AdminPasswordSet       *bool                                                     `json:"adminPasswordSet,omitempty"`
-			AdminUsername          *string                                                   `json:"adminUsername"`
-			AgentLastError         *string                                                   `json:"agentLastError"`
-			AgentStatus            GetV1XcloudInstances200JSONResponseBodyDataAgentStatus    `json:"agentStatus"`
-			AgentStatusAt          *time.Time                                                `json:"agentStatusAt"`
+			AdminPasswordSet *bool                                                  `json:"adminPasswordSet,omitempty"`
+			AdminUsername    *string                                                `json:"adminUsername"`
+			AgentLastError   *string                                                `json:"agentLastError"`
+			AgentStatus      GetV1XcloudInstances200JSONResponseBodyDataAgentStatus `json:"agentStatus"`
+			AgentStatusAt    *time.Time                                             `json:"agentStatusAt"`
+			BootingSince     *time.Time                                             `json:"bootingSince"`
+			Cost             *struct {
+				Hourly *string                                             `json:"hourly"`
+				Mode   GetV1XcloudInstances200JSONResponseBodyDataCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
 			CpuCores               int                                                       `json:"cpuCores"`
 			CreatedAt              time.Time                                                 `json:"createdAt"`
 			DiskGib                int                                                       `json:"diskGib"`
 			DisplayHeight          int                                                       `json:"displayHeight"`
+			DisplayScale           *int                                                      `json:"displayScale,omitempty"`
 			DisplayWidth           int                                                       `json:"displayWidth"`
 			ExpiresAt              *time.Time                                                `json:"expiresAt"`
 			FlavorSlug             *string                                                   `json:"flavorSlug"`
@@ -47981,6 +52265,7 @@ type GetV1XcloudInstancesResponse struct {
 			RegionId               openapi_types.UUID                                        `json:"regionId"`
 			RegionSlug             string                                                    `json:"regionSlug"`
 			SecurityGroups         *[]string                                                 `json:"securityGroups,omitempty"`
+			SourceSnapshotId       *openapi_types.UUID                                       `json:"sourceSnapshotId,omitempty"`
 			SshKeyIds              *[]openapi_types.UUID                                     `json:"sshKeyIds,omitempty"`
 			SshKeysProvisionedAt   *time.Time                                                `json:"sshKeysProvisionedAt"`
 			Status                 GetV1XcloudInstances200JSONResponseBodyDataStatus         `json:"status"`
@@ -48023,15 +52308,21 @@ type PostV1XcloudInstancesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON201      *struct {
-		AdminPasswordSet       *bool                                                  `json:"adminPasswordSet,omitempty"`
-		AdminUsername          *string                                                `json:"adminUsername"`
-		AgentLastError         *string                                                `json:"agentLastError"`
-		AgentStatus            PostV1XcloudInstances201JSONResponseBodyAgentStatus    `json:"agentStatus"`
-		AgentStatusAt          *time.Time                                             `json:"agentStatusAt"`
+		AdminPasswordSet *bool                                               `json:"adminPasswordSet,omitempty"`
+		AdminUsername    *string                                             `json:"adminUsername"`
+		AgentLastError   *string                                             `json:"agentLastError"`
+		AgentStatus      PostV1XcloudInstances201JSONResponseBodyAgentStatus `json:"agentStatus"`
+		AgentStatusAt    *time.Time                                          `json:"agentStatusAt"`
+		BootingSince     *time.Time                                          `json:"bootingSince"`
+		Cost             *struct {
+			Hourly *string                                          `json:"hourly"`
+			Mode   PostV1XcloudInstances201JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
 		CpuCores               int                                                    `json:"cpuCores"`
 		CreatedAt              time.Time                                              `json:"createdAt"`
 		DiskGib                int                                                    `json:"diskGib"`
 		DisplayHeight          int                                                    `json:"displayHeight"`
+		DisplayScale           *int                                                   `json:"displayScale,omitempty"`
 		DisplayWidth           int                                                    `json:"displayWidth"`
 		ExpiresAt              *time.Time                                             `json:"expiresAt"`
 		FlavorSlug             *string                                                `json:"flavorSlug"`
@@ -48056,6 +52347,7 @@ type PostV1XcloudInstancesResponse struct {
 		RegionId               openapi_types.UUID                                     `json:"regionId"`
 		RegionSlug             string                                                 `json:"regionSlug"`
 		SecurityGroups         *[]string                                              `json:"securityGroups,omitempty"`
+		SourceSnapshotId       *openapi_types.UUID                                    `json:"sourceSnapshotId,omitempty"`
 		SshKeyIds              *[]openapi_types.UUID                                  `json:"sshKeyIds,omitempty"`
 		SshKeysProvisionedAt   *time.Time                                             `json:"sshKeysProvisionedAt"`
 		Status                 PostV1XcloudInstances201JSONResponseBodyStatus         `json:"status"`
@@ -48168,6 +52460,22 @@ type DeleteV1XcloudInstancesIdResponse struct {
 		Title    string  `json:"title"`
 		Type     *string `json:"type,omitempty"`
 	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON503 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
 }
 
 // Status returns HTTPResponse.Status
@@ -48198,15 +52506,21 @@ type GetV1XcloudInstancesIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		AdminPasswordSet       *bool                                                   `json:"adminPasswordSet,omitempty"`
-		AdminUsername          *string                                                 `json:"adminUsername"`
-		AgentLastError         *string                                                 `json:"agentLastError"`
-		AgentStatus            GetV1XcloudInstancesId200JSONResponseBodyAgentStatus    `json:"agentStatus"`
-		AgentStatusAt          *time.Time                                              `json:"agentStatusAt"`
+		AdminPasswordSet *bool                                                `json:"adminPasswordSet,omitempty"`
+		AdminUsername    *string                                              `json:"adminUsername"`
+		AgentLastError   *string                                              `json:"agentLastError"`
+		AgentStatus      GetV1XcloudInstancesId200JSONResponseBodyAgentStatus `json:"agentStatus"`
+		AgentStatusAt    *time.Time                                           `json:"agentStatusAt"`
+		BootingSince     *time.Time                                           `json:"bootingSince"`
+		Cost             *struct {
+			Hourly *string                                           `json:"hourly"`
+			Mode   GetV1XcloudInstancesId200JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
 		CpuCores               int                                                     `json:"cpuCores"`
 		CreatedAt              time.Time                                               `json:"createdAt"`
 		DiskGib                int                                                     `json:"diskGib"`
 		DisplayHeight          int                                                     `json:"displayHeight"`
+		DisplayScale           *int                                                    `json:"displayScale,omitempty"`
 		DisplayWidth           int                                                     `json:"displayWidth"`
 		ExpiresAt              *time.Time                                              `json:"expiresAt"`
 		FlavorSlug             *string                                                 `json:"flavorSlug"`
@@ -48231,6 +52545,7 @@ type GetV1XcloudInstancesIdResponse struct {
 		RegionId               openapi_types.UUID                                      `json:"regionId"`
 		RegionSlug             string                                                  `json:"regionSlug"`
 		SecurityGroups         *[]string                                               `json:"securityGroups,omitempty"`
+		SourceSnapshotId       *openapi_types.UUID                                     `json:"sourceSnapshotId,omitempty"`
 		SshKeyIds              *[]openapi_types.UUID                                   `json:"sshKeyIds,omitempty"`
 		SshKeysProvisionedAt   *time.Time                                              `json:"sshKeysProvisionedAt"`
 		Status                 GetV1XcloudInstancesId200JSONResponseBodyStatus         `json:"status"`
@@ -48280,15 +52595,21 @@ type PatchV1XcloudInstancesIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		AdminPasswordSet       *bool                                                     `json:"adminPasswordSet,omitempty"`
-		AdminUsername          *string                                                   `json:"adminUsername"`
-		AgentLastError         *string                                                   `json:"agentLastError"`
-		AgentStatus            PatchV1XcloudInstancesId200JSONResponseBodyAgentStatus    `json:"agentStatus"`
-		AgentStatusAt          *time.Time                                                `json:"agentStatusAt"`
+		AdminPasswordSet *bool                                                  `json:"adminPasswordSet,omitempty"`
+		AdminUsername    *string                                                `json:"adminUsername"`
+		AgentLastError   *string                                                `json:"agentLastError"`
+		AgentStatus      PatchV1XcloudInstancesId200JSONResponseBodyAgentStatus `json:"agentStatus"`
+		AgentStatusAt    *time.Time                                             `json:"agentStatusAt"`
+		BootingSince     *time.Time                                             `json:"bootingSince"`
+		Cost             *struct {
+			Hourly *string                                             `json:"hourly"`
+			Mode   PatchV1XcloudInstancesId200JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
 		CpuCores               int                                                       `json:"cpuCores"`
 		CreatedAt              time.Time                                                 `json:"createdAt"`
 		DiskGib                int                                                       `json:"diskGib"`
 		DisplayHeight          int                                                       `json:"displayHeight"`
+		DisplayScale           *int                                                      `json:"displayScale,omitempty"`
 		DisplayWidth           int                                                       `json:"displayWidth"`
 		ExpiresAt              *time.Time                                                `json:"expiresAt"`
 		FlavorSlug             *string                                                   `json:"flavorSlug"`
@@ -48313,6 +52634,7 @@ type PatchV1XcloudInstancesIdResponse struct {
 		RegionId               openapi_types.UUID                                        `json:"regionId"`
 		RegionSlug             string                                                    `json:"regionSlug"`
 		SecurityGroups         *[]string                                                 `json:"securityGroups,omitempty"`
+		SourceSnapshotId       *openapi_types.UUID                                       `json:"sourceSnapshotId,omitempty"`
 		SshKeyIds              *[]openapi_types.UUID                                     `json:"sshKeyIds,omitempty"`
 		SshKeysProvisionedAt   *time.Time                                                `json:"sshKeysProvisionedAt"`
 		Status                 PatchV1XcloudInstancesId200JSONResponseBodyStatus         `json:"status"`
@@ -48905,6 +53227,222 @@ func (r PostV1XcloudInstancesIdBootModeResponse) ContentType() string {
 	return ""
 }
 
+type PostV1XcloudInstancesIdDisplayInputResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		// Actions Number of actions sent.
+		Actions       int `json:"actions"`
+		DisplayHeight int `json:"displayHeight"`
+		DisplayWidth  int `json:"displayWidth"`
+	}
+	JSON400 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON401 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON403 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON412 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON422 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON429 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON502 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON503 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r PostV1XcloudInstancesIdDisplayInputResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostV1XcloudInstancesIdDisplayInputResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PostV1XcloudInstancesIdDisplayInputResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetV1XcloudInstancesIdDisplayScreenshotResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON400      *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON401 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON403 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON412 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON429 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON502 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON503 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r GetV1XcloudInstancesIdDisplayScreenshotResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetV1XcloudInstancesIdDisplayScreenshotResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetV1XcloudInstancesIdDisplayScreenshotResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetV1XcloudInstancesIdMetricsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -48961,15 +53499,21 @@ type PutV1XcloudInstancesIdPasswordResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		AdminPasswordSet       *bool                                                           `json:"adminPasswordSet,omitempty"`
-		AdminUsername          *string                                                         `json:"adminUsername"`
-		AgentLastError         *string                                                         `json:"agentLastError"`
-		AgentStatus            PutV1XcloudInstancesIdPassword200JSONResponseBodyAgentStatus    `json:"agentStatus"`
-		AgentStatusAt          *time.Time                                                      `json:"agentStatusAt"`
+		AdminPasswordSet *bool                                                        `json:"adminPasswordSet,omitempty"`
+		AdminUsername    *string                                                      `json:"adminUsername"`
+		AgentLastError   *string                                                      `json:"agentLastError"`
+		AgentStatus      PutV1XcloudInstancesIdPassword200JSONResponseBodyAgentStatus `json:"agentStatus"`
+		AgentStatusAt    *time.Time                                                   `json:"agentStatusAt"`
+		BootingSince     *time.Time                                                   `json:"bootingSince"`
+		Cost             *struct {
+			Hourly *string                                                   `json:"hourly"`
+			Mode   PutV1XcloudInstancesIdPassword200JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
 		CpuCores               int                                                             `json:"cpuCores"`
 		CreatedAt              time.Time                                                       `json:"createdAt"`
 		DiskGib                int                                                             `json:"diskGib"`
 		DisplayHeight          int                                                             `json:"displayHeight"`
+		DisplayScale           *int                                                            `json:"displayScale,omitempty"`
 		DisplayWidth           int                                                             `json:"displayWidth"`
 		ExpiresAt              *time.Time                                                      `json:"expiresAt"`
 		FlavorSlug             *string                                                         `json:"flavorSlug"`
@@ -48994,6 +53538,7 @@ type PutV1XcloudInstancesIdPasswordResponse struct {
 		RegionId               openapi_types.UUID                                              `json:"regionId"`
 		RegionSlug             string                                                          `json:"regionSlug"`
 		SecurityGroups         *[]string                                                       `json:"securityGroups,omitempty"`
+		SourceSnapshotId       *openapi_types.UUID                                             `json:"sourceSnapshotId,omitempty"`
 		SshKeyIds              *[]openapi_types.UUID                                           `json:"sshKeyIds,omitempty"`
 		SshKeysProvisionedAt   *time.Time                                                      `json:"sshKeysProvisionedAt"`
 		Status                 PutV1XcloudInstancesIdPassword200JSONResponseBodyStatus         `json:"status"`
@@ -49217,15 +53762,21 @@ type PostV1XcloudInstancesIdResizeResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON202      *struct {
-		AdminPasswordSet       *bool                                                          `json:"adminPasswordSet,omitempty"`
-		AdminUsername          *string                                                        `json:"adminUsername"`
-		AgentLastError         *string                                                        `json:"agentLastError"`
-		AgentStatus            PostV1XcloudInstancesIdResize202JSONResponseBodyAgentStatus    `json:"agentStatus"`
-		AgentStatusAt          *time.Time                                                     `json:"agentStatusAt"`
+		AdminPasswordSet *bool                                                       `json:"adminPasswordSet,omitempty"`
+		AdminUsername    *string                                                     `json:"adminUsername"`
+		AgentLastError   *string                                                     `json:"agentLastError"`
+		AgentStatus      PostV1XcloudInstancesIdResize202JSONResponseBodyAgentStatus `json:"agentStatus"`
+		AgentStatusAt    *time.Time                                                  `json:"agentStatusAt"`
+		BootingSince     *time.Time                                                  `json:"bootingSince"`
+		Cost             *struct {
+			Hourly *string                                                  `json:"hourly"`
+			Mode   PostV1XcloudInstancesIdResize202JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
 		CpuCores               int                                                            `json:"cpuCores"`
 		CreatedAt              time.Time                                                      `json:"createdAt"`
 		DiskGib                int                                                            `json:"diskGib"`
 		DisplayHeight          int                                                            `json:"displayHeight"`
+		DisplayScale           *int                                                           `json:"displayScale,omitempty"`
 		DisplayWidth           int                                                            `json:"displayWidth"`
 		ExpiresAt              *time.Time                                                     `json:"expiresAt"`
 		FlavorSlug             *string                                                        `json:"flavorSlug"`
@@ -49250,6 +53801,7 @@ type PostV1XcloudInstancesIdResizeResponse struct {
 		RegionId               openapi_types.UUID                                             `json:"regionId"`
 		RegionSlug             string                                                         `json:"regionSlug"`
 		SecurityGroups         *[]string                                                      `json:"securityGroups,omitempty"`
+		SourceSnapshotId       *openapi_types.UUID                                            `json:"sourceSnapshotId,omitempty"`
 		SshKeyIds              *[]openapi_types.UUID                                          `json:"sshKeyIds,omitempty"`
 		SshKeysProvisionedAt   *time.Time                                                     `json:"sshKeysProvisionedAt"`
 		Status                 PostV1XcloudInstancesIdResize202JSONResponseBodyStatus         `json:"status"`
@@ -49327,19 +53879,138 @@ func (r PostV1XcloudInstancesIdResizeResponse) ContentType() string {
 	return ""
 }
 
+type PostV1XcloudInstancesIdRestoreResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON202      *struct {
+		AdminPasswordSet *bool                                                        `json:"adminPasswordSet,omitempty"`
+		AdminUsername    *string                                                      `json:"adminUsername"`
+		AgentLastError   *string                                                      `json:"agentLastError"`
+		AgentStatus      PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatus `json:"agentStatus"`
+		AgentStatusAt    *time.Time                                                   `json:"agentStatusAt"`
+		BootingSince     *time.Time                                                   `json:"bootingSince"`
+		Cost             *struct {
+			Hourly *string                                                   `json:"hourly"`
+			Mode   PostV1XcloudInstancesIdRestore202JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
+		CpuCores               int                                                             `json:"cpuCores"`
+		CreatedAt              time.Time                                                       `json:"createdAt"`
+		DiskGib                int                                                             `json:"diskGib"`
+		DisplayHeight          int                                                             `json:"displayHeight"`
+		DisplayScale           *int                                                            `json:"displayScale,omitempty"`
+		DisplayWidth           int                                                             `json:"displayWidth"`
+		ExpiresAt              *time.Time                                                      `json:"expiresAt"`
+		FlavorSlug             *string                                                         `json:"flavorSlug"`
+		HardwareAddress        *string                                                         `json:"hardwareAddress"`
+		HardwareGeneration     *string                                                         `json:"hardwareGeneration"`
+		Id                     openapi_types.UUID                                              `json:"id"`
+		ImageRef               string                                                          `json:"imageRef"`
+		LastError              *string                                                         `json:"lastError"`
+		LastKnownHost          *string                                                         `json:"lastKnownHost"`
+		LastUpstreamPhase      *string                                                         `json:"lastUpstreamPhase"`
+		LastUpstreamPhaseAt    *time.Time                                                      `json:"lastUpstreamPhaseAt"`
+		MemoryGib              int                                                             `json:"memoryGib"`
+		Name                   string                                                          `json:"name"`
+		Namespace              string                                                          `json:"namespace"`
+		NetworkAddress         *string                                                         `json:"networkAddress"`
+		NetworkRef             string                                                          `json:"networkRef"`
+		Node                   *string                                                         `json:"node"`
+		PasswordProvisionError *string                                                         `json:"passwordProvisionError"`
+		PasswordProvisionedAt  *time.Time                                                      `json:"passwordProvisionedAt"`
+		PendingAction          *PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction `json:"pendingAction"`
+		Platform               *PostV1XcloudInstancesIdRestore202JSONResponseBodyPlatform      `json:"platform,omitempty"`
+		RegionId               openapi_types.UUID                                              `json:"regionId"`
+		RegionSlug             string                                                          `json:"regionSlug"`
+		SecurityGroups         *[]string                                                       `json:"securityGroups,omitempty"`
+		SourceSnapshotId       *openapi_types.UUID                                             `json:"sourceSnapshotId,omitempty"`
+		SshKeyIds              *[]openapi_types.UUID                                           `json:"sshKeyIds,omitempty"`
+		SshKeysProvisionedAt   *time.Time                                                      `json:"sshKeysProvisionedAt"`
+		Status                 PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus         `json:"status"`
+		Tags                   *[]struct {
+			Key   string `json:"key"`
+			Value string `json:"value"`
+		} `json:"tags,omitempty"`
+		TenantId   openapi_types.UUID `json:"tenantId"`
+		UpdatedAt  time.Time          `json:"updatedAt"`
+		XcloudName string             `json:"xcloudName"`
+	}
+	JSON403 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON422 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r PostV1XcloudInstancesIdRestoreResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostV1XcloudInstancesIdRestoreResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PostV1XcloudInstancesIdRestoreResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type PutV1XcloudInstancesIdSecurityGroupsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		AdminPasswordSet       *bool                                                                 `json:"adminPasswordSet,omitempty"`
-		AdminUsername          *string                                                               `json:"adminUsername"`
-		AgentLastError         *string                                                               `json:"agentLastError"`
-		AgentStatus            PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyAgentStatus    `json:"agentStatus"`
-		AgentStatusAt          *time.Time                                                            `json:"agentStatusAt"`
+		AdminPasswordSet *bool                                                              `json:"adminPasswordSet,omitempty"`
+		AdminUsername    *string                                                            `json:"adminUsername"`
+		AgentLastError   *string                                                            `json:"agentLastError"`
+		AgentStatus      PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyAgentStatus `json:"agentStatus"`
+		AgentStatusAt    *time.Time                                                         `json:"agentStatusAt"`
+		BootingSince     *time.Time                                                         `json:"bootingSince"`
+		Cost             *struct {
+			Hourly *string                                                         `json:"hourly"`
+			Mode   PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
 		CpuCores               int                                                                   `json:"cpuCores"`
 		CreatedAt              time.Time                                                             `json:"createdAt"`
 		DiskGib                int                                                                   `json:"diskGib"`
 		DisplayHeight          int                                                                   `json:"displayHeight"`
+		DisplayScale           *int                                                                  `json:"displayScale,omitempty"`
 		DisplayWidth           int                                                                   `json:"displayWidth"`
 		ExpiresAt              *time.Time                                                            `json:"expiresAt"`
 		FlavorSlug             *string                                                               `json:"flavorSlug"`
@@ -49364,6 +54035,7 @@ type PutV1XcloudInstancesIdSecurityGroupsResponse struct {
 		RegionId               openapi_types.UUID                                                    `json:"regionId"`
 		RegionSlug             string                                                                `json:"regionSlug"`
 		SecurityGroups         *[]string                                                             `json:"securityGroups,omitempty"`
+		SourceSnapshotId       *openapi_types.UUID                                                   `json:"sourceSnapshotId,omitempty"`
 		SshKeyIds              *[]openapi_types.UUID                                                 `json:"sshKeyIds,omitempty"`
 		SshKeysProvisionedAt   *time.Time                                                            `json:"sshKeysProvisionedAt"`
 		Status                 PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatus         `json:"status"`
@@ -49478,19 +54150,209 @@ func (r PostV1XcloudInstancesIdShutdownResponse) ContentType() string {
 	return ""
 }
 
+type GetV1XcloudInstancesIdSnapshotsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Data []struct {
+			CaptureTime *time.Time `json:"captureTime"`
+			Cost        *struct {
+				Hourly *string                                                        `json:"hourly"`
+				Mode   GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt          time.Time                                                         `json:"createdAt"`
+			Description        *string                                                           `json:"description"`
+			DiskGib            int                                                               `json:"diskGib"`
+			Id                 openapi_types.UUID                                                `json:"id"`
+			ImageRef           *string                                                           `json:"imageRef"`
+			LastError          *string                                                           `json:"lastError"`
+			MinCpuCores        *int                                                              `json:"minCpuCores"`
+			MinMemoryGib       *int                                                              `json:"minMemoryGib"`
+			Name               string                                                            `json:"name"`
+			Platform           *GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatform   `json:"platform"`
+			ReadyAt            *time.Time                                                        `json:"readyAt"`
+			RegionId           openapi_types.UUID                                                `json:"regionId"`
+			RegionSlug         string                                                            `json:"regionSlug"`
+			Restorable         bool                                                              `json:"restorable"`
+			SourceInstanceId   *openapi_types.UUID                                               `json:"sourceInstanceId"`
+			SourceInstanceName *string                                                           `json:"sourceInstanceName"`
+			SourceKind         *GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataSourceKind `json:"sourceKind,omitempty"`
+			SourceVolumeId     *openapi_types.UUID                                               `json:"sourceVolumeId,omitempty"`
+			SourceVolumeName   *string                                                           `json:"sourceVolumeName,omitempty"`
+			Status             GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatus      `json:"status"`
+			TakenWhileRunning  *bool                                                             `json:"takenWhileRunning"`
+			TenantId           openapi_types.UUID                                                `json:"tenantId"`
+			XcloudName         string                                                            `json:"xcloudName"`
+		} `json:"data"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON412 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON422 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r GetV1XcloudInstancesIdSnapshotsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetV1XcloudInstancesIdSnapshotsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetV1XcloudInstancesIdSnapshotsResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type PostV1XcloudInstancesIdSnapshotsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON201      *struct {
+		CaptureTime *time.Time `json:"captureTime"`
+		Cost        *struct {
+			Hourly *string                                                     `json:"hourly"`
+			Mode   PostV1XcloudInstancesIdSnapshots201JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
+		CreatedAt          time.Time                                                      `json:"createdAt"`
+		Description        *string                                                        `json:"description"`
+		DiskGib            int                                                            `json:"diskGib"`
+		Id                 openapi_types.UUID                                             `json:"id"`
+		ImageRef           *string                                                        `json:"imageRef"`
+		LastError          *string                                                        `json:"lastError"`
+		MinCpuCores        *int                                                           `json:"minCpuCores"`
+		MinMemoryGib       *int                                                           `json:"minMemoryGib"`
+		Name               string                                                         `json:"name"`
+		Platform           *PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatform   `json:"platform"`
+		ReadyAt            *time.Time                                                     `json:"readyAt"`
+		RegionId           openapi_types.UUID                                             `json:"regionId"`
+		RegionSlug         string                                                         `json:"regionSlug"`
+		Restorable         bool                                                           `json:"restorable"`
+		SourceInstanceId   *openapi_types.UUID                                            `json:"sourceInstanceId"`
+		SourceInstanceName *string                                                        `json:"sourceInstanceName"`
+		SourceKind         *PostV1XcloudInstancesIdSnapshots201JSONResponseBodySourceKind `json:"sourceKind,omitempty"`
+		SourceVolumeId     *openapi_types.UUID                                            `json:"sourceVolumeId,omitempty"`
+		SourceVolumeName   *string                                                        `json:"sourceVolumeName,omitempty"`
+		Status             PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatus      `json:"status"`
+		TakenWhileRunning  *bool                                                          `json:"takenWhileRunning"`
+		TenantId           openapi_types.UUID                                             `json:"tenantId"`
+		XcloudName         string                                                         `json:"xcloudName"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON412 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON422 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r PostV1XcloudInstancesIdSnapshotsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostV1XcloudInstancesIdSnapshotsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PostV1XcloudInstancesIdSnapshotsResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type PatchV1XcloudInstancesIdSshKeysResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		AdminPasswordSet       *bool                                                            `json:"adminPasswordSet,omitempty"`
-		AdminUsername          *string                                                          `json:"adminUsername"`
-		AgentLastError         *string                                                          `json:"agentLastError"`
-		AgentStatus            PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyAgentStatus    `json:"agentStatus"`
-		AgentStatusAt          *time.Time                                                       `json:"agentStatusAt"`
+		AdminPasswordSet *bool                                                         `json:"adminPasswordSet,omitempty"`
+		AdminUsername    *string                                                       `json:"adminUsername"`
+		AgentLastError   *string                                                       `json:"agentLastError"`
+		AgentStatus      PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyAgentStatus `json:"agentStatus"`
+		AgentStatusAt    *time.Time                                                    `json:"agentStatusAt"`
+		BootingSince     *time.Time                                                    `json:"bootingSince"`
+		Cost             *struct {
+			Hourly *string                                                    `json:"hourly"`
+			Mode   PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
 		CpuCores               int                                                              `json:"cpuCores"`
 		CreatedAt              time.Time                                                        `json:"createdAt"`
 		DiskGib                int                                                              `json:"diskGib"`
 		DisplayHeight          int                                                              `json:"displayHeight"`
+		DisplayScale           *int                                                             `json:"displayScale,omitempty"`
 		DisplayWidth           int                                                              `json:"displayWidth"`
 		ExpiresAt              *time.Time                                                       `json:"expiresAt"`
 		FlavorSlug             *string                                                          `json:"flavorSlug"`
@@ -49515,6 +54377,7 @@ type PatchV1XcloudInstancesIdSshKeysResponse struct {
 		RegionId               openapi_types.UUID                                               `json:"regionId"`
 		RegionSlug             string                                                           `json:"regionSlug"`
 		SecurityGroups         *[]string                                                        `json:"securityGroups,omitempty"`
+		SourceSnapshotId       *openapi_types.UUID                                              `json:"sourceSnapshotId,omitempty"`
 		SshKeyIds              *[]openapi_types.UUID                                            `json:"sshKeyIds,omitempty"`
 		SshKeysProvisionedAt   *time.Time                                                       `json:"sshKeysProvisionedAt"`
 		Status                 PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatus         `json:"status"`
@@ -49826,19 +54689,25 @@ type GetV1XcloudInstancesIdVolumesResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Data []struct {
-			ActualSizeGib        *int                                                      `json:"actualSizeGib"`
-			AttachedInstanceId   *openapi_types.UUID                                       `json:"attachedInstanceId"`
-			AttachedInstanceName *string                                                   `json:"attachedInstanceName"`
-			CreatedAt            time.Time                                                 `json:"createdAt"`
-			Id                   openapi_types.UUID                                        `json:"id"`
-			Name                 string                                                    `json:"name"`
-			Node                 *string                                                   `json:"node"`
-			RegionId             openapi_types.UUID                                        `json:"regionId"`
-			RegionSlug           string                                                    `json:"regionSlug"`
-			SizeGib              int                                                       `json:"sizeGib"`
-			State                GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState `json:"state"`
-			TenantId             openapi_types.UUID                                        `json:"tenantId"`
-			XcloudName           string                                                    `json:"xcloudName"`
+			ActualSizeGib          *int                `json:"actualSizeGib"`
+			AttachedInstanceId     *openapi_types.UUID `json:"attachedInstanceId"`
+			AttachedInstanceName   *string             `json:"attachedInstanceName"`
+			AttachedInstanceStatus *string             `json:"attachedInstanceStatus,omitempty"`
+			Cost                   *struct {
+				Hourly *string                                                      `json:"hourly"`
+				Mode   GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt        time.Time                                                 `json:"createdAt"`
+			Id               openapi_types.UUID                                        `json:"id"`
+			Name             string                                                    `json:"name"`
+			Node             *string                                                   `json:"node"`
+			RegionId         openapi_types.UUID                                        `json:"regionId"`
+			RegionSlug       string                                                    `json:"regionSlug"`
+			SizeGib          int                                                       `json:"sizeGib"`
+			SourceSnapshotId *openapi_types.UUID                                       `json:"sourceSnapshotId,omitempty"`
+			State            GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState `json:"state"`
+			TenantId         openapi_types.UUID                                        `json:"tenantId"`
+			XcloudName       string                                                    `json:"xcloudName"`
 		} `json:"data"`
 	}
 	JSON404 *struct {
@@ -49895,19 +54764,25 @@ type PostV1XcloudInstancesIdVolumesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON201      *struct {
-		ActualSizeGib        *int                                                   `json:"actualSizeGib"`
-		AttachedInstanceId   *openapi_types.UUID                                    `json:"attachedInstanceId"`
-		AttachedInstanceName *string                                                `json:"attachedInstanceName"`
-		CreatedAt            time.Time                                              `json:"createdAt"`
-		Id                   openapi_types.UUID                                     `json:"id"`
-		Name                 string                                                 `json:"name"`
-		Node                 *string                                                `json:"node"`
-		RegionId             openapi_types.UUID                                     `json:"regionId"`
-		RegionSlug           string                                                 `json:"regionSlug"`
-		SizeGib              int                                                    `json:"sizeGib"`
-		State                PostV1XcloudInstancesIdVolumes201JSONResponseBodyState `json:"state"`
-		TenantId             openapi_types.UUID                                     `json:"tenantId"`
-		XcloudName           string                                                 `json:"xcloudName"`
+		ActualSizeGib          *int                `json:"actualSizeGib"`
+		AttachedInstanceId     *openapi_types.UUID `json:"attachedInstanceId"`
+		AttachedInstanceName   *string             `json:"attachedInstanceName"`
+		AttachedInstanceStatus *string             `json:"attachedInstanceStatus,omitempty"`
+		Cost                   *struct {
+			Hourly *string                                                   `json:"hourly"`
+			Mode   PostV1XcloudInstancesIdVolumes201JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
+		CreatedAt        time.Time                                              `json:"createdAt"`
+		Id               openapi_types.UUID                                     `json:"id"`
+		Name             string                                                 `json:"name"`
+		Node             *string                                                `json:"node"`
+		RegionId         openapi_types.UUID                                     `json:"regionId"`
+		RegionSlug       string                                                 `json:"regionSlug"`
+		SizeGib          int                                                    `json:"sizeGib"`
+		SourceSnapshotId *openapi_types.UUID                                    `json:"sourceSnapshotId,omitempty"`
+		State            PostV1XcloudInstancesIdVolumes201JSONResponseBodyState `json:"state"`
+		TenantId         openapi_types.UUID                                     `json:"tenantId"`
+		XcloudName       string                                                 `json:"xcloudName"`
 	}
 	JSON404 *struct {
 		Code     *string `json:"code,omitempty"`
@@ -50017,17 +54892,23 @@ type GetV1XcloudNetworksResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Data []struct {
-			Cidr       *string                                          `json:"cidr"`
-			CreatedAt  *string                                          `json:"createdAt"`
-			Dhcp       *bool                                            `json:"dhcp"`
-			Gateway    *string                                          `json:"gateway"`
-			Labels     map[string]string                                `json:"labels"`
-			Mode       *string                                          `json:"mode"`
-			Name       string                                           `json:"name"`
-			RegionId   openapi_types.UUID                               `json:"regionId"`
-			RegionSlug string                                           `json:"regionSlug"`
-			Source     GetV1XcloudNetworks200JSONResponseBodyDataSource `json:"source"`
-			Spec       map[string]*interface{}                          `json:"spec"`
+			Cidr      *string `json:"cidr"`
+			CreatedAt *string `json:"createdAt"`
+			Dhcp      bool    `json:"dhcp"`
+			DhcpRange *struct {
+				RangeEnd   string `json:"rangeEnd"`
+				RangeStart string `json:"rangeStart"`
+			} `json:"dhcpRange"`
+			Gateway          *string                                          `json:"gateway"`
+			Labels           map[string]string                                `json:"labels"`
+			ManagedByCatalog *bool                                            `json:"managedByCatalog,omitempty"`
+			Mode             interface{}                                      `json:"mode"`
+			Name             string                                           `json:"name"`
+			RegionId         openapi_types.UUID                               `json:"regionId"`
+			RegionSlug       string                                           `json:"regionSlug"`
+			Source           GetV1XcloudNetworks200JSONResponseBodyDataSource `json:"source"`
+			Spec             map[string]*interface{}                          `json:"spec"`
+			Vni              *int                                             `json:"vni"`
 		} `json:"data"`
 	}
 	JSON404 *struct {
@@ -50076,17 +54957,23 @@ type PostV1XcloudNetworksResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON201      *struct {
-		Cidr       *string                                       `json:"cidr"`
-		CreatedAt  *string                                       `json:"createdAt"`
-		Dhcp       *bool                                         `json:"dhcp"`
-		Gateway    *string                                       `json:"gateway"`
-		Labels     map[string]string                             `json:"labels"`
-		Mode       *string                                       `json:"mode"`
-		Name       string                                        `json:"name"`
-		RegionId   openapi_types.UUID                            `json:"regionId"`
-		RegionSlug string                                        `json:"regionSlug"`
-		Source     PostV1XcloudNetworks201JSONResponseBodySource `json:"source"`
-		Spec       map[string]*interface{}                       `json:"spec"`
+		Cidr      *string `json:"cidr"`
+		CreatedAt *string `json:"createdAt"`
+		Dhcp      bool    `json:"dhcp"`
+		DhcpRange *struct {
+			RangeEnd   string `json:"rangeEnd"`
+			RangeStart string `json:"rangeStart"`
+		} `json:"dhcpRange"`
+		Gateway          *string                                       `json:"gateway"`
+		Labels           map[string]string                             `json:"labels"`
+		ManagedByCatalog *bool                                         `json:"managedByCatalog,omitempty"`
+		Mode             interface{}                                   `json:"mode"`
+		Name             string                                        `json:"name"`
+		RegionId         openapi_types.UUID                            `json:"regionId"`
+		RegionSlug       string                                        `json:"regionSlug"`
+		Source           PostV1XcloudNetworks201JSONResponseBodySource `json:"source"`
+		Spec             map[string]*interface{}                       `json:"spec"`
+		Vni              *int                                          `json:"vni"`
 	}
 	JSON400 *struct {
 		Code     *string `json:"code,omitempty"`
@@ -50247,24 +55134,500 @@ func (r DeleteV1XcloudNetworksNameResponse) ContentType() string {
 	return ""
 }
 
+type PatchV1XcloudNetworksNameResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Cidr      *string `json:"cidr"`
+		CreatedAt *string `json:"createdAt"`
+		Dhcp      bool    `json:"dhcp"`
+		DhcpRange *struct {
+			RangeEnd   string `json:"rangeEnd"`
+			RangeStart string `json:"rangeStart"`
+		} `json:"dhcpRange"`
+		Gateway          *string                                            `json:"gateway"`
+		Labels           map[string]string                                  `json:"labels"`
+		ManagedByCatalog *bool                                              `json:"managedByCatalog,omitempty"`
+		Mode             interface{}                                        `json:"mode"`
+		Name             string                                             `json:"name"`
+		RegionId         openapi_types.UUID                                 `json:"regionId"`
+		RegionSlug       string                                             `json:"regionSlug"`
+		Source           PatchV1XcloudNetworksName200JSONResponseBodySource `json:"source"`
+		Spec             map[string]*interface{}                            `json:"spec"`
+		Vni              *int                                               `json:"vni"`
+	}
+	JSON400 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON403 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON412 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON422 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON502 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r PatchV1XcloudNetworksNameResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PatchV1XcloudNetworksNameResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PatchV1XcloudNetworksNameResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetV1XcloudSnapshotsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Data []struct {
+			CaptureTime *time.Time `json:"captureTime"`
+			Cost        *struct {
+				Hourly *string                                             `json:"hourly"`
+				Mode   GetV1XcloudSnapshots200JSONResponseBodyDataCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt          time.Time                                              `json:"createdAt"`
+			Description        *string                                                `json:"description"`
+			DiskGib            int                                                    `json:"diskGib"`
+			Id                 openapi_types.UUID                                     `json:"id"`
+			ImageRef           *string                                                `json:"imageRef"`
+			LastError          *string                                                `json:"lastError"`
+			MinCpuCores        *int                                                   `json:"minCpuCores"`
+			MinMemoryGib       *int                                                   `json:"minMemoryGib"`
+			Name               string                                                 `json:"name"`
+			Platform           *GetV1XcloudSnapshots200JSONResponseBodyDataPlatform   `json:"platform"`
+			ReadyAt            *time.Time                                             `json:"readyAt"`
+			RegionId           openapi_types.UUID                                     `json:"regionId"`
+			RegionSlug         string                                                 `json:"regionSlug"`
+			Restorable         bool                                                   `json:"restorable"`
+			SourceInstanceId   *openapi_types.UUID                                    `json:"sourceInstanceId"`
+			SourceInstanceName *string                                                `json:"sourceInstanceName"`
+			SourceKind         *GetV1XcloudSnapshots200JSONResponseBodyDataSourceKind `json:"sourceKind,omitempty"`
+			SourceVolumeId     *openapi_types.UUID                                    `json:"sourceVolumeId,omitempty"`
+			SourceVolumeName   *string                                                `json:"sourceVolumeName,omitempty"`
+			Status             GetV1XcloudSnapshots200JSONResponseBodyDataStatus      `json:"status"`
+			TakenWhileRunning  *bool                                                  `json:"takenWhileRunning"`
+			TenantId           openapi_types.UUID                                     `json:"tenantId"`
+			XcloudName         string                                                 `json:"xcloudName"`
+		} `json:"data"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON412 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON422 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r GetV1XcloudSnapshotsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetV1XcloudSnapshotsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetV1XcloudSnapshotsResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type DeleteV1XcloudSnapshotsIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON202      *struct {
+		CaptureTime *time.Time `json:"captureTime"`
+		Cost        *struct {
+			Hourly *string                                              `json:"hourly"`
+			Mode   DeleteV1XcloudSnapshotsId202JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
+		CreatedAt          time.Time                                               `json:"createdAt"`
+		Description        *string                                                 `json:"description"`
+		DiskGib            int                                                     `json:"diskGib"`
+		Id                 openapi_types.UUID                                      `json:"id"`
+		ImageRef           *string                                                 `json:"imageRef"`
+		LastError          *string                                                 `json:"lastError"`
+		MinCpuCores        *int                                                    `json:"minCpuCores"`
+		MinMemoryGib       *int                                                    `json:"minMemoryGib"`
+		Name               string                                                  `json:"name"`
+		Platform           *DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatform   `json:"platform"`
+		ReadyAt            *time.Time                                              `json:"readyAt"`
+		RegionId           openapi_types.UUID                                      `json:"regionId"`
+		RegionSlug         string                                                  `json:"regionSlug"`
+		Restorable         bool                                                    `json:"restorable"`
+		SourceInstanceId   *openapi_types.UUID                                     `json:"sourceInstanceId"`
+		SourceInstanceName *string                                                 `json:"sourceInstanceName"`
+		SourceKind         *DeleteV1XcloudSnapshotsId202JSONResponseBodySourceKind `json:"sourceKind,omitempty"`
+		SourceVolumeId     *openapi_types.UUID                                     `json:"sourceVolumeId,omitempty"`
+		SourceVolumeName   *string                                                 `json:"sourceVolumeName,omitempty"`
+		Status             DeleteV1XcloudSnapshotsId202JSONResponseBodyStatus      `json:"status"`
+		TakenWhileRunning  *bool                                                   `json:"takenWhileRunning"`
+		TenantId           openapi_types.UUID                                      `json:"tenantId"`
+		XcloudName         string                                                  `json:"xcloudName"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON412 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON422 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r DeleteV1XcloudSnapshotsIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r DeleteV1XcloudSnapshotsIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r DeleteV1XcloudSnapshotsIdResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetV1XcloudSnapshotsIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		CaptureTime *time.Time `json:"captureTime"`
+		Cost        *struct {
+			Hourly *string                                           `json:"hourly"`
+			Mode   GetV1XcloudSnapshotsId200JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
+		CreatedAt          time.Time                                            `json:"createdAt"`
+		Description        *string                                              `json:"description"`
+		DiskGib            int                                                  `json:"diskGib"`
+		Id                 openapi_types.UUID                                   `json:"id"`
+		ImageRef           *string                                              `json:"imageRef"`
+		LastError          *string                                              `json:"lastError"`
+		MinCpuCores        *int                                                 `json:"minCpuCores"`
+		MinMemoryGib       *int                                                 `json:"minMemoryGib"`
+		Name               string                                               `json:"name"`
+		Platform           *GetV1XcloudSnapshotsId200JSONResponseBodyPlatform   `json:"platform"`
+		ReadyAt            *time.Time                                           `json:"readyAt"`
+		RegionId           openapi_types.UUID                                   `json:"regionId"`
+		RegionSlug         string                                               `json:"regionSlug"`
+		Restorable         bool                                                 `json:"restorable"`
+		SourceInstanceId   *openapi_types.UUID                                  `json:"sourceInstanceId"`
+		SourceInstanceName *string                                              `json:"sourceInstanceName"`
+		SourceKind         *GetV1XcloudSnapshotsId200JSONResponseBodySourceKind `json:"sourceKind,omitempty"`
+		SourceVolumeId     *openapi_types.UUID                                  `json:"sourceVolumeId,omitempty"`
+		SourceVolumeName   *string                                              `json:"sourceVolumeName,omitempty"`
+		Status             GetV1XcloudSnapshotsId200JSONResponseBodyStatus      `json:"status"`
+		TakenWhileRunning  *bool                                                `json:"takenWhileRunning"`
+		TenantId           openapi_types.UUID                                   `json:"tenantId"`
+		XcloudName         string                                               `json:"xcloudName"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON412 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON422 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r GetV1XcloudSnapshotsIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetV1XcloudSnapshotsIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetV1XcloudSnapshotsIdResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type PatchV1XcloudSnapshotsIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		CaptureTime *time.Time `json:"captureTime"`
+		Cost        *struct {
+			Hourly *string                                             `json:"hourly"`
+			Mode   PatchV1XcloudSnapshotsId200JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
+		CreatedAt          time.Time                                              `json:"createdAt"`
+		Description        *string                                                `json:"description"`
+		DiskGib            int                                                    `json:"diskGib"`
+		Id                 openapi_types.UUID                                     `json:"id"`
+		ImageRef           *string                                                `json:"imageRef"`
+		LastError          *string                                                `json:"lastError"`
+		MinCpuCores        *int                                                   `json:"minCpuCores"`
+		MinMemoryGib       *int                                                   `json:"minMemoryGib"`
+		Name               string                                                 `json:"name"`
+		Platform           *PatchV1XcloudSnapshotsId200JSONResponseBodyPlatform   `json:"platform"`
+		ReadyAt            *time.Time                                             `json:"readyAt"`
+		RegionId           openapi_types.UUID                                     `json:"regionId"`
+		RegionSlug         string                                                 `json:"regionSlug"`
+		Restorable         bool                                                   `json:"restorable"`
+		SourceInstanceId   *openapi_types.UUID                                    `json:"sourceInstanceId"`
+		SourceInstanceName *string                                                `json:"sourceInstanceName"`
+		SourceKind         *PatchV1XcloudSnapshotsId200JSONResponseBodySourceKind `json:"sourceKind,omitempty"`
+		SourceVolumeId     *openapi_types.UUID                                    `json:"sourceVolumeId,omitempty"`
+		SourceVolumeName   *string                                                `json:"sourceVolumeName,omitempty"`
+		Status             PatchV1XcloudSnapshotsId200JSONResponseBodyStatus      `json:"status"`
+		TakenWhileRunning  *bool                                                  `json:"takenWhileRunning"`
+		TenantId           openapi_types.UUID                                     `json:"tenantId"`
+		XcloudName         string                                                 `json:"xcloudName"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON412 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON422 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r PatchV1XcloudSnapshotsIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PatchV1XcloudSnapshotsIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PatchV1XcloudSnapshotsIdResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
 type GetV1XcloudVolumesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Data []struct {
-			ActualSizeGib        *int                                           `json:"actualSizeGib"`
-			AttachedInstanceId   *openapi_types.UUID                            `json:"attachedInstanceId"`
-			AttachedInstanceName *string                                        `json:"attachedInstanceName"`
-			CreatedAt            time.Time                                      `json:"createdAt"`
-			Id                   openapi_types.UUID                             `json:"id"`
-			Name                 string                                         `json:"name"`
-			Node                 *string                                        `json:"node"`
-			RegionId             openapi_types.UUID                             `json:"regionId"`
-			RegionSlug           string                                         `json:"regionSlug"`
-			SizeGib              int                                            `json:"sizeGib"`
-			State                GetV1XcloudVolumes200JSONResponseBodyDataState `json:"state"`
-			TenantId             openapi_types.UUID                             `json:"tenantId"`
-			XcloudName           string                                         `json:"xcloudName"`
+			ActualSizeGib          *int                `json:"actualSizeGib"`
+			AttachedInstanceId     *openapi_types.UUID `json:"attachedInstanceId"`
+			AttachedInstanceName   *string             `json:"attachedInstanceName"`
+			AttachedInstanceStatus *string             `json:"attachedInstanceStatus,omitempty"`
+			Cost                   *struct {
+				Hourly *string                                           `json:"hourly"`
+				Mode   GetV1XcloudVolumes200JSONResponseBodyDataCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt        time.Time                                      `json:"createdAt"`
+			Id               openapi_types.UUID                             `json:"id"`
+			Name             string                                         `json:"name"`
+			Node             *string                                        `json:"node"`
+			RegionId         openapi_types.UUID                             `json:"regionId"`
+			RegionSlug       string                                         `json:"regionSlug"`
+			SizeGib          int                                            `json:"sizeGib"`
+			SourceSnapshotId *openapi_types.UUID                            `json:"sourceSnapshotId,omitempty"`
+			State            GetV1XcloudVolumes200JSONResponseBodyDataState `json:"state"`
+			TenantId         openapi_types.UUID                             `json:"tenantId"`
+			XcloudName       string                                         `json:"xcloudName"`
 		} `json:"data"`
 	}
 }
@@ -50297,19 +55660,25 @@ type PostV1XcloudVolumesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON201      *struct {
-		ActualSizeGib        *int                                        `json:"actualSizeGib"`
-		AttachedInstanceId   *openapi_types.UUID                         `json:"attachedInstanceId"`
-		AttachedInstanceName *string                                     `json:"attachedInstanceName"`
-		CreatedAt            time.Time                                   `json:"createdAt"`
-		Id                   openapi_types.UUID                          `json:"id"`
-		Name                 string                                      `json:"name"`
-		Node                 *string                                     `json:"node"`
-		RegionId             openapi_types.UUID                          `json:"regionId"`
-		RegionSlug           string                                      `json:"regionSlug"`
-		SizeGib              int                                         `json:"sizeGib"`
-		State                PostV1XcloudVolumes201JSONResponseBodyState `json:"state"`
-		TenantId             openapi_types.UUID                          `json:"tenantId"`
-		XcloudName           string                                      `json:"xcloudName"`
+		ActualSizeGib          *int                `json:"actualSizeGib"`
+		AttachedInstanceId     *openapi_types.UUID `json:"attachedInstanceId"`
+		AttachedInstanceName   *string             `json:"attachedInstanceName"`
+		AttachedInstanceStatus *string             `json:"attachedInstanceStatus,omitempty"`
+		Cost                   *struct {
+			Hourly *string                                        `json:"hourly"`
+			Mode   PostV1XcloudVolumes201JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
+		CreatedAt        time.Time                                   `json:"createdAt"`
+		Id               openapi_types.UUID                          `json:"id"`
+		Name             string                                      `json:"name"`
+		Node             *string                                     `json:"node"`
+		RegionId         openapi_types.UUID                          `json:"regionId"`
+		RegionSlug       string                                      `json:"regionSlug"`
+		SizeGib          int                                         `json:"sizeGib"`
+		SourceSnapshotId *openapi_types.UUID                         `json:"sourceSnapshotId,omitempty"`
+		State            PostV1XcloudVolumes201JSONResponseBodyState `json:"state"`
+		TenantId         openapi_types.UUID                          `json:"tenantId"`
+		XcloudName       string                                      `json:"xcloudName"`
 	}
 	JSON404 *struct {
 		Code     *string `json:"code,omitempty"`
@@ -50418,19 +55787,25 @@ type GetV1XcloudVolumesIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		ActualSizeGib        *int                                         `json:"actualSizeGib"`
-		AttachedInstanceId   *openapi_types.UUID                          `json:"attachedInstanceId"`
-		AttachedInstanceName *string                                      `json:"attachedInstanceName"`
-		CreatedAt            time.Time                                    `json:"createdAt"`
-		Id                   openapi_types.UUID                           `json:"id"`
-		Name                 string                                       `json:"name"`
-		Node                 *string                                      `json:"node"`
-		RegionId             openapi_types.UUID                           `json:"regionId"`
-		RegionSlug           string                                       `json:"regionSlug"`
-		SizeGib              int                                          `json:"sizeGib"`
-		State                GetV1XcloudVolumesId200JSONResponseBodyState `json:"state"`
-		TenantId             openapi_types.UUID                           `json:"tenantId"`
-		XcloudName           string                                       `json:"xcloudName"`
+		ActualSizeGib          *int                `json:"actualSizeGib"`
+		AttachedInstanceId     *openapi_types.UUID `json:"attachedInstanceId"`
+		AttachedInstanceName   *string             `json:"attachedInstanceName"`
+		AttachedInstanceStatus *string             `json:"attachedInstanceStatus,omitempty"`
+		Cost                   *struct {
+			Hourly *string                                         `json:"hourly"`
+			Mode   GetV1XcloudVolumesId200JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
+		CreatedAt        time.Time                                    `json:"createdAt"`
+		Id               openapi_types.UUID                           `json:"id"`
+		Name             string                                       `json:"name"`
+		Node             *string                                      `json:"node"`
+		RegionId         openapi_types.UUID                           `json:"regionId"`
+		RegionSlug       string                                       `json:"regionSlug"`
+		SizeGib          int                                          `json:"sizeGib"`
+		SourceSnapshotId *openapi_types.UUID                          `json:"sourceSnapshotId,omitempty"`
+		State            GetV1XcloudVolumesId200JSONResponseBodyState `json:"state"`
+		TenantId         openapi_types.UUID                           `json:"tenantId"`
+		XcloudName       string                                       `json:"xcloudName"`
 	}
 	JSON404 *struct {
 		Code     *string `json:"code,omitempty"`
@@ -50486,19 +55861,25 @@ type PostV1XcloudVolumesIdResizeResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		ActualSizeGib        *int                                                `json:"actualSizeGib"`
-		AttachedInstanceId   *openapi_types.UUID                                 `json:"attachedInstanceId"`
-		AttachedInstanceName *string                                             `json:"attachedInstanceName"`
-		CreatedAt            time.Time                                           `json:"createdAt"`
-		Id                   openapi_types.UUID                                  `json:"id"`
-		Name                 string                                              `json:"name"`
-		Node                 *string                                             `json:"node"`
-		RegionId             openapi_types.UUID                                  `json:"regionId"`
-		RegionSlug           string                                              `json:"regionSlug"`
-		SizeGib              int                                                 `json:"sizeGib"`
-		State                PostV1XcloudVolumesIdResize200JSONResponseBodyState `json:"state"`
-		TenantId             openapi_types.UUID                                  `json:"tenantId"`
-		XcloudName           string                                              `json:"xcloudName"`
+		ActualSizeGib          *int                `json:"actualSizeGib"`
+		AttachedInstanceId     *openapi_types.UUID `json:"attachedInstanceId"`
+		AttachedInstanceName   *string             `json:"attachedInstanceName"`
+		AttachedInstanceStatus *string             `json:"attachedInstanceStatus,omitempty"`
+		Cost                   *struct {
+			Hourly *string                                                `json:"hourly"`
+			Mode   PostV1XcloudVolumesIdResize200JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
+		CreatedAt        time.Time                                           `json:"createdAt"`
+		Id               openapi_types.UUID                                  `json:"id"`
+		Name             string                                              `json:"name"`
+		Node             *string                                             `json:"node"`
+		RegionId         openapi_types.UUID                                  `json:"regionId"`
+		RegionSlug       string                                              `json:"regionSlug"`
+		SizeGib          int                                                 `json:"sizeGib"`
+		SourceSnapshotId *openapi_types.UUID                                 `json:"sourceSnapshotId,omitempty"`
+		State            PostV1XcloudVolumesIdResize200JSONResponseBodyState `json:"state"`
+		TenantId         openapi_types.UUID                                  `json:"tenantId"`
+		XcloudName       string                                              `json:"xcloudName"`
 	}
 	JSON404 *struct {
 		Code     *string `json:"code,omitempty"`
@@ -50544,6 +55925,254 @@ func (r PostV1XcloudVolumesIdResizeResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r PostV1XcloudVolumesIdResizeResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type PostV1XcloudVolumesIdRestoreResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON202      *struct {
+		Restoring PostV1XcloudVolumesIdRestore202JSONResponseBodyRestoring `json:"restoring"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON412 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON422 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r PostV1XcloudVolumesIdRestoreResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostV1XcloudVolumesIdRestoreResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PostV1XcloudVolumesIdRestoreResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type GetV1XcloudVolumesIdSnapshotsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Data []struct {
+			CaptureTime *time.Time `json:"captureTime"`
+			Cost        *struct {
+				Hourly *string                                                      `json:"hourly"`
+				Mode   GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt          time.Time                                                       `json:"createdAt"`
+			Description        *string                                                         `json:"description"`
+			DiskGib            int                                                             `json:"diskGib"`
+			Id                 openapi_types.UUID                                              `json:"id"`
+			ImageRef           *string                                                         `json:"imageRef"`
+			LastError          *string                                                         `json:"lastError"`
+			MinCpuCores        *int                                                            `json:"minCpuCores"`
+			MinMemoryGib       *int                                                            `json:"minMemoryGib"`
+			Name               string                                                          `json:"name"`
+			Platform           *GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatform   `json:"platform"`
+			ReadyAt            *time.Time                                                      `json:"readyAt"`
+			RegionId           openapi_types.UUID                                              `json:"regionId"`
+			RegionSlug         string                                                          `json:"regionSlug"`
+			Restorable         bool                                                            `json:"restorable"`
+			SourceInstanceId   *openapi_types.UUID                                             `json:"sourceInstanceId"`
+			SourceInstanceName *string                                                         `json:"sourceInstanceName"`
+			SourceKind         *GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataSourceKind `json:"sourceKind,omitempty"`
+			SourceVolumeId     *openapi_types.UUID                                             `json:"sourceVolumeId,omitempty"`
+			SourceVolumeName   *string                                                         `json:"sourceVolumeName,omitempty"`
+			Status             GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatus      `json:"status"`
+			TakenWhileRunning  *bool                                                           `json:"takenWhileRunning"`
+			TenantId           openapi_types.UUID                                              `json:"tenantId"`
+			XcloudName         string                                                          `json:"xcloudName"`
+		} `json:"data"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON412 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON422 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r GetV1XcloudVolumesIdSnapshotsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetV1XcloudVolumesIdSnapshotsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r GetV1XcloudVolumesIdSnapshotsResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+type PostV1XcloudVolumesIdSnapshotsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON201      *struct {
+		CaptureTime *time.Time `json:"captureTime"`
+		Cost        *struct {
+			Hourly *string                                                   `json:"hourly"`
+			Mode   PostV1XcloudVolumesIdSnapshots201JSONResponseBodyCostMode `json:"mode"`
+		} `json:"cost,omitempty"`
+		CreatedAt          time.Time                                                    `json:"createdAt"`
+		Description        *string                                                      `json:"description"`
+		DiskGib            int                                                          `json:"diskGib"`
+		Id                 openapi_types.UUID                                           `json:"id"`
+		ImageRef           *string                                                      `json:"imageRef"`
+		LastError          *string                                                      `json:"lastError"`
+		MinCpuCores        *int                                                         `json:"minCpuCores"`
+		MinMemoryGib       *int                                                         `json:"minMemoryGib"`
+		Name               string                                                       `json:"name"`
+		Platform           *PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatform   `json:"platform"`
+		ReadyAt            *time.Time                                                   `json:"readyAt"`
+		RegionId           openapi_types.UUID                                           `json:"regionId"`
+		RegionSlug         string                                                       `json:"regionSlug"`
+		Restorable         bool                                                         `json:"restorable"`
+		SourceInstanceId   *openapi_types.UUID                                          `json:"sourceInstanceId"`
+		SourceInstanceName *string                                                      `json:"sourceInstanceName"`
+		SourceKind         *PostV1XcloudVolumesIdSnapshots201JSONResponseBodySourceKind `json:"sourceKind,omitempty"`
+		SourceVolumeId     *openapi_types.UUID                                          `json:"sourceVolumeId,omitempty"`
+		SourceVolumeName   *string                                                      `json:"sourceVolumeName,omitempty"`
+		Status             PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatus      `json:"status"`
+		TakenWhileRunning  *bool                                                        `json:"takenWhileRunning"`
+		TenantId           openapi_types.UUID                                           `json:"tenantId"`
+		XcloudName         string                                                       `json:"xcloudName"`
+	}
+	JSON404 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON409 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON412 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+	JSON422 *struct {
+		Code     *string `json:"code,omitempty"`
+		Detail   *string `json:"detail,omitempty"`
+		Instance *string `json:"instance,omitempty"`
+		Status   int     `json:"status"`
+		Title    string  `json:"title"`
+		Type     *string `json:"type,omitempty"`
+	}
+}
+
+// Status returns HTTPResponse.Status
+func (r PostV1XcloudVolumesIdSnapshotsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PostV1XcloudVolumesIdSnapshotsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r PostV1XcloudVolumesIdSnapshotsResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -50725,6 +56354,15 @@ func (c *ClientWithResponses) GetV1BillingLedgerWithResponse(ctx context.Context
 	return ParseGetV1BillingLedgerResponse(rsp)
 }
 
+// GetV1BillingStatementWithResponse request returning *GetV1BillingStatementResponse
+func (c *ClientWithResponses) GetV1BillingStatementWithResponse(ctx context.Context, params *GetV1BillingStatementParams, reqEditors ...RequestEditorFn) (*GetV1BillingStatementResponse, error) {
+	rsp, err := c.GetV1BillingStatement(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetV1BillingStatementResponse(rsp)
+}
+
 // GetV1BillingStripeWithResponse request returning *GetV1BillingStripeResponse
 func (c *ClientWithResponses) GetV1BillingStripeWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetV1BillingStripeResponse, error) {
 	rsp, err := c.GetV1BillingStripe(ctx, reqEditors...)
@@ -50732,6 +56370,15 @@ func (c *ClientWithResponses) GetV1BillingStripeWithResponse(ctx context.Context
 		return nil, err
 	}
 	return ParseGetV1BillingStripeResponse(rsp)
+}
+
+// GetV1BillingStripeAddressSuggestionWithResponse request returning *GetV1BillingStripeAddressSuggestionResponse
+func (c *ClientWithResponses) GetV1BillingStripeAddressSuggestionWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetV1BillingStripeAddressSuggestionResponse, error) {
+	rsp, err := c.GetV1BillingStripeAddressSuggestion(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetV1BillingStripeAddressSuggestionResponse(rsp)
 }
 
 // GetV1BillingStripeAutoRechargeWithResponse request returning *GetV1BillingStripeAutoRechargeResponse
@@ -50814,16 +56461,16 @@ func (c *ClientWithResponses) PostV1BillingStripeSetupWithResponse(ctx context.C
 }
 
 // PostV1BillingStripeTopupWithBodyWithResponse request with arbitrary body returning *PostV1BillingStripeTopupResponse
-func (c *ClientWithResponses) PostV1BillingStripeTopupWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1BillingStripeTopupResponse, error) {
-	rsp, err := c.PostV1BillingStripeTopupWithBody(ctx, contentType, body, reqEditors...)
+func (c *ClientWithResponses) PostV1BillingStripeTopupWithBodyWithResponse(ctx context.Context, params *PostV1BillingStripeTopupParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1BillingStripeTopupResponse, error) {
+	rsp, err := c.PostV1BillingStripeTopupWithBody(ctx, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParsePostV1BillingStripeTopupResponse(rsp)
 }
 
-func (c *ClientWithResponses) PostV1BillingStripeTopupWithResponse(ctx context.Context, body PostV1BillingStripeTopupJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1BillingStripeTopupResponse, error) {
-	rsp, err := c.PostV1BillingStripeTopup(ctx, body, reqEditors...)
+func (c *ClientWithResponses) PostV1BillingStripeTopupWithResponse(ctx context.Context, params *PostV1BillingStripeTopupParams, body PostV1BillingStripeTopupJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1BillingStripeTopupResponse, error) {
+	rsp, err := c.PostV1BillingStripeTopup(ctx, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -51409,6 +57056,23 @@ func (c *ClientWithResponses) GetV1HealthzWithResponse(ctx context.Context, reqE
 	return ParseGetV1HealthzResponse(rsp)
 }
 
+// PostV1IdentityVerifyEmailWithBodyWithResponse request with arbitrary body returning *PostV1IdentityVerifyEmailResponse
+func (c *ClientWithResponses) PostV1IdentityVerifyEmailWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1IdentityVerifyEmailResponse, error) {
+	rsp, err := c.PostV1IdentityVerifyEmailWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1IdentityVerifyEmailResponse(rsp)
+}
+
+func (c *ClientWithResponses) PostV1IdentityVerifyEmailWithResponse(ctx context.Context, body PostV1IdentityVerifyEmailJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1IdentityVerifyEmailResponse, error) {
+	rsp, err := c.PostV1IdentityVerifyEmail(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1IdentityVerifyEmailResponse(rsp)
+}
+
 // GetV1InvitationsWithResponse request returning *GetV1InvitationsResponse
 func (c *ClientWithResponses) GetV1InvitationsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetV1InvitationsResponse, error) {
 	rsp, err := c.GetV1Invitations(ctx, reqEditors...)
@@ -51626,6 +57290,42 @@ func (c *ClientWithResponses) PatchV1MeWithResponse(ctx context.Context, body Pa
 		return nil, err
 	}
 	return ParsePatchV1MeResponse(rsp)
+}
+
+// GetV1MeIdentityWithResponse request returning *GetV1MeIdentityResponse
+func (c *ClientWithResponses) GetV1MeIdentityWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetV1MeIdentityResponse, error) {
+	rsp, err := c.GetV1MeIdentity(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetV1MeIdentityResponse(rsp)
+}
+
+// PostV1MeIdentityEmailWithResponse request returning *PostV1MeIdentityEmailResponse
+func (c *ClientWithResponses) PostV1MeIdentityEmailWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*PostV1MeIdentityEmailResponse, error) {
+	rsp, err := c.PostV1MeIdentityEmail(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1MeIdentityEmailResponse(rsp)
+}
+
+// PostV1MeIdentityManualReviewWithResponse request returning *PostV1MeIdentityManualReviewResponse
+func (c *ClientWithResponses) PostV1MeIdentityManualReviewWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*PostV1MeIdentityManualReviewResponse, error) {
+	rsp, err := c.PostV1MeIdentityManualReview(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1MeIdentityManualReviewResponse(rsp)
+}
+
+// PostV1MeIdentitySessionWithResponse request returning *PostV1MeIdentitySessionResponse
+func (c *ClientWithResponses) PostV1MeIdentitySessionWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*PostV1MeIdentitySessionResponse, error) {
+	rsp, err := c.PostV1MeIdentitySession(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1MeIdentitySessionResponse(rsp)
 }
 
 // GetV1MePreferencesWithResponse request returning *GetV1MePreferencesResponse
@@ -52004,6 +57704,23 @@ func (c *ClientWithResponses) GetV1RegistryRepositoriesWithResponse(ctx context.
 	return ParseGetV1RegistryRepositoriesResponse(rsp)
 }
 
+// PatchV1RegistryRepositoriesVisibilityWithBodyWithResponse request with arbitrary body returning *PatchV1RegistryRepositoriesVisibilityResponse
+func (c *ClientWithResponses) PatchV1RegistryRepositoriesVisibilityWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1RegistryRepositoriesVisibilityResponse, error) {
+	rsp, err := c.PatchV1RegistryRepositoriesVisibilityWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePatchV1RegistryRepositoriesVisibilityResponse(rsp)
+}
+
+func (c *ClientWithResponses) PatchV1RegistryRepositoriesVisibilityWithResponse(ctx context.Context, body PatchV1RegistryRepositoriesVisibilityJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1RegistryRepositoriesVisibilityResponse, error) {
+	rsp, err := c.PatchV1RegistryRepositoriesVisibility(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePatchV1RegistryRepositoriesVisibilityResponse(rsp)
+}
+
 // DeleteV1RegistryRepositoryTagsWithResponse request returning *DeleteV1RegistryRepositoryTagsResponse
 func (c *ClientWithResponses) DeleteV1RegistryRepositoryTagsWithResponse(ctx context.Context, params *DeleteV1RegistryRepositoryTagsParams, reqEditors ...RequestEditorFn) (*DeleteV1RegistryRepositoryTagsResponse, error) {
 	rsp, err := c.DeleteV1RegistryRepositoryTags(ctx, params, reqEditors...)
@@ -52055,6 +57772,23 @@ func (c *ClientWithResponses) DeleteV1RegistryTokensIdWithResponse(ctx context.C
 		return nil, err
 	}
 	return ParseDeleteV1RegistryTokensIdResponse(rsp)
+}
+
+// PatchV1RegistryTokensIdWithBodyWithResponse request with arbitrary body returning *PatchV1RegistryTokensIdResponse
+func (c *ClientWithResponses) PatchV1RegistryTokensIdWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1RegistryTokensIdResponse, error) {
+	rsp, err := c.PatchV1RegistryTokensIdWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePatchV1RegistryTokensIdResponse(rsp)
+}
+
+func (c *ClientWithResponses) PatchV1RegistryTokensIdWithResponse(ctx context.Context, id openapi_types.UUID, body PatchV1RegistryTokensIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1RegistryTokensIdResponse, error) {
+	rsp, err := c.PatchV1RegistryTokensId(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePatchV1RegistryTokensIdResponse(rsp)
 }
 
 // GetV1RegistryUsageWithResponse request returning *GetV1RegistryUsageResponse
@@ -53179,6 +58913,32 @@ func (c *ClientWithResponses) PostV1XcloudInstancesIdBootModeWithResponse(ctx co
 	return ParsePostV1XcloudInstancesIdBootModeResponse(rsp)
 }
 
+// PostV1XcloudInstancesIdDisplayInputWithBodyWithResponse request with arbitrary body returning *PostV1XcloudInstancesIdDisplayInputResponse
+func (c *ClientWithResponses) PostV1XcloudInstancesIdDisplayInputWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdDisplayInputResponse, error) {
+	rsp, err := c.PostV1XcloudInstancesIdDisplayInputWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1XcloudInstancesIdDisplayInputResponse(rsp)
+}
+
+func (c *ClientWithResponses) PostV1XcloudInstancesIdDisplayInputWithResponse(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdDisplayInputJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdDisplayInputResponse, error) {
+	rsp, err := c.PostV1XcloudInstancesIdDisplayInput(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1XcloudInstancesIdDisplayInputResponse(rsp)
+}
+
+// GetV1XcloudInstancesIdDisplayScreenshotWithResponse request returning *GetV1XcloudInstancesIdDisplayScreenshotResponse
+func (c *ClientWithResponses) GetV1XcloudInstancesIdDisplayScreenshotWithResponse(ctx context.Context, id openapi_types.UUID, params *GetV1XcloudInstancesIdDisplayScreenshotParams, reqEditors ...RequestEditorFn) (*GetV1XcloudInstancesIdDisplayScreenshotResponse, error) {
+	rsp, err := c.GetV1XcloudInstancesIdDisplayScreenshot(ctx, id, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetV1XcloudInstancesIdDisplayScreenshotResponse(rsp)
+}
+
 // GetV1XcloudInstancesIdMetricsWithResponse request returning *GetV1XcloudInstancesIdMetricsResponse
 func (c *ClientWithResponses) GetV1XcloudInstancesIdMetricsWithResponse(ctx context.Context, id openapi_types.UUID, params *GetV1XcloudInstancesIdMetricsParams, reqEditors ...RequestEditorFn) (*GetV1XcloudInstancesIdMetricsResponse, error) {
 	rsp, err := c.GetV1XcloudInstancesIdMetrics(ctx, id, params, reqEditors...)
@@ -53248,6 +59008,23 @@ func (c *ClientWithResponses) PostV1XcloudInstancesIdResizeWithResponse(ctx cont
 	return ParsePostV1XcloudInstancesIdResizeResponse(rsp)
 }
 
+// PostV1XcloudInstancesIdRestoreWithBodyWithResponse request with arbitrary body returning *PostV1XcloudInstancesIdRestoreResponse
+func (c *ClientWithResponses) PostV1XcloudInstancesIdRestoreWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdRestoreResponse, error) {
+	rsp, err := c.PostV1XcloudInstancesIdRestoreWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1XcloudInstancesIdRestoreResponse(rsp)
+}
+
+func (c *ClientWithResponses) PostV1XcloudInstancesIdRestoreWithResponse(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdRestoreJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdRestoreResponse, error) {
+	rsp, err := c.PostV1XcloudInstancesIdRestore(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1XcloudInstancesIdRestoreResponse(rsp)
+}
+
 // PutV1XcloudInstancesIdSecurityGroupsWithBodyWithResponse request with arbitrary body returning *PutV1XcloudInstancesIdSecurityGroupsResponse
 func (c *ClientWithResponses) PutV1XcloudInstancesIdSecurityGroupsWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutV1XcloudInstancesIdSecurityGroupsResponse, error) {
 	rsp, err := c.PutV1XcloudInstancesIdSecurityGroupsWithBody(ctx, id, contentType, body, reqEditors...)
@@ -53272,6 +59049,32 @@ func (c *ClientWithResponses) PostV1XcloudInstancesIdShutdownWithResponse(ctx co
 		return nil, err
 	}
 	return ParsePostV1XcloudInstancesIdShutdownResponse(rsp)
+}
+
+// GetV1XcloudInstancesIdSnapshotsWithResponse request returning *GetV1XcloudInstancesIdSnapshotsResponse
+func (c *ClientWithResponses) GetV1XcloudInstancesIdSnapshotsWithResponse(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetV1XcloudInstancesIdSnapshotsResponse, error) {
+	rsp, err := c.GetV1XcloudInstancesIdSnapshots(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetV1XcloudInstancesIdSnapshotsResponse(rsp)
+}
+
+// PostV1XcloudInstancesIdSnapshotsWithBodyWithResponse request with arbitrary body returning *PostV1XcloudInstancesIdSnapshotsResponse
+func (c *ClientWithResponses) PostV1XcloudInstancesIdSnapshotsWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdSnapshotsResponse, error) {
+	rsp, err := c.PostV1XcloudInstancesIdSnapshotsWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1XcloudInstancesIdSnapshotsResponse(rsp)
+}
+
+func (c *ClientWithResponses) PostV1XcloudInstancesIdSnapshotsWithResponse(ctx context.Context, id openapi_types.UUID, body PostV1XcloudInstancesIdSnapshotsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1XcloudInstancesIdSnapshotsResponse, error) {
+	rsp, err := c.PostV1XcloudInstancesIdSnapshots(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1XcloudInstancesIdSnapshotsResponse(rsp)
 }
 
 // PatchV1XcloudInstancesIdSshKeysWithBodyWithResponse request with arbitrary body returning *PatchV1XcloudInstancesIdSshKeysResponse
@@ -53414,6 +59217,67 @@ func (c *ClientWithResponses) DeleteV1XcloudNetworksNameWithResponse(ctx context
 	return ParseDeleteV1XcloudNetworksNameResponse(rsp)
 }
 
+// PatchV1XcloudNetworksNameWithBodyWithResponse request with arbitrary body returning *PatchV1XcloudNetworksNameResponse
+func (c *ClientWithResponses) PatchV1XcloudNetworksNameWithBodyWithResponse(ctx context.Context, name string, params *PatchV1XcloudNetworksNameParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1XcloudNetworksNameResponse, error) {
+	rsp, err := c.PatchV1XcloudNetworksNameWithBody(ctx, name, params, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePatchV1XcloudNetworksNameResponse(rsp)
+}
+
+func (c *ClientWithResponses) PatchV1XcloudNetworksNameWithResponse(ctx context.Context, name string, params *PatchV1XcloudNetworksNameParams, body PatchV1XcloudNetworksNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1XcloudNetworksNameResponse, error) {
+	rsp, err := c.PatchV1XcloudNetworksName(ctx, name, params, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePatchV1XcloudNetworksNameResponse(rsp)
+}
+
+// GetV1XcloudSnapshotsWithResponse request returning *GetV1XcloudSnapshotsResponse
+func (c *ClientWithResponses) GetV1XcloudSnapshotsWithResponse(ctx context.Context, params *GetV1XcloudSnapshotsParams, reqEditors ...RequestEditorFn) (*GetV1XcloudSnapshotsResponse, error) {
+	rsp, err := c.GetV1XcloudSnapshots(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetV1XcloudSnapshotsResponse(rsp)
+}
+
+// DeleteV1XcloudSnapshotsIdWithResponse request returning *DeleteV1XcloudSnapshotsIdResponse
+func (c *ClientWithResponses) DeleteV1XcloudSnapshotsIdWithResponse(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*DeleteV1XcloudSnapshotsIdResponse, error) {
+	rsp, err := c.DeleteV1XcloudSnapshotsId(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteV1XcloudSnapshotsIdResponse(rsp)
+}
+
+// GetV1XcloudSnapshotsIdWithResponse request returning *GetV1XcloudSnapshotsIdResponse
+func (c *ClientWithResponses) GetV1XcloudSnapshotsIdWithResponse(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetV1XcloudSnapshotsIdResponse, error) {
+	rsp, err := c.GetV1XcloudSnapshotsId(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetV1XcloudSnapshotsIdResponse(rsp)
+}
+
+// PatchV1XcloudSnapshotsIdWithBodyWithResponse request with arbitrary body returning *PatchV1XcloudSnapshotsIdResponse
+func (c *ClientWithResponses) PatchV1XcloudSnapshotsIdWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchV1XcloudSnapshotsIdResponse, error) {
+	rsp, err := c.PatchV1XcloudSnapshotsIdWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePatchV1XcloudSnapshotsIdResponse(rsp)
+}
+
+func (c *ClientWithResponses) PatchV1XcloudSnapshotsIdWithResponse(ctx context.Context, id openapi_types.UUID, body PatchV1XcloudSnapshotsIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchV1XcloudSnapshotsIdResponse, error) {
+	rsp, err := c.PatchV1XcloudSnapshotsId(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePatchV1XcloudSnapshotsIdResponse(rsp)
+}
+
 // GetV1XcloudVolumesWithResponse request returning *GetV1XcloudVolumesResponse
 func (c *ClientWithResponses) GetV1XcloudVolumesWithResponse(ctx context.Context, params *GetV1XcloudVolumesParams, reqEditors ...RequestEditorFn) (*GetV1XcloudVolumesResponse, error) {
 	rsp, err := c.GetV1XcloudVolumes(ctx, params, reqEditors...)
@@ -53473,6 +59337,49 @@ func (c *ClientWithResponses) PostV1XcloudVolumesIdResizeWithResponse(ctx contex
 		return nil, err
 	}
 	return ParsePostV1XcloudVolumesIdResizeResponse(rsp)
+}
+
+// PostV1XcloudVolumesIdRestoreWithBodyWithResponse request with arbitrary body returning *PostV1XcloudVolumesIdRestoreResponse
+func (c *ClientWithResponses) PostV1XcloudVolumesIdRestoreWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1XcloudVolumesIdRestoreResponse, error) {
+	rsp, err := c.PostV1XcloudVolumesIdRestoreWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1XcloudVolumesIdRestoreResponse(rsp)
+}
+
+func (c *ClientWithResponses) PostV1XcloudVolumesIdRestoreWithResponse(ctx context.Context, id openapi_types.UUID, body PostV1XcloudVolumesIdRestoreJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1XcloudVolumesIdRestoreResponse, error) {
+	rsp, err := c.PostV1XcloudVolumesIdRestore(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1XcloudVolumesIdRestoreResponse(rsp)
+}
+
+// GetV1XcloudVolumesIdSnapshotsWithResponse request returning *GetV1XcloudVolumesIdSnapshotsResponse
+func (c *ClientWithResponses) GetV1XcloudVolumesIdSnapshotsWithResponse(ctx context.Context, id openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetV1XcloudVolumesIdSnapshotsResponse, error) {
+	rsp, err := c.GetV1XcloudVolumesIdSnapshots(ctx, id, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetV1XcloudVolumesIdSnapshotsResponse(rsp)
+}
+
+// PostV1XcloudVolumesIdSnapshotsWithBodyWithResponse request with arbitrary body returning *PostV1XcloudVolumesIdSnapshotsResponse
+func (c *ClientWithResponses) PostV1XcloudVolumesIdSnapshotsWithBodyWithResponse(ctx context.Context, id openapi_types.UUID, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostV1XcloudVolumesIdSnapshotsResponse, error) {
+	rsp, err := c.PostV1XcloudVolumesIdSnapshotsWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1XcloudVolumesIdSnapshotsResponse(rsp)
+}
+
+func (c *ClientWithResponses) PostV1XcloudVolumesIdSnapshotsWithResponse(ctx context.Context, id openapi_types.UUID, body PostV1XcloudVolumesIdSnapshotsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostV1XcloudVolumesIdSnapshotsResponse, error) {
+	rsp, err := c.PostV1XcloudVolumesIdSnapshots(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostV1XcloudVolumesIdSnapshotsResponse(rsp)
 }
 
 // ParseGetV1ApiKeysResponse parses an HTTP response from a GetV1ApiKeysWithResponse call
@@ -54325,6 +60232,58 @@ func ParseGetV1BillingLedgerResponse(rsp *http.Response) (*GetV1BillingLedgerRes
 	return response, nil
 }
 
+// ParseGetV1BillingStatementResponse parses an HTTP response from a GetV1BillingStatementWithResponse call
+func ParseGetV1BillingStatementResponse(rsp *http.Response) (*GetV1BillingStatementResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetV1BillingStatementResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Data []struct {
+				Amount    string                                                `json:"amount"`
+				Component GetV1BillingStatement200JSONResponseBodyDataComponent `json:"component"`
+				CreatedAt string                                                `json:"createdAt"`
+				EntryType string                                                `json:"entryType"`
+				ExpiresAt *string                                               `json:"expiresAt"`
+				Id        string                                                `json:"id"`
+				Reason    *string                                               `json:"reason"`
+				UsageDate *string                                               `json:"usageDate"`
+			} `json:"data"`
+			Total float32 `json:"total"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetV1BillingStripeResponse parses an HTTP response from a GetV1BillingStripeWithResponse call
 func ParseGetV1BillingStripeResponse(rsp *http.Response) (*GetV1BillingStripeResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -54343,6 +60302,34 @@ func ParseGetV1BillingStripeResponse(rsp *http.Response) (*GetV1BillingStripeRes
 		var dest struct {
 			PublishableKey *string                                     `json:"publishableKey"`
 			Status         GetV1BillingStripe200JSONResponseBodyStatus `json:"status"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetV1BillingStripeAddressSuggestionResponse parses an HTTP response from a GetV1BillingStripeAddressSuggestionWithResponse call
+func ParseGetV1BillingStripeAddressSuggestionResponse(rsp *http.Response) (*GetV1BillingStripeAddressSuggestionResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetV1BillingStripeAddressSuggestionResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Country *string `json:"country"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -54432,6 +60419,20 @@ func ParsePutV1BillingStripeAutoRechargeResponse(rsp *http.Response) (*PutV1Bill
 			return nil, err
 		}
 		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
 
 	}
 
@@ -54677,6 +60678,20 @@ func ParsePostV1BillingStripeTopupResponse(rsp *http.Response) (*PostV1BillingSt
 			return nil, err
 		}
 		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
 		var dest struct {
@@ -58291,6 +64306,94 @@ func ParseGetV1HealthzResponse(rsp *http.Response) (*GetV1HealthzResponse, error
 	return response, nil
 }
 
+// ParsePostV1IdentityVerifyEmailResponse parses an HTTP response from a PostV1IdentityVerifyEmailWithResponse call
+func ParsePostV1IdentityVerifyEmailResponse(rsp *http.Response) (*PostV1IdentityVerifyEmailResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostV1IdentityVerifyEmailResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Ok bool `json:"ok"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetV1InvitationsResponse parses an HTTP response from a GetV1InvitationsWithResponse call
 func ParseGetV1InvitationsResponse(rsp *http.Response) (*GetV1InvitationsResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -59618,6 +65721,374 @@ func ParsePatchV1MeResponse(rsp *http.Response) (*PatchV1MeResponse, error) {
 	return response, nil
 }
 
+// ParseGetV1MeIdentityResponse parses an HTTP response from a GetV1MeIdentityWithResponse call
+func ParseGetV1MeIdentityResponse(rsp *http.Response) (*GetV1MeIdentityResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetV1MeIdentityResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			ApprovalStatus        GetV1MeIdentity200JSONResponseBodyApprovalStatus   `json:"approvalStatus"`
+			Available             bool                                               `json:"available"`
+			CanStart              bool                                               `json:"canStart"`
+			EmailVerified         bool                                               `json:"emailVerified"`
+			Enrolled              bool                                               `json:"enrolled"`
+			ErrorCode             *string                                            `json:"errorCode"`
+			ExemptionDomain       *string                                            `json:"exemptionDomain"`
+			ExemptionReason       *string                                            `json:"exemptionReason"`
+			ExemptionSource       *GetV1MeIdentity200JSONResponseBodyExemptionSource `json:"exemptionSource"`
+			Livemode              *bool                                              `json:"livemode"`
+			ManualReviewRequested bool                                               `json:"manualReviewRequested"`
+			NextStep              string                                             `json:"nextStep"`
+			Required              bool                                               `json:"required"`
+			SessionId             *string                                            `json:"sessionId"`
+			Status                string                                             `json:"status"`
+			UpdatedAt             *string                                            `json:"updatedAt"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePostV1MeIdentityEmailResponse parses an HTTP response from a PostV1MeIdentityEmailWithResponse call
+func ParsePostV1MeIdentityEmailResponse(rsp *http.Response) (*PostV1MeIdentityEmailResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostV1MeIdentityEmailResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Ok bool `json:"ok"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePostV1MeIdentityManualReviewResponse parses an HTTP response from a PostV1MeIdentityManualReviewWithResponse call
+func ParsePostV1MeIdentityManualReviewResponse(rsp *http.Response) (*PostV1MeIdentityManualReviewResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostV1MeIdentityManualReviewResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Ok bool `json:"ok"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePostV1MeIdentitySessionResponse parses an HTTP response from a PostV1MeIdentitySessionWithResponse call
+func ParsePostV1MeIdentitySessionResponse(rsp *http.Response) (*PostV1MeIdentitySessionResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostV1MeIdentitySessionResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			ClientSecret   *string `json:"clientSecret"`
+			PublishableKey string  `json:"publishableKey"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest struct {
+			Code   string `json:"code"`
+			Detail string `json:"detail"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetV1MePreferencesResponse parses an HTTP response from a GetV1MePreferencesWithResponse call
 func ParseGetV1MePreferencesResponse(rsp *http.Response) (*GetV1MePreferencesResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -59869,6 +66340,24 @@ func ParseGetV1MeSignupStatusResponse(rsp *http.Response) (*GetV1MeSignupStatusR
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			ApprovalStatus GetV1MeSignupStatus200JSONResponseBodyApprovalStatus `json:"approvalStatus"`
+			Identity       *struct {
+				ApprovalStatus        GetV1MeSignupStatus200JSONResponseBodyIdentityApprovalStatus   `json:"approvalStatus"`
+				Available             bool                                                           `json:"available"`
+				CanStart              bool                                                           `json:"canStart"`
+				EmailVerified         bool                                                           `json:"emailVerified"`
+				Enrolled              bool                                                           `json:"enrolled"`
+				ErrorCode             *string                                                        `json:"errorCode"`
+				ExemptionDomain       *string                                                        `json:"exemptionDomain"`
+				ExemptionReason       *string                                                        `json:"exemptionReason"`
+				ExemptionSource       *GetV1MeSignupStatus200JSONResponseBodyIdentityExemptionSource `json:"exemptionSource"`
+				Livemode              *bool                                                          `json:"livemode"`
+				ManualReviewRequested bool                                                           `json:"manualReviewRequested"`
+				NextStep              string                                                         `json:"nextStep"`
+				Required              bool                                                           `json:"required"`
+				SessionId             *string                                                        `json:"sessionId"`
+				Status                string                                                         `json:"status"`
+				UpdatedAt             *string                                                        `json:"updatedAt"`
+			} `json:"identity,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -61193,10 +67682,11 @@ func ParseGetV1RegistryLibraryResponse(rsp *http.Response) (*GetV1RegistryLibrar
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Repositories []struct {
-				LastPushAt *time.Time                                                `json:"lastPushAt"`
-				Name       string                                                    `json:"name"`
-				Status     GetV1RegistryLibrary200JSONResponseBodyRepositoriesStatus `json:"status"`
-				TagCount   float32                                                   `json:"tagCount"`
+				LastPushAt *time.Time                                                    `json:"lastPushAt"`
+				Name       string                                                        `json:"name"`
+				Status     GetV1RegistryLibrary200JSONResponseBodyRepositoriesStatus     `json:"status"`
+				TagCount   float32                                                       `json:"tagCount"`
+				Visibility GetV1RegistryLibrary200JSONResponseBodyRepositoriesVisibility `json:"visibility"`
 			} `json:"repositories"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -61409,16 +67899,88 @@ func ParseGetV1RegistryRepositoriesResponse(rsp *http.Response) (*GetV1RegistryR
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Repositories []struct {
-				LastPushAt *time.Time                                                     `json:"lastPushAt"`
-				Name       string                                                         `json:"name"`
-				Status     GetV1RegistryRepositories200JSONResponseBodyRepositoriesStatus `json:"status"`
-				TagCount   float32                                                        `json:"tagCount"`
+				LastPushAt *time.Time                                                         `json:"lastPushAt"`
+				Name       string                                                             `json:"name"`
+				Status     GetV1RegistryRepositories200JSONResponseBodyRepositoriesStatus     `json:"status"`
+				TagCount   float32                                                            `json:"tagCount"`
+				Visibility GetV1RegistryRepositories200JSONResponseBodyRepositoriesVisibility `json:"visibility"`
 			} `json:"repositories"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}
 		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON412 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePatchV1RegistryRepositoriesVisibilityResponse parses an HTTP response from a PatchV1RegistryRepositoriesVisibilityWithResponse call
+func ParsePatchV1RegistryRepositoriesVisibilityResponse(rsp *http.Response) (*PatchV1RegistryRepositoriesVisibilityResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PatchV1RegistryRepositoriesVisibilityResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Name       string                                                             `json:"name"`
+			Visibility PatchV1RegistryRepositoriesVisibility200JSONResponseBodyVisibility `json:"visibility"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
 		var dest struct {
@@ -61772,6 +68334,71 @@ func ParseDeleteV1RegistryTokensIdResponse(rsp *http.Response) (*DeleteV1Registr
 	return response, nil
 }
 
+// ParsePatchV1RegistryTokensIdResponse parses an HTTP response from a PatchV1RegistryTokensIdWithResponse call
+func ParsePatchV1RegistryTokensIdResponse(rsp *http.Response) (*PatchV1RegistryTokensIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PatchV1RegistryTokensIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Actions            []PatchV1RegistryTokensId200JSONResponseBodyActions `json:"actions"`
+			CreatedAt          time.Time                                           `json:"createdAt"`
+			ExpiresAt          *time.Time                                          `json:"expiresAt"`
+			Id                 openapi_types.UUID                                  `json:"id"`
+			Kind               PatchV1RegistryTokensId200JSONResponseBodyKind      `json:"kind"`
+			LastUsedAt         *time.Time                                          `json:"lastUsedAt"`
+			Name               string                                              `json:"name"`
+			RegionIds          *[]openapi_types.UUID                               `json:"regionIds"`
+			RepositoryPatterns []string                                            `json:"repositoryPatterns"`
+			TokenPrefix        string                                              `json:"tokenPrefix"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetV1RegistryUsageResponse parses an HTTP response from a GetV1RegistryUsageWithResponse call
 func ParseGetV1RegistryUsageResponse(rsp *http.Response) (*GetV1RegistryUsageResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -61825,12 +68452,28 @@ func ParseGetV1ReleaseNotesResponse(rsp *http.Response) (*GetV1ReleaseNotesRespo
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
-			CreatedAt time.Time          `json:"createdAt"`
-			Date      string             `json:"date"`
-			Id        openapi_types.UUID `json:"id"`
-			Items     []struct {
+			CreatedAt time.Time `json:"createdAt"`
+			Date      string    `json:"date"`
+			Feature   *struct {
+				Hero *struct {
+					Alt string `json:"alt"`
+					Src string `json:"src"`
+				} `json:"hero,omitempty"`
+				Links *[]struct {
+					Href  string `json:"href"`
+					Label string `json:"label"`
+				} `json:"links,omitempty"`
+				Summary string `json:"summary"`
+			} `json:"feature,omitempty"`
+			Id    openapi_types.UUID `json:"id"`
+			Items []struct {
 				Body     *string `json:"body,omitempty"`
+				Code     *string `json:"code,omitempty"`
 				Headline string  `json:"headline"`
+				Image    *struct {
+					Alt string `json:"alt"`
+					Src string `json:"src"`
+				} `json:"image,omitempty"`
 			} `json:"items"`
 			Tags      []string  `json:"tags"`
 			Title     string    `json:"title"`
@@ -67631,24 +74274,25 @@ func ParseGetV1XcloudFlavorsResponse(rsp *http.Response) (*GetV1XcloudFlavorsRes
 					ReservedForTenant    bool                                                             `json:"reservedForTenant"`
 					Status               GetV1XcloudFlavors200JSONResponseBodyDataAvailabilityStatus      `json:"status"`
 				} `json:"availability"`
-				BillingMode              GetV1XcloudFlavors200JSONResponseBodyDataBillingMode `json:"billingMode"`
-				CpuCores                 int                                                  `json:"cpuCores"`
-				CreatedAt                time.Time                                            `json:"createdAt"`
-				Description              *string                                              `json:"description"`
-				DiskGib                  int                                                  `json:"diskGib"`
-				Enabled                  bool                                                 `json:"enabled"`
-				HardwareGeneration       *string                                              `json:"hardwareGeneration"`
-				HourlyPrice              string                                               `json:"hourlyPrice"`
-				Id                       openapi_types.UUID                                   `json:"id"`
-				Label                    string                                               `json:"label"`
-				LimitedAvailabilityAtPct int                                                  `json:"limitedAvailabilityAtPct"`
-				MemoryGib                int                                                  `json:"memoryGib"`
-				MonthlyPrice             string                                               `json:"monthlyPrice"`
-				OutOfStockAtPct          int                                                  `json:"outOfStockAtPct"`
-				Platform                 GetV1XcloudFlavors200JSONResponseBodyDataPlatform    `json:"platform"`
-				Slug                     string                                               `json:"slug"`
-				SortOrder                int                                                  `json:"sortOrder"`
-				UpdatedAt                time.Time                                            `json:"updatedAt"`
+				BillingMode              GetV1XcloudFlavors200JSONResponseBodyDataBillingMode           `json:"billingMode"`
+				CpuCores                 int                                                            `json:"cpuCores"`
+				CreatedAt                time.Time                                                      `json:"createdAt"`
+				Description              *string                                                        `json:"description"`
+				DiskGib                  int                                                            `json:"diskGib"`
+				Enabled                  bool                                                           `json:"enabled"`
+				HardwareGeneration       *string                                                        `json:"hardwareGeneration"`
+				HourlyPrice              string                                                         `json:"hourlyPrice"`
+				Id                       openapi_types.UUID                                             `json:"id"`
+				Label                    string                                                         `json:"label"`
+				LimitedAvailabilityAtPct int                                                            `json:"limitedAvailabilityAtPct"`
+				MemoryGib                int                                                            `json:"memoryGib"`
+				MonthlyPrice             string                                                         `json:"monthlyPrice"`
+				OutOfStockAtPct          int                                                            `json:"outOfStockAtPct"`
+				Platform                 GetV1XcloudFlavors200JSONResponseBodyDataPlatform              `json:"platform"`
+				Slug                     string                                                         `json:"slug"`
+				SortOrder                int                                                            `json:"sortOrder"`
+				SupportedPlatforms       *[]GetV1XcloudFlavors200JSONResponseBodyDataSupportedPlatforms `json:"supportedPlatforms,omitempty"`
+				UpdatedAt                time.Time                                                      `json:"updatedAt"`
 			} `json:"data"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -67813,12 +74457,17 @@ func ParseGetV1XcloudImagesResponse(rsp *http.Response) (*GetV1XcloudImagesRespo
 		var dest struct {
 			Data []struct {
 				CreatedAt    *string                                        `json:"createdAt"`
+				DiskGib      *int                                           `json:"diskGib,omitempty"`
+				DisplayName  *string                                        `json:"displayName,omitempty"`
 				Labels       map[string]string                              `json:"labels"`
+				MinCpuCores  *int                                           `json:"minCpuCores,omitempty"`
+				MinMemoryGib *int                                           `json:"minMemoryGib,omitempty"`
 				Name         string                                         `json:"name"`
 				OciReference *string                                        `json:"ociReference"`
 				RegionId     openapi_types.UUID                             `json:"regionId"`
 				RegionSlug   string                                         `json:"regionSlug"`
 				Source       GetV1XcloudImages200JSONResponseBodyDataSource `json:"source"`
+				StoredBytes  *int                                           `json:"storedBytes,omitempty"`
 			} `json:"data"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -67876,12 +74525,17 @@ func ParsePostV1XcloudImagesResponse(rsp *http.Response) (*PostV1XcloudImagesRes
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
 			CreatedAt    *string                                     `json:"createdAt"`
+			DiskGib      *int                                        `json:"diskGib,omitempty"`
+			DisplayName  *string                                     `json:"displayName,omitempty"`
 			Labels       map[string]string                           `json:"labels"`
+			MinCpuCores  *int                                        `json:"minCpuCores,omitempty"`
+			MinMemoryGib *int                                        `json:"minMemoryGib,omitempty"`
 			Name         string                                      `json:"name"`
 			OciReference *string                                     `json:"ociReference"`
 			RegionId     openapi_types.UUID                          `json:"regionId"`
 			RegionSlug   string                                      `json:"regionSlug"`
 			Source       PostV1XcloudImages201JSONResponseBodySource `json:"source"`
+			StoredBytes  *int                                        `json:"storedBytes,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -68055,12 +74709,17 @@ func ParsePatchV1XcloudImagesRegionIdNameResponse(rsp *http.Response) (*PatchV1X
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			CreatedAt    *string                                                  `json:"createdAt"`
+			DiskGib      *int                                                     `json:"diskGib,omitempty"`
+			DisplayName  *string                                                  `json:"displayName,omitempty"`
 			Labels       map[string]string                                        `json:"labels"`
+			MinCpuCores  *int                                                     `json:"minCpuCores,omitempty"`
+			MinMemoryGib *int                                                     `json:"minMemoryGib,omitempty"`
 			Name         string                                                   `json:"name"`
 			OciReference *string                                                  `json:"ociReference"`
 			RegionId     openapi_types.UUID                                       `json:"regionId"`
 			RegionSlug   string                                                   `json:"regionSlug"`
 			Source       PatchV1XcloudImagesRegionIdName200JSONResponseBodySource `json:"source"`
+			StoredBytes  *int                                                     `json:"storedBytes,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -68159,15 +74818,21 @@ func ParseGetV1XcloudInstancesResponse(rsp *http.Response) (*GetV1XcloudInstance
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Data []struct {
-				AdminPasswordSet       *bool                                                     `json:"adminPasswordSet,omitempty"`
-				AdminUsername          *string                                                   `json:"adminUsername"`
-				AgentLastError         *string                                                   `json:"agentLastError"`
-				AgentStatus            GetV1XcloudInstances200JSONResponseBodyDataAgentStatus    `json:"agentStatus"`
-				AgentStatusAt          *time.Time                                                `json:"agentStatusAt"`
+				AdminPasswordSet *bool                                                  `json:"adminPasswordSet,omitempty"`
+				AdminUsername    *string                                                `json:"adminUsername"`
+				AgentLastError   *string                                                `json:"agentLastError"`
+				AgentStatus      GetV1XcloudInstances200JSONResponseBodyDataAgentStatus `json:"agentStatus"`
+				AgentStatusAt    *time.Time                                             `json:"agentStatusAt"`
+				BootingSince     *time.Time                                             `json:"bootingSince"`
+				Cost             *struct {
+					Hourly *string                                             `json:"hourly"`
+					Mode   GetV1XcloudInstances200JSONResponseBodyDataCostMode `json:"mode"`
+				} `json:"cost,omitempty"`
 				CpuCores               int                                                       `json:"cpuCores"`
 				CreatedAt              time.Time                                                 `json:"createdAt"`
 				DiskGib                int                                                       `json:"diskGib"`
 				DisplayHeight          int                                                       `json:"displayHeight"`
+				DisplayScale           *int                                                      `json:"displayScale,omitempty"`
 				DisplayWidth           int                                                       `json:"displayWidth"`
 				ExpiresAt              *time.Time                                                `json:"expiresAt"`
 				FlavorSlug             *string                                                   `json:"flavorSlug"`
@@ -68192,6 +74857,7 @@ func ParseGetV1XcloudInstancesResponse(rsp *http.Response) (*GetV1XcloudInstance
 				RegionId               openapi_types.UUID                                        `json:"regionId"`
 				RegionSlug             string                                                    `json:"regionSlug"`
 				SecurityGroups         *[]string                                                 `json:"securityGroups,omitempty"`
+				SourceSnapshotId       *openapi_types.UUID                                       `json:"sourceSnapshotId,omitempty"`
 				SshKeyIds              *[]openapi_types.UUID                                     `json:"sshKeyIds,omitempty"`
 				SshKeysProvisionedAt   *time.Time                                                `json:"sshKeysProvisionedAt"`
 				Status                 GetV1XcloudInstances200JSONResponseBodyDataStatus         `json:"status"`
@@ -68230,15 +74896,21 @@ func ParsePostV1XcloudInstancesResponse(rsp *http.Response) (*PostV1XcloudInstan
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
-			AdminPasswordSet       *bool                                                  `json:"adminPasswordSet,omitempty"`
-			AdminUsername          *string                                                `json:"adminUsername"`
-			AgentLastError         *string                                                `json:"agentLastError"`
-			AgentStatus            PostV1XcloudInstances201JSONResponseBodyAgentStatus    `json:"agentStatus"`
-			AgentStatusAt          *time.Time                                             `json:"agentStatusAt"`
+			AdminPasswordSet *bool                                               `json:"adminPasswordSet,omitempty"`
+			AdminUsername    *string                                             `json:"adminUsername"`
+			AgentLastError   *string                                             `json:"agentLastError"`
+			AgentStatus      PostV1XcloudInstances201JSONResponseBodyAgentStatus `json:"agentStatus"`
+			AgentStatusAt    *time.Time                                          `json:"agentStatusAt"`
+			BootingSince     *time.Time                                          `json:"bootingSince"`
+			Cost             *struct {
+				Hourly *string                                          `json:"hourly"`
+				Mode   PostV1XcloudInstances201JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
 			CpuCores               int                                                    `json:"cpuCores"`
 			CreatedAt              time.Time                                              `json:"createdAt"`
 			DiskGib                int                                                    `json:"diskGib"`
 			DisplayHeight          int                                                    `json:"displayHeight"`
+			DisplayScale           *int                                                   `json:"displayScale,omitempty"`
 			DisplayWidth           int                                                    `json:"displayWidth"`
 			ExpiresAt              *time.Time                                             `json:"expiresAt"`
 			FlavorSlug             *string                                                `json:"flavorSlug"`
@@ -68263,6 +74935,7 @@ func ParsePostV1XcloudInstancesResponse(rsp *http.Response) (*PostV1XcloudInstan
 			RegionId               openapi_types.UUID                                     `json:"regionId"`
 			RegionSlug             string                                                 `json:"regionSlug"`
 			SecurityGroups         *[]string                                              `json:"securityGroups,omitempty"`
+			SourceSnapshotId       *openapi_types.UUID                                    `json:"sourceSnapshotId,omitempty"`
 			SshKeyIds              *[]openapi_types.UUID                                  `json:"sshKeyIds,omitempty"`
 			SshKeysProvisionedAt   *time.Time                                             `json:"sshKeysProvisionedAt"`
 			Status                 PostV1XcloudInstances201JSONResponseBodyStatus         `json:"status"`
@@ -68424,6 +75097,34 @@ func ParseDeleteV1XcloudInstancesIdResponse(rsp *http.Response) (*DeleteV1Xcloud
 		}
 		response.JSON404 = &dest
 
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
 	}
 
 	return response, nil
@@ -68445,15 +75146,21 @@ func ParseGetV1XcloudInstancesIdResponse(rsp *http.Response) (*GetV1XcloudInstan
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			AdminPasswordSet       *bool                                                   `json:"adminPasswordSet,omitempty"`
-			AdminUsername          *string                                                 `json:"adminUsername"`
-			AgentLastError         *string                                                 `json:"agentLastError"`
-			AgentStatus            GetV1XcloudInstancesId200JSONResponseBodyAgentStatus    `json:"agentStatus"`
-			AgentStatusAt          *time.Time                                              `json:"agentStatusAt"`
+			AdminPasswordSet *bool                                                `json:"adminPasswordSet,omitempty"`
+			AdminUsername    *string                                              `json:"adminUsername"`
+			AgentLastError   *string                                              `json:"agentLastError"`
+			AgentStatus      GetV1XcloudInstancesId200JSONResponseBodyAgentStatus `json:"agentStatus"`
+			AgentStatusAt    *time.Time                                           `json:"agentStatusAt"`
+			BootingSince     *time.Time                                           `json:"bootingSince"`
+			Cost             *struct {
+				Hourly *string                                           `json:"hourly"`
+				Mode   GetV1XcloudInstancesId200JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
 			CpuCores               int                                                     `json:"cpuCores"`
 			CreatedAt              time.Time                                               `json:"createdAt"`
 			DiskGib                int                                                     `json:"diskGib"`
 			DisplayHeight          int                                                     `json:"displayHeight"`
+			DisplayScale           *int                                                    `json:"displayScale,omitempty"`
 			DisplayWidth           int                                                     `json:"displayWidth"`
 			ExpiresAt              *time.Time                                              `json:"expiresAt"`
 			FlavorSlug             *string                                                 `json:"flavorSlug"`
@@ -68478,6 +75185,7 @@ func ParseGetV1XcloudInstancesIdResponse(rsp *http.Response) (*GetV1XcloudInstan
 			RegionId               openapi_types.UUID                                      `json:"regionId"`
 			RegionSlug             string                                                  `json:"regionSlug"`
 			SecurityGroups         *[]string                                               `json:"securityGroups,omitempty"`
+			SourceSnapshotId       *openapi_types.UUID                                     `json:"sourceSnapshotId,omitempty"`
 			SshKeyIds              *[]openapi_types.UUID                                   `json:"sshKeyIds,omitempty"`
 			SshKeysProvisionedAt   *time.Time                                              `json:"sshKeysProvisionedAt"`
 			Status                 GetV1XcloudInstancesId200JSONResponseBodyStatus         `json:"status"`
@@ -68529,15 +75237,21 @@ func ParsePatchV1XcloudInstancesIdResponse(rsp *http.Response) (*PatchV1XcloudIn
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			AdminPasswordSet       *bool                                                     `json:"adminPasswordSet,omitempty"`
-			AdminUsername          *string                                                   `json:"adminUsername"`
-			AgentLastError         *string                                                   `json:"agentLastError"`
-			AgentStatus            PatchV1XcloudInstancesId200JSONResponseBodyAgentStatus    `json:"agentStatus"`
-			AgentStatusAt          *time.Time                                                `json:"agentStatusAt"`
+			AdminPasswordSet *bool                                                  `json:"adminPasswordSet,omitempty"`
+			AdminUsername    *string                                                `json:"adminUsername"`
+			AgentLastError   *string                                                `json:"agentLastError"`
+			AgentStatus      PatchV1XcloudInstancesId200JSONResponseBodyAgentStatus `json:"agentStatus"`
+			AgentStatusAt    *time.Time                                             `json:"agentStatusAt"`
+			BootingSince     *time.Time                                             `json:"bootingSince"`
+			Cost             *struct {
+				Hourly *string                                             `json:"hourly"`
+				Mode   PatchV1XcloudInstancesId200JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
 			CpuCores               int                                                       `json:"cpuCores"`
 			CreatedAt              time.Time                                                 `json:"createdAt"`
 			DiskGib                int                                                       `json:"diskGib"`
 			DisplayHeight          int                                                       `json:"displayHeight"`
+			DisplayScale           *int                                                      `json:"displayScale,omitempty"`
 			DisplayWidth           int                                                       `json:"displayWidth"`
 			ExpiresAt              *time.Time                                                `json:"expiresAt"`
 			FlavorSlug             *string                                                   `json:"flavorSlug"`
@@ -68562,6 +75276,7 @@ func ParsePatchV1XcloudInstancesIdResponse(rsp *http.Response) (*PatchV1XcloudIn
 			RegionId               openapi_types.UUID                                        `json:"regionId"`
 			RegionSlug             string                                                    `json:"regionSlug"`
 			SecurityGroups         *[]string                                                 `json:"securityGroups,omitempty"`
+			SourceSnapshotId       *openapi_types.UUID                                       `json:"sourceSnapshotId,omitempty"`
 			SshKeyIds              *[]openapi_types.UUID                                     `json:"sshKeyIds,omitempty"`
 			SshKeysProvisionedAt   *time.Time                                                `json:"sshKeysProvisionedAt"`
 			Status                 PatchV1XcloudInstancesId200JSONResponseBodyStatus         `json:"status"`
@@ -69320,6 +76035,322 @@ func ParsePostV1XcloudInstancesIdBootModeResponse(rsp *http.Response) (*PostV1Xc
 	return response, nil
 }
 
+// ParsePostV1XcloudInstancesIdDisplayInputResponse parses an HTTP response from a PostV1XcloudInstancesIdDisplayInputWithResponse call
+func ParsePostV1XcloudInstancesIdDisplayInputResponse(rsp *http.Response) (*PostV1XcloudInstancesIdDisplayInputResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostV1XcloudInstancesIdDisplayInputResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			// Actions Number of actions sent.
+			Actions       int `json:"actions"`
+			DisplayHeight int `json:"displayHeight"`
+			DisplayWidth  int `json:"displayWidth"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON412 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 502:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON502 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetV1XcloudInstancesIdDisplayScreenshotResponse parses an HTTP response from a GetV1XcloudInstancesIdDisplayScreenshotWithResponse call
+func ParseGetV1XcloudInstancesIdDisplayScreenshotResponse(rsp *http.Response) (*GetV1XcloudInstancesIdDisplayScreenshotResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetV1XcloudInstancesIdDisplayScreenshotResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON412 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 502:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON502 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 503:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON503 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetV1XcloudInstancesIdMetricsResponse parses an HTTP response from a GetV1XcloudInstancesIdMetricsWithResponse call
 func ParseGetV1XcloudInstancesIdMetricsResponse(rsp *http.Response) (*GetV1XcloudInstancesIdMetricsResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -69390,15 +76421,21 @@ func ParsePutV1XcloudInstancesIdPasswordResponse(rsp *http.Response) (*PutV1Xclo
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			AdminPasswordSet       *bool                                                           `json:"adminPasswordSet,omitempty"`
-			AdminUsername          *string                                                         `json:"adminUsername"`
-			AgentLastError         *string                                                         `json:"agentLastError"`
-			AgentStatus            PutV1XcloudInstancesIdPassword200JSONResponseBodyAgentStatus    `json:"agentStatus"`
-			AgentStatusAt          *time.Time                                                      `json:"agentStatusAt"`
+			AdminPasswordSet *bool                                                        `json:"adminPasswordSet,omitempty"`
+			AdminUsername    *string                                                      `json:"adminUsername"`
+			AgentLastError   *string                                                      `json:"agentLastError"`
+			AgentStatus      PutV1XcloudInstancesIdPassword200JSONResponseBodyAgentStatus `json:"agentStatus"`
+			AgentStatusAt    *time.Time                                                   `json:"agentStatusAt"`
+			BootingSince     *time.Time                                                   `json:"bootingSince"`
+			Cost             *struct {
+				Hourly *string                                                   `json:"hourly"`
+				Mode   PutV1XcloudInstancesIdPassword200JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
 			CpuCores               int                                                             `json:"cpuCores"`
 			CreatedAt              time.Time                                                       `json:"createdAt"`
 			DiskGib                int                                                             `json:"diskGib"`
 			DisplayHeight          int                                                             `json:"displayHeight"`
+			DisplayScale           *int                                                            `json:"displayScale,omitempty"`
 			DisplayWidth           int                                                             `json:"displayWidth"`
 			ExpiresAt              *time.Time                                                      `json:"expiresAt"`
 			FlavorSlug             *string                                                         `json:"flavorSlug"`
@@ -69423,6 +76460,7 @@ func ParsePutV1XcloudInstancesIdPasswordResponse(rsp *http.Response) (*PutV1Xclo
 			RegionId               openapi_types.UUID                                              `json:"regionId"`
 			RegionSlug             string                                                          `json:"regionSlug"`
 			SecurityGroups         *[]string                                                       `json:"securityGroups,omitempty"`
+			SourceSnapshotId       *openapi_types.UUID                                             `json:"sourceSnapshotId,omitempty"`
 			SshKeyIds              *[]openapi_types.UUID                                           `json:"sshKeyIds,omitempty"`
 			SshKeysProvisionedAt   *time.Time                                                      `json:"sshKeysProvisionedAt"`
 			Status                 PutV1XcloudInstancesIdPassword200JSONResponseBodyStatus         `json:"status"`
@@ -69694,15 +76732,21 @@ func ParsePostV1XcloudInstancesIdResizeResponse(rsp *http.Response) (*PostV1Xclo
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 202:
 		var dest struct {
-			AdminPasswordSet       *bool                                                          `json:"adminPasswordSet,omitempty"`
-			AdminUsername          *string                                                        `json:"adminUsername"`
-			AgentLastError         *string                                                        `json:"agentLastError"`
-			AgentStatus            PostV1XcloudInstancesIdResize202JSONResponseBodyAgentStatus    `json:"agentStatus"`
-			AgentStatusAt          *time.Time                                                     `json:"agentStatusAt"`
+			AdminPasswordSet *bool                                                       `json:"adminPasswordSet,omitempty"`
+			AdminUsername    *string                                                     `json:"adminUsername"`
+			AgentLastError   *string                                                     `json:"agentLastError"`
+			AgentStatus      PostV1XcloudInstancesIdResize202JSONResponseBodyAgentStatus `json:"agentStatus"`
+			AgentStatusAt    *time.Time                                                  `json:"agentStatusAt"`
+			BootingSince     *time.Time                                                  `json:"bootingSince"`
+			Cost             *struct {
+				Hourly *string                                                  `json:"hourly"`
+				Mode   PostV1XcloudInstancesIdResize202JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
 			CpuCores               int                                                            `json:"cpuCores"`
 			CreatedAt              time.Time                                                      `json:"createdAt"`
 			DiskGib                int                                                            `json:"diskGib"`
 			DisplayHeight          int                                                            `json:"displayHeight"`
+			DisplayScale           *int                                                           `json:"displayScale,omitempty"`
 			DisplayWidth           int                                                            `json:"displayWidth"`
 			ExpiresAt              *time.Time                                                     `json:"expiresAt"`
 			FlavorSlug             *string                                                        `json:"flavorSlug"`
@@ -69727,6 +76771,7 @@ func ParsePostV1XcloudInstancesIdResizeResponse(rsp *http.Response) (*PostV1Xclo
 			RegionId               openapi_types.UUID                                             `json:"regionId"`
 			RegionSlug             string                                                         `json:"regionSlug"`
 			SecurityGroups         *[]string                                                      `json:"securityGroups,omitempty"`
+			SourceSnapshotId       *openapi_types.UUID                                            `json:"sourceSnapshotId,omitempty"`
 			SshKeyIds              *[]openapi_types.UUID                                          `json:"sshKeyIds,omitempty"`
 			SshKeysProvisionedAt   *time.Time                                                     `json:"sshKeysProvisionedAt"`
 			Status                 PostV1XcloudInstancesIdResize202JSONResponseBodyStatus         `json:"status"`
@@ -69818,6 +76863,139 @@ func ParsePostV1XcloudInstancesIdResizeResponse(rsp *http.Response) (*PostV1Xclo
 	return response, nil
 }
 
+// ParsePostV1XcloudInstancesIdRestoreResponse parses an HTTP response from a PostV1XcloudInstancesIdRestoreWithResponse call
+func ParsePostV1XcloudInstancesIdRestoreResponse(rsp *http.Response) (*PostV1XcloudInstancesIdRestoreResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostV1XcloudInstancesIdRestoreResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 202:
+		var dest struct {
+			AdminPasswordSet *bool                                                        `json:"adminPasswordSet,omitempty"`
+			AdminUsername    *string                                                      `json:"adminUsername"`
+			AgentLastError   *string                                                      `json:"agentLastError"`
+			AgentStatus      PostV1XcloudInstancesIdRestore202JSONResponseBodyAgentStatus `json:"agentStatus"`
+			AgentStatusAt    *time.Time                                                   `json:"agentStatusAt"`
+			BootingSince     *time.Time                                                   `json:"bootingSince"`
+			Cost             *struct {
+				Hourly *string                                                   `json:"hourly"`
+				Mode   PostV1XcloudInstancesIdRestore202JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CpuCores               int                                                             `json:"cpuCores"`
+			CreatedAt              time.Time                                                       `json:"createdAt"`
+			DiskGib                int                                                             `json:"diskGib"`
+			DisplayHeight          int                                                             `json:"displayHeight"`
+			DisplayScale           *int                                                            `json:"displayScale,omitempty"`
+			DisplayWidth           int                                                             `json:"displayWidth"`
+			ExpiresAt              *time.Time                                                      `json:"expiresAt"`
+			FlavorSlug             *string                                                         `json:"flavorSlug"`
+			HardwareAddress        *string                                                         `json:"hardwareAddress"`
+			HardwareGeneration     *string                                                         `json:"hardwareGeneration"`
+			Id                     openapi_types.UUID                                              `json:"id"`
+			ImageRef               string                                                          `json:"imageRef"`
+			LastError              *string                                                         `json:"lastError"`
+			LastKnownHost          *string                                                         `json:"lastKnownHost"`
+			LastUpstreamPhase      *string                                                         `json:"lastUpstreamPhase"`
+			LastUpstreamPhaseAt    *time.Time                                                      `json:"lastUpstreamPhaseAt"`
+			MemoryGib              int                                                             `json:"memoryGib"`
+			Name                   string                                                          `json:"name"`
+			Namespace              string                                                          `json:"namespace"`
+			NetworkAddress         *string                                                         `json:"networkAddress"`
+			NetworkRef             string                                                          `json:"networkRef"`
+			Node                   *string                                                         `json:"node"`
+			PasswordProvisionError *string                                                         `json:"passwordProvisionError"`
+			PasswordProvisionedAt  *time.Time                                                      `json:"passwordProvisionedAt"`
+			PendingAction          *PostV1XcloudInstancesIdRestore202JSONResponseBodyPendingAction `json:"pendingAction"`
+			Platform               *PostV1XcloudInstancesIdRestore202JSONResponseBodyPlatform      `json:"platform,omitempty"`
+			RegionId               openapi_types.UUID                                              `json:"regionId"`
+			RegionSlug             string                                                          `json:"regionSlug"`
+			SecurityGroups         *[]string                                                       `json:"securityGroups,omitempty"`
+			SourceSnapshotId       *openapi_types.UUID                                             `json:"sourceSnapshotId,omitempty"`
+			SshKeyIds              *[]openapi_types.UUID                                           `json:"sshKeyIds,omitempty"`
+			SshKeysProvisionedAt   *time.Time                                                      `json:"sshKeysProvisionedAt"`
+			Status                 PostV1XcloudInstancesIdRestore202JSONResponseBodyStatus         `json:"status"`
+			Tags                   *[]struct {
+				Key   string `json:"key"`
+				Value string `json:"value"`
+			} `json:"tags,omitempty"`
+			TenantId   openapi_types.UUID `json:"tenantId"`
+			UpdatedAt  time.Time          `json:"updatedAt"`
+			XcloudName string             `json:"xcloudName"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON202 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParsePutV1XcloudInstancesIdSecurityGroupsResponse parses an HTTP response from a PutV1XcloudInstancesIdSecurityGroupsWithResponse call
 func ParsePutV1XcloudInstancesIdSecurityGroupsResponse(rsp *http.Response) (*PutV1XcloudInstancesIdSecurityGroupsResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -69834,15 +77012,21 @@ func ParsePutV1XcloudInstancesIdSecurityGroupsResponse(rsp *http.Response) (*Put
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			AdminPasswordSet       *bool                                                                 `json:"adminPasswordSet,omitempty"`
-			AdminUsername          *string                                                               `json:"adminUsername"`
-			AgentLastError         *string                                                               `json:"agentLastError"`
-			AgentStatus            PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyAgentStatus    `json:"agentStatus"`
-			AgentStatusAt          *time.Time                                                            `json:"agentStatusAt"`
+			AdminPasswordSet *bool                                                              `json:"adminPasswordSet,omitempty"`
+			AdminUsername    *string                                                            `json:"adminUsername"`
+			AgentLastError   *string                                                            `json:"agentLastError"`
+			AgentStatus      PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyAgentStatus `json:"agentStatus"`
+			AgentStatusAt    *time.Time                                                         `json:"agentStatusAt"`
+			BootingSince     *time.Time                                                         `json:"bootingSince"`
+			Cost             *struct {
+				Hourly *string                                                         `json:"hourly"`
+				Mode   PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
 			CpuCores               int                                                                   `json:"cpuCores"`
 			CreatedAt              time.Time                                                             `json:"createdAt"`
 			DiskGib                int                                                                   `json:"diskGib"`
 			DisplayHeight          int                                                                   `json:"displayHeight"`
+			DisplayScale           *int                                                                  `json:"displayScale,omitempty"`
 			DisplayWidth           int                                                                   `json:"displayWidth"`
 			ExpiresAt              *time.Time                                                            `json:"expiresAt"`
 			FlavorSlug             *string                                                               `json:"flavorSlug"`
@@ -69867,6 +77051,7 @@ func ParsePutV1XcloudInstancesIdSecurityGroupsResponse(rsp *http.Response) (*Put
 			RegionId               openapi_types.UUID                                                    `json:"regionId"`
 			RegionSlug             string                                                                `json:"regionSlug"`
 			SecurityGroups         *[]string                                                             `json:"securityGroups,omitempty"`
+			SourceSnapshotId       *openapi_types.UUID                                                   `json:"sourceSnapshotId,omitempty"`
 			SshKeyIds              *[]openapi_types.UUID                                                 `json:"sshKeyIds,omitempty"`
 			SshKeysProvisionedAt   *time.Time                                                            `json:"sshKeysProvisionedAt"`
 			Status                 PutV1XcloudInstancesIdSecurityGroups200JSONResponseBodyStatus         `json:"status"`
@@ -69991,6 +77176,230 @@ func ParsePostV1XcloudInstancesIdShutdownResponse(rsp *http.Response) (*PostV1Xc
 	return response, nil
 }
 
+// ParseGetV1XcloudInstancesIdSnapshotsResponse parses an HTTP response from a GetV1XcloudInstancesIdSnapshotsWithResponse call
+func ParseGetV1XcloudInstancesIdSnapshotsResponse(rsp *http.Response) (*GetV1XcloudInstancesIdSnapshotsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetV1XcloudInstancesIdSnapshotsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Data []struct {
+				CaptureTime *time.Time `json:"captureTime"`
+				Cost        *struct {
+					Hourly *string                                                        `json:"hourly"`
+					Mode   GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataCostMode `json:"mode"`
+				} `json:"cost,omitempty"`
+				CreatedAt          time.Time                                                         `json:"createdAt"`
+				Description        *string                                                           `json:"description"`
+				DiskGib            int                                                               `json:"diskGib"`
+				Id                 openapi_types.UUID                                                `json:"id"`
+				ImageRef           *string                                                           `json:"imageRef"`
+				LastError          *string                                                           `json:"lastError"`
+				MinCpuCores        *int                                                              `json:"minCpuCores"`
+				MinMemoryGib       *int                                                              `json:"minMemoryGib"`
+				Name               string                                                            `json:"name"`
+				Platform           *GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataPlatform   `json:"platform"`
+				ReadyAt            *time.Time                                                        `json:"readyAt"`
+				RegionId           openapi_types.UUID                                                `json:"regionId"`
+				RegionSlug         string                                                            `json:"regionSlug"`
+				Restorable         bool                                                              `json:"restorable"`
+				SourceInstanceId   *openapi_types.UUID                                               `json:"sourceInstanceId"`
+				SourceInstanceName *string                                                           `json:"sourceInstanceName"`
+				SourceKind         *GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataSourceKind `json:"sourceKind,omitempty"`
+				SourceVolumeId     *openapi_types.UUID                                               `json:"sourceVolumeId,omitempty"`
+				SourceVolumeName   *string                                                           `json:"sourceVolumeName,omitempty"`
+				Status             GetV1XcloudInstancesIdSnapshots200JSONResponseBodyDataStatus      `json:"status"`
+				TakenWhileRunning  *bool                                                             `json:"takenWhileRunning"`
+				TenantId           openapi_types.UUID                                                `json:"tenantId"`
+				XcloudName         string                                                            `json:"xcloudName"`
+			} `json:"data"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON412 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePostV1XcloudInstancesIdSnapshotsResponse parses an HTTP response from a PostV1XcloudInstancesIdSnapshotsWithResponse call
+func ParsePostV1XcloudInstancesIdSnapshotsResponse(rsp *http.Response) (*PostV1XcloudInstancesIdSnapshotsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostV1XcloudInstancesIdSnapshotsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest struct {
+			CaptureTime *time.Time `json:"captureTime"`
+			Cost        *struct {
+				Hourly *string                                                     `json:"hourly"`
+				Mode   PostV1XcloudInstancesIdSnapshots201JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt          time.Time                                                      `json:"createdAt"`
+			Description        *string                                                        `json:"description"`
+			DiskGib            int                                                            `json:"diskGib"`
+			Id                 openapi_types.UUID                                             `json:"id"`
+			ImageRef           *string                                                        `json:"imageRef"`
+			LastError          *string                                                        `json:"lastError"`
+			MinCpuCores        *int                                                           `json:"minCpuCores"`
+			MinMemoryGib       *int                                                           `json:"minMemoryGib"`
+			Name               string                                                         `json:"name"`
+			Platform           *PostV1XcloudInstancesIdSnapshots201JSONResponseBodyPlatform   `json:"platform"`
+			ReadyAt            *time.Time                                                     `json:"readyAt"`
+			RegionId           openapi_types.UUID                                             `json:"regionId"`
+			RegionSlug         string                                                         `json:"regionSlug"`
+			Restorable         bool                                                           `json:"restorable"`
+			SourceInstanceId   *openapi_types.UUID                                            `json:"sourceInstanceId"`
+			SourceInstanceName *string                                                        `json:"sourceInstanceName"`
+			SourceKind         *PostV1XcloudInstancesIdSnapshots201JSONResponseBodySourceKind `json:"sourceKind,omitempty"`
+			SourceVolumeId     *openapi_types.UUID                                            `json:"sourceVolumeId,omitempty"`
+			SourceVolumeName   *string                                                        `json:"sourceVolumeName,omitempty"`
+			Status             PostV1XcloudInstancesIdSnapshots201JSONResponseBodyStatus      `json:"status"`
+			TakenWhileRunning  *bool                                                          `json:"takenWhileRunning"`
+			TenantId           openapi_types.UUID                                             `json:"tenantId"`
+			XcloudName         string                                                         `json:"xcloudName"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON412 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParsePatchV1XcloudInstancesIdSshKeysResponse parses an HTTP response from a PatchV1XcloudInstancesIdSshKeysWithResponse call
 func ParsePatchV1XcloudInstancesIdSshKeysResponse(rsp *http.Response) (*PatchV1XcloudInstancesIdSshKeysResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -70007,15 +77416,21 @@ func ParsePatchV1XcloudInstancesIdSshKeysResponse(rsp *http.Response) (*PatchV1X
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			AdminPasswordSet       *bool                                                            `json:"adminPasswordSet,omitempty"`
-			AdminUsername          *string                                                          `json:"adminUsername"`
-			AgentLastError         *string                                                          `json:"agentLastError"`
-			AgentStatus            PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyAgentStatus    `json:"agentStatus"`
-			AgentStatusAt          *time.Time                                                       `json:"agentStatusAt"`
+			AdminPasswordSet *bool                                                         `json:"adminPasswordSet,omitempty"`
+			AdminUsername    *string                                                       `json:"adminUsername"`
+			AgentLastError   *string                                                       `json:"agentLastError"`
+			AgentStatus      PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyAgentStatus `json:"agentStatus"`
+			AgentStatusAt    *time.Time                                                    `json:"agentStatusAt"`
+			BootingSince     *time.Time                                                    `json:"bootingSince"`
+			Cost             *struct {
+				Hourly *string                                                    `json:"hourly"`
+				Mode   PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
 			CpuCores               int                                                              `json:"cpuCores"`
 			CreatedAt              time.Time                                                        `json:"createdAt"`
 			DiskGib                int                                                              `json:"diskGib"`
 			DisplayHeight          int                                                              `json:"displayHeight"`
+			DisplayScale           *int                                                             `json:"displayScale,omitempty"`
 			DisplayWidth           int                                                              `json:"displayWidth"`
 			ExpiresAt              *time.Time                                                       `json:"expiresAt"`
 			FlavorSlug             *string                                                          `json:"flavorSlug"`
@@ -70040,6 +77455,7 @@ func ParsePatchV1XcloudInstancesIdSshKeysResponse(rsp *http.Response) (*PatchV1X
 			RegionId               openapi_types.UUID                                               `json:"regionId"`
 			RegionSlug             string                                                           `json:"regionSlug"`
 			SecurityGroups         *[]string                                                        `json:"securityGroups,omitempty"`
+			SourceSnapshotId       *openapi_types.UUID                                              `json:"sourceSnapshotId,omitempty"`
 			SshKeyIds              *[]openapi_types.UUID                                            `json:"sshKeyIds,omitempty"`
 			SshKeysProvisionedAt   *time.Time                                                       `json:"sshKeysProvisionedAt"`
 			Status                 PatchV1XcloudInstancesIdSshKeys200JSONResponseBodyStatus         `json:"status"`
@@ -70393,19 +77809,25 @@ func ParseGetV1XcloudInstancesIdVolumesResponse(rsp *http.Response) (*GetV1Xclou
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Data []struct {
-				ActualSizeGib        *int                                                      `json:"actualSizeGib"`
-				AttachedInstanceId   *openapi_types.UUID                                       `json:"attachedInstanceId"`
-				AttachedInstanceName *string                                                   `json:"attachedInstanceName"`
-				CreatedAt            time.Time                                                 `json:"createdAt"`
-				Id                   openapi_types.UUID                                        `json:"id"`
-				Name                 string                                                    `json:"name"`
-				Node                 *string                                                   `json:"node"`
-				RegionId             openapi_types.UUID                                        `json:"regionId"`
-				RegionSlug           string                                                    `json:"regionSlug"`
-				SizeGib              int                                                       `json:"sizeGib"`
-				State                GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState `json:"state"`
-				TenantId             openapi_types.UUID                                        `json:"tenantId"`
-				XcloudName           string                                                    `json:"xcloudName"`
+				ActualSizeGib          *int                `json:"actualSizeGib"`
+				AttachedInstanceId     *openapi_types.UUID `json:"attachedInstanceId"`
+				AttachedInstanceName   *string             `json:"attachedInstanceName"`
+				AttachedInstanceStatus *string             `json:"attachedInstanceStatus,omitempty"`
+				Cost                   *struct {
+					Hourly *string                                                      `json:"hourly"`
+					Mode   GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataCostMode `json:"mode"`
+				} `json:"cost,omitempty"`
+				CreatedAt        time.Time                                                 `json:"createdAt"`
+				Id               openapi_types.UUID                                        `json:"id"`
+				Name             string                                                    `json:"name"`
+				Node             *string                                                   `json:"node"`
+				RegionId         openapi_types.UUID                                        `json:"regionId"`
+				RegionSlug       string                                                    `json:"regionSlug"`
+				SizeGib          int                                                       `json:"sizeGib"`
+				SourceSnapshotId *openapi_types.UUID                                       `json:"sourceSnapshotId,omitempty"`
+				State            GetV1XcloudInstancesIdVolumes200JSONResponseBodyDataState `json:"state"`
+				TenantId         openapi_types.UUID                                        `json:"tenantId"`
+				XcloudName       string                                                    `json:"xcloudName"`
 			} `json:"data"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -70476,19 +77898,25 @@ func ParsePostV1XcloudInstancesIdVolumesResponse(rsp *http.Response) (*PostV1Xcl
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
-			ActualSizeGib        *int                                                   `json:"actualSizeGib"`
-			AttachedInstanceId   *openapi_types.UUID                                    `json:"attachedInstanceId"`
-			AttachedInstanceName *string                                                `json:"attachedInstanceName"`
-			CreatedAt            time.Time                                              `json:"createdAt"`
-			Id                   openapi_types.UUID                                     `json:"id"`
-			Name                 string                                                 `json:"name"`
-			Node                 *string                                                `json:"node"`
-			RegionId             openapi_types.UUID                                     `json:"regionId"`
-			RegionSlug           string                                                 `json:"regionSlug"`
-			SizeGib              int                                                    `json:"sizeGib"`
-			State                PostV1XcloudInstancesIdVolumes201JSONResponseBodyState `json:"state"`
-			TenantId             openapi_types.UUID                                     `json:"tenantId"`
-			XcloudName           string                                                 `json:"xcloudName"`
+			ActualSizeGib          *int                `json:"actualSizeGib"`
+			AttachedInstanceId     *openapi_types.UUID `json:"attachedInstanceId"`
+			AttachedInstanceName   *string             `json:"attachedInstanceName"`
+			AttachedInstanceStatus *string             `json:"attachedInstanceStatus,omitempty"`
+			Cost                   *struct {
+				Hourly *string                                                   `json:"hourly"`
+				Mode   PostV1XcloudInstancesIdVolumes201JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt        time.Time                                              `json:"createdAt"`
+			Id               openapi_types.UUID                                     `json:"id"`
+			Name             string                                                 `json:"name"`
+			Node             *string                                                `json:"node"`
+			RegionId         openapi_types.UUID                                     `json:"regionId"`
+			RegionSlug       string                                                 `json:"regionSlug"`
+			SizeGib          int                                                    `json:"sizeGib"`
+			SourceSnapshotId *openapi_types.UUID                                    `json:"sourceSnapshotId,omitempty"`
+			State            PostV1XcloudInstancesIdVolumes201JSONResponseBodyState `json:"state"`
+			TenantId         openapi_types.UUID                                     `json:"tenantId"`
+			XcloudName       string                                                 `json:"xcloudName"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -70620,17 +78048,23 @@ func ParseGetV1XcloudNetworksResponse(rsp *http.Response) (*GetV1XcloudNetworksR
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Data []struct {
-				Cidr       *string                                          `json:"cidr"`
-				CreatedAt  *string                                          `json:"createdAt"`
-				Dhcp       *bool                                            `json:"dhcp"`
-				Gateway    *string                                          `json:"gateway"`
-				Labels     map[string]string                                `json:"labels"`
-				Mode       *string                                          `json:"mode"`
-				Name       string                                           `json:"name"`
-				RegionId   openapi_types.UUID                               `json:"regionId"`
-				RegionSlug string                                           `json:"regionSlug"`
-				Source     GetV1XcloudNetworks200JSONResponseBodyDataSource `json:"source"`
-				Spec       map[string]*interface{}                          `json:"spec"`
+				Cidr      *string `json:"cidr"`
+				CreatedAt *string `json:"createdAt"`
+				Dhcp      bool    `json:"dhcp"`
+				DhcpRange *struct {
+					RangeEnd   string `json:"rangeEnd"`
+					RangeStart string `json:"rangeStart"`
+				} `json:"dhcpRange"`
+				Gateway          *string                                          `json:"gateway"`
+				Labels           map[string]string                                `json:"labels"`
+				ManagedByCatalog *bool                                            `json:"managedByCatalog,omitempty"`
+				Mode             interface{}                                      `json:"mode"`
+				Name             string                                           `json:"name"`
+				RegionId         openapi_types.UUID                               `json:"regionId"`
+				RegionSlug       string                                           `json:"regionSlug"`
+				Source           GetV1XcloudNetworks200JSONResponseBodyDataSource `json:"source"`
+				Spec             map[string]*interface{}                          `json:"spec"`
+				Vni              *int                                             `json:"vni"`
 			} `json:"data"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -70687,17 +78121,23 @@ func ParsePostV1XcloudNetworksResponse(rsp *http.Response) (*PostV1XcloudNetwork
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
-			Cidr       *string                                       `json:"cidr"`
-			CreatedAt  *string                                       `json:"createdAt"`
-			Dhcp       *bool                                         `json:"dhcp"`
-			Gateway    *string                                       `json:"gateway"`
-			Labels     map[string]string                             `json:"labels"`
-			Mode       *string                                       `json:"mode"`
-			Name       string                                        `json:"name"`
-			RegionId   openapi_types.UUID                            `json:"regionId"`
-			RegionSlug string                                        `json:"regionSlug"`
-			Source     PostV1XcloudNetworks201JSONResponseBodySource `json:"source"`
-			Spec       map[string]*interface{}                       `json:"spec"`
+			Cidr      *string `json:"cidr"`
+			CreatedAt *string `json:"createdAt"`
+			Dhcp      bool    `json:"dhcp"`
+			DhcpRange *struct {
+				RangeEnd   string `json:"rangeEnd"`
+				RangeStart string `json:"rangeStart"`
+			} `json:"dhcpRange"`
+			Gateway          *string                                       `json:"gateway"`
+			Labels           map[string]string                             `json:"labels"`
+			ManagedByCatalog *bool                                         `json:"managedByCatalog,omitempty"`
+			Mode             interface{}                                   `json:"mode"`
+			Name             string                                        `json:"name"`
+			RegionId         openapi_types.UUID                            `json:"regionId"`
+			RegionSlug       string                                        `json:"regionSlug"`
+			Source           PostV1XcloudNetworks201JSONResponseBodySource `json:"source"`
+			Spec             map[string]*interface{}                       `json:"spec"`
+			Vni              *int                                          `json:"vni"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -70910,6 +78350,594 @@ func ParseDeleteV1XcloudNetworksNameResponse(rsp *http.Response) (*DeleteV1Xclou
 	return response, nil
 }
 
+// ParsePatchV1XcloudNetworksNameResponse parses an HTTP response from a PatchV1XcloudNetworksNameWithResponse call
+func ParsePatchV1XcloudNetworksNameResponse(rsp *http.Response) (*PatchV1XcloudNetworksNameResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PatchV1XcloudNetworksNameResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Cidr      *string `json:"cidr"`
+			CreatedAt *string `json:"createdAt"`
+			Dhcp      bool    `json:"dhcp"`
+			DhcpRange *struct {
+				RangeEnd   string `json:"rangeEnd"`
+				RangeStart string `json:"rangeStart"`
+			} `json:"dhcpRange"`
+			Gateway          *string                                            `json:"gateway"`
+			Labels           map[string]string                                  `json:"labels"`
+			ManagedByCatalog *bool                                              `json:"managedByCatalog,omitempty"`
+			Mode             interface{}                                        `json:"mode"`
+			Name             string                                             `json:"name"`
+			RegionId         openapi_types.UUID                                 `json:"regionId"`
+			RegionSlug       string                                             `json:"regionSlug"`
+			Source           PatchV1XcloudNetworksName200JSONResponseBodySource `json:"source"`
+			Spec             map[string]*interface{}                            `json:"spec"`
+			Vni              *int                                               `json:"vni"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON412 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 502:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON502 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetV1XcloudSnapshotsResponse parses an HTTP response from a GetV1XcloudSnapshotsWithResponse call
+func ParseGetV1XcloudSnapshotsResponse(rsp *http.Response) (*GetV1XcloudSnapshotsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetV1XcloudSnapshotsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Data []struct {
+				CaptureTime *time.Time `json:"captureTime"`
+				Cost        *struct {
+					Hourly *string                                             `json:"hourly"`
+					Mode   GetV1XcloudSnapshots200JSONResponseBodyDataCostMode `json:"mode"`
+				} `json:"cost,omitempty"`
+				CreatedAt          time.Time                                              `json:"createdAt"`
+				Description        *string                                                `json:"description"`
+				DiskGib            int                                                    `json:"diskGib"`
+				Id                 openapi_types.UUID                                     `json:"id"`
+				ImageRef           *string                                                `json:"imageRef"`
+				LastError          *string                                                `json:"lastError"`
+				MinCpuCores        *int                                                   `json:"minCpuCores"`
+				MinMemoryGib       *int                                                   `json:"minMemoryGib"`
+				Name               string                                                 `json:"name"`
+				Platform           *GetV1XcloudSnapshots200JSONResponseBodyDataPlatform   `json:"platform"`
+				ReadyAt            *time.Time                                             `json:"readyAt"`
+				RegionId           openapi_types.UUID                                     `json:"regionId"`
+				RegionSlug         string                                                 `json:"regionSlug"`
+				Restorable         bool                                                   `json:"restorable"`
+				SourceInstanceId   *openapi_types.UUID                                    `json:"sourceInstanceId"`
+				SourceInstanceName *string                                                `json:"sourceInstanceName"`
+				SourceKind         *GetV1XcloudSnapshots200JSONResponseBodyDataSourceKind `json:"sourceKind,omitempty"`
+				SourceVolumeId     *openapi_types.UUID                                    `json:"sourceVolumeId,omitempty"`
+				SourceVolumeName   *string                                                `json:"sourceVolumeName,omitempty"`
+				Status             GetV1XcloudSnapshots200JSONResponseBodyDataStatus      `json:"status"`
+				TakenWhileRunning  *bool                                                  `json:"takenWhileRunning"`
+				TenantId           openapi_types.UUID                                     `json:"tenantId"`
+				XcloudName         string                                                 `json:"xcloudName"`
+			} `json:"data"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON412 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseDeleteV1XcloudSnapshotsIdResponse parses an HTTP response from a DeleteV1XcloudSnapshotsIdWithResponse call
+func ParseDeleteV1XcloudSnapshotsIdResponse(rsp *http.Response) (*DeleteV1XcloudSnapshotsIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteV1XcloudSnapshotsIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 202:
+		var dest struct {
+			CaptureTime *time.Time `json:"captureTime"`
+			Cost        *struct {
+				Hourly *string                                              `json:"hourly"`
+				Mode   DeleteV1XcloudSnapshotsId202JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt          time.Time                                               `json:"createdAt"`
+			Description        *string                                                 `json:"description"`
+			DiskGib            int                                                     `json:"diskGib"`
+			Id                 openapi_types.UUID                                      `json:"id"`
+			ImageRef           *string                                                 `json:"imageRef"`
+			LastError          *string                                                 `json:"lastError"`
+			MinCpuCores        *int                                                    `json:"minCpuCores"`
+			MinMemoryGib       *int                                                    `json:"minMemoryGib"`
+			Name               string                                                  `json:"name"`
+			Platform           *DeleteV1XcloudSnapshotsId202JSONResponseBodyPlatform   `json:"platform"`
+			ReadyAt            *time.Time                                              `json:"readyAt"`
+			RegionId           openapi_types.UUID                                      `json:"regionId"`
+			RegionSlug         string                                                  `json:"regionSlug"`
+			Restorable         bool                                                    `json:"restorable"`
+			SourceInstanceId   *openapi_types.UUID                                     `json:"sourceInstanceId"`
+			SourceInstanceName *string                                                 `json:"sourceInstanceName"`
+			SourceKind         *DeleteV1XcloudSnapshotsId202JSONResponseBodySourceKind `json:"sourceKind,omitempty"`
+			SourceVolumeId     *openapi_types.UUID                                     `json:"sourceVolumeId,omitempty"`
+			SourceVolumeName   *string                                                 `json:"sourceVolumeName,omitempty"`
+			Status             DeleteV1XcloudSnapshotsId202JSONResponseBodyStatus      `json:"status"`
+			TakenWhileRunning  *bool                                                   `json:"takenWhileRunning"`
+			TenantId           openapi_types.UUID                                      `json:"tenantId"`
+			XcloudName         string                                                  `json:"xcloudName"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON202 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON412 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetV1XcloudSnapshotsIdResponse parses an HTTP response from a GetV1XcloudSnapshotsIdWithResponse call
+func ParseGetV1XcloudSnapshotsIdResponse(rsp *http.Response) (*GetV1XcloudSnapshotsIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetV1XcloudSnapshotsIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			CaptureTime *time.Time `json:"captureTime"`
+			Cost        *struct {
+				Hourly *string                                           `json:"hourly"`
+				Mode   GetV1XcloudSnapshotsId200JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt          time.Time                                            `json:"createdAt"`
+			Description        *string                                              `json:"description"`
+			DiskGib            int                                                  `json:"diskGib"`
+			Id                 openapi_types.UUID                                   `json:"id"`
+			ImageRef           *string                                              `json:"imageRef"`
+			LastError          *string                                              `json:"lastError"`
+			MinCpuCores        *int                                                 `json:"minCpuCores"`
+			MinMemoryGib       *int                                                 `json:"minMemoryGib"`
+			Name               string                                               `json:"name"`
+			Platform           *GetV1XcloudSnapshotsId200JSONResponseBodyPlatform   `json:"platform"`
+			ReadyAt            *time.Time                                           `json:"readyAt"`
+			RegionId           openapi_types.UUID                                   `json:"regionId"`
+			RegionSlug         string                                               `json:"regionSlug"`
+			Restorable         bool                                                 `json:"restorable"`
+			SourceInstanceId   *openapi_types.UUID                                  `json:"sourceInstanceId"`
+			SourceInstanceName *string                                              `json:"sourceInstanceName"`
+			SourceKind         *GetV1XcloudSnapshotsId200JSONResponseBodySourceKind `json:"sourceKind,omitempty"`
+			SourceVolumeId     *openapi_types.UUID                                  `json:"sourceVolumeId,omitempty"`
+			SourceVolumeName   *string                                              `json:"sourceVolumeName,omitempty"`
+			Status             GetV1XcloudSnapshotsId200JSONResponseBodyStatus      `json:"status"`
+			TakenWhileRunning  *bool                                                `json:"takenWhileRunning"`
+			TenantId           openapi_types.UUID                                   `json:"tenantId"`
+			XcloudName         string                                               `json:"xcloudName"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON412 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePatchV1XcloudSnapshotsIdResponse parses an HTTP response from a PatchV1XcloudSnapshotsIdWithResponse call
+func ParsePatchV1XcloudSnapshotsIdResponse(rsp *http.Response) (*PatchV1XcloudSnapshotsIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PatchV1XcloudSnapshotsIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			CaptureTime *time.Time `json:"captureTime"`
+			Cost        *struct {
+				Hourly *string                                             `json:"hourly"`
+				Mode   PatchV1XcloudSnapshotsId200JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt          time.Time                                              `json:"createdAt"`
+			Description        *string                                                `json:"description"`
+			DiskGib            int                                                    `json:"diskGib"`
+			Id                 openapi_types.UUID                                     `json:"id"`
+			ImageRef           *string                                                `json:"imageRef"`
+			LastError          *string                                                `json:"lastError"`
+			MinCpuCores        *int                                                   `json:"minCpuCores"`
+			MinMemoryGib       *int                                                   `json:"minMemoryGib"`
+			Name               string                                                 `json:"name"`
+			Platform           *PatchV1XcloudSnapshotsId200JSONResponseBodyPlatform   `json:"platform"`
+			ReadyAt            *time.Time                                             `json:"readyAt"`
+			RegionId           openapi_types.UUID                                     `json:"regionId"`
+			RegionSlug         string                                                 `json:"regionSlug"`
+			Restorable         bool                                                   `json:"restorable"`
+			SourceInstanceId   *openapi_types.UUID                                    `json:"sourceInstanceId"`
+			SourceInstanceName *string                                                `json:"sourceInstanceName"`
+			SourceKind         *PatchV1XcloudSnapshotsId200JSONResponseBodySourceKind `json:"sourceKind,omitempty"`
+			SourceVolumeId     *openapi_types.UUID                                    `json:"sourceVolumeId,omitempty"`
+			SourceVolumeName   *string                                                `json:"sourceVolumeName,omitempty"`
+			Status             PatchV1XcloudSnapshotsId200JSONResponseBodyStatus      `json:"status"`
+			TakenWhileRunning  *bool                                                  `json:"takenWhileRunning"`
+			TenantId           openapi_types.UUID                                     `json:"tenantId"`
+			XcloudName         string                                                 `json:"xcloudName"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON412 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	}
+
+	return response, nil
+}
+
 // ParseGetV1XcloudVolumesResponse parses an HTTP response from a GetV1XcloudVolumesWithResponse call
 func ParseGetV1XcloudVolumesResponse(rsp *http.Response) (*GetV1XcloudVolumesResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -70927,19 +78955,25 @@ func ParseGetV1XcloudVolumesResponse(rsp *http.Response) (*GetV1XcloudVolumesRes
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Data []struct {
-				ActualSizeGib        *int                                           `json:"actualSizeGib"`
-				AttachedInstanceId   *openapi_types.UUID                            `json:"attachedInstanceId"`
-				AttachedInstanceName *string                                        `json:"attachedInstanceName"`
-				CreatedAt            time.Time                                      `json:"createdAt"`
-				Id                   openapi_types.UUID                             `json:"id"`
-				Name                 string                                         `json:"name"`
-				Node                 *string                                        `json:"node"`
-				RegionId             openapi_types.UUID                             `json:"regionId"`
-				RegionSlug           string                                         `json:"regionSlug"`
-				SizeGib              int                                            `json:"sizeGib"`
-				State                GetV1XcloudVolumes200JSONResponseBodyDataState `json:"state"`
-				TenantId             openapi_types.UUID                             `json:"tenantId"`
-				XcloudName           string                                         `json:"xcloudName"`
+				ActualSizeGib          *int                `json:"actualSizeGib"`
+				AttachedInstanceId     *openapi_types.UUID `json:"attachedInstanceId"`
+				AttachedInstanceName   *string             `json:"attachedInstanceName"`
+				AttachedInstanceStatus *string             `json:"attachedInstanceStatus,omitempty"`
+				Cost                   *struct {
+					Hourly *string                                           `json:"hourly"`
+					Mode   GetV1XcloudVolumes200JSONResponseBodyDataCostMode `json:"mode"`
+				} `json:"cost,omitempty"`
+				CreatedAt        time.Time                                      `json:"createdAt"`
+				Id               openapi_types.UUID                             `json:"id"`
+				Name             string                                         `json:"name"`
+				Node             *string                                        `json:"node"`
+				RegionId         openapi_types.UUID                             `json:"regionId"`
+				RegionSlug       string                                         `json:"regionSlug"`
+				SizeGib          int                                            `json:"sizeGib"`
+				SourceSnapshotId *openapi_types.UUID                            `json:"sourceSnapshotId,omitempty"`
+				State            GetV1XcloudVolumes200JSONResponseBodyDataState `json:"state"`
+				TenantId         openapi_types.UUID                             `json:"tenantId"`
+				XcloudName       string                                         `json:"xcloudName"`
 			} `json:"data"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -70968,19 +79002,25 @@ func ParsePostV1XcloudVolumesResponse(rsp *http.Response) (*PostV1XcloudVolumesR
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
-			ActualSizeGib        *int                                        `json:"actualSizeGib"`
-			AttachedInstanceId   *openapi_types.UUID                         `json:"attachedInstanceId"`
-			AttachedInstanceName *string                                     `json:"attachedInstanceName"`
-			CreatedAt            time.Time                                   `json:"createdAt"`
-			Id                   openapi_types.UUID                          `json:"id"`
-			Name                 string                                      `json:"name"`
-			Node                 *string                                     `json:"node"`
-			RegionId             openapi_types.UUID                          `json:"regionId"`
-			RegionSlug           string                                      `json:"regionSlug"`
-			SizeGib              int                                         `json:"sizeGib"`
-			State                PostV1XcloudVolumes201JSONResponseBodyState `json:"state"`
-			TenantId             openapi_types.UUID                          `json:"tenantId"`
-			XcloudName           string                                      `json:"xcloudName"`
+			ActualSizeGib          *int                `json:"actualSizeGib"`
+			AttachedInstanceId     *openapi_types.UUID `json:"attachedInstanceId"`
+			AttachedInstanceName   *string             `json:"attachedInstanceName"`
+			AttachedInstanceStatus *string             `json:"attachedInstanceStatus,omitempty"`
+			Cost                   *struct {
+				Hourly *string                                        `json:"hourly"`
+				Mode   PostV1XcloudVolumes201JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt        time.Time                                   `json:"createdAt"`
+			Id               openapi_types.UUID                          `json:"id"`
+			Name             string                                      `json:"name"`
+			Node             *string                                     `json:"node"`
+			RegionId         openapi_types.UUID                          `json:"regionId"`
+			RegionSlug       string                                      `json:"regionSlug"`
+			SizeGib          int                                         `json:"sizeGib"`
+			SourceSnapshotId *openapi_types.UUID                         `json:"sourceSnapshotId,omitempty"`
+			State            PostV1XcloudVolumes201JSONResponseBodyState `json:"state"`
+			TenantId         openapi_types.UUID                          `json:"tenantId"`
+			XcloudName       string                                      `json:"xcloudName"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -71111,19 +79151,25 @@ func ParseGetV1XcloudVolumesIdResponse(rsp *http.Response) (*GetV1XcloudVolumesI
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			ActualSizeGib        *int                                         `json:"actualSizeGib"`
-			AttachedInstanceId   *openapi_types.UUID                          `json:"attachedInstanceId"`
-			AttachedInstanceName *string                                      `json:"attachedInstanceName"`
-			CreatedAt            time.Time                                    `json:"createdAt"`
-			Id                   openapi_types.UUID                           `json:"id"`
-			Name                 string                                       `json:"name"`
-			Node                 *string                                      `json:"node"`
-			RegionId             openapi_types.UUID                           `json:"regionId"`
-			RegionSlug           string                                       `json:"regionSlug"`
-			SizeGib              int                                          `json:"sizeGib"`
-			State                GetV1XcloudVolumesId200JSONResponseBodyState `json:"state"`
-			TenantId             openapi_types.UUID                           `json:"tenantId"`
-			XcloudName           string                                       `json:"xcloudName"`
+			ActualSizeGib          *int                `json:"actualSizeGib"`
+			AttachedInstanceId     *openapi_types.UUID `json:"attachedInstanceId"`
+			AttachedInstanceName   *string             `json:"attachedInstanceName"`
+			AttachedInstanceStatus *string             `json:"attachedInstanceStatus,omitempty"`
+			Cost                   *struct {
+				Hourly *string                                         `json:"hourly"`
+				Mode   GetV1XcloudVolumesId200JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt        time.Time                                    `json:"createdAt"`
+			Id               openapi_types.UUID                           `json:"id"`
+			Name             string                                       `json:"name"`
+			Node             *string                                      `json:"node"`
+			RegionId         openapi_types.UUID                           `json:"regionId"`
+			RegionSlug       string                                       `json:"regionSlug"`
+			SizeGib          int                                          `json:"sizeGib"`
+			SourceSnapshotId *openapi_types.UUID                          `json:"sourceSnapshotId,omitempty"`
+			State            GetV1XcloudVolumesId200JSONResponseBodyState `json:"state"`
+			TenantId         openapi_types.UUID                           `json:"tenantId"`
+			XcloudName       string                                       `json:"xcloudName"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -71193,19 +79239,25 @@ func ParsePostV1XcloudVolumesIdResizeResponse(rsp *http.Response) (*PostV1Xcloud
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			ActualSizeGib        *int                                                `json:"actualSizeGib"`
-			AttachedInstanceId   *openapi_types.UUID                                 `json:"attachedInstanceId"`
-			AttachedInstanceName *string                                             `json:"attachedInstanceName"`
-			CreatedAt            time.Time                                           `json:"createdAt"`
-			Id                   openapi_types.UUID                                  `json:"id"`
-			Name                 string                                              `json:"name"`
-			Node                 *string                                             `json:"node"`
-			RegionId             openapi_types.UUID                                  `json:"regionId"`
-			RegionSlug           string                                              `json:"regionSlug"`
-			SizeGib              int                                                 `json:"sizeGib"`
-			State                PostV1XcloudVolumesIdResize200JSONResponseBodyState `json:"state"`
-			TenantId             openapi_types.UUID                                  `json:"tenantId"`
-			XcloudName           string                                              `json:"xcloudName"`
+			ActualSizeGib          *int                `json:"actualSizeGib"`
+			AttachedInstanceId     *openapi_types.UUID `json:"attachedInstanceId"`
+			AttachedInstanceName   *string             `json:"attachedInstanceName"`
+			AttachedInstanceStatus *string             `json:"attachedInstanceStatus,omitempty"`
+			Cost                   *struct {
+				Hourly *string                                                `json:"hourly"`
+				Mode   PostV1XcloudVolumesIdResize200JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt        time.Time                                           `json:"createdAt"`
+			Id               openapi_types.UUID                                  `json:"id"`
+			Name             string                                              `json:"name"`
+			Node             *string                                             `json:"node"`
+			RegionId         openapi_types.UUID                                  `json:"regionId"`
+			RegionSlug       string                                              `json:"regionSlug"`
+			SizeGib          int                                                 `json:"sizeGib"`
+			SourceSnapshotId *openapi_types.UUID                                 `json:"sourceSnapshotId,omitempty"`
+			State            PostV1XcloudVolumesIdResize200JSONResponseBodyState `json:"state"`
+			TenantId         openapi_types.UUID                                  `json:"tenantId"`
+			XcloudName       string                                              `json:"xcloudName"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -71253,6 +79305,314 @@ func ParsePostV1XcloudVolumesIdResizeResponse(rsp *http.Response) (*PostV1Xcloud
 			return nil, err
 		}
 		response.JSON412 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePostV1XcloudVolumesIdRestoreResponse parses an HTTP response from a PostV1XcloudVolumesIdRestoreWithResponse call
+func ParsePostV1XcloudVolumesIdRestoreResponse(rsp *http.Response) (*PostV1XcloudVolumesIdRestoreResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostV1XcloudVolumesIdRestoreResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 202:
+		var dest struct {
+			Restoring PostV1XcloudVolumesIdRestore202JSONResponseBodyRestoring `json:"restoring"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON202 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON412 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetV1XcloudVolumesIdSnapshotsResponse parses an HTTP response from a GetV1XcloudVolumesIdSnapshotsWithResponse call
+func ParseGetV1XcloudVolumesIdSnapshotsResponse(rsp *http.Response) (*GetV1XcloudVolumesIdSnapshotsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetV1XcloudVolumesIdSnapshotsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Data []struct {
+				CaptureTime *time.Time `json:"captureTime"`
+				Cost        *struct {
+					Hourly *string                                                      `json:"hourly"`
+					Mode   GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataCostMode `json:"mode"`
+				} `json:"cost,omitempty"`
+				CreatedAt          time.Time                                                       `json:"createdAt"`
+				Description        *string                                                         `json:"description"`
+				DiskGib            int                                                             `json:"diskGib"`
+				Id                 openapi_types.UUID                                              `json:"id"`
+				ImageRef           *string                                                         `json:"imageRef"`
+				LastError          *string                                                         `json:"lastError"`
+				MinCpuCores        *int                                                            `json:"minCpuCores"`
+				MinMemoryGib       *int                                                            `json:"minMemoryGib"`
+				Name               string                                                          `json:"name"`
+				Platform           *GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataPlatform   `json:"platform"`
+				ReadyAt            *time.Time                                                      `json:"readyAt"`
+				RegionId           openapi_types.UUID                                              `json:"regionId"`
+				RegionSlug         string                                                          `json:"regionSlug"`
+				Restorable         bool                                                            `json:"restorable"`
+				SourceInstanceId   *openapi_types.UUID                                             `json:"sourceInstanceId"`
+				SourceInstanceName *string                                                         `json:"sourceInstanceName"`
+				SourceKind         *GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataSourceKind `json:"sourceKind,omitempty"`
+				SourceVolumeId     *openapi_types.UUID                                             `json:"sourceVolumeId,omitempty"`
+				SourceVolumeName   *string                                                         `json:"sourceVolumeName,omitempty"`
+				Status             GetV1XcloudVolumesIdSnapshots200JSONResponseBodyDataStatus      `json:"status"`
+				TakenWhileRunning  *bool                                                           `json:"takenWhileRunning"`
+				TenantId           openapi_types.UUID                                              `json:"tenantId"`
+				XcloudName         string                                                          `json:"xcloudName"`
+			} `json:"data"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON412 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParsePostV1XcloudVolumesIdSnapshotsResponse parses an HTTP response from a PostV1XcloudVolumesIdSnapshotsWithResponse call
+func ParsePostV1XcloudVolumesIdSnapshotsResponse(rsp *http.Response) (*PostV1XcloudVolumesIdSnapshotsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostV1XcloudVolumesIdSnapshotsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
+		var dest struct {
+			CaptureTime *time.Time `json:"captureTime"`
+			Cost        *struct {
+				Hourly *string                                                   `json:"hourly"`
+				Mode   PostV1XcloudVolumesIdSnapshots201JSONResponseBodyCostMode `json:"mode"`
+			} `json:"cost,omitempty"`
+			CreatedAt          time.Time                                                    `json:"createdAt"`
+			Description        *string                                                      `json:"description"`
+			DiskGib            int                                                          `json:"diskGib"`
+			Id                 openapi_types.UUID                                           `json:"id"`
+			ImageRef           *string                                                      `json:"imageRef"`
+			LastError          *string                                                      `json:"lastError"`
+			MinCpuCores        *int                                                         `json:"minCpuCores"`
+			MinMemoryGib       *int                                                         `json:"minMemoryGib"`
+			Name               string                                                       `json:"name"`
+			Platform           *PostV1XcloudVolumesIdSnapshots201JSONResponseBodyPlatform   `json:"platform"`
+			ReadyAt            *time.Time                                                   `json:"readyAt"`
+			RegionId           openapi_types.UUID                                           `json:"regionId"`
+			RegionSlug         string                                                       `json:"regionSlug"`
+			Restorable         bool                                                         `json:"restorable"`
+			SourceInstanceId   *openapi_types.UUID                                          `json:"sourceInstanceId"`
+			SourceInstanceName *string                                                      `json:"sourceInstanceName"`
+			SourceKind         *PostV1XcloudVolumesIdSnapshots201JSONResponseBodySourceKind `json:"sourceKind,omitempty"`
+			SourceVolumeId     *openapi_types.UUID                                          `json:"sourceVolumeId,omitempty"`
+			SourceVolumeName   *string                                                      `json:"sourceVolumeName,omitempty"`
+			Status             PostV1XcloudVolumesIdSnapshots201JSONResponseBodyStatus      `json:"status"`
+			TakenWhileRunning  *bool                                                        `json:"takenWhileRunning"`
+			TenantId           openapi_types.UUID                                           `json:"tenantId"`
+			XcloudName         string                                                       `json:"xcloudName"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON201 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON409 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 412:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON412 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest struct {
+			Code     *string `json:"code,omitempty"`
+			Detail   *string `json:"detail,omitempty"`
+			Instance *string `json:"instance,omitempty"`
+			Status   int     `json:"status"`
+			Title    string  `json:"title"`
+			Type     *string `json:"type,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
 
 	}
 

@@ -22,7 +22,18 @@ const (
 	StatusSuspended    = "suspended"
 	StatusOffloading   = "offloading"
 	StatusOffloaded    = "offloaded"
+	StatusRestoring    = "restoring"
 	StatusError        = "error"
+)
+
+// Xcloud snapshot statuses (packages/shared/src/types/xcloud-snapshot.ts).
+// A snapshot has no pendingAction; its status alone says whether the
+// worker is done with it.
+const (
+	SnapshotCreating = "creating"
+	SnapshotReady    = "ready"
+	SnapshotFailed   = "failed"
+	SnapshotDeleting = "deleting"
 )
 
 // settledIn returns a predicate that succeeds once the worker is done
@@ -92,12 +103,45 @@ func InstanceGone() Predicate {
 	}
 }
 
+// SnapshotReadyOrFailed waits for a snapshot being taken. `failed` ends
+// the wait as a failure, carrying the row's lastError; a snapshot deleted
+// while the wait runs ends it as Gone rather than polling a 404.
+func SnapshotReadyOrFailed() Predicate {
+	return func(s State) (Outcome, bool) {
+		if !s.Exists {
+			return Gone, true
+		}
+		switch s.Status {
+		case SnapshotReady:
+			return Succeeded, true
+		case SnapshotFailed:
+			return Failed, true
+		}
+		return Succeeded, false
+	}
+}
+
+// SnapshotGone waits for a snapshot delete. The row reads `deleting` until
+// xcloud has reclaimed the storage — which waits while a VM created from
+// the snapshot has never started — and disappears afterwards, so its
+// absence is the completion signal. There is no failure state: a refused
+// delete is answered synchronously by the API, not by the row.
+func SnapshotGone() Predicate {
+	return func(s State) (Outcome, bool) {
+		if !s.Exists {
+			return Gone, true
+		}
+		return Succeeded, false
+	}
+}
+
 // IsTransient reports whether a status means "something is happening".
 // Used to decide whether waiting is worthwhile at all.
 func IsTransient(status string) bool {
 	switch status {
 	case StatusPending, StatusProvisioning, StatusStopping, StatusStarting,
-		StatusDeleting, StatusResizing, StatusSuspending, StatusOffloading:
+		StatusDeleting, StatusResizing, StatusSuspending, StatusOffloading,
+		StatusRestoring:
 		return true
 	}
 	return false

@@ -36,6 +36,8 @@ type harness struct {
 	mu       sync.Mutex
 	routes   map[string]route
 	requests []recorded
+	// headers adds response headers for a route, keyed like routes.
+	headers map[string]map[string]string
 }
 
 type recorded struct {
@@ -60,6 +62,7 @@ func newHarness(t *testing.T, routes map[string]route) *harness {
 			IdempotencyKey: r.Header.Get("Idempotency-Key"),
 		})
 		rt, ok := h.routes[r.Method+" "+r.URL.Path]
+		extra := h.headers[r.Method+" "+r.URL.Path]
 		h.mu.Unlock()
 
 		w.Header().Set("x-request-id", r.Header.Get("x-request-id"))
@@ -72,6 +75,9 @@ func newHarness(t *testing.T, routes map[string]route) *harness {
 			return
 		}
 		w.Header().Set("Content-Type", "application/json")
+		for name, value := range extra {
+			w.Header().Set(name, value)
+		}
 		w.WriteHeader(rt.status)
 		_, _ = w.Write([]byte(rt.body))
 	}))

@@ -78,6 +78,17 @@ func awaitInstance(cmd *cobra.Command, s *State, id string, predicate wait.Predi
 	if err != nil {
 		return err
 	}
+	return runWait(cmd, s, flags, verb,
+		waitTimeoutError{Resource: "instance " + id, Check: "cloudconsole instance get " + id},
+		func(ctx context.Context) (wait.State, error) { return fetchInstanceState(ctx, client, id) },
+		predicate)
+}
+
+// runWait polls fetch until predicate settles, printing a progress line to
+// stderr whenever it changes. timeout describes the resource for the
+// error returned when the deadline passes.
+func runWait(cmd *cobra.Command, s *State, flags waitFlags, verb string, timeout waitTimeoutError,
+	fetch func(context.Context) (wait.State, error), predicate wait.Predicate) error {
 	w, err := s.Writer()
 	if err != nil {
 		return err
@@ -102,17 +113,13 @@ func awaitInstance(cmd *cobra.Command, s *State, id string, predicate wait.Predi
 	final, err := wait.For(cmd.Context(), wait.Options{
 		Timeout:  flags.timeout,
 		Progress: progress,
-		Fetch: func(ctx context.Context) (wait.State, error) {
-			return fetchInstanceState(ctx, client, id)
-		},
+		Fetch:    fetch,
 	}, predicate)
 
-	var timeout *wait.TimeoutError
-	if errors.As(err, &timeout) {
-		return &waitTimeoutError{
-			Resource: fmt.Sprintf("instance %s", id),
-			Elapsed:  timeout.Elapsed.Round(time.Second).String(),
-		}
+	var expired *wait.TimeoutError
+	if errors.As(err, &expired) {
+		timeout.Elapsed = expired.Elapsed.Round(time.Second).String()
+		return &timeout
 	}
 	if err != nil {
 		return err

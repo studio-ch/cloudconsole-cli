@@ -151,6 +151,7 @@ func TestIsTransient(t *testing.T) {
 	transient := []string{
 		StatusPending, StatusProvisioning, StatusStopping, StatusStarting,
 		StatusDeleting, StatusResizing, StatusSuspending, StatusOffloading,
+		StatusRestoring,
 	}
 	settled := []string{
 		StatusRunning, StatusStopped, StatusSuspended, StatusOffloaded, StatusError,
@@ -194,5 +195,30 @@ func TestIntervalStaysWithinBounds(t *testing.T) {
 		if d < 700*time.Millisecond || d > 6500*time.Millisecond {
 			t.Errorf("interval(%d) = %v, outside the expected 0.8s..6s band", attempt, d)
 		}
+	}
+}
+
+func TestSnapshotPredicates(t *testing.T) {
+	tests := []struct {
+		name      string
+		predicate Predicate
+		state     State
+		outcome   Outcome
+		done      bool
+	}{
+		{"creating keeps waiting", SnapshotReadyOrFailed(), State{Exists: true, Status: SnapshotCreating}, Succeeded, false},
+		{"ready succeeds", SnapshotReadyOrFailed(), State{Exists: true, Status: SnapshotReady}, Succeeded, true},
+		{"failed fails", SnapshotReadyOrFailed(), State{Exists: true, Status: SnapshotFailed}, Failed, true},
+		{"vanished while creating", SnapshotReadyOrFailed(), State{Exists: false}, Gone, true},
+		{"deleting keeps waiting", SnapshotGone(), State{Exists: true, Status: SnapshotDeleting}, Succeeded, false},
+		{"gone succeeds", SnapshotGone(), State{Exists: false}, Gone, true},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			outcome, done := tt.predicate(tt.state)
+			if outcome != tt.outcome || done != tt.done {
+				t.Errorf("got (%v, %v), want (%v, %v)", outcome, done, tt.outcome, tt.done)
+			}
+		})
 	}
 }

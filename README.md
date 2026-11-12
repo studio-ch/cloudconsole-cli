@@ -1,8 +1,8 @@
 # cloudconsole
 
 Command-line interface for the Cloud Console. A single static binary for
-managing Xcloud instances, data volumes, images, networks, security groups
-and elastic IPs — from a terminal or from CI.
+managing Xcloud instances, snapshots, data volumes, images, networks, security
+groups and elastic IPs — from a terminal or from CI.
 
 > This repository is a **read-only mirror**, published from the Cloud
 > Console monorepo on every release. Issues and feature requests are
@@ -80,10 +80,18 @@ cloudconsole instance create \
 
 cloudconsole instance suspend <id> --wait      # suspend to disk
 cloudconsole instance boot-mode <id> --recovery --wait
+cloudconsole instance stop <id> --wait         # required before deletion
 cloudconsole instance delete <id> --yes --wait
 
 cloudconsole volume create --name scratch --region ZRH1 --size 500
 cloudconsole volume attach <volume-id> --instance <instance-id>
+
+cloudconsole snapshot create --instance <id> --name before-upgrade --wait
+cloudconsole snapshot list --instance <id>
+cloudconsole instance restore <id> --snapshot before-upgrade --yes --wait
+cloudconsole instance create --name build-02 --from-snapshot before-upgrade --wait
+cloudconsole snapshot delete before-upgrade --yes --wait
+cloudconsole instance delete <id> --delete-snapshots --yes   # snapshots outlive the instance otherwise
 ```
 
 Most instance operations are asynchronous. `--wait` blocks until the
@@ -115,6 +123,36 @@ omit `--ssh-key`. `--admin-username` records the user for connection information
 it does not create a user when you provide custom data. Documents are limited to
 64 KiB of UTF-8, encrypted by the API, and never returned by instance reads. They
 run only on first boot; changing a local file does not reconfigure an existing VM.
+
+## Computer use
+
+`cloudconsole instance display` lets a script or an AI agent see and operate
+the screen of a running instance, for applications that have no command line:
+
+```sh
+cloudconsole instance display screenshot <id> --file screen.png
+cloudconsole instance display click <id> --x 640 --y 400
+cloudconsole instance display type <id> --text "hello world"
+cloudconsole instance display press <id> --key cmd+space
+cloudconsole instance display drag <id> --x 200 --y 300 --to-x 600 --to-y 300
+```
+
+Coordinates are pixels of the screenshot, from its upper-left corner. A
+screenshot is as large as the screen, which on a HiDPI Mac is more than a
+vision model needs. `--scale 0.5` halves it; pass the same `--scale` to the
+pointer commands so a point read from the picture lands where you saw it.
+
+An agent works in a loop: take a screenshot, let the model pick the next
+action, send it, and take another screenshot to see the result. Input commands
+return as soon as the input is sent, before the instance has reacted.
+
+Screen and input come from the instance's virtual display, so this works for
+macOS and Linux, at the login window too, and needs nothing installed in the
+instance. Text is typed on a US keyboard layout: ASCII everywhere, and on macOS
+also accented letters, the euro sign and typographic punctuation. The display
+has no mouse wheel and no Page Up or Page Down; scroll with space, the arrow
+keys, or `cmd+up` and `cmd+down` on macOS. The API key needs the
+`write:resources` scope.
 
 ## Scripting
 
@@ -161,7 +199,9 @@ worth branching on:
   if: always()
   env:
     CLOUDCONSOLE_API_TOKEN: ${{ secrets.CLOUDCONSOLE_API_TOKEN }}
-  run: cloudconsole instance delete "$INSTANCE_ID" --yes --wait
+  run: |
+    cloudconsole instance stop "$INSTANCE_ID" --wait
+    cloudconsole instance delete "$INSTANCE_ID" --yes --wait
 ```
 
 `--yes` is required for destructive commands without a terminal — the CLI
@@ -212,3 +252,29 @@ The CLI authenticates with an API key, and some parts of the panel are not
 reachable that way: the VM console and terminal, the AI assistant, the
 admin area, and issuing or revoking API keys (listing works; issuing is a
 panel operation).
+
+### Private networks
+
+Xcloud networks are isolated private IPv4 networks with NAT egress. There is no
+`--mode` switch. Both `--cidr` (RFC 1918 subnet) and `--gateway` are required.
+Provide both DHCP endpoints to enable address assignment; omit both to disable it.
+
+```sh
+cloudconsole network create --name private --region ALP2 \
+  --cidr 10.42.0.0/24 --gateway 10.42.0.1 \
+  --dhcp-range-start 10.42.0.100 --dhcp-range-end 10.42.0.200
+```
+
+The API retains `cidr` for compatibility and maps it to upstream `spec.subnet`.
+DHCP is now an object with `rangeStart` and `rangeEnd`, rather than a boolean.
+Old `--mode` and `--dhcp` flags must be replaced as shown above.
+
+Update an existing tenant-owned network without replacing it:
+
+```sh
+cloudconsole network update private --region ALP2 --gateway 10.42.0.2
+cloudconsole network update private --region ALP2 --disable-dhcp
+```
+
+Only explicitly supplied fields change. Global catalog networks and their seeded
+copies are read-only. Address changes can interrupt connected instances.
