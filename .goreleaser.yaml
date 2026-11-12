@@ -156,11 +156,13 @@ homebrew_casks:
         # the quarantine attribute, and Gatekeeper then refuses to run an
         # unsigned binary outright — so strip it, or `cloudconsole` is
         # killed on first launch with a message that does not explain why.
-        install: |
-          if OS.mac?
-            system_command "/usr/bin/xattr",
-                           args: ["-dr", "com.apple.quarantine", "#{staged_path}/cloudconsole"],
-                           sudo: false
+        #
+        # `install_steps` rather than `install`: Homebrew replaced the
+        # postflight stanza, which took arbitrary Ruby, with declarative
+        # steps, and GoReleaser 2.19 refuses the old key in `check`.
+        install_steps: |
+          on_macos do
+            run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{ .StagedPath }}/cloudconsole"]
           end
     caveats: |
       Authenticate with an API key from the panel (Settings -> API keys):
