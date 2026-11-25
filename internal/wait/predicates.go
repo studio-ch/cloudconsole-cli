@@ -146,3 +146,18 @@ func IsTransient(status string) bool {
 	}
 	return false
 }
+
+// Xcloud container statuses (packages/shared/src/types/xcloud-container.ts)
+// that the instance vocabulary above does not have.
+const (
+	ContainerPulling = "pulling"
+	ContainerExited  = "exited"
+)
+
+// ContainerStarted waits for create, start and restart. `exited` is a
+// success too: a container whose command ran to completion did what it was
+// asked, and the caller sees the status and the exit code.
+func ContainerStarted() Predicate { return settledIn(StatusRunning, ContainerExited) }
+
+// ContainerStopped waits for stop.
+func ContainerStopped() Predicate { return settledIn(StatusStopped, ContainerExited) }

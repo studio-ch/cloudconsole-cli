@@ -246,6 +246,25 @@ support.
   [studio-ch/packer-plugin-cloudconsole](https://github.com/studio-ch/packer-plugin-cloudconsole)
   bakes custom macOS images.
 
+### Containers
+
+Linux containers on Xcloud, each in its own micro-VM. `container catalog` shows
+which regions offer them.
+
+```sh
+cloudconsole container create --name web --region BIT1 \
+  --image docker.io/library/nginx:1.27 --flavor ctr.small --network app --wait
+cloudconsole container logs <id> --follow
+cloudconsole container file get <id> /etc/nginx/nginx.conf --output nginx.conf
+cloudconsole container stop <id> --wait
+cloudconsole container delete <id> --yes
+```
+
+A custom size takes `--cpu`, `--memory` and `--storage` instead of `--flavor`.
+`--volume <volume-id>:<path>[:ro]` mounts a data volume, `--elastic-ip new`
+binds a public address, and everything after `--` replaces the image's
+command. The image and the size are fixed once the container exists.
+
 ## Not covered
 
 The CLI authenticates with an API key, and some parts of the panel are not

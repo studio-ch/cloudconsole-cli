@@ -93,6 +93,49 @@
             "maxLength": 253
           }
         }
+      },
+      "TenantSuspension": {
+        "type": "object",
+        "nullable": true,
+        "properties": {
+          "suspendedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "billing"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "nullable": true
+          },
+          "cleanupAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cleanedUpAt": {
+            "type": "string",
+            "nullable": true,
+            "format": "date-time"
+          },
+          "closedAt": {
+            "type": "string",
+            "nullable": true,
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "suspendedAt",
+          "source",
+          "reason",
+          "cleanupAt",
+          "cleanedUpAt",
+          "closedAt"
+        ]
       }
     },
     "parameters": {}
@@ -9842,6 +9885,49 @@
                             "type": "string",
                             "format": "uuid"
                           }
+                        },
+                        "suspension": {
+                          "type": "object",
+                          "nullable": true,
+                          "properties": {
+                            "suspendedAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "source": {
+                              "type": "string",
+                              "enum": [
+                                "admin",
+                                "billing"
+                              ]
+                            },
+                            "reason": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "cleanupAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "cleanedUpAt": {
+                              "type": "string",
+                              "nullable": true,
+                              "format": "date-time"
+                            },
+                            "closedAt": {
+                              "type": "string",
+                              "nullable": true,
+                              "format": "date-time"
+                            }
+                          },
+                          "required": [
+                            "suspendedAt",
+                            "source",
+                            "reason",
+                            "cleanupAt",
+                            "cleanedUpAt",
+                            "closedAt"
+                          ]
                         }
                       },
                       "required": [
@@ -9850,7 +9936,8 @@
                         "role",
                         "networkMode",
                         "services",
-                        "allowedRegions"
+                        "allowedRegions",
+                        "suspension"
                       ]
                     },
                     "memberships": {
@@ -20778,6 +20865,7 @@
                               "xcloud_disk_gib_total",
                               "xcloud_volumes_total",
                               "xcloud_snapshots_total",
+                              "xcloud_containers_total",
                               "incus_instances_total",
                               "tenant_volumes_total",
                               "tenant_snapshots_total",
@@ -22834,6 +22922,8 @@
           "release-notes"
         ],
         "summary": "List platform release notes",
+        "description": "Public: no credentials needed.",
+        "security": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -22982,8 +23072,8 @@
               }
             }
           },
-          "401": {
-            "description": "Unauthorized",
+          "429": {
+            "description": "Too Many Requests",
             "content": {
               "application/json": {
                 "schema": {
@@ -23026,6 +23116,8 @@
           "documentation"
         ],
         "summary": "Knowledge Base landing (categories + articles)",
+        "description": "Public: no credentials needed.",
+        "security": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -23148,6 +23240,8 @@
           "documentation"
         ],
         "summary": "Full-text search over published Knowledge Base articles",
+        "description": "Public: no credentials needed.",
+        "security": [],
         "parameters": [
           {
             "schema": {
@@ -23212,6 +23306,8 @@
           "documentation"
         ],
         "summary": "A single published documentation page",
+        "description": "Public: no credentials needed.",
+        "security": [],
         "parameters": [
           {
             "schema": {
@@ -46639,6 +46735,5554 @@
         }
       }
     },
+    "/v1/xcloud/containers/catalog": {
+      "get": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Where containers are offered, their sizes and prices",
+        "responses": {
+          "200": {
+            "description": "Catalog per region",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "regionId": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "regionSlug": {
+                            "type": "string"
+                          },
+                          "enabled": {
+                            "type": "boolean"
+                          },
+                          "flavors": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "slug": {
+                                  "type": "string"
+                                },
+                                "label": {
+                                  "type": "string"
+                                },
+                                "cpuCores": {
+                                  "type": "integer"
+                                },
+                                "memoryGib": {
+                                  "type": "integer"
+                                },
+                                "writableGib": {
+                                  "type": "integer"
+                                },
+                                "hourlyPrice": {
+                                  "type": "string",
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "slug",
+                                "label",
+                                "cpuCores",
+                                "memoryGib",
+                                "writableGib",
+                                "hourlyPrice"
+                              ]
+                            }
+                          },
+                          "rates": {
+                            "type": "object",
+                            "nullable": true,
+                            "properties": {
+                              "cpuCoreHourlyPrice": {
+                                "type": "string"
+                              },
+                              "memoryGibHourlyPrice": {
+                                "type": "string"
+                              },
+                              "diskGibHourlyPrice": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "cpuCoreHourlyPrice",
+                              "memoryGibHourlyPrice",
+                              "diskGibHourlyPrice"
+                            ]
+                          },
+                          "managedRegistryHost": {
+                            "type": "string",
+                            "nullable": true,
+                            "default": null
+                          },
+                          "limits": {
+                            "type": "object",
+                            "properties": {
+                              "cpuCores": {
+                                "type": "object",
+                                "properties": {
+                                  "min": {
+                                    "type": "number"
+                                  },
+                                  "max": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "min",
+                                  "max"
+                                ]
+                              },
+                              "memoryGib": {
+                                "type": "object",
+                                "properties": {
+                                  "min": {
+                                    "type": "number"
+                                  },
+                                  "max": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "min",
+                                  "max"
+                                ]
+                              },
+                              "writableGib": {
+                                "type": "object",
+                                "properties": {
+                                  "min": {
+                                    "type": "number"
+                                  },
+                                  "max": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "min",
+                                  "max"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "cpuCores",
+                              "memoryGib",
+                              "writableGib"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "regionId",
+                          "regionSlug",
+                          "enabled",
+                          "flavors",
+                          "rates",
+                          "limits"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/xcloud/containers/registries": {
+      "get": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "List saved credentials for private registries",
+        "responses": {
+          "200": {
+            "description": "Saved credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "host": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "host",
+                          "username",
+                          "createdAt"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Save credentials for a private registry",
+        "description": "The password is stored encrypted and never returned.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 80
+                  },
+                  "host": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 253,
+                    "pattern": "^[A-Za-z0-9]([A-Za-z0-9.-]*[A-Za-z0-9])?(:\\d{1,5})?$"
+                  },
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  }
+                },
+                "required": [
+                  "name",
+                  "host",
+                  "username",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Saved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "host": {
+                      "type": "string"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "host",
+                    "username",
+                    "createdAt"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/xcloud/containers/registries/{id}": {
+      "delete": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Delete saved registry credentials",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/xcloud/containers": {
+      "get": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "List containers",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": false,
+            "name": "regionId",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Containers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "tenantId": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "regionId": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "regionSlug": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "xcloudName": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "pending",
+                              "provisioning",
+                              "pulling",
+                              "starting",
+                              "running",
+                              "stopping",
+                              "stopped",
+                              "exited",
+                              "error",
+                              "deleting",
+                              "unknown"
+                            ]
+                          },
+                          "pendingAction": {
+                            "type": "string",
+                            "nullable": true,
+                            "enum": [
+                              "create",
+                              "start",
+                              "stop",
+                              "restart",
+                              "delete",
+                              null
+                            ]
+                          },
+                          "lastError": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "image": {
+                            "type": "string"
+                          },
+                          "imageDigest": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "registryId": {
+                            "type": "string",
+                            "nullable": true,
+                            "format": "uuid"
+                          },
+                          "flavorSlug": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "cpuCores": {
+                            "type": "integer"
+                          },
+                          "memoryGib": {
+                            "type": "integer"
+                          },
+                          "writableGib": {
+                            "type": "integer"
+                          },
+                          "networkRef": {
+                            "type": "string"
+                          },
+                          "securityGroups": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "command": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "args": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "env": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "string"
+                            }
+                          },
+                          "restartPolicy": {
+                            "type": "string",
+                            "enum": [
+                              "always",
+                              "on_failure",
+                              "never"
+                            ]
+                          },
+                          "networkAddress": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "hardwareAddress": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "exitCode": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "restartCount": {
+                            "type": "integer"
+                          },
+                          "startedAt": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "finishedAt": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "progressPct": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "hourlyPrice": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "managedRegistry": {
+                            "type": "boolean",
+                            "default": false
+                          },
+                          "volumes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "volumeId": {
+                                  "type": "string",
+                                  "format": "uuid"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "sizeGib": {
+                                  "type": "integer",
+                                  "nullable": true
+                                },
+                                "path": {
+                                  "type": "string"
+                                },
+                                "readOnly": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "volumeId",
+                                "name",
+                                "sizeGib",
+                                "path",
+                                "readOnly"
+                              ]
+                            },
+                            "default": []
+                          },
+                          "elasticIps": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "format": "uuid"
+                                },
+                                "publicAddress": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "status": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "publicAddress",
+                                "status"
+                              ]
+                            },
+                            "default": []
+                          },
+                          "elasticIpError": {
+                            "type": "string",
+                            "nullable": true,
+                            "default": null
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "tenantId",
+                          "regionId",
+                          "regionSlug",
+                          "name",
+                          "xcloudName",
+                          "status",
+                          "pendingAction",
+                          "lastError",
+                          "image",
+                          "imageDigest",
+                          "registryId",
+                          "flavorSlug",
+                          "cpuCores",
+                          "memoryGib",
+                          "writableGib",
+                          "networkRef",
+                          "securityGroups",
+                          "command",
+                          "args",
+                          "env",
+                          "restartPolicy",
+                          "networkAddress",
+                          "hardwareAddress",
+                          "exitCode",
+                          "restartCount",
+                          "startedAt",
+                          "finishedAt",
+                          "progressPct",
+                          "hourlyPrice",
+                          "createdAt",
+                          "updatedAt"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Create a container",
+        "description": "Creates and starts a container. The image cannot be changed afterwards. Refused with 412 in a region that does not offer containers.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "regionId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 63,
+                    "pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
+                  },
+                  "image": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 512,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._\\-/:@]*$"
+                  },
+                  "registryId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "flavor": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 63
+                  },
+                  "cpuCores": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 16
+                  },
+                  "memoryGib": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 64
+                  },
+                  "writableGib": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1024
+                  },
+                  "network": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 63
+                  },
+                  "securityGroups": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 63
+                    },
+                    "maxItems": 16
+                  },
+                  "command": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 4096
+                    },
+                    "maxItems": 64
+                  },
+                  "args": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 4096
+                    },
+                    "maxItems": 64
+                  },
+                  "env": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string",
+                      "maxLength": 32768
+                    }
+                  },
+                  "restartPolicy": {
+                    "type": "string",
+                    "enum": [
+                      "always",
+                      "on_failure",
+                      "never"
+                    ]
+                  },
+                  "volumes": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "volumeId": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "path": {
+                          "type": "string",
+                          "minLength": 2,
+                          "maxLength": 255,
+                          "pattern": "^\\/(?!\\/)[A-Za-z0-9._\\-/]*[A-Za-z0-9._\\-]$"
+                        },
+                        "readOnly": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "volumeId",
+                        "path"
+                      ]
+                    },
+                    "maxItems": 16
+                  },
+                  "elasticIp": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "allocate"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "mode"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "mode": {
+                            "type": "string",
+                            "enum": [
+                              "existing"
+                            ]
+                          },
+                          "existingId": {
+                            "type": "string",
+                            "format": "uuid"
+                          }
+                        },
+                        "required": [
+                          "mode",
+                          "existingId"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "regionId",
+                  "name",
+                  "image",
+                  "network"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "tenantId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionSlug": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "xcloudName": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "pending",
+                        "provisioning",
+                        "pulling",
+                        "starting",
+                        "running",
+                        "stopping",
+                        "stopped",
+                        "exited",
+                        "error",
+                        "deleting",
+                        "unknown"
+                      ]
+                    },
+                    "pendingAction": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "create",
+                        "start",
+                        "stop",
+                        "restart",
+                        "delete",
+                        null
+                      ]
+                    },
+                    "lastError": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "image": {
+                      "type": "string"
+                    },
+                    "imageDigest": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "registryId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid"
+                    },
+                    "flavorSlug": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "cpuCores": {
+                      "type": "integer"
+                    },
+                    "memoryGib": {
+                      "type": "integer"
+                    },
+                    "writableGib": {
+                      "type": "integer"
+                    },
+                    "networkRef": {
+                      "type": "string"
+                    },
+                    "securityGroups": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "command": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "env": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
+                    "restartPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "always",
+                        "on_failure",
+                        "never"
+                      ]
+                    },
+                    "networkAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "hardwareAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "exitCode": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "restartCount": {
+                      "type": "integer"
+                    },
+                    "startedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "finishedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "progressPct": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "hourlyPrice": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "managedRegistry": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "volumes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "volumeId": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "sizeGib": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "readOnly": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "volumeId",
+                          "name",
+                          "sizeGib",
+                          "path",
+                          "readOnly"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIps": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "publicAddress": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "publicAddress",
+                          "status"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIpError": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "tenantId",
+                    "regionId",
+                    "regionSlug",
+                    "name",
+                    "xcloudName",
+                    "status",
+                    "pendingAction",
+                    "lastError",
+                    "image",
+                    "imageDigest",
+                    "registryId",
+                    "flavorSlug",
+                    "cpuCores",
+                    "memoryGib",
+                    "writableGib",
+                    "networkRef",
+                    "securityGroups",
+                    "command",
+                    "args",
+                    "env",
+                    "restartPolicy",
+                    "networkAddress",
+                    "hardwareAddress",
+                    "exitCode",
+                    "restartCount",
+                    "startedAt",
+                    "finishedAt",
+                    "progressPct",
+                    "hourlyPrice",
+                    "createdAt",
+                    "updatedAt"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/xcloud/containers/{id}": {
+      "get": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Get one container",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Container",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "tenantId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionSlug": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "xcloudName": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "pending",
+                        "provisioning",
+                        "pulling",
+                        "starting",
+                        "running",
+                        "stopping",
+                        "stopped",
+                        "exited",
+                        "error",
+                        "deleting",
+                        "unknown"
+                      ]
+                    },
+                    "pendingAction": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "create",
+                        "start",
+                        "stop",
+                        "restart",
+                        "delete",
+                        null
+                      ]
+                    },
+                    "lastError": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "image": {
+                      "type": "string"
+                    },
+                    "imageDigest": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "registryId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid"
+                    },
+                    "flavorSlug": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "cpuCores": {
+                      "type": "integer"
+                    },
+                    "memoryGib": {
+                      "type": "integer"
+                    },
+                    "writableGib": {
+                      "type": "integer"
+                    },
+                    "networkRef": {
+                      "type": "string"
+                    },
+                    "securityGroups": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "command": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "env": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
+                    "restartPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "always",
+                        "on_failure",
+                        "never"
+                      ]
+                    },
+                    "networkAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "hardwareAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "exitCode": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "restartCount": {
+                      "type": "integer"
+                    },
+                    "startedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "finishedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "progressPct": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "hourlyPrice": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "managedRegistry": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "volumes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "volumeId": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "sizeGib": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "readOnly": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "volumeId",
+                          "name",
+                          "sizeGib",
+                          "path",
+                          "readOnly"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIps": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "publicAddress": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "publicAddress",
+                          "status"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIpError": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "tenantId",
+                    "regionId",
+                    "regionSlug",
+                    "name",
+                    "xcloudName",
+                    "status",
+                    "pendingAction",
+                    "lastError",
+                    "image",
+                    "imageDigest",
+                    "registryId",
+                    "flavorSlug",
+                    "cpuCores",
+                    "memoryGib",
+                    "writableGib",
+                    "networkRef",
+                    "securityGroups",
+                    "command",
+                    "args",
+                    "env",
+                    "restartPolicy",
+                    "networkAddress",
+                    "hardwareAddress",
+                    "exitCode",
+                    "restartCount",
+                    "startedAt",
+                    "finishedAt",
+                    "progressPct",
+                    "hourlyPrice",
+                    "createdAt",
+                    "updatedAt"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Delete a container",
+        "description": "Deletes the container and its writable storage. Billing stops at the request.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "tenantId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionSlug": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "xcloudName": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "pending",
+                        "provisioning",
+                        "pulling",
+                        "starting",
+                        "running",
+                        "stopping",
+                        "stopped",
+                        "exited",
+                        "error",
+                        "deleting",
+                        "unknown"
+                      ]
+                    },
+                    "pendingAction": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "create",
+                        "start",
+                        "stop",
+                        "restart",
+                        "delete",
+                        null
+                      ]
+                    },
+                    "lastError": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "image": {
+                      "type": "string"
+                    },
+                    "imageDigest": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "registryId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid"
+                    },
+                    "flavorSlug": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "cpuCores": {
+                      "type": "integer"
+                    },
+                    "memoryGib": {
+                      "type": "integer"
+                    },
+                    "writableGib": {
+                      "type": "integer"
+                    },
+                    "networkRef": {
+                      "type": "string"
+                    },
+                    "securityGroups": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "command": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "env": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
+                    "restartPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "always",
+                        "on_failure",
+                        "never"
+                      ]
+                    },
+                    "networkAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "hardwareAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "exitCode": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "restartCount": {
+                      "type": "integer"
+                    },
+                    "startedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "finishedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "progressPct": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "hourlyPrice": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "managedRegistry": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "volumes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "volumeId": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "sizeGib": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "readOnly": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "volumeId",
+                          "name",
+                          "sizeGib",
+                          "path",
+                          "readOnly"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIps": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "publicAddress": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "publicAddress",
+                          "status"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIpError": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "tenantId",
+                    "regionId",
+                    "regionSlug",
+                    "name",
+                    "xcloudName",
+                    "status",
+                    "pendingAction",
+                    "lastError",
+                    "image",
+                    "imageDigest",
+                    "registryId",
+                    "flavorSlug",
+                    "cpuCores",
+                    "memoryGib",
+                    "writableGib",
+                    "networkRef",
+                    "securityGroups",
+                    "command",
+                    "args",
+                    "env",
+                    "restartPolicy",
+                    "networkAddress",
+                    "hardwareAddress",
+                    "exitCode",
+                    "restartCount",
+                    "startedAt",
+                    "finishedAt",
+                    "progressPct",
+                    "hourlyPrice",
+                    "createdAt",
+                    "updatedAt"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/xcloud/containers/{id}/start": {
+      "post": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Start a container",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "tenantId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionSlug": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "xcloudName": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "pending",
+                        "provisioning",
+                        "pulling",
+                        "starting",
+                        "running",
+                        "stopping",
+                        "stopped",
+                        "exited",
+                        "error",
+                        "deleting",
+                        "unknown"
+                      ]
+                    },
+                    "pendingAction": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "create",
+                        "start",
+                        "stop",
+                        "restart",
+                        "delete",
+                        null
+                      ]
+                    },
+                    "lastError": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "image": {
+                      "type": "string"
+                    },
+                    "imageDigest": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "registryId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid"
+                    },
+                    "flavorSlug": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "cpuCores": {
+                      "type": "integer"
+                    },
+                    "memoryGib": {
+                      "type": "integer"
+                    },
+                    "writableGib": {
+                      "type": "integer"
+                    },
+                    "networkRef": {
+                      "type": "string"
+                    },
+                    "securityGroups": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "command": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "env": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
+                    "restartPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "always",
+                        "on_failure",
+                        "never"
+                      ]
+                    },
+                    "networkAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "hardwareAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "exitCode": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "restartCount": {
+                      "type": "integer"
+                    },
+                    "startedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "finishedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "progressPct": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "hourlyPrice": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "managedRegistry": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "volumes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "volumeId": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "sizeGib": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "readOnly": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "volumeId",
+                          "name",
+                          "sizeGib",
+                          "path",
+                          "readOnly"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIps": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "publicAddress": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "publicAddress",
+                          "status"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIpError": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "tenantId",
+                    "regionId",
+                    "regionSlug",
+                    "name",
+                    "xcloudName",
+                    "status",
+                    "pendingAction",
+                    "lastError",
+                    "image",
+                    "imageDigest",
+                    "registryId",
+                    "flavorSlug",
+                    "cpuCores",
+                    "memoryGib",
+                    "writableGib",
+                    "networkRef",
+                    "securityGroups",
+                    "command",
+                    "args",
+                    "env",
+                    "restartPolicy",
+                    "networkAddress",
+                    "hardwareAddress",
+                    "exitCode",
+                    "restartCount",
+                    "startedAt",
+                    "finishedAt",
+                    "progressPct",
+                    "hourlyPrice",
+                    "createdAt",
+                    "updatedAt"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/xcloud/containers/{id}/stop": {
+      "post": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Stop a container",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "tenantId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionSlug": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "xcloudName": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "pending",
+                        "provisioning",
+                        "pulling",
+                        "starting",
+                        "running",
+                        "stopping",
+                        "stopped",
+                        "exited",
+                        "error",
+                        "deleting",
+                        "unknown"
+                      ]
+                    },
+                    "pendingAction": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "create",
+                        "start",
+                        "stop",
+                        "restart",
+                        "delete",
+                        null
+                      ]
+                    },
+                    "lastError": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "image": {
+                      "type": "string"
+                    },
+                    "imageDigest": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "registryId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid"
+                    },
+                    "flavorSlug": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "cpuCores": {
+                      "type": "integer"
+                    },
+                    "memoryGib": {
+                      "type": "integer"
+                    },
+                    "writableGib": {
+                      "type": "integer"
+                    },
+                    "networkRef": {
+                      "type": "string"
+                    },
+                    "securityGroups": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "command": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "env": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
+                    "restartPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "always",
+                        "on_failure",
+                        "never"
+                      ]
+                    },
+                    "networkAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "hardwareAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "exitCode": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "restartCount": {
+                      "type": "integer"
+                    },
+                    "startedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "finishedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "progressPct": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "hourlyPrice": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "managedRegistry": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "volumes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "volumeId": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "sizeGib": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "readOnly": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "volumeId",
+                          "name",
+                          "sizeGib",
+                          "path",
+                          "readOnly"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIps": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "publicAddress": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "publicAddress",
+                          "status"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIpError": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "tenantId",
+                    "regionId",
+                    "regionSlug",
+                    "name",
+                    "xcloudName",
+                    "status",
+                    "pendingAction",
+                    "lastError",
+                    "image",
+                    "imageDigest",
+                    "registryId",
+                    "flavorSlug",
+                    "cpuCores",
+                    "memoryGib",
+                    "writableGib",
+                    "networkRef",
+                    "securityGroups",
+                    "command",
+                    "args",
+                    "env",
+                    "restartPolicy",
+                    "networkAddress",
+                    "hardwareAddress",
+                    "exitCode",
+                    "restartCount",
+                    "startedAt",
+                    "finishedAt",
+                    "progressPct",
+                    "hourlyPrice",
+                    "createdAt",
+                    "updatedAt"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/xcloud/containers/{id}/restart": {
+      "post": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Restart a container",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "tenantId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionSlug": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "xcloudName": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "pending",
+                        "provisioning",
+                        "pulling",
+                        "starting",
+                        "running",
+                        "stopping",
+                        "stopped",
+                        "exited",
+                        "error",
+                        "deleting",
+                        "unknown"
+                      ]
+                    },
+                    "pendingAction": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "create",
+                        "start",
+                        "stop",
+                        "restart",
+                        "delete",
+                        null
+                      ]
+                    },
+                    "lastError": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "image": {
+                      "type": "string"
+                    },
+                    "imageDigest": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "registryId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid"
+                    },
+                    "flavorSlug": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "cpuCores": {
+                      "type": "integer"
+                    },
+                    "memoryGib": {
+                      "type": "integer"
+                    },
+                    "writableGib": {
+                      "type": "integer"
+                    },
+                    "networkRef": {
+                      "type": "string"
+                    },
+                    "securityGroups": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "command": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "env": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
+                    "restartPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "always",
+                        "on_failure",
+                        "never"
+                      ]
+                    },
+                    "networkAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "hardwareAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "exitCode": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "restartCount": {
+                      "type": "integer"
+                    },
+                    "startedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "finishedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "progressPct": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "hourlyPrice": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "managedRegistry": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "volumes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "volumeId": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "sizeGib": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "readOnly": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "volumeId",
+                          "name",
+                          "sizeGib",
+                          "path",
+                          "readOnly"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIps": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "publicAddress": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "publicAddress",
+                          "status"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIpError": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "tenantId",
+                    "regionId",
+                    "regionSlug",
+                    "name",
+                    "xcloudName",
+                    "status",
+                    "pendingAction",
+                    "lastError",
+                    "image",
+                    "imageDigest",
+                    "registryId",
+                    "flavorSlug",
+                    "cpuCores",
+                    "memoryGib",
+                    "writableGib",
+                    "networkRef",
+                    "securityGroups",
+                    "command",
+                    "args",
+                    "env",
+                    "restartPolicy",
+                    "networkAddress",
+                    "hardwareAddress",
+                    "exitCode",
+                    "restartCount",
+                    "startedAt",
+                    "finishedAt",
+                    "progressPct",
+                    "hourlyPrice",
+                    "createdAt",
+                    "updatedAt"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/xcloud/containers/{id}/elastic-ips": {
+      "post": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Bind an elastic IP to the container",
+        "description": "Allocates a new address, or binds one of your unattached addresses.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "mode": {
+                        "type": "string",
+                        "enum": [
+                          "allocate"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "mode"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "mode": {
+                        "type": "string",
+                        "enum": [
+                          "existing"
+                        ]
+                      },
+                      "existingId": {
+                        "type": "string",
+                        "format": "uuid"
+                      }
+                    },
+                    "required": [
+                      "mode",
+                      "existingId"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Bound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "tenantId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionSlug": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "xcloudName": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "pending",
+                        "provisioning",
+                        "pulling",
+                        "starting",
+                        "running",
+                        "stopping",
+                        "stopped",
+                        "exited",
+                        "error",
+                        "deleting",
+                        "unknown"
+                      ]
+                    },
+                    "pendingAction": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "create",
+                        "start",
+                        "stop",
+                        "restart",
+                        "delete",
+                        null
+                      ]
+                    },
+                    "lastError": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "image": {
+                      "type": "string"
+                    },
+                    "imageDigest": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "registryId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid"
+                    },
+                    "flavorSlug": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "cpuCores": {
+                      "type": "integer"
+                    },
+                    "memoryGib": {
+                      "type": "integer"
+                    },
+                    "writableGib": {
+                      "type": "integer"
+                    },
+                    "networkRef": {
+                      "type": "string"
+                    },
+                    "securityGroups": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "command": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "env": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
+                    "restartPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "always",
+                        "on_failure",
+                        "never"
+                      ]
+                    },
+                    "networkAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "hardwareAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "exitCode": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "restartCount": {
+                      "type": "integer"
+                    },
+                    "startedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "finishedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "progressPct": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "hourlyPrice": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "managedRegistry": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "volumes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "volumeId": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "sizeGib": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "readOnly": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "volumeId",
+                          "name",
+                          "sizeGib",
+                          "path",
+                          "readOnly"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIps": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "publicAddress": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "publicAddress",
+                          "status"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIpError": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "tenantId",
+                    "regionId",
+                    "regionSlug",
+                    "name",
+                    "xcloudName",
+                    "status",
+                    "pendingAction",
+                    "lastError",
+                    "image",
+                    "imageDigest",
+                    "registryId",
+                    "flavorSlug",
+                    "cpuCores",
+                    "memoryGib",
+                    "writableGib",
+                    "networkRef",
+                    "securityGroups",
+                    "command",
+                    "args",
+                    "env",
+                    "restartPolicy",
+                    "networkAddress",
+                    "hardwareAddress",
+                    "exitCode",
+                    "restartCount",
+                    "startedAt",
+                    "finishedAt",
+                    "progressPct",
+                    "hourlyPrice",
+                    "createdAt",
+                    "updatedAt"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/xcloud/containers/{id}/elastic-ips/{elasticIpId}": {
+      "delete": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Unbind an elastic IP from the container",
+        "description": "The address stays allocated to your organization and keeps being billed until you release it.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "elasticIpId",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Unbound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "tenantId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "regionSlug": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "xcloudName": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "pending",
+                        "provisioning",
+                        "pulling",
+                        "starting",
+                        "running",
+                        "stopping",
+                        "stopped",
+                        "exited",
+                        "error",
+                        "deleting",
+                        "unknown"
+                      ]
+                    },
+                    "pendingAction": {
+                      "type": "string",
+                      "nullable": true,
+                      "enum": [
+                        "create",
+                        "start",
+                        "stop",
+                        "restart",
+                        "delete",
+                        null
+                      ]
+                    },
+                    "lastError": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "image": {
+                      "type": "string"
+                    },
+                    "imageDigest": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "registryId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid"
+                    },
+                    "flavorSlug": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "cpuCores": {
+                      "type": "integer"
+                    },
+                    "memoryGib": {
+                      "type": "integer"
+                    },
+                    "writableGib": {
+                      "type": "integer"
+                    },
+                    "networkRef": {
+                      "type": "string"
+                    },
+                    "securityGroups": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "command": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "env": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
+                    "restartPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "always",
+                        "on_failure",
+                        "never"
+                      ]
+                    },
+                    "networkAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "hardwareAddress": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "exitCode": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "restartCount": {
+                      "type": "integer"
+                    },
+                    "startedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "finishedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "progressPct": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "hourlyPrice": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "managedRegistry": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "volumes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "volumeId": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "name": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "sizeGib": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "readOnly": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "volumeId",
+                          "name",
+                          "sizeGib",
+                          "path",
+                          "readOnly"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIps": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "publicAddress": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "publicAddress",
+                          "status"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "elasticIpError": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "tenantId",
+                    "regionId",
+                    "regionSlug",
+                    "name",
+                    "xcloudName",
+                    "status",
+                    "pendingAction",
+                    "lastError",
+                    "image",
+                    "imageDigest",
+                    "registryId",
+                    "flavorSlug",
+                    "cpuCores",
+                    "memoryGib",
+                    "writableGib",
+                    "networkRef",
+                    "securityGroups",
+                    "command",
+                    "args",
+                    "env",
+                    "restartPolicy",
+                    "networkAddress",
+                    "hardwareAddress",
+                    "exitCode",
+                    "restartCount",
+                    "startedAt",
+                    "finishedAt",
+                    "progressPct",
+                    "hourlyPrice",
+                    "createdAt",
+                    "updatedAt"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/xcloud/containers/{id}/logs": {
+      "get": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Read the container output",
+        "description": "Output since the last start, at most the last 256 KiB.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Output",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "truncated": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "text",
+                    "truncated"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/xcloud/containers/{id}/metrics": {
+      "get": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Live CPU, memory and process count",
+        "description": "`data` is null while the container is not running.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Metrics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "nullable": true,
+                      "properties": {
+                        "timestamp": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "cpuUsageCores": {
+                          "type": "number"
+                        },
+                        "cpuCount": {
+                          "type": "number"
+                        },
+                        "memoryTotalBytes": {
+                          "type": "number"
+                        },
+                        "memoryUsedBytes": {
+                          "type": "number"
+                        },
+                        "processCount": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "timestamp",
+                        "cpuUsageCores",
+                        "cpuCount",
+                        "memoryTotalBytes",
+                        "memoryUsedBytes",
+                        "processCount"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/xcloud/containers/{id}/files/stat": {
+      "get": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Size, mode and kind of a path in the container",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "description": "Absolute path inside the container."
+            },
+            "required": true,
+            "description": "Absolute path inside the container.",
+            "name": "path",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "size": {
+                      "type": "number"
+                    },
+                    "mode": {
+                      "type": "number"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "file",
+                        "directory",
+                        "other"
+                      ]
+                    },
+                    "modifiedAt": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "size",
+                    "mode",
+                    "type",
+                    "modifiedAt"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/xcloud/containers/{id}/files": {
+      "get": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Download a file from the container",
+        "description": "A file from the container's own filesystem, up to 8 MiB. Needs the write scope, because a file may hold secrets. Files on mounted volumes are not reachable this way.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "description": "Absolute path inside the container."
+            },
+            "required": true,
+            "description": "Absolute path inside the container.",
+            "name": "path",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File content",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Write scope required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "xcloud-containers"
+        ],
+        "summary": "Upload a file into the container",
+        "description": "The request body is the file content, up to 8 MiB. An existing file is replaced.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "description": "Absolute path inside the container."
+            },
+            "required": true,
+            "description": "Absolute path inside the container.",
+            "name": "path",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-7]{3,4}$",
+              "description": "Octal file mode, for example 644."
+            },
+            "required": false,
+            "description": "Octal file mode, for example 644.",
+            "name": "mode",
+            "in": "query"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Written",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bytesWritten": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "bytesWritten"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Not available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "status"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/xcloud/instances/{id}/metrics": {
       "get": {
         "tags": [
@@ -48367,6 +54011,17 @@
                             "nullable": true,
                             "default": null
                           },
+                          "attachedContainerId": {
+                            "type": "string",
+                            "nullable": true,
+                            "format": "uuid",
+                            "default": null
+                          },
+                          "attachedContainerName": {
+                            "type": "string",
+                            "nullable": true,
+                            "default": null
+                          },
                           "node": {
                             "type": "string",
                             "nullable": true
@@ -48631,6 +54286,17 @@
                       "nullable": true
                     },
                     "attachedInstanceStatus": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
+                    },
+                    "attachedContainerId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid",
+                      "default": null
+                    },
+                    "attachedContainerName": {
                       "type": "string",
                       "nullable": true,
                       "default": null
@@ -49024,6 +54690,17 @@
                             "nullable": true,
                             "default": null
                           },
+                          "attachedContainerId": {
+                            "type": "string",
+                            "nullable": true,
+                            "format": "uuid",
+                            "default": null
+                          },
+                          "attachedContainerName": {
+                            "type": "string",
+                            "nullable": true,
+                            "default": null
+                          },
                           "node": {
                             "type": "string",
                             "nullable": true
@@ -49193,6 +54870,17 @@
                       "nullable": true
                     },
                     "attachedInstanceStatus": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
+                    },
+                    "attachedContainerId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid",
+                      "default": null
+                    },
+                    "attachedContainerName": {
                       "type": "string",
                       "nullable": true,
                       "default": null
@@ -49439,6 +55127,17 @@
                       "nullable": true
                     },
                     "attachedInstanceStatus": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
+                    },
+                    "attachedContainerId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid",
+                      "default": null
+                    },
+                    "attachedContainerName": {
                       "type": "string",
                       "nullable": true,
                       "default": null
@@ -49831,6 +55530,17 @@
                       "nullable": true
                     },
                     "attachedInstanceStatus": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
+                    },
+                    "attachedContainerId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid",
+                      "default": null
+                    },
+                    "attachedContainerName": {
                       "type": "string",
                       "nullable": true,
                       "default": null
@@ -57479,6 +63189,17 @@
                             "type": "string",
                             "nullable": true
                           },
+                          "targetContainerId": {
+                            "type": "string",
+                            "nullable": true,
+                            "format": "uuid",
+                            "default": null
+                          },
+                          "targetContainerName": {
+                            "type": "string",
+                            "nullable": true,
+                            "default": null
+                          },
                           "status": {
                             "type": "string",
                             "enum": [
@@ -57641,6 +63362,17 @@
                     "targetInstanceName": {
                       "type": "string",
                       "nullable": true
+                    },
+                    "targetContainerId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid",
+                      "default": null
+                    },
+                    "targetContainerName": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
                     },
                     "status": {
                       "type": "string",
@@ -57948,6 +63680,17 @@
                     "targetInstanceName": {
                       "type": "string",
                       "nullable": true
+                    },
+                    "targetContainerId": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uuid",
+                      "default": null
+                    },
+                    "targetContainerName": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": null
                     },
                     "status": {
                       "type": "string",

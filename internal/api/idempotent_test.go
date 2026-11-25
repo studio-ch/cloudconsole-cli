@@ -10,6 +10,7 @@ import "testing"
 func TestIdempotencyMountsArePinned(t *testing.T) {
 	want := []string{
 		"/v1/xcloud/instances",
+		"/v1/xcloud/containers",
 		"/v1/xcloud-security-groups",
 		"/v1/xcloud/networks",
 		"/v1/resources",

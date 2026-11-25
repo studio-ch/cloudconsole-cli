@@ -30,6 +30,7 @@ func NewIdempotencyKey() string {
 // THIS LIST MUST STAY IN LOCKSTEP WITH THE SERVER. The mounts are:
 //
 //	apps/api/src/routes/v1/xcloud-instances.ts
+//	apps/api/src/routes/v1/xcloud-containers.ts
 //	apps/api/src/routes/v1/xcloud-security-groups.ts
 //	apps/api/src/routes/v1/xcloud-networks.ts
 //	apps/api/src/routes/v1/resources.ts
@@ -49,6 +50,7 @@ func NewIdempotencyKey() string {
 // policy.
 var idempotencyMounts = []string{
 	"/v1/xcloud/instances",
+	"/v1/xcloud/containers",
 	"/v1/xcloud-security-groups",
 	"/v1/xcloud/networks",
 	"/v1/resources",
